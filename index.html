@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.growthmaxinc.com" />
-    <title>GrowthMax Inc - Ocean Blue Theme</title>
+    <title>GrowthMax Inc - Ocean Blue Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -26,9 +26,21 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex justify-between items-center h-16">
                 <div class="text-lg font-medium text-cyan-900">GrowthMax</div>
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
                     <a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
+                    <!-- Solutions Dropdown -->
+                    <div class="relative" id="solutions-dropdown">
+                        <button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+                            Solutions
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+                            <a href="#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
+                            <a href="#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
+                            <a href="#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
+                        </div>
+                    </div>
                     <a href="#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
                     <a href="#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
                 </div>
@@ -47,6 +59,9 @@
                 <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed">
                     We build custom AI agents for your business
                 </p>
+                <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed mt-4">
+                    We offer AI training for executives and developers via our partnership with <a href="https://www.hyperskill.org" class="text-cyan-900 hover:text-cyan-700 underline transition-colors">HyperSkill.org</a>
+                </p>
             </div>
         </div>
     </section>
@@ -62,6 +77,94 @@
         </div>
     </section>
     
+    <!-- AI Agent Development Section -->
+    <section id="ai-agent-development" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-8 text-center text-cyan-900">AI Agent Development</h2>
+            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
+                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center">
+                    We design, build, and deploy custom AI agents that will support you in your role. Think of this service as your always on personal strategic and tactical expert consultant.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Engineer Bootcamp Section -->
+    <section id="ai-engineer-bootcamp" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Engineer Bootcamp</h2>
+            <p class="text-sm text-cyan-600 font-light text-center mb-8 flex items-center justify-center gap-2">
+                Education provided via our strategic partnership with
+                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+                    </svg>
+                    <span class="text-sm font-semibold text-gray-800">Hyperskill</span>
+                </a>
+            </p>
+            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
+                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
+                    Become a confident applied AI engineer who can solve real-world problems, deploy AI solutions, and understand how they work — not just study AI
+                </p>
+                <p class="text-sm md:text-base text-cyan-700 font-medium text-center">
+                    Trusted by 100+ companies | JetBrains Academy partner | 300+ projects delivered by students
+                </p>
+            </div>
+            <!-- Company Logos -->
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
+                <span class="text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>
+                <span class="text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>
+                <span class="flex items-center gap-1 text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
+                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
+                    Apple
+                </span>
+                <span class="text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>
+                <span class="text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>
+                <span class="text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Foundations Bootcamp Section -->
+    <section id="ai-foundations-bootcamp" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Foundations Bootcamp</h2>
+            <p class="text-sm text-cyan-600 font-light text-center mb-8 flex items-center justify-center gap-2">
+                Education provided via our strategic partnership with
+                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+                    </svg>
+                    <span class="text-sm font-semibold text-gray-800">Hyperskill</span>
+                </a>
+            </p>
+            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
+                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
+                    AI Foundations Bootcamp enables cross-functional product, operations, and support teams to apply AI to real workflows — consistently, safely, and with measurable impact.
+                </p>
+                <p class="text-sm md:text-base text-cyan-700 font-medium text-center">
+                    Trusted by 100+ companies | JetBrains partner | 300+ products delivered by students
+                </p>
+            </div>
+            <!-- Company Logos -->
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
+                <span class="text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>
+                <span class="text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>
+                <span class="flex items-center gap-1 text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
+                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
+                    Apple
+                </span>
+                <span class="text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>
+                <span class="text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>
+                <span class="text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Team Section -->
     <section id="team" class="py-32 px-6">
         <div class="max-w-6xl mx-auto">
@@ -192,5 +295,21 @@
     </div>
 </footer>
 
+<script>
+    // Close Solutions dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        var dropdown = document.getElementById('solutions-dropdown');
+        var menu = document.getElementById('solutions-menu');
+        if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+    // Close dropdown when a menu link is clicked
+    document.querySelectorAll('#solutions-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.getElementById('solutions-menu').classList.add('hidden');
+        });
+    });
+</script>
 </body>
 </html>
