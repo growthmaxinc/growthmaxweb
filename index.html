@@ -1,315 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.growthmaxinc.com" />
-    <title>GrowthMax Inc - Ocean Blue Website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7QYH5FFXD"></script>
-    <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="canonical" href="https://www.growthmaxinc.com" />
+            <title>GrowthMax Inc - Ocean Blue Website</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+                    body { font-family: 'Inter', sans-serif; }
+                    .mobile-nav { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+                    .mobile-nav.active { max-height: 500px; }
+                </style>
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7QYH5FFXD"></script>
+            <script>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-F7QYH5FFXD');
+            </script>
+    </head>
+    <body class="bg-sky-50 text-gray-900 antialiased">
 
-            gtag('config', 'G-F7QYH5FFXD');
-    </script>
-</head>
-<body class="bg-sky-50 text-gray-900 antialiased">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex justify-between items-center h-16">
-                <div class="text-lg font-medium text-cyan-900">GrowthMax</div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
-                    <a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
-                    <!-- Solutions Dropdown -->
-                    <div class="relative" id="solutions-dropdown">
-                        <button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
-                            Solutions
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
-                            <a href="#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
-                            <a href="#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
-                            <a href="#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
-                        </div>
-                    </div>
-                    <a href="#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
-                    <a href="#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center px-6">
-        <div class="text-center max-w-4xl mx-auto">
-            <!-- Logo/Brand Mark -->
-            <div class="mb-12">
-                <div class="w-64 h-64 mx-auto bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center mb-8 shadow-2xl">
-                    <img src="growthMAX.PNG" />
-                </div>
-                <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed">
-                    We build custom AI agents for your business
-                </p>
-                <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-                    We offer AI training for executives and developers via our partnership with <a href="https://www.hyperskill.org" class="text-cyan-900 hover:text-cyan-700 underline transition-colors">HyperSkill.org</a>
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About</h2>
-            <p class="text-lg md:text-xl text-justify text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto">
-                GrowthMax is an AI-first consulting company which provides agentic software products and services
-                to a wide range of businesses. We started in November 2025 and are fully remote with people in USA and India. 
-            </p>
-        </div>
-    </section>
-    
-    <!-- AI Agent Development Section -->
-    <section id="ai-agent-development" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-8 text-center text-cyan-900">AI Agent Development</h2>
-            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
-                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center">
-                    We design, build, and deploy custom AI agents that will support you in your role. Think of this service as your always on personal strategic and tactical expert consultant.
-                </p>
-            </div>
-        </div>
-    </section>
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                            <div class="flex justify-between items-center h-16">
+                                            <!-- Logo -->
+                                            <div class="text-lg font-medium text-cyan-900 flex-shrink-0">GrowthMax</div>div>
 
-    <!-- AI Engineer Bootcamp Section -->
-    <section id="ai-engineer-bootcamp" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Engineer Bootcamp</h2>
-            <p class="text-sm text-cyan-600 font-light text-center mb-8 flex items-center justify-center gap-2">
-                Education provided via our strategic partnership with
-                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
-                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
-                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
-                    </svg>
-                    <span class="text-sm font-semibold text-gray-800">Hyperskill</span>
-                </a>
-            </p>
-            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
-                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
-                    Become a confident applied AI engineer who can solve real-world problems, deploy AI solutions, and understand how they work — not just study AI
-                </p>
-                <p class="text-sm md:text-base text-cyan-700 font-medium text-center">
-                    Trusted by 100+ companies | JetBrains Academy partner | 300+ projects delivered by students
-                </p>
-            </div>
-            <!-- Company Logos -->
-            <div class="mt-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-                <span class="text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>
-                <span class="text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>
-                <span class="flex items-center gap-1 text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
-                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
-                    Apple
-                </span>
-                <span class="text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>
-                <span class="text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>
-                <span class="text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>
-            </div>
-        </div>
-    </section>
+                                            <!-- Desktop Navigation -->
+                                            <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                                                                <a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>a>
+                                                                <a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>a>
+                                                                <!-- Solutions Dropdown -->
+                                                                <div class="relative" id="solutions-dropdown">
+                                                                                        <button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+                                                                                                                    Solutions
+                                                                                                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>path></svg>svg>
+                                                                                            </button>button>
+                                                                                        <div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+                                                                                                                    <a href="#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>a>
+                                                                                                                    <a href="#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>a>
+                                                                                                                    <a href="#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>a>
+                                                                                            </div>div>
+                                                                </div>div>
+                                                                <a href="#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>a>
+                                                                <a href="#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>a>
+                                            </div>div>
 
-    <!-- AI Foundations Bootcamp Section -->
-    <section id="ai-foundations-bootcamp" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Foundations Bootcamp</h2>
-            <p class="text-sm text-cyan-600 font-light text-center mb-8 flex items-center justify-center gap-2">
-                Education provided via our strategic partnership with
-                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
-                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
-                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
-                    </svg>
-                    <span class="text-sm font-semibold text-gray-800">Hyperskill</span>
-                </a>
-            </p>
-            <div class="bg-white/80 rounded-3xl p-10 shadow-lg border border-cyan-200">
-                <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
-                    AI Foundations Bootcamp enables cross-functional product, operations, and support teams to apply AI to real workflows — consistently, safely, and with measurable impact.
-                </p>
-                <p class="text-sm md:text-base text-cyan-700 font-medium text-center">
-                    Trusted by 100+ companies | JetBrains partner | 300+ products delivered by students
-                </p>
-            </div>
-            <!-- Company Logos -->
-            <div class="mt-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-                <span class="text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>
-                <span class="text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>
-                <span class="flex items-center gap-1 text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
-                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
-                    Apple
-                </span>
-                <span class="text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>
-                <span class="text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>
-                <span class="text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>
-            </div>
-        </div>
-    </section>
+                                            <!-- Mobile Menu Button -->
+                                            <button id="mobile-menu-btn" onclick="document.getElementById('mobile-nav').classList.toggle('active')" class="md:hidden p-2 text-cyan-700 hover:text-cyan-900 transition-colors">
+                                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>path></svg>svg>
+                                            </button>button>
+                            </div>div>
 
-    <!-- Team Section -->
-    <section id="team" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-16 text-center text-cyan-900">Team</h2>
-            
-            <!-- Team Grid -->
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Founder 1 -->
-                <div class="text-center bg-white/80 rounded-3xl p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="chris_gemini_cartoon.png" 
-                        alt="Founder 1" 
-                        class="w-48 h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Chris Angell</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, CEO, CPO</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years B2B & B2C SaaS Ops, Mkt, Project Mgt,GTM
-                    </p>
-                    
-                    <a href="https://www.linkedin.com/in/themarketingleader/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Founder 2 -->
-                <div class="text-center bg-white/80 rounded-3xl p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="debamitro_gemini_cartoon.png" 
-                        alt="Founder 2" 
-                        class="w-48 h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Debamitro Chakraborti</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, CTO, COO</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years, Software Architect, AI-powered builder
-                        
-                    </p>
-                    
-                    <a href="https://www.linkedin.com/in/debamitro/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Founder 3 -->
-                <div class="text-center bg-white/80 rounded-3xl p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="rajanish_gemini_cartoon.png" 
-                        alt="Founder 3" 
-                        class="w-48 h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Rajanish Dass</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, AI Strategy</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years, AI & Digital Business Transformation Strategist,  
-                        PhD in AI & Strategy
-                    </p>
-                    <a href="https://www.linkedin.com/in/rajnishdass/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">Get in touch</h2>
-            <p class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed mb-12">
-                Ready to start your project? We'd love to hear from you.
-                <br />
-                Send an email to <a href="mailto:hi@growthmaxinc.com">hi@growthmaxinc.com</a>
-            </p>
-            
-            <!--
-            <div class="max-w-md mx-auto bg-white/80 rounded-3xl p-8 shadow-lg border border-cyan-200">
-                <form class="space-y-6" action="https://simple-contact-form-40wb.onrender.com/v1/submit" method="POST">
-                    <input type="hidden" name="id" value="6662" />
-                    <div>
-                        <input 
-                        name="name"
-                        type="text" 
-                        placeholder="Name" 
-                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400"
-                        >
-                    </div>
-                    <div>
-                        <input 
-                        name="email"
-                        type="email" 
-                        placeholder="Email" 
-                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400"
-                        >
-                    </div>
-                    <div>
-                        <textarea 
-                        name="message"
-                        placeholder="Message" 
-                        rows="4" 
-                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400 resize-none"
-                        ></textarea>
-                    </div>
-                    <div class="pt-8">
-                        <button 
-                        type="submit" 
-                        class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-4 px-8 rounded-2xl hover:from-cyan-700 hover:to-blue-700 transition-all font-medium shadow-lg"
-                        >
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </div>
-        -->
-    </div>
-</section>
+                            <!-- Mobile Navigation Menu -->
+                            <div id="mobile-nav" class="mobile-nav md:hidden bg-cyan-100/95 border-t border-cyan-200">
+                                            <div class="px-4 py-4 space-y-3">
+                                                                <a href="#home" class="block px-3 py-2 text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">Home</a>a>
+                                                                <a href="#about" class="block px-3 py-2 text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">About</a>a>
+                                                                <div class="space-y-1">
+                                                                                        <div class="px-3 py-2 text-cyan-700 font-medium text-sm">Solutions</div>div>
+                                                                                        <a href="#ai-agent-development" class="block px-6 py-2 text-sm text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">AI Agent Development</a>a>
+                                                                                        <a href="#ai-engineer-bootcamp" class="block px-6 py-2 text-sm text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">AI Engineer Bootcamp</a>a>
+                                                                                        <a href="#ai-foundations-bootcamp" class="block px-6 py-2 text-sm text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">AI Foundations Bootcamp</a>a>
+                                                                </div>div>
+                                                                <a href="#team" class="block px-3 py-2 text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">Team</a>a>
+                                                                <a href="#contact" class="block px-3 py-2 text-cyan-700 hover:bg-cyan-200 rounded-lg transition-colors">Contact</a>a>
+                                            </div>div>
+                            </div>div>
+                </div>div>
+        </nav>nav>
 
-<!-- Footer -->
-<footer class="py-12 px-6 border-t border-cyan-200">
-    <div class="max-w-6xl mx-auto text-center">
-        <p class="text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>
-    </div>
-</footer>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-16">
+                <div class="text-center max-w-4xl mx-auto w-full">
+                            <!-- Logo/Brand Mark -->
+                            <div class="mb-8 sm:mb-12">
+                                            <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-2xl p-4">
+                                                                <img src="growthMAX.PNG" alt="GrowthMax Logo" class="w-full h-full object-contain" />
+                                            </div>div>
+                                            <p class="text-lg sm:text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed px-4">
+                                                                We build custom AI agents for your business
+                                            </p>p>
+                                            <p class="text-lg sm:text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed mt-3 sm:mt-4 px-4">
+                                                                We offer AI training for executives and developers via our partnership with <a href="https://www.hyperskill.org" class="text-cyan-900 hover:text-cyan-700 underline transition-colors">HyperSkill.org</a>a>
+                                            </p>p>
+                            </div>div>
+                </div>div>
+        </section>section>
 
-<script>
-    // Close Solutions dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        var dropdown = document.getElementById('solutions-dropdown');
-        var menu = document.getElementById('solutions-menu');
-        if (!dropdown.contains(e.target)) {
-            menu.classList.add('hidden');
-        }
-    });
-    // Close dropdown when a menu link is clicked
-    document.querySelectorAll('#solutions-menu a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            document.getElementById('solutions-menu').classList.add('hidden');
-        });
-    });
-</script>
-</body>
-</html>
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-6 sm:mb-8 text-cyan-900">About</h2>h2>
+                            <p class="text-base sm:text-lg md:text-xl text-justify text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto">
+                                            GrowthMax is an AI-first consulting company which provides agentic software products and services to a wide range of businesses. We started in November 2025 and are fully remote with people in USA and India.
+                            </p>p>
+                </div>div>
+        </section>section>
+
+        <!-- AI Agent Development Section -->
+        <section id="ai-agent-development" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-6 sm:mb-8 text-center text-cyan-900">AI Agent Development</h2>h2>
+                            <div class="bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg border border-cyan-200">
+                                            <p class="text-base sm:text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center">
+                                                                We design, build, and deploy custom AI agents that will support you in your role. Think of this service as your always on personal strategic and tactical expert consultant.
+                                            </p>p>
+                            </div>div>
+                </div>div>
+        </section>section>
+
+        <!-- AI Engineer Bootcamp Section -->
+        <section id="ai-engineer-bootcamp" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Engineer Bootcamp</h2>h2>
+                            <p class="text-xs sm:text-sm text-cyan-600 font-light text-center mb-6 sm:mb-8 flex flex-col sm:flex-row items-center justify-center gap-2">
+                                            Education provided via our strategic partnership with <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                                                <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+                                                                                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+                                                                                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+                                                                </svg>svg>
+                                                                <span class="text-xs sm:text-sm font-semibold text-gray-800">Hyperskill</span>span>
+                                            </a>a>
+                            </p>p>
+                            <div class="bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg border border-cyan-200">
+                                            <p class="text-base sm:text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-4 sm:mb-6">
+                                                                Become a confident applied AI engineer who can solve real-world problems, deploy AI solutions, and understand how they work — not just study AI
+                                            </p>p>
+                                            <p class="text-xs sm:text-sm md:text-base text-cyan-700 font-medium text-center">
+                                                                Trusted by 100+ companies | JetBrains Academy partner | 300+ projects delivered by students
+                                            </p>p>
+                            </div>div>
+                            <!-- Company Logos -->
+                            <div class="mt-8 sm:mt-10 flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-12 opacity-60">
+                                            <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>span>
+                                            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>span>
+                                            <span class="flex items-center gap-1 text-lg sm:text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
+                                                                <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>svg>
+                                                                Apple
+                                            </span>span>
+                                            <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>span>
+                                            <span class="text-lg sm:text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>span>
+                                            <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>span>
+                            </div>div>
+                </div>div>
+        </section>section>
+
+        <!-- AI Foundations Bootcamp Section -->
+        <section id="ai-foundations-bootcamp" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Foundations Bootcamp</h2>h2>
+                            <p class="text-xs sm:text-sm text-cyan-600 font-light text-center mb-6 sm:mb-8 flex flex-col sm:flex-row items-center justify-center gap-2">
+                                            Education provided via our strategic partnership with <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                                                <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+                                                                                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+                                                                                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+                                                                </svg>svg>
+                                                                <span class="text-xs sm:text-sm font-semibold text-gray-800">Hyperskill</span>span>
+                                            </a>a>
+                            </p>p>
+                            <div class="bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg border border-cyan-200">
+                                            <p class="text-base sm:text-lg md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-4 sm:mb-6">
+                                                                AI Foundations Bootcamp enables cross-functional product, operations, and support teams to apply AI to real workflows — consistently, safely, and with measurable impact.
+                                            </p>p>
+                                            <p class="text-xs sm:text-sm md:text-base text-cyan-700 font-medium text-center">
+                                                                Trusted by 100+ companies | JetBrains partner | 300+ products delivered by students
+                                            </p>p>
+                            </div>div>
+                            <!-- Company Logos -->
+                            <div class="mt-8 sm:mt-10 flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-12 opacity-60">
+                                            <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.15em;">NOKIA</span>span>
+                                            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">accenture</span>span>
+                                            <span class="flex items-center gap-1 text-lg sm:text-xl md:text-2xl font-medium text-gray-800" style="font-family: 'Inter', sans-serif;">
+                                                                <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>svg>
+                                                                Apple
+                                            </span>span>
+                                            <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800" style="font-family: 'Inter', sans-serif;">ebay</span>span>
+                                            <span class="text-lg sm:text-xl md:text-2xl font-medium tracking-widest text-gray-800" style="font-family: 'Inter', sans-serif; letter-spacing: 0.3em;">TESLA</span>span>
+                                            <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-wide text-gray-800" style="font-family: 'Inter', sans-serif;">DELL</span>span>
+                            </div>div>
+                </div>div>
+        </section>section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-6xl mx-auto">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-12 sm:mb-16 text-center text-cyan-900">Team</h2>h2>
+                            <!-- Team Grid -->
+                            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+                                            <!-- Founder 1 -->
+                                            <div class="text-center bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg border border-cyan-200">
+                                                                <div class="mb-4 sm:mb-6">
+                                                                                        <img src="chris_gemini_cartoon.png" alt="Chris Angell" class="w-40 h-40 sm:w-48 sm:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+                                                                </div>div>
+                                                                <h3 class="text-lg sm:text-xl font-medium mb-2 text-cyan-900">Chris Angell</h3>h3>
+                                                                <p class="text-sm sm:text-base text-cyan-700 font-light mb-2 sm:mb-3">Co-Founder, CEO, CPO</p>p>
+                                                                <p class="text-xs sm:text-sm text-cyan-800 font-light mb-4 sm:mb-5">
+                                                                                        20+ years B2B & B2C SaaS Ops, Mkt, Project Mgt, GTM
+                                                                </p>p>
+                                                                <a href="https://www.linkedin.com/in/themarketingleader/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
+                                                                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                                                                            </svg>svg>
+                                                                </a>a>
+                                            </div>div>
+                                            <!-- Founder 2 -->
+                                            <div class="text-center bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg border border-cyan-200">
+                                                                <div class="mb-4 sm:mb-6">
+                                                                                        <img src="debamitro_gemini_cartoon.png" alt="Debamitro Chakraborti" class="w-40 h-40 sm:w-48 sm:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+                                                                </div>div>
+                                                                <h3 class="text-lg sm:text-xl font-medium mb-2 text-cyan-900">Debamitro Chakraborti</h3>h3>
+                                                                <p class="text-sm sm:text-base text-cyan-700 font-light mb-2 sm:mb-3">Co-Founder, CTO, COO</p>p>
+                                                                <p class="text-xs sm:text-sm text-cyan-800 font-light mb-4 sm:mb-5">
+                                                                                        20+ years, Software Architect, AI-powered builder
+                                                                </p>p>
+                                                                <a href="https://www.linkedin.com/in/debamitro/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
+                                                                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                                                                            </svg>svg>
+                                                                </a>a>
+                                            </div>div>
+                                            <!-- Founder 3 -->
+                                            <div class="text-center bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg border border-cyan-200">
+                                                                <div class="mb-4 sm:mb-6">
+                                                                                        <img src="rajanish_gemini_cartoon.png" alt="Rajanish Dass" class="w-40 h-40 sm:w-48 sm:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+                                                                </div>div>
+                                                                <h3 class="text-lg sm:text-xl font-medium mb-2 text-cyan-900">Rajanish Dass</h3>h3>
+                                                                <p class="text-sm sm:text-base text-cyan-700 font-light mb-2 sm:mb-3">Co-Founder, AI Strategy</p>p>
+                                                                <p class="text-xs sm:text-sm text-cyan-800 font-light mb-4 sm:mb-5">
+                                                                                        20+ years, AI & Digital Business Transformation Strategist, PhD in AI & Strategy
+                                                                </p>p>
+                                                                <a href="https://www.linkedin.com/in/rajnishdass/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors">
+                                                                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                                                                            </svg>svg>
+                                                                </a>a>
+                                            </div>div>
+                            </div>div>
+                </div>div>
+        </section>section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+                <div class="max-w-2xl mx-auto text-center">
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-6 sm:mb-8 text-cyan-900">Get in touch</h2>h2>
+                            <p class="text-base sm:text-lg md:text-xl text-cyan-800 font-light leading-relaxed mb-8 sm:mb-12">
+                                            Ready to start your project? We'd love to hear from you.
+                                            <br class="hidden sm:block" />
+                                            Send an email to <a href="mailto:hi@growthmaxinc.com" class="text-cyan-700 hover:text-cyan-900 underline transition-colors">hi@growthmaxinc.com</a>a>
+                            </p>p>
+                            <!-- Contact Form -->
+                            <div class="max-w-md mx-auto bg-white/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg border border-cyan-200">
+                                            <form class="space-y-4 sm:space-y-6" action="https://simple-contact-form-40wb.onrender.com/v1/submit" method="POST">
+                                                                <input type="hidden" name="id" value="6662" />
+                                                                <div>
+                                                                                        <input name="name" type="text" placeholder="Name" class="w-full px-3 sm:px-4 py-3 sm:py-4 text-base bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400" required>
+                                                                </div>
+                                                                <div>
+                                                                                        <input name="email" type="email" placeholder="Email" class="w-full px-3 sm:px-4 py-3 sm:py-4 text-base bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400" required>
+                                                                </div>
+                                                                <div>
+                                                                                        <textarea name="message" placeholder="Message" rows="4" class="w-full px-3 sm:px-4 py-3 sm:py-4 text-base bg-transparent border-0 border-b border-cyan-300 focus:border-cyan-700 focus:ring-0 placeholder-gray-400 resize-none" required></textarea>
+                                                                </div>
+                                                                <div class="pt-6 sm:pt-8">
+                                                                                        <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg sm:rounded-2xl hover:from-cyan-700 hover:to-blue-700 transition-all font-medium shadow-lg text-base sm:text-base touch-manipulation">
+                                                                                                                    Submit
+                                                                                            </button>button>
+                                                                </div>
+                                            </form>form>
+                            </div>
+                </div>
+        </section>section>
+
+        <!-- Footer -->
+        <footer class="py-8 sm:py-12 px-4 sm:px-6 border-t border-cyan-200">
+                <div class="max-w-6xl mx-auto text-center">
+                            <p class="text-sm sm:text-base text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>p>
+                </div>
+        </footer>footer>
+
+        <script>
+                // Close Solutions dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                            var dropdown = document.getElementById('solutions-dropdown');
+                            var menu = document.getElementById('solutions-menu');
+                            if (dropdown && !dropdown.contains(e.target)) {
+                                            menu.classList.add('hidden');
+                            }
+                });
+
+                // Close dropdown when a menu link is clicked
+                document.querySelectorAll('#solutions-menu a').forEach(function(link) {
+                            link.addEventListener('click', function() {
+                                            document.getElementById('solutions-menu').classList.add('hidden');
+                            });
+                });
+
+                // Close mobile menu when clicking on navigation links
+                document.querySelectorAll('#mobile-nav a').forEach(function(link) {
+                            link.addEventListener('click', function() {
+                                            document.getElementById('mobile-nav').classList.remove('active');
+                            });
+                });
+        </script>
+
+    </body>body>
+</html>html>
+                                                                </div>
+                                                                </div>
+            </script>
+        </style></title>
+    </head>
