@@ -1,311 +1,832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.growthmaxinc.com" />
-    <title>GrowthMax Inc - Ocean Blue Website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7QYH5FFXD"></script>
-    <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-F7QYH5FFXD');
-    </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="canonical" href="https://www.growthmaxinc.com" />
+	<title>GrowthMax Inc - Custom AI Agents for Your Role</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+		body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+	</style>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F7QYH5FFXD"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-F7QYH5FFXD');
+	</script>
 </head>
 <body class="bg-sky-50 text-gray-900 antialiased">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex justify-between items-center h-16">
-                <div class="text-lg font-medium text-cyan-900">GrowthMax</div>
+	<!-- Navigation -->
+	<nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="flex justify-between items-center h-16">
+				<a href="#home" class="text-xl font-semibold text-cyan-900 hover:text-cyan-700 transition-colors">GrowthMax</a>
+				<!-- Desktop Nav -->
+				<div class="hidden md:flex space-x-8 items-center">
+					<a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
+					<a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
+					<a href="#process" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Process</a>
+					<a href="#blog" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Blog</a>
+					<!-- Solutions Dropdown -->
+					<div class="relative" id="solutions-dropdown">
+						<button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+							Solutions
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+						</button>
+						<div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+							<a href="#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
+							<a href="#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
+							<a href="#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
+						</div>
+					</div>
+					<a href="#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
+					<a href="#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
+				</div>
+				<!-- Mobile Hamburger Button -->
+				<button id="mobile-menu-btn" class="md:hidden text-cyan-700 hover:text-cyan-900 transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden md:hidden bg-cyan-50/95 backdrop-blur-md border-t border-cyan-200">
+			<div class="px-6 py-4 space-y-1">
+				<a href="#home" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Home</a>
+				<a href="#about" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">About</a>
+				<a href="#process" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Process</a>
+				<a href="#blog" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Blog</a>
+				<!-- Mobile Solutions Accordion -->
+				<div class="border-b border-cyan-200">
+					<button onclick="document.getElementById('mobile-solutions').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+						Solutions
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="mobile-solutions" class="hidden pl-4 pb-3 space-y-1">
+						<a href="#ai-agent-development" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Agent Development</a>
+						<a href="#ai-engineer-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Engineer Bootcamp</a>
+						<a href="#ai-foundations-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Foundations Bootcamp</a>
+					</div>
+				</div>
+				<a href="#team" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Team</a>
+				<a href="#contact" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm" onclick="closeMobileMenu()">Contact</a>
+			</div>
+		</div>
+	</nav>
 
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
-                    <a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
-                    <!-- Solutions Dropdown -->
-                    <div class="relative" id="solutions-dropdown">
-                        <button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
-                            Solutions
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
-                            <a href="#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
-                            <a href="#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
-                            <a href="#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
-                        </div>
-                    </div>
-                    <a href="#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
-                    <a href="#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
-                </div>
+	<!-- Hero Section -->
+	<section id="home" class="min-h-screen flex items-center justify-center px-6">
+		<div class="text-center max-w-4xl mx-auto">
+			<h1 class="text-6xl md:text-7xl font-light tracking-tight text-cyan-900 max-w-3xl mx-auto leading-relaxed mb-8">
+				Partnership. Not Replacement.
+			</h1>
+			<p class="text-lg md:text-xl text-cyan-800 font-light max-w-2xl mx-auto leading-relaxed mb-8">
+				Custom AI agents designed to augment your expertise, amplify your judgment, and help you achieve outcomes neither of you could alone.
+			</p>
+			<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+				Let's Talk
+			</a>
+		</div>
+	</section>
 
-                <!-- Mobile Hamburger Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-cyan-700 hover:text-cyan-900 transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
+	<!-- About Section -->
+	<section id="about" class="py-12 md:py-20 px-6">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About GrowthMax</h2>
+			<div class="text-base md:text-lg text-justify text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto space-y-6">
+				<p>
+					<strong class="text-cyan-900">Organizations are adopting AI. People want to use it. But there's confusion at both levels.</strong>
+				</p>
+				<p>
+					Teams are scattered across fragmented tools. Leadership lacks a coherent adoption strategy. And individuals are asking: "Where do I fit?" The gap isn't resistance. It's disorientation while culture lags behind technology.
+				</p>
+				<p>
+					We build custom AI agents designed to augment your expertise, elevate your judgment, and unlock what neither humans nor machines could achieve alone. A personal agent gives you coherence and structure today. One focused expert to work with. It shows you that your expertise is amplified, not displaced.
+				</p>
+				<p>
+					A personal agent won't solve everything. But it's a practical interim bridge while your organization evolves the culture, skills, and infrastructure for what's next.
+				</p>
+				<p>
+					We're built by founders with 20+ years building SaaS, scaling teams, and architecting AI systems. We know what works because we've shipped it. We've learned from what doesn't work. And we've seen firsthand how custom AI agents transform how organizations evolve. Your agent scales with you. A true partnership.
+				</p>
+			</div>
+		</div>
+	</section>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cyan-50/95 backdrop-blur-md border-t border-cyan-200">
-            <div class="px-6 py-4 space-y-1">
-                <a href="#home" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Home</a>
-                <a href="#about" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">About</a>
-                <!-- Mobile Solutions Accordion -->
-                <div class="border-b border-cyan-200">
-                    <button onclick="document.getElementById('mobile-solutions').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
-                        Solutions
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div id="mobile-solutions" class="hidden pl-4 pb-3 space-y-1">
-                        <a href="#ai-agent-development" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Agent Development</a>
-                        <a href="#ai-engineer-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Engineer Bootcamp</a>
-                        <a href="#ai-foundations-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Foundations Bootcamp</a>
-                    </div>
-                </div>
-                <a href="#team" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Team</a>
-                <a href="#contact" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm" onclick="closeMobileMenu()">Contact</a>
-            </div>
-        </div>
-    </nav>
+	<!-- Process Section -->
+	<section id="process" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
+		<div class="max-w-6xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">Our Process</h2>
+			<p class="text-base md:text-lg text-center text-cyan-800 font-light max-w-2xl mx-auto mb-16">
+				A structured, end-to-end approach to building your custom AI agent. From discovery to deployment and beyond.
+			</p>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center px-6">
-        <div class="text-center max-w-4xl mx-auto">
-            <!-- Logo/Brand Mark -->
-            <div class="mb-12">
-                <div class="w-48 h-48 md:w-64 md:h-64 mx-auto bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center mb-8 shadow-2xl">
-                    <img src="growthMAX.PNG" />
-                </div>
-                <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed">
-                    We build custom AI agents for your business
-                </p>
-                <p class="text-xl md:text-2xl text-cyan-900 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-                    We offer AI training for executives and developers via our partnership with <a href="https://www.hyperskill.org" class="text-cyan-900 hover:text-cyan-700 underline transition-colors">HyperSkill.org</a>
-                </p>
-            </div>
-        </div>
-    </section>
+			<!-- Process Steps Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
+				<!-- Step 1: Assess -->
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
+					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+						<span class="text-white font-bold text-lg">1</span>
+					</div>
+					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Assess</h3>
+					<p class="text-sm text-cyan-800 font-light leading-relaxed">
+						Understand your role, workflows, pain points, and opportunities. Deep dive into what matters most.
+					</p>
+				</div>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About</h2>
-            <p class="text-base md:text-xl text-justify text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto">
-                GrowthMax is an AI-first consulting company which provides agentic software products and services
-                to a wide range of businesses. We started in November 2025 and are fully remote with people in USA and India.
-            </p>
-        </div>
-    </section>
+				<!-- Step 2: Strategy -->
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
+					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+						<span class="text-white font-bold text-lg">2</span>
+					</div>
+					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Strategy</h3>
+					<p class="text-sm text-cyan-800 font-light leading-relaxed">
+						Design agent capabilities, define approach, and plan integration with your existing systems.
+					</p>
+				</div>
 
-    <!-- AI Agent Development Section -->
-    <section id="ai-agent-development" class="py-16 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-center text-cyan-900">AI Agent Development</h2>
-            <div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
-                <p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed text-center">
-                    We design, build, and deploy custom AI agents that will support you in your role. Think of this service as your always on personal strategic and tactical expert consultant.
-                </p>
-            </div>
-        </div>
-    </section>
+				<!-- Step 3: Build -->
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
+					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+						<span class="text-white font-bold text-lg">3</span>
+					</div>
+					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Build</h3>
+					<p class="text-sm text-cyan-800 font-light leading-relaxed">
+						Develop and deploy your custom AI agent. Fast, focused, and ready for real-world use.
+					</p>
+				</div>
 
-    <!-- AI Engineer Bootcamp Section -->
-    <section id="ai-engineer-bootcamp" class="py-16 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Engineer Bootcamp</h2>
-            <p class="text-xs md:text-sm text-cyan-600 font-light text-center mb-8 flex flex-wrap items-center justify-center gap-1 md:gap-2">
-                Education provided via our strategic partnership with
-                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
-                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
-                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
-                    </svg>
-                    <span class="text-xs md:text-sm font-semibold text-gray-800">Hyperskill</span>
-                </a>
-            </p>
-            <div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
-                <p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
-                    Become a confident applied AI engineer who can solve real-world problems, deploy AI solutions, and understand how they work — not just study AI
-                </p>
-                <p class="text-xs md:text-base text-cyan-700 font-medium text-center">
-                    Trusted by 100+ companies | JetBrains Academy partner | 300+ projects delivered by students
-                </p>
-            </div>
-            <!-- Company Logos -->
-            <div class="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60">
-                <span class="text-lg md:text-3xl font-bold tracking-widest text-gray-800" style="letter-spacing: 0.15em;">NOKIA</span>
-                <span class="text-base md:text-2xl font-medium text-gray-800">accenture</span>
-                <span class="flex items-center gap-1 text-base md:text-2xl font-medium text-gray-800">
-                    <svg class="w-5 h-5 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
-                    Apple
-                </span>
-                <span class="text-xl md:text-4xl font-bold text-gray-800">ebay</span>
-                <span class="text-base md:text-2xl font-medium tracking-widest text-gray-800" style="letter-spacing: 0.3em;">TESLA</span>
-                <span class="text-lg md:text-3xl font-bold tracking-wide text-gray-800">DELL</span>
-            </div>
-        </div>
-    </section>
+				<!-- Step 4: Test -->
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
+					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+						<span class="text-white font-bold text-lg">4</span>
+					</div>
+					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Test</h3>
+					<p class="text-sm text-cyan-800 font-light leading-relaxed">
+						Refine through iteration and real-world feedback. Continuous improvement from day one.
+					</p>
+				</div>
 
-    <!-- AI Foundations Bootcamp Section -->
-    <section id="ai-foundations-bootcamp" class="py-16 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">AI Foundations Bootcamp</h2>
-            <p class="text-xs md:text-sm text-cyan-600 font-light text-center mb-8 flex flex-wrap items-center justify-center gap-1 md:gap-2">
-                Education provided via our strategic partnership with
-                <a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-                    <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
-                        <rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
-                        <rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
-                    </svg>
-                    <span class="text-xs md:text-sm font-semibold text-gray-800">Hyperskill</span>
-                </a>
-            </p>
-            <div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
-                <p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed text-center mb-6">
-                    AI Foundations Bootcamp enables cross-functional product, operations, and support teams to apply AI to real workflows — consistently, safely, and with measurable impact.
-                </p>
-                <p class="text-xs md:text-base text-cyan-700 font-medium text-center">
-                    Trusted by 100+ companies | JetBrains partner | 300+ products delivered by students
-                </p>
-            </div>
-            <!-- Company Logos -->
-            <div class="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60">
-                <span class="text-lg md:text-3xl font-bold tracking-widest text-gray-800" style="letter-spacing: 0.15em;">NOKIA</span>
-                <span class="text-base md:text-2xl font-medium text-gray-800">accenture</span>
-                <span class="flex items-center gap-1 text-base md:text-2xl font-medium text-gray-800">
-                    <svg class="w-5 h-5 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
-                    Apple
-                </span>
-                <span class="text-xl md:text-4xl font-bold text-gray-800">ebay</span>
-                <span class="text-base md:text-2xl font-medium tracking-widest text-gray-800" style="letter-spacing: 0.3em;">TESLA</span>
-                <span class="text-lg md:text-3xl font-bold tracking-wide text-gray-800">DELL</span>
-            </div>
-        </div>
-    </section>
+				<!-- Step 5: Amplify -->
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
+					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+						<span class="text-white font-bold text-lg">5</span>
+					</div>
+					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Amplify</h3>
+					<p class="text-sm text-cyan-800 font-light leading-relaxed">
+						Optimize performance and scale with your organization. Your agent grows as you grow.
+					</p>
+				</div>
+			</div>
 
-    <!-- Team Section -->
-    <section id="team" class="py-16 md:py-32 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-10 md:mb-16 text-center text-cyan-900">Team</h2>
+			<!-- Process Philosophy -->
+			<div class="mt-12 max-w-3xl mx-auto text-center">
+				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed mb-8">
+					Our process is grounded in partnership. Every step is designed to ensure your agent augments your expertise, amplifies your judgment, and creates outcomes neither of you could achieve alone.
+				</p>
+				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+					Let's Talk
+				</a>
+			</div>
+		</div>
+	</section>
 
-            <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                <!-- Founder 1 -->
-                <div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="chris_gemini_cartoon.png"
-                        alt="Chris Angell"
-                        class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Chris Angell</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, CEO, CPO</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years B2B & B2C SaaS Ops, Mkt, Project Mgt, GTM
-                    </p>
+	<!-- AI Agent Development Section -->
+	<section id="ai-agent-development" class="py-12 md:py-20 px-6">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-center text-cyan-900">Custom Agentic AI for Your Role</h2>
+			<div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
+				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed text-center mb-6">
+					We design, build, and deploy AI agents tuned to your specific context. Built to augment your expertise, not replace it. Whether you're an executive managing complex decisions, an operations leader optimizing workflows, or a product leader accelerating development, your agent becomes a true partner. An always-on expert that amplifies your judgment, elevates your creativity, and helps you achieve outcomes neither of you could alone.
+				</p>
+				<p class="text-sm md:text-base text-cyan-700 font-medium text-center mb-8">
+					Partnership from day one. Impact by week one.
+				</p>
+				<div class="text-center">
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                    <a href="https://www.linkedin.com/in/themarketingleader/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
+	<!-- AI Engineer Bootcamp Section -->
+	<section id="ai-engineer-bootcamp" class="py-12 md:py-20 px-6">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">Train Your Team to Build with AI</h2>
+			<p class="text-xs md:text-sm text-cyan-600 font-light text-center mb-8 flex flex-wrap items-center justify-center gap-1 md:gap-2">
+				Education provided via our strategic partnership with
+				<a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+					<svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+						<rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+						<rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+						<rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+					</svg>
+					<span class="text-xs md:text-sm font-semibold text-gray-800">Hyperskill</span>
+				</a>
+			</p>
+			<div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
+				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed text-center mb-6">
+					AI fluency is becoming the fastest-growing skill across every industry. Our AI Engineer Bootcamp equips your team to build, deploy, and lead with AI. Not as replacement, but as partnership. Learn by building production-ready agents through real-world projects, delivered via our partnership with Hyperskill.
+				</p>
+				<p class="text-sm md:text-base text-cyan-700 font-medium text-center mb-8">
+					Build with confidence. Ship production agents. Lead the partnership frontier.
+				</p>
+				<div class="text-center">
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</div>
+			<!-- Company Logos -->
+			<div class="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60">
+				<span class="text-lg md:text-3xl font-bold tracking-widest text-gray-800" style="letter-spacing: 0.15em;">NOKIA</span>
+				<span class="text-base md:text-2xl font-medium text-gray-800">accenture</span>
+				<span class="flex items-center gap-1 text-base md:text-2xl font-medium text-gray-800">
+					<svg class="w-5 h-5 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
+					Apple
+				</span>
+				<span class="text-xl md:text-4xl font-bold text-gray-800">ebay</span>
+				<span class="text-base md:text-2xl font-medium tracking-widest text-gray-800" style="letter-spacing: 0.3em;">TESLA</span>
+				<span class="text-lg md:text-3xl font-bold tracking-wide text-gray-800">DELL</span>
+			</div>
+		</div>
+	</section>
 
-                <!-- Founder 2 -->
-                <div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="debamitro_gemini_cartoon.png"
-                        alt="Debamitro Chakraborti"
-                        class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Debamitro Chakraborti</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, CTO, COO</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years, Software Architect, AI-powered builder
-                    </p>
+	<!-- AI Foundations Bootcamp Section -->
+	<section id="ai-foundations-bootcamp" class="py-12 md:py-20 px-6">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">Organizational AI Literacy</h2>
+			<p class="text-xs md:text-sm text-cyan-600 font-light text-center mb-8 flex flex-wrap items-center justify-center gap-1 md:gap-2">
+				Education provided via our strategic partnership with
+				<a href="https://www.hyperskill.org" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+					<svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+						<rect x="5" y="55" width="14" height="35" rx="5" fill="#4FC3F7"/>
+						<rect x="28" y="35" width="14" height="55" rx="5" fill="#42A5F5"/>
+						<rect x="51" y="10" width="14" height="80" rx="5" fill="#7C4DFF"/>
+					</svg>
+					<span class="text-xs md:text-sm font-semibold text-gray-800">Hyperskill</span>
+				</a>
+			</p>
+			<div class="bg-white/80 rounded-3xl p-6 md:p-10 shadow-lg border border-cyan-200">
+				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed text-center mb-6">
+					AI adoption doesn't start in engineering. It starts with understanding. Our AI Foundations Bootcamp enables cross-functional teams (product, ops, support, leadership) to see AI not as a tool to automate humans away, but as a force multiplier. A partner that elevates your judgment, unlocks new possibilities, and drives organizational excellence.
+				</p>
+				<p class="text-sm md:text-base text-cyan-700 font-medium text-center mb-8">
+					Think partnership. Build fluency. Create competitive advantage.
+				</p>
+				<div class="text-center">
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</div>
+			<!-- Company Logos -->
+			<div class="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60">
+				<span class="text-lg md:text-3xl font-bold tracking-widest text-gray-800" style="letter-spacing: 0.15em;">NOKIA</span>
+				<span class="text-base md:text-2xl font-medium text-gray-800">accenture</span>
+				<span class="flex items-center gap-1 text-base md:text-2xl font-medium text-gray-800">
+					<svg class="w-5 h-5 md:w-7 md:h-7" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.8c-58.3-81.7-105.3-209.5-105.3-330.5 0-194.2 126.3-297.5 250.6-297.5 66 0 121 43.4 162.5 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.5zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-25.8 29.7-52.5 81-52.5 133.1 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.1-30.4 136.9-69z"/></svg>
+					Apple
+				</span>
+				<span class="text-xl md:text-4xl font-bold text-gray-800">ebay</span>
+				<span class="text-base md:text-2xl font-medium tracking-widest text-gray-800" style="letter-spacing: 0.3em;">TESLA</span>
+				<span class="text-lg md:text-3xl font-bold tracking-wide text-gray-800">DELL</span>
+			</div>
+		</div>
+	</section>
 
-                    <a href="https://www.linkedin.com/in/debamitro/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
+	<!-- Blog / Blog Section -->
+	<section id="blog" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900">Blog</h2>
+				<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
+					Thoughts on AI adoption, human-AI partnership, and what it takes to build organizations where technology and people thrive together.
+				</p>
+			</div>
 
-                <!-- Founder 3 -->
-                <div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
-                    <div class="mb-6">
-                        <img src="rajanish_gemini_cartoon.png"
-                        alt="Rajanish Dass"
-                        class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-cyan-900">Rajanish Dass</h3>
-                    <p class="text-cyan-700 font-light mb-3">Co-Founder, AI Strategy</p>
-                    <p class="text-sm text-cyan-800 font-light">
-                        20+ years, AI & Digital Business Transformation Strategist,
-                        PhD in AI & Strategy
-                    </p>
-                    <a href="https://www.linkedin.com/in/rajnishdass/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+			<!-- Blog Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<!-- Blog Post 1 -->
+				<article class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+					<div class="mb-4">
+						<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">AI Adoption Strategy</span>
+					</div>
+					<h3 class="text-2xl font-light text-cyan-900 mb-4 leading-relaxed">
+						Why AI Implementations Fail (And How Organizations Miss the Real Problem)
+					</h3>
+					<p class="text-cyan-800 font-light leading-relaxed mb-6">
+						Your organization just approved a $500K AI initiative. Six months later, half the team is still using spreadsheets. The problem isn't that AI tools don't work. It's that teams don't know how to work with them.
+					</p>
+					<a href="/blog/why-ai-implementations-fail"3" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+						Read More
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+					</a>
+				</article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-32 px-6">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">Get in touch</h2>
-            <p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed">
-                Let's chat, send us an email
-            </p>
-            <a href="mailto:hi@growthmaxinc.com" class="inline-block mt-6 text-xl md:text-2xl text-cyan-700 hover:text-cyan-900 font-medium transition-colors underline">
-                hi@growthmaxinc.com
-            </a>
-        </div>
-    </section>
+				<!-- Blog Post 2 -->
+				<article class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+					<div class="mb-4">
+						<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Employee Experience</span>
+					</div>
+					<h3 class="text-2xl font-light text-cyan-900 mb-4 leading-relaxed">
+						The "Where Do I Fit?" Crisis: Why AI Adoption Creates Individual Uncertainty
+					</h3>
+					<p class="text-cyan-800 font-light leading-relaxed mb-6">
+						Your company announces AI transformation. Your team gets trained. You're excited, but quietly panicking: if machines can do this work, what exactly am I still here for? This anxiety kills adoption faster than any technical limitation.
+					</p>
+					<a href="mailto:hi@growthmaxinc.com?subject=Read:%20The%20Where%20Do%20I%20Fit%20Crisis" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+						Read More
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+					</a>
+				</article>
 
-<!-- Footer -->
-<footer class="py-8 md:py-12 px-6 border-t border-cyan-200">
-    <div class="max-w-6xl mx-auto text-center">
-        <p class="text-sm md:text-base text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>
-    </div>
-</footer>
+				<!-- Blog Post 3 -->
+				<article class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+					<div class="mb-4">
+						<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Partnership Model</span>
+					</div>
+					<h3 class="text-2xl font-light text-cyan-900 mb-4 leading-relaxed">
+						Partnership, Not Replacement: How Reframing AI Changes Everything
+					</h3>
+					<p class="text-cyan-800 font-light leading-relaxed mb-6">
+						The dominant narrative about AI is displacement anxiety. But organizations that successfully adopt AI don't frame it as human versus machine. They frame it as human plus machine. Here's why this frame changes everything.
+					</p>
+					<a href="mailto:hi@growthmaxinc.com?subject=Read:%20Partnership%20Not%20Replacement" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+						Read More
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+					</a>
+				</article>
 
-<script>
-    function closeMobileMenu() {
-        document.getElementById('mobile-menu').classList.add('hidden');
-    }
+				<!-- Blog Post 4 -->
+				<article class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+					<div class="mb-4">
+						<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Implementation Strategy</span>
+					</div>
+					<h3 class="text-2xl font-light text-cyan-900 mb-4 leading-relaxed">
+						Your First AI Agent: Why Starting Small Is Your Smartest Move
+					</h3>
+					<p class="text-cyan-800 font-light leading-relaxed mb-6">
+						The tempting move is to go big with enterprise-wide AI transformation. But the organizations seeing the fastest adoption? They start small. They pick one role. One focused agent. And watch momentum compound.
+					</p>
+					<a href="mailto:hi@growthmaxinc.com?subject=Read:%20Your%20First%20AI%20Agent" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+						Read More
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+					</a>
+				</article>
+			</div>
+		</div>
+	</section>
 
-    // Close Solutions dropdown when clicking outside (desktop)
-    document.addEventListener('click', function(e) {
-        var dropdown = document.getElementById('solutions-dropdown');
-        var menu = document.getElementById('solutions-menu');
-        if (dropdown && menu && !dropdown.contains(e.target)) {
-            menu.classList.add('hidden');
-        }
-    });
+	<!-- Blog Post 1 -->
+	<section id="blog-post-1" class="py-12 md:py-20 px-6">
+		<div class="max-w-3xl mx-auto">
+			<div class="mb-8">
+				<a href="#blog" class="text-cyan-600 hover:text-cyan-800 font-medium text-sm">← Back to Blog</a>
+			</div>
+			<article class="prose prose-lg max-w-none text-cyan-900">
+				<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">AI Adoption Strategy</span>
+				<h1 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900 mt-4">Why AI Implementations Fail (And How Organizations Miss the Real Problem)</h1>
 
-    // Close desktop dropdown when a menu link is clicked
-    document.querySelectorAll('#solutions-menu a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            document.getElementById('solutions-menu').classList.add('hidden');
-        });
-    });
-</script>
+				<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed space-y-6">
+					<p>
+						Your organization just approved a $500K AI initiative. The executive team is excited. The board is watching. You've got the budget, the tools, and the mandate to transform. Six months later, half the team is still using spreadsheets. The other half tried the new AI tools for two weeks and went back to what they know. This isn't rare. This is the norm.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The problem isn't the technology.</h2>
+					<p>
+						AI tools work. ChatGPT is genuinely useful. Claude can draft code. Specialized agents can analyze data faster than humans ever could. But tools don't transform organizations. People do. And when people don't understand *why* they're supposed to change, or *how* the change fits into their role and their organization's strategy, they don't change—no matter how good the tool is.
+					</p>
+
+					<p>
+						According to McKinsey's recent research on organizational disorientation during AI adoption, the core blocker isn't lack of technology. It's lack of coherence. Organizations scatter AI across multiple platforms. Salesforce has one tool, marketing has another, operations has a third. Leadership approves the budgets but doesn't communicate a unified strategy. Teams adopt at random, creating silos instead of momentum.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The fragmentation problem.</h2>
+					<p>
+						When teams don't share a coherent AI strategy, they fragment. Sales uses one tool to draft emails. Customer success uses a different tool to analyze support tickets. Product uses a third tool to generate ideas. Each team gets some value. But the organization doesn't. There's no learning across teams. No shared best practices. No culture of partnership with AI.
+					</p>
+
+					<p>
+						Instead, what you get is: "We spent $500K on AI tools and people are just using them for whatever they want." That's not transformation. That's chaos with a budget.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The confidence gap.</h2>
+					<p>
+						But the fragmentation is only half the problem. The bigger problem is individual confidence. Even when someone wants to adopt AI, they're quietly asking themselves: "If this tool can do my job, what am I still here for?" This question doesn't get asked out loud. Instead, it shows up as resistance that masquerades as business-as-usual. They don't say "I'm scared." They say "This doesn't fit our workflow" or "We should wait for a more mature solution."
+					</p>
+
+					<p>
+						McKinsey's research on individual uncertainty during AI adoption shows this clearly: people aren't resisting AI. They're experiencing disorientation. They want to use it. They know it matters. But without clarity on their role in an AI-powered organization, anxiety wins.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The real solution starts with clarity, not tools.</h2>
+					<p>
+						You can't fix organizational disorientation by buying more tools. You fix it by creating coherence. And coherence doesn't come from a memo. It comes from showing people, tangibly and personally, how AI augments *their* work, not replaces it.
+					</p>
+
+					<p>
+						A custom AI agent built for one person's role does something generic tools can't: it shows them what partnership actually looks like. It handles the repetitive work. They do the judgment, the strategy, the decisions. They're visibly more productive and visibly less stressed. And suddenly, adoption isn't forced. It's pull, not push.
+					</p>
+
+					<p>
+						That one person becomes the proof of concept. Others see them thriving and ask: "Can we build one of those for my role?" And momentum compounds.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The path forward.</h2>
+					<p>
+						AI implementations fail not because AI doesn't work. They fail because organizations skip the foundation: helping people understand their role in the partnership. Start with one focused agent. Show what partnership looks like. Build confidence. Build momentum. Then scale with clarity instead of chaos.
+					</p>
+				</div>
+
+				<div class="mt-12 pt-8 border-t border-cyan-200">
+					<p class="text-cyan-700 font-light mb-4">Ready to build a custom agent that creates clarity and momentum?</p>
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- Blog Post 2 -->
+	<section id="blog-post-2" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
+		<div class="max-w-3xl mx-auto">
+			<div class="mb-8">
+				<a href="#blog" class="text-cyan-600 hover:text-cyan-800 font-medium text-sm">← Back to Blog</a>
+			</div>
+			<article class="prose prose-lg max-w-none text-cyan-900">
+				<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Employee Experience</span>
+				<h1 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900 mt-4">The "Where Do I Fit?" Crisis: Why AI Adoption Creates Individual Uncertainty</h1>
+
+				<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed space-y-6">
+					<p>
+						Your company announces AI transformation. The executives talk about efficiency gains and competitive advantage. The marketing team runs a campaign about "embracing the future." You attend the training on ChatGPT. You're intellectually excited about what's possible.
+					</p>
+
+					<p>
+						And then, in a quiet moment, you ask yourself: "If a machine can now draft emails, write code, analyze data, and generate ideas—what exactly am I still here for?"
+					</p>
+
+					<p>
+						This question doesn't get asked out loud. It shows up as resistance that masquerades as skepticism. "The tool is immature." "This doesn't fit our workflow." "Let's wait and see how it evolves." But the real question underneath is: Where do I fit?
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The invisible anxiety that kills adoption.</h2>
+					<p>
+						McKinsey's research on individual experience during AI adoption reveals something critical: people aren't resisting AI. They're experiencing a crisis of clarity about their role. The anxiety isn't irrational. It's the logical response to uncertainty about your future in an AI-powered organization.
+					</p>
+
+					<p>
+						And when anxiety goes unaddressed, adoption stops. People don't embrace the tool. They avoid it. They find reasons to stick with what they know. They wait. They hope the trend passes. And it looks like resistance. But it's actually just fear without a clear answer.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">Why generic training doesn't help.</h2>
+					<p>
+						Companies try to solve this with training. "Here's ChatGPT. Here are some use cases. Go build." But generic training doesn't answer the personal question: Where do *I* fit? It gives tools. It doesn't give clarity about your role. It doesn't show you what partnership actually looks like in your specific context.
+					</p>
+
+					<p>
+						So people stay anxious. They use the tool. But they don't trust it. They don't build confidence. And the moment pressure increases or deadlines tighten, they go back to doing it the old way—the way they know, the way they trust, the way that makes them feel in control.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">What actually creates clarity.</h2>
+					<p>
+						A custom AI agent built specifically for your role answers the real question: Where do I fit? It shows you, tangibly, what partnership looks like:
+					</p>
+
+					<p>
+						The agent handles the repetitive analysis, the tedious drafting, the pattern-finding that consumed your time. You handle the judgment. The strategy. The creative decisions that only humans can make. The work gets done faster. You're less burned out. Your expertise is amplified, not displaced.
+					</p>
+
+					<p>
+						And suddenly, the question shifts from "Where do I fit?" to "How do I use this partnership to do better work?"
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">From anxiety to momentum.</h2>
+					<p>
+						When one person experiences this clarity—when they see that AI augments their work, not replaces it—it spreads. They're visibly more effective. They're less stressed. Others notice. Others ask: "Can we build one of those for my role?" And suddenly, adoption becomes pull, not push. Momentum builds. Culture shifts.
+					</p>
+
+					<p>
+						The path from "Where do I fit?" to "This makes me better at what I do" isn't through generic tools. It's through clarity about your specific role. It's through partnership that's designed for you.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The real challenge.</h2>
+					<p>
+						The real challenge of AI adoption isn't the technology. It's helping people move from anxiety to confidence. From "the machine will replace me" to "the machine helps me do what I'm irreplaceable for." That shift happens when people experience partnership, not just tools.
+					</p>
+				</div>
+
+				<div class="mt-12 pt-8 border-t border-cyan-200">
+					<p class="text-cyan-700 font-light mb-4">Ready to help your team move from anxiety to clarity?</p>
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- Blog Post 3 -->
+	<section id="blog-post-3" class="py-12 md:py-20 px-6">
+		<div class="max-w-3xl mx-auto">
+			<div class="mb-8">
+				<a href="#blog" class="text-cyan-600 hover:text-cyan-800 font-medium text-sm">← Back to Blog</a>
+			</div>
+			<article class="prose prose-lg max-w-none text-cyan-900">
+				<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Partnership Model</span>
+				<h1 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900 mt-4">Partnership, Not Replacement: How Reframing AI Changes Everything</h1>
+
+				<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed space-y-6">
+					<p>
+						The dominant narrative about AI is: robots are coming for your job. Displacement. Disruption. The future without you. This framing is everywhere. It's in the news. It's in conversations. And it's killing AI adoption.
+					</p>
+
+					<p>
+						But organizations that successfully adopt AI don't frame it this way. They reframe it. Not "humans versus machines." But "humans plus machines." Not "AI replaces what you do." But "AI amplifies what only you can do."
+					</p>
+
+					<p>
+						This reframe changes everything about how people adopt, how teams organize, and how organizations evolve.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">What partnership actually means.</h2>
+					<p>
+						Partnership isn't poetic. It's practical. It's about each party bringing irreplaceable capabilities:
+					</p>
+
+					<p>
+						<strong>Humans bring:</strong> Judgment. Context. Strategy. Nuance. The ability to understand what matters and why. The creativity to see possibilities no algorithm can predict. The wisdom to know when a decision is too important to automate. The accountability when things go wrong.
+					</p>
+
+					<p>
+						<strong>AI brings:</strong> Scale. Speed. Pattern recognition across vast datasets. Tireless analysis. The ability to generate options without fatigue. Consistency in execution. The power to free humans from repetitive work so they can focus on what only they can do.
+					</p>
+
+					<p>
+						Neither can do the other's job well. But together, they create outcomes neither could achieve alone.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">Why the framing matters so much.</h2>
+					<p>
+						When people hear "AI adoption," they think "replacement." Their brain goes: "This tool can do my job. I'm at risk." That triggers all the defensive behaviors that kill adoption: avoidance, skepticism, quiet resistance.
+					</p>
+
+					<p>
+						But when people hear "partnership," something shifts. Their brain goes: "This tool makes me better at what I do. My expertise becomes more valuable, not less." That triggers curiosity. Experimentation. Genuine adoption.
+					</p>
+
+					<p>
+						The difference between these two frames is the difference between forced adoption and enthusiastic adoption. Between compliance and momentum.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">How organizations embed partnership thinking.</h2>
+					<p>
+						This isn't just messaging. It's embedded in how the organization structures AI work:
+					</p>
+
+					<p>
+						<strong>In hiring:</strong> "We're looking for people who want to work alongside AI, not be replaced by it." This attracts people who are ready to partner.
+					</p>
+
+					<p>
+						<strong>In training:</strong> "Here's how to use AI to amplify your judgment, not replace it." This teaches the partnership mindset from day one.
+					</p>
+
+					<p>
+						<strong>In tooling:</strong> Custom agents designed for specific roles, where humans retain decision-making authority. This makes partnership tangible, not abstract.
+					</p>
+
+					<p>
+						<strong>In measurement:</strong> Success metrics focus on how much better humans perform, not how much humans are replaced. "Did the team accomplish more? Were they less burned out? Were decisions higher quality?" Not "Did we reduce headcount?"
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The organizations winning at AI adoption.</h2>
+					<p>
+						Companies that nail the partnership frame don't struggle with adoption. They struggle with scaling it fast enough. People want to partner with AI. They see it works. They see they're more effective. They see their expertise is amplified. And they pull adoption forward.
+					</p>
+
+					<p>
+						The organizations losing at AI adoption are the ones that frame it as displacement. They push adoption. They mandate it. They watch people resist it quietly. And they end up with expensive tools that nobody uses.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">Partnership is not just nice. It's necessary.</h2>
+					<p>
+						"Partnership" isn't feel-good language. It's the operating principle that determines whether AI becomes a competitive advantage or a cultural crisis. The way you frame AI adoption determines how your organization evolves for the next decade.
+					</p>
+				</div>
+
+				<div class="mt-12 pt-8 border-t border-cyan-200">
+					<p class="text-cyan-700 font-light mb-4">Ready to build partnership, not replacement, in your organization?</p>
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- Blog Post 4 -->
+	<section id="blog-post-4" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
+		<div class="max-w-3xl mx-auto">
+			<div class="mb-8">
+				<a href="#blog" class="text-cyan-600 hover:text-cyan-800 font-medium text-sm">← Back to Blog</a>
+			</div>
+			<article class="prose prose-lg max-w-none text-cyan-900">
+				<span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Implementation Strategy</span>
+				<h1 class="text-4xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900 mt-4">Your First AI Agent: Why Starting Small Is Your Smartest Move</h1>
+
+				<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed space-y-6">
+					<p>
+						The tempting move is to go big. Enterprise-wide transformation. New processes. New training. New tools across the organization. You want to move fast and show impact. So you plan the massive initiative.
+					</p>
+
+					<p>
+						But the organizations seeing the fastest adoption, the least resistance, and the best results? They start small. They pick one person. One role. One focused agent. They avoid the chaos of enterprise change and build momentum instead.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">Why big initiatives create big problems.</h2>
+					<p>
+						Large-scale transformations are slow. They require alignment from multiple stakeholders. They create resistance because change is disorienting. They generate skepticism because early results take months to show. And they often fail because organizations can't sustain momentum across that many moving parts.
+					</p>
+
+					<p>
+						But a personal agent for one person? That's fast. That's clear. That generates results in weeks, not months. And it creates something far more powerful than a mandate: proof.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The power of one success story.</h2>
+					<p>
+						When one person has a custom AI agent, and that agent makes them visibly more productive, less stressed, and clearly in control—that person becomes your case study. They're not abstract "early adopter." They're a real person doing real work, getting real results.
+					</p>
+
+					<p>
+						Others see it. Colleagues ask: "How is she finishing work by 4pm? How is he shipping that much? How are they less burned out?" And the answer is: partnership with a focused agent.
+					</p>
+
+					<p>
+						That's when adoption shifts from forced to pull. People start asking: "Can we build one of those for me?"
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">How to pick your first agent.</h2>
+					<p>
+						The best choice isn't necessarily the most senior person or the biggest role. It's someone who:
+					</p>
+
+					<p>
+						<strong>Faces high-volume, repetitive work</strong> that consumes mental energy but doesn't require deep expertise. The agent can handle the volume, freeing them for judgment-based work.
+					</p>
+
+					<p>
+						<strong>Is open-minded about partnership with AI.</strong> You don't need an evangelist, but you need someone genuinely interested in trying.
+					</p>
+
+					<p>
+						<strong>Has clear, measurable outcomes.</strong> Can we track that this person is more productive? Finishing faster? Happier? Clear metrics make the impact undeniable.
+					</p>
+
+					<p>
+						<strong>Works in a role others do.</strong> This matters for scaling. When you show success in a sales role, other sales people see themselves. When you show success in an ops role, other ops people want the same partnership.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The interim bridge that creates momentum.</h2>
+					<p>
+						You don't need perfect organizational alignment. You don't need to have solved change management across the enterprise. You don't need to have culture, skills, and infrastructure all figured out. Your organization is still evolving. That's normal.
+					</p>
+
+					<p>
+						A personal agent is a practical interim bridge while that evolution happens. It shows people what partnership looks like. It builds confidence. It creates momentum. And then, as your organization evolves—as culture changes, skills develop, infrastructure improves—your agent can scale with it.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">From one agent to organizational transformation.</h2>
+					<p>
+						One person with one agent becomes two, then five, then twenty. Each person sees someone else thriving with partnership. Each person asks: "Can we build one for my role?" Adoption compounds. Momentum builds. And suddenly, you're not pushing transformation. You're scaling it.
+					</p>
+
+					<p>
+						This is how organizations that "adopt AI successfully" actually do it. Not with big mandates. Not with enterprise initiatives. But with one clear win that creates momentum for the next, and the next.
+					</p>
+
+					<h2 class="text-2xl font-light text-cyan-900 mt-8 mb-4">The path forward.</h2>
+					<p>
+						Your path to organizational AI transformation doesn't run through one massive initiative. It runs through one person at a time. Start with clarity. Start with partnership. Start small. And watch what compounds.
+					</p>
+				</div>
+
+				<div class="mt-12 pt-8 border-t border-cyan-200">
+					<p class="text-cyan-700 font-light mb-4">Ready to start with one focused agent?</p>
+					<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+						Let's Talk
+					</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- Team Section -->
+	<section id="team" class="py-12 md:py-20 px-6">
+		<div class="max-w-6xl mx-auto">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 md:mb-12 text-center text-cyan-900">Team</h2>
+			<!-- Team Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+				<!-- Founder 1 -->
+				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+					<div class="mb-6">
+						<img src="chris_gemini_cartoon.png" alt="Chris Angell" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+					</div>
+					<h3 class="text-xl font-medium mb-2 text-cyan-900">Chris Angell</h3>
+					<p class="text-cyan-700 font-light mb-3">Co-Founder, CEO, CPO</p>
+					<p class="text-sm text-cyan-800 font-light">
+						20+ years B2B & B2C SaaS Ops, Mkt, Project Mgt, GTM
+					</p>
+					<a href="https://www.linkedin.com/in/themarketingleader/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+						</svg>
+					</a>
+				</div>
+				<!-- Founder 2 -->
+				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+					<div class="mb-6">
+						<img src="debamitro_gemini_cartoon.png" alt="Debamitro Chakraborti" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+					</div>
+					<h3 class="text-xl font-medium mb-2 text-cyan-900">Debamitro Chakraborti</h3>
+					<p class="text-cyan-700 font-light mb-3">Co-Founder, CTO, COO</p>
+					<p class="text-sm text-cyan-800 font-light">
+						20+ years, Software Architect, AI-powered builder
+					</p>
+					<a href="https://www.linkedin.com/in/debamitro/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+						</svg>
+					</a>
+				</div>
+				<!-- Founder 3 -->
+				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+					<div class="mb-6">
+						<img src="rajanish_gemini_cartoon.png" alt="Rajanish Dass" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
+					</div>
+					<h3 class="text-xl font-medium mb-2 text-cyan-900">Rajanish Dass</h3>
+					<p class="text-cyan-700 font-light mb-3">Co-Founder, AI Strategy</p>
+					<p class="text-sm text-cyan-800 font-light">
+						20+ years, AI & Digital Business Transformation Strategist, PhD in AI & Strategy
+					</p>
+					<a href="https://www.linkedin.com/in/rajnishdass/" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors mt-3">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="py-12 md:py-20 px-6">
+		<div class="max-w-2xl mx-auto text-center">
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">Let's Talk</h2>
+			<p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed">
+				Ready to explore what a personal AI agent could do for your role? Let's talk about partnership, not replacement.
+			</p>
+			<a href="mailto:hi@growthmaxinc.com" class="inline-block mt-6 text-xl md:text-2xl text-cyan-700 hover:text-cyan-900 font-medium transition-colors underline">
+				hi@growthmaxinc.com
+			</a>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="py-8 md:py-12 px-6 border-t border-cyan-200">
+		<div class="max-w-6xl mx-auto text-center">
+			<p class="text-sm md:text-base text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>
+			<p class="text-xs text-cyan-600 font-light mt-2">We build custom AI agents and deliver training for organizations ready to scale with agentic AI.</p>
+		</div>
+	</footer>
+
+	<script>
+		function closeMobileMenu() {
+			document.getElementById('mobile-menu').classList.add('hidden');
+		}
+		// Close Solutions dropdown when clicking outside (desktop)
+		document.addEventListener('click', function(e) {
+			var dropdown = document.getElementById('solutions-dropdown');
+			var menu = document.getElementById('solutions-menu');
+			if (dropdown && menu && !dropdown.contains(e.target)) {
+				menu.classList.add('hidden');
+			}
+		});
+		// Close desktop dropdown when a menu link is clicked
+		document.querySelectorAll('#solutions-menu a').forEach(function(link) {
+			link.addEventListener('click', function() {
+				document.getElementById('solutions-menu').classList.add('hidden');
+			});
+		});
+	</script>
 </body>
 </html>
