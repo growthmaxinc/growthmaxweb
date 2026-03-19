@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="canonical" href="https://www.growthmaxinc.com/resources/blog.html" />
+	<title>Blog - GrowthMax Inc | AI Implementation & Adoption Resources</title>
+	<meta name="description" content="Read insights on AI implementation, adoption strategies, and building partnership-based AI agents for your organization." />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+		body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+	</style>
+	<meta property="og:title" content="Blog - GrowthMax Inc | AI Implementation & Adoption Resources" />
+	<meta property="og:description" content="Read insights on AI implementation, adoption strategies, and building partnership-based AI agents for your organization." />
+	<meta property="og:url" content="https://www.growthmaxinc.com/resources/blog.html" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F7QYH5FFXD"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-F7QYH5FFXD');
+	</script>
+</head>
+<body class="bg-sky-50 text-gray-900 antialiased">
+	<!-- Navigation -->
+	<nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="flex justify-between items-center h-16">
+				<a href="/" class="text-xl font-semibold text-cyan-900 hover:text-cyan-700 transition-colors">GrowthMax</a>
+				<!-- Desktop Nav -->
+				<div class="hidden md:flex space-x-8 items-center">
+					<a href="/" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
+					<a href="/#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
+					<a href="/#process" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Process</a>
+					<!-- Resources Dropdown -->
+					<div class="relative" id="resources-dropdown">
+						<button onclick="document.getElementById('resources-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+							Resources
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+						</button>
+						<div id="resources-menu" class="hidden absolute top-full left-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+							<a href="/resources/faq.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">FAQ</a>
+							<a href="/resources/blog.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">Blog</a>
+						</div>
+					</div>
+					<!-- Solutions Dropdown -->
+					<div class="relative" id="solutions-dropdown">
+						<button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+							Solutions
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+						</button>
+						<div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+							<a href="/#ai-agent-development" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
+							<a href="/#ai-engineer-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
+							<a href="/#ai-foundations-bootcamp" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
+						</div>
+					</div>
+					<a href="/#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
+					<a href="/#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
+				</div>
+				<!-- Mobile Hamburger Button -->
+				<button id="mobile-menu-btn" class="md:hidden text-cyan-700 hover:text-cyan-900 transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden md:hidden bg-cyan-50/95 backdrop-blur-md border-t border-cyan-200">
+			<div class="px-6 py-4 space-y-1">
+				<a href="/" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Home</a>
+				<a href="/#about" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">About</a>
+				<a href="/#process" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Process</a>
+				<!-- Mobile Resources Accordion -->
+				<div class="border-b border-cyan-200">
+					<button onclick="document.getElementById('mobile-resources').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+						Resources
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="mobile-resources" class="hidden pl-4 pb-3 space-y-1">
+						<a href="/resources/faq.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">FAQ</a>
+						<a href="/resources/blog.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">Blog</a>
+					</div>
+				</div>
+				<!-- Mobile Solutions Accordion -->
+				<div class="border-b border-cyan-200">
+					<button onclick="document.getElementById('mobile-solutions').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+						Solutions
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="mobile-solutions" class="hidden pl-4 pb-3 space-y-1">
+						<a href="/#ai-agent-development" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Agent Development</a>
+						<a href="/#ai-engineer-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Engineer Bootcamp</a>
+						<a href="/#ai-foundations-bootcamp" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Foundations Bootcamp</a>
+					</div>
+				</div>
+				<a href="/#team" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Team</a>
+				<a href="/#contact" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm" onclick="closeMobileMenu()">Contact</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="pt-24 pb-12 md:pb-16 px-6 bg-gradient-to-br from-cyan-50 via-blue-50 to-sky-50">
+		<div class="max-w-4xl mx-auto text-center">
+			<h1 class="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">Blog</h1>
+			<p class="text-lg text-gray-700">Insights on AI implementation, adoption strategies, and building partnership-based AI agents.</p>
+		</div>
+	</section>
+
+	<!-- Blog Posts Section -->
+	<section class="py-12 md:py-20 px-6 bg-white">
+		<div class="max-w-6xl mx-auto">
+			<div class="grid md:grid-cols-2 gap-8">
+				<!-- Blog Post 1 -->
+				<div class="bg-white rounded-lg border border-cyan-200 overflow-hidden hover:shadow-lg transition-shadow">
+					<div class="h-40 bg-gradient-to-br from-cyan-400 to-blue-500"></div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-cyan-900 mb-2">Why AI Implementations Fail</h3>
+						<p class="text-gray-700 mb-4">Most AI projects miss the mark because they focus on the technology instead of the people. Learn what separates successful implementations from costly failures.</p>
+						<a href="/blog-why-ai-implementations-fail.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+							Read Article
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Blog Post 2 -->
+				<div class="bg-white rounded-lg border border-cyan-200 overflow-hidden hover:shadow-lg transition-shadow">
+					<div class="h-40 bg-gradient-to-br from-emerald-400 to-teal-500"></div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-cyan-900 mb-2">Where Do I Fit in a Crisis</h3>
+						<p class="text-gray-700 mb-4">AI adoption creates anxiety about job security and relevance. Explore why this feeling is normal and how to reframe your role in an AI-enhanced future.</p>
+						<a href="/blog-where-do-i-fit-crisis.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+							Read Article
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Blog Post 3 -->
+				<div class="bg-white rounded-lg border border-cyan-200 overflow-hidden hover:shadow-lg transition-shadow">
+					<div class="h-40 bg-gradient-to-br from-indigo-400 to-purple-500"></div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-cyan-900 mb-2">Partnership, Not Replacement</h3>
+						<p class="text-gray-700 mb-4">The narrative around AI feels threatening. Learn why reframing AI as a partnership tool shifts the entire conversation about adoption and creates better outcomes.</p>
+						<a href="/blog-partnership-not-replacement.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+							Read Article
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Blog Post 4 -->
+				<div class="bg-white rounded-lg border border-cyan-200 overflow-hidden hover:shadow-lg transition-shadow">
+					<div class="h-40 bg-gradient-to-br from-orange-400 to-red-500"></div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-cyan-900 mb-2">Your First AI Agent</h3>
+						<p class="text-gray-700 mb-4">Ready to build? Start small. Discover how to identify your first AI agent project, what success looks like, and how to move from proof of concept to impact.</p>
+						<a href="/blog-your-first-ai-agent.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
+							Read Article
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-12 md:py-20 px-6 bg-gradient-to-r from-cyan-600 to-blue-600">
+		<div class="max-w-4xl mx-auto text-center">
+			<h2 class="text-3xl font-bold text-white mb-4">Ready to explore AI for your team?</h2>
+			<p class="text-cyan-100 mb-8 text-lg">Let's discuss how partnership-based AI can amplify your capabilities.</p>
+			<a href="mailto:hi@growthmaxinc.com" class="inline-block bg-white text-cyan-600 px-8 py-3 rounded-md font-semibold hover:bg-cyan-50 transition-colors">
+				Let's Talk
+			</a>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-cyan-900 text-cyan-100 py-12 px-6">
+		<div class="max-w-6xl mx-auto">
+			<div class="grid md:grid-cols-4 gap-8 mb-8">
+				<div>
+					<h4 class="font-semibold text-white mb-4">GrowthMax</h4>
+					<p class="text-sm">Building AI partnerships that amplify human capability.</p>
+				</div>
+				<div>
+					<h4 class="font-semibold text-white mb-4">Navigate</h4>
+					<ul class="text-sm space-y-2">
+						<li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+						<li><a href="/#about" class="hover:text-white transition-colors">About</a></li>
+						<li><a href="/#process" class="hover:text-white transition-colors">Process</a></li>
+						<li><a href="/resources/blog.html" class="hover:text-white transition-colors">Resources</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-semibold text-white mb-4">Solutions</h4>
+					<ul class="text-sm space-y-2">
+						<li><a href="/#ai-agent-development" class="hover:text-white transition-colors">AI Agent Development</a></li>
+						<li><a href="/#ai-engineer-bootcamp" class="hover:text-white transition-colors">Bootcamps</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-semibold text-white mb-4">Contact</h4>
+					<p class="text-sm"><a href="mailto:hi@growthmaxinc.com" class="hover:text-white transition-colors">hi@growthmaxinc.com</a></p>
+				</div>
+			</div>
+			<div class="border-t border-cyan-700 pt-8 text-center text-sm">
+				<p>.2025 GrowthMax Inc. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		function closeMobileMenu() {
+			document.getElementById('mobile-menu').classList.add('hidden');
+		}
+	</script>
+</body>
+</html>

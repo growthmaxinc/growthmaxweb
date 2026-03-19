@@ -30,7 +30,17 @@
 					<a href="#home" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
 					<a href="#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
 					<a href="#process" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Process</a>
-					<a href="/resources.html" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Resources</a>
+					<!-- Resources Dropdown -->
+					<div class="relative" id="resources-dropdown">
+						<button onclick="document.getElementById('resources-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+							Resources
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+						</button>
+						<div id="resources-menu" class="hidden absolute top-full left-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+							<a href="/resources/faq.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">FAQ</a>
+							<a href="/resources/blog.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">Blog</a>
+						</div>
+					</div>
 					<!-- Solutions Dropdown -->
 					<div class="relative" id="solutions-dropdown">
 						<button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
@@ -60,7 +70,17 @@
 				<a href="#home" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Home</a>
 				<a href="#about" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">About</a>
 				<a href="#process" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Process</a>
-				<a href="/resources.html" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Resources</a>
+				<!-- Mobile Resources Accordion -->
+				<div class="border-b border-cyan-200">
+					<button onclick="document.getElementById('mobile-resources').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+						Resources
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="mobile-resources" class="hidden pl-4 pb-3 space-y-1">
+						<a href="/resources/faq.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">FAQ</a>
+						<a href="/resources/blog.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">Blog</a>
+					</div>
+				</div>
 				<!-- Mobile Solutions Accordion -->
 				<div class="border-b border-cyan-200">
 					<button onclick="document.getElementById('mobile-solutions').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
@@ -78,7 +98,6 @@
 			</div>
 		</div>
 	</nav>
-
 	<!-- Hero Section -->
 	<section id="home" class="min-h-screen flex items-center justify-center px-6">
 		<div class="text-center max-w-4xl mx-auto">
