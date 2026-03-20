@@ -372,8 +372,75 @@
 		});
 	</script>
 
-	<!-- ElevenLabs ConvAI Chatbot -->
-	<elevenlabs-convai agent-id="agent_4301km3vkmtse88a97tqmg9bfqy0"></elevenlabs-convai>
+	<!-- ElevenLabs ConvAI Chatbot with pulsating glow effect -->
+	<style>
+	  #el-widget-wrapper {
+	    position: fixed;
+	    bottom: 20px;
+	    right: 20px;
+	    z-index: 9999;
+	    border-radius: 50%;
+	  }
+	  #el-widget-wrapper::before {
+	    content: '';
+	    position: absolute;
+	    inset: -8px;
+	    border-radius: 50%;
+	    background: transparent;
+	    pointer-events: none;
+	    z-index: -1;
+	  }
+	  #el-widget-wrapper.speaking::before {
+	    animation: speakingPulse 1.2s ease-in-out infinite;
+	  }
+	  #el-widget-wrapper.listening::before {
+	    animation: listeningPulse 2s ease-in-out infinite;
+	  }
+	  @keyframes speakingPulse {
+	    0%   { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
+	    50%  { box-shadow: 0 0 0 20px rgba(8,145,178,0), 0 0 48px 20px rgba(29,78,216,0.5); }
+	    100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
+	  }
+	  @keyframes listeningPulse {
+	    0%   { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
+	    50%  { box-shadow: 0 0 0 10px rgba(8,145,178,0); }
+	    100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
+	  }
+	</style>
+	<div id="el-widget-wrapper">
+	  <elevenlabs-convai agent-id="agent_4301km3vkmtse88a97tqmg9bfqy0"></elevenlabs-convai>
+	</div>
 	<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+	<script>
+	  (function() {
+	    function initWidgetGlow() {
+	      var wrapper = document.getElementById('el-widget-wrapper');
+	      var widget = document.querySelector('elevenlabs-convai');
+	      if (!wrapper || !widget) return;
+	      function observeStatus() {
+	        if (!widget.shadowRoot) { setTimeout(observeStatus, 500); return; }
+	        var observer = new MutationObserver(function() {
+	          var html = widget.shadowRoot.innerHTML;
+	          if (html.includes('Talk to interrupt') || html.includes('speaking')) {
+	            wrapper.classList.add('speaking');
+	            wrapper.classList.remove('listening');
+	          } else if (html.includes('Listening') || html.includes('listening')) {
+	            wrapper.classList.add('listening');
+	            wrapper.classList.remove('speaking');
+	          } else if (!html.includes('Connecting')) {
+	            wrapper.classList.remove('speaking', 'listening');
+	          }
+	        });
+	        observer.observe(widget.shadowRoot, { childList: true, subtree: true, characterData: true });
+	      }
+	      observeStatus();
+	    }
+	    if (document.readyState === 'loading') {
+	      document.addEventListener('DOMContentLoaded', initWidgetGlow);
+	    } else {
+	      initWidgetGlow();
+	    }
+	  })();
+	</script>
 </body>
 </html>
