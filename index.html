@@ -45,7 +45,7 @@
 					<div class="relative" id="solutions-dropdown">
 						<button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
 							Solutions
-							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>g>
 						</button>
 						<div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
 							<a href="/solutions/agent-development.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
@@ -107,9 +107,14 @@
 			<p class="text-lg md:text-xl text-cyan-800 font-light max-w-2xl mx-auto leading-relaxed mb-8">
 				Custom AI agents designed to augment your expertise, amplify your judgment, and help you achieve outcomes neither of you could alone.
 			</p>
-			<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
-				Let's Talk
-			</a>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all">
+					Let's Talk
+				</a>
+				<a href="#process" class="inline-block px-8 py-3 border-2 border-cyan-700 text-cyan-800 rounded-full font-medium hover:bg-cyan-700 hover:text-white transition-all">
+					See How We Work
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -117,21 +122,16 @@
 	<section id="about" class="py-12 md:py-20 px-6">
 		<div class="max-w-4xl mx-auto">
 			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About GrowthMax</h2>
-			<div class="text-base md:text-lg text-justify text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto space-y-6">
+			<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto space-y-6">
 				<p>
 					<strong class="text-cyan-900">Organizations are adopting AI. People want to use it. But there's confusion at both levels.</strong>
+					Teams are scattered across fragmented tools. Leadership lacks a coherent adoption strategy. And individuals are asking: "Where do I fit?" The gap isn't resistance — it's disorientation while culture lags behind technology.
 				</p>
 				<p>
-					Teams are scattered across fragmented tools. Leadership lacks a coherent adoption strategy. And individuals are asking: "Where do I fit?" The gap isn't resistance. It's disorientation while culture lags behind technology.
+					We build custom AI agents designed to augment your expertise, elevate your judgment, and unlock what neither humans nor machines could achieve alone. A personal agent gives you coherence and structure today — a practical bridge while your organization evolves the culture, skills, and infrastructure for what's next.
 				</p>
 				<p>
-					We build custom AI agents designed to augment your expertise, elevate your judgment, and unlock what neither humans nor machines could achieve alone. A personal agent gives you coherence and structure today. One focused expert to work with. It shows you that your expertise is amplified, not displaced.
-				</p>
-				<p>
-					A personal agent won't solve everything. But it's a practical interim bridge while your organization evolves the culture, skills, and infrastructure for what's next.
-				</p>
-				<p>
-					We're built by founders with 20+ years building SaaS, scaling teams, and architecting AI systems. We know what works because we've shipped it. We've learned from what doesn't work. And we've seen firsthand how custom AI agents transform how organizations evolve. Your agent scales with you. A true partnership.
+					Built by founders with 20+ years building SaaS, scaling teams, and architecting AI systems. We know what works because we've shipped it.
 				</p>
 			</div>
 		</div>
@@ -145,8 +145,8 @@
 				A structured, end-to-end approach to building your custom AI agent. From discovery to deployment and beyond.
 			</p>
 
-			<!-- Process Steps Grid -->
-			<div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
+			<!-- Process Steps Grid - Top Row (3) -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
 				<!-- Step 1: Assess -->
 				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
 					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -179,7 +179,10 @@
 						Develop and deploy your custom AI agent. Fast, focused, and ready for real-world use.
 					</p>
 				</div>
+			</div>
 
+			<!-- Process Steps Grid - Bottom Row (2, centered) -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto mt-8">
 				<!-- Step 4: Test -->
 				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
 					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -208,7 +211,7 @@
 				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed mb-8">
 					Our process is grounded in partnership. Every step is designed to ensure your agent augments your expertise, amplifies your judgment, and creates outcomes neither of you could achieve alone.
 				</p>
-				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg transition-all">
 					Let's Talk
 				</a>
 			</div>
@@ -262,14 +265,35 @@
 
 	<!-- Blog Teaser Section -->
 	<section class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
-		<div class="max-w-4xl mx-auto text-center">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-6 text-cyan-900">Thoughts on AI & Partnership</h2>
-			<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto mb-8">
-				Read our latest insights on AI adoption, human-AI partnership, and building organizations where technology and people thrive together.
-			</p>
-			<a href="/resources/blog.html" class="inline-block px-8 py-3 bg-cyan-600 text-white rounded-md font-medium hover:bg-cyan-700 transition-colors">
-				Explore Blog
-			</a>
+		<div class="max-w-5xl mx-auto">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-6 text-cyan-900">Thoughts on AI & Partnership</h2>
+				<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
+					Our latest insights on AI adoption, human-AI partnership, and building organizations where technology and people thrive together.
+				</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+				<a href="/blog-why-ai-implementations-fail.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
+					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">AI Strategy</p>
+					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">Why AI Implementations Fail</h3>
+					<p class="text-sm text-cyan-700 font-light">The problem isn't the technology. It's the gap between adoption and alignment.</p>
+				</a>
+				<a href="/blog-where-do-i-fit-crisis.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
+					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">People & Culture</p>
+					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">The "Where Do I Fit?" Crisis</h3>
+					<p class="text-sm text-cyan-700 font-light">Understanding employee anxiety in AI adoption and what leaders can do about it.</p>
+				</a>
+				<a href="/blog-your-first-ai-agent.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
+					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">Getting Started</p>
+					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">Your First AI Agent</h3>
+					<p class="text-sm text-cyan-700 font-light">Start small for maximum impact. A practical guide to your first custom AI agent.</p>
+				</a>
+			</div>
+			<div class="text-center">
+				<a href="/resources/blog.html" class="inline-block px-8 py-3 border-2 border-cyan-700 text-cyan-800 rounded-full font-medium hover:bg-cyan-700 hover:text-white transition-all">
+					View All Posts
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -345,10 +369,38 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="py-8 md:py-12 px-6 border-t border-cyan-200">
-		<div class="max-w-6xl mx-auto text-center">
-			<p class="text-sm md:text-base text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>
-			<p class="text-xs text-cyan-600 font-light mt-2">We build custom AI agents and deliver training for organizations ready to scale with agentic AI.</p>
+	<footer class="py-12 md:py-16 px-6 border-t border-cyan-200 bg-cyan-50">
+		<div class="max-w-6xl mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+				<div>
+					<h4 class="text-lg font-semibold text-cyan-900 mb-4">GrowthMax</h4>
+					<p class="text-sm text-cyan-700 font-light leading-relaxed">Custom AI agents and training for organizations ready to scale with agentic AI.</p>
+				</div>
+				<div>
+					<h4 class="text-sm font-semibold text-cyan-900 mb-4 uppercase tracking-wide">Solutions</h4>
+					<nav class="space-y-2">
+						<a href="/solutions/agent-development.html" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">AI Agent Development</a>
+						<a href="/solutions/bootcamp.html" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">AI Engineer Bootcamp</a>
+						<a href="/solutions/foundations.html" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">AI Foundations Bootcamp</a>
+					</nav>
+				</div>
+				<div>
+					<h4 class="text-sm font-semibold text-cyan-900 mb-4 uppercase tracking-wide">Resources</h4>
+					<nav class="space-y-2">
+						<a href="/resources/blog.html" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">Blog</a>
+						<a href="/resources/faq.html" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">FAQ</a>
+						<a href="mailto:hi@growthmaxinc.com" class="block text-sm text-cyan-700 hover:text-cyan-900 font-light transition-colors">Contact Us</a>
+					</nav>
+				</div>
+			</div>
+			<div class="border-t border-cyan-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+				<p class="text-sm text-cyan-700 font-light">&copy; 2026 GrowthMax Inc. All rights reserved.</p>
+				<div class="flex gap-4">
+					<a href="https://www.linkedin.com/company/growthmaxinc/" class="text-cyan-600 hover:text-cyan-900 transition-colors" aria-label="LinkedIn">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+					</a>
+				</div>
+			</div>
 		</div>
 	</footer>
 
@@ -358,89 +410,97 @@
 		}
 		// Close dropdowns when clicking outside (desktop)
 		document.addEventListener('click', function(e) {
-			var dropdown = document.getElementById('solutions-dropdown');
-			var menu = document.getElementById('solutions-menu');
-			if (dropdown && menu && !dropdown.contains(e.target)) {
-				menu.classList.add('hidden');
-			}
+			var dropdowns = [
+				{ wrapper: 'solutions-dropdown', menu: 'solutions-menu' },
+				{ wrapper: 'resources-dropdown', menu: 'resources-menu' }
+			];
+			dropdowns.forEach(function(d) {
+				var wrapper = document.getElementById(d.wrapper);
+				var menu = document.getElementById(d.menu);
+				if (wrapper && menu && !wrapper.contains(e.target)) {
+					menu.classList.add('hidden');
+				}
+			});
 		});
-		// Close desktop dropdown when a menu link is clicked
-		document.querySelectorAll('#solutions-menu a').forEach(function(link) {
-			link.addEventListener('click', function() {
-				document.getElementById('solutions-menu').classList.add('hidden');
+		// Close desktop dropdowns when a menu link is clicked
+		['solutions-menu', 'resources-menu'].forEach(function(menuId) {
+			document.querySelectorAll('#' + menuId + ' a').forEach(function(link) {
+				link.addEventListener('click', function() {
+					document.getElementById(menuId).classList.add('hidden');
+				});
 			});
 		});
 	</script>
 
 	<!-- ElevenLabs ConvAI Chatbot with pulsating glow effect -->
 	<style>
-	  #el-widget-wrapper {
-	    position: fixed;
-	    bottom: 20px;
-	    right: 20px;
-	    z-index: 9999;
-	    border-radius: 50%;
-	  }
-	  #el-widget-wrapper::before {
-	    content: '';
-	    position: absolute;
-	    inset: -8px;
-	    border-radius: 50%;
-	    background: transparent;
-	    pointer-events: none;
-	    z-index: -1;
-	  }
-	  #el-widget-wrapper.speaking::before {
-	    animation: speakingPulse 1.2s ease-in-out infinite;
-	  }
-	  #el-widget-wrapper.listening::before {
-	    animation: listeningPulse 2s ease-in-out infinite;
-	  }
-	  @keyframes speakingPulse {
-	    0%   { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
-	    50%  { box-shadow: 0 0 0 20px rgba(8,145,178,0), 0 0 48px 20px rgba(29,78,216,0.5); }
-	    100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
-	  }
-	  @keyframes listeningPulse {
-	    0%   { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
-	    50%  { box-shadow: 0 0 0 10px rgba(8,145,178,0); }
-	    100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
-	  }
+		#el-widget-wrapper {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 9999;
+			border-radius: 50%;
+		}
+		#el-widget-wrapper::before {
+			content: '';
+			position: absolute;
+			inset: -8px;
+			border-radius: 50%;
+			background: transparent;
+			pointer-events: none;
+			z-index: -1;
+		}
+		#el-widget-wrapper.speaking::before {
+			animation: speakingPulse 1.2s ease-in-out infinite;
+		}
+		#el-widget-wrapper.listening::before {
+			animation: listeningPulse 2s ease-in-out infinite;
+		}
+		@keyframes speakingPulse {
+			0% { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
+			50% { box-shadow: 0 0 0 20px rgba(8,145,178,0), 0 0 48px 20px rgba(29,78,216,0.5); }
+			100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.8), 0 0 24px 8px rgba(8,145,178,0.4); }
+		}
+		@keyframes listeningPulse {
+			0% { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
+			50% { box-shadow: 0 0 0 10px rgba(8,145,178,0); }
+			100% { box-shadow: 0 0 0 0px rgba(8,145,178,0.5); }
+		}
 	</style>
 	<div id="el-widget-wrapper">
-	  <elevenlabs-convai agent-id="agent_4301km3vkmtse88a97tqmg9bfqy0"></elevenlabs-convai>
+		<elevenlabs-convai agent-id="agent_4301km3vkmtse88a97tqmg9bfqy0"></elevenlabs-convai>
 	</div>
 	<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 	<script>
-	  (function() {
-	    function initWidgetGlow() {
-	      var wrapper = document.getElementById('el-widget-wrapper');
-	      var widget = document.querySelector('elevenlabs-convai');
-	      if (!wrapper || !widget) return;
-	      function observeStatus() {
-	        if (!widget.shadowRoot) { setTimeout(observeStatus, 500); return; }
-	        var observer = new MutationObserver(function() {
-	          var html = widget.shadowRoot.innerHTML;
-	          if (html.includes('Talk to interrupt') || html.includes('speaking')) {
-	            wrapper.classList.add('speaking');
-	            wrapper.classList.remove('listening');
-	          } else if (html.includes('Listening') || html.includes('listening')) {
-	            wrapper.classList.add('listening');
-	            wrapper.classList.remove('speaking');
-	          } else if (!html.includes('Connecting')) {
-	            wrapper.classList.remove('speaking', 'listening');
-	          }
-	        });
-	        observer.observe(widget.shadowRoot, { childList: true, subtree: true, characterData: true });
-	      }
-	      observeStatus();
-	    }
-	    if (document.readyState === 'loading') {
-	      document.addEventListener('DOMContentLoaded', initWidgetGlow);
-	    } else {
-	      initWidgetGlow();
-	    }
-	  })();
+		(function() {
+			function initWidgetGlow() {
+				var wrapper = document.getElementById('el-widget-wrapper');
+				var widget = document.querySelector('elevenlabs-convai');
+				if (!wrapper || !widget) return;
+				function observeStatus() {
+					if (!widget.shadowRoot) { setTimeout(observeStatus, 500); return; }
+					var observer = new MutationObserver(function() {
+						var html = widget.shadowRoot.innerHTML;
+						if (html.includes('Talk to interrupt') || html.includes('speaking')) {
+							wrapper.classList.add('speaking');
+							wrapper.classList.remove('listening');
+						} else if (html.includes('Listening') || html.includes('listening')) {
+							wrapper.classList.add('listening');
+							wrapper.classList.remove('speaking');
+						} else if (!html.includes('Connecting')) {
+							wrapper.classList.remove('speaking', 'listening');
+						}
+					});
+					observer.observe(widget.shadowRoot, { childList: true, subtree: true, characterData: true });
+				}
+				observeStatus();
+			}
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initWidgetGlow);
+			} else {
+				initWidgetGlow();
+			}
+		})();
 	</script>
 </body>
 </html>
