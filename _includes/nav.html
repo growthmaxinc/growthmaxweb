@@ -1,0 +1,77 @@
+<nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="flex justify-between items-center h-16">
+			<a href="/" class="text-xl font-semibold text-cyan-900 hover:text-cyan-700 transition-colors">GrowthMax</a>
+			<!-- Desktop Nav -->
+			<div class="hidden md:flex space-x-8 items-center">
+				<a href="/" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
+				<a href="/#about" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">About</a>
+				<a href="/#process" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Process</a>
+				<!-- Resources Dropdown -->
+				<div class="relative" id="resources-dropdown">
+					<button onclick="document.getElementById('resources-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+						Resources
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="resources-menu" class="hidden absolute top-full left-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+						<a href="/resources/faq.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">FAQ</a>
+						<a href="/resources/blog.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">Blog</a>
+					</div>
+				</div>
+				<!-- Solutions Dropdown -->
+				<div class="relative" id="solutions-dropdown">
+					<button onclick="document.getElementById('solutions-menu').classList.toggle('hidden')" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm inline-flex items-center gap-1">
+						Solutions
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div id="solutions-menu" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-cyan-200 py-2 z-50">
+						<a href="/solutions/agent-development.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Agent Development</a>
+						<a href="/solutions/bootcamp.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Engineer Bootcamp</a>
+						<a href="/solutions/foundations.html" class="block px-4 py-2 text-sm text-cyan-700 hover:bg-cyan-50 hover:text-cyan-900 transition-colors">AI Foundations Bootcamp</a>
+					</div>
+				</div>
+				<a href="/#team" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Team</a>
+				<a href="/#contact" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Contact</a>
+			</div>
+			<!-- Mobile Hamburger Button -->
+			<button id="mobile-menu-btn" class="md:hidden text-cyan-700 hover:text-cyan-900 transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<!-- Mobile Menu -->
+	<div id="mobile-menu" class="hidden md:hidden bg-cyan-50/95 backdrop-blur-md border-t border-cyan-200">
+		<div class="px-6 py-4 space-y-1">
+			<a href="/" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Home</a>
+			<a href="/#about" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">About</a>
+			<a href="/#process" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Process</a>
+			<!-- Mobile Resources Accordion -->
+			<div class="border-b border-cyan-200">
+				<button onclick="document.getElementById('mobile-resources').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+					Resources
+					<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+				</button>
+				<div id="mobile-resources" class="hidden pl-4 pb-3 space-y-1">
+					<a href="/resources/faq.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">FAQ</a>
+					<a href="/resources/blog.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">Blog</a>
+				</div>
+			</div>
+			<!-- Mobile Solutions Accordion -->
+			<div class="border-b border-cyan-200">
+				<button onclick="document.getElementById('mobile-solutions').classList.toggle('hidden')" class="w-full flex justify-between items-center py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm">
+					Solutions
+					<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+				</button>
+				<div id="mobile-solutions" class="hidden pl-4 pb-3 space-y-1">
+					<a href="/solutions/agent-development.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Agent Development</a>
+					<a href="/solutions/bootcamp.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Engineer Bootcamp</a>
+					<a href="/solutions/foundations.html" class="block py-2 text-sm text-cyan-600 hover:text-cyan-900 transition-colors" onclick="closeMobileMenu()">AI Foundations Bootcamp</a>
+				</div>
+			</div>
+			<a href="/#team" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm border-b border-cyan-200" onclick="closeMobileMenu()">Team</a>
+			<a href="/#contact" class="block py-3 text-cyan-700 hover:text-cyan-900 transition-colors text-sm" onclick="closeMobileMenu()">Contact</a>
+		</div>
+	</div>
+</nav>

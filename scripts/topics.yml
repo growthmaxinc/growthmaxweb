@@ -1,0 +1,17 @@
+# Topic queue for automated blog generation.
+# The AI will pick from these when generating new posts.
+# Remove topics after they've been used, or add new ones anytime.
+
+topics:
+  - "How to measure ROI on your first AI agent"
+  - "The change management playbook for AI adoption"
+  - "Why your AI strategy needs a people strategy first"
+  - "Custom agents vs. off-the-shelf AI tools: when to build"
+  - "The 90-day AI adoption timeline that actually works"
+  - "What executives get wrong about AI transformation"
+  - "Building AI literacy across non-technical teams"
+  - "From pilot to scale: growing your AI agent program"
+  - "The hidden cost of not adopting AI"
+  - "How to talk to your team about AI without creating panic"
+  - "AI governance for growing organizations"
+  - "Why AI training alone doesn't create adoption"

@@ -1,0 +1,55 @@
+# Site settings
+title: GrowthMax Inc
+description: Custom AI agents and training for organizations ready to scale with agentic AI.
+url: https://www.growthmaxinc.com
+email: hi@growthmaxinc.com
+logo: /growthMAX.PNG
+
+# Build
+permalink: /blog/:slug/
+markdown: kramdown
+
+# Plugins (all whitelisted on GitHub Pages)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO tag defaults
+author: GrowthMax Inc
+twitter:
+  card: summary_large_image
+social:
+  name: GrowthMax Inc
+  links:
+    - https://www.linkedin.com/company/growthmaxinc/
+
+# Feed settings
+feed:
+  path: /feed.xml
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: GrowthMax Inc
+  - scope:
+      path: ""
+    values:
+      layout: null
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - CLAUDE.md
+  - daily-improvement-*.md
+  - elevenlabs-training-material.md
+  - download_files.sh
+  - README.md
+  - .github
+  - node_modules
+  - vendor
