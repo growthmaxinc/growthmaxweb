@@ -31,7 +31,7 @@ jobs:
 
       - name: Generate blog post
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
           TOPIC_INPUT: ${{ github.event.inputs.topic }}
         run: python scripts/generate-post.py
 
