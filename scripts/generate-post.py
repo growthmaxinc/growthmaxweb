@@ -85,36 +85,57 @@ def generate_post(client, topic=None):
     prompt = f"""
 {BRAND_VOICE}
 
-Generate a complete blog post for the GrowthMax Inc website.
+Generate a complete blog post for the GrowthMax Inc website, optimized for both
+search engines (SEO) and answer engines / AI assistants (AEO).
+
 {topic_instruction}
 
 EXISTING POSTS (do not duplicate these topics):
 {existing_list}
 
-REQUIREMENTS:
-1. The post should be 800-1200 words
-2. Use 4-6 H2 sections (## headers in markdown)
-3. Open with a compelling hook paragraph (no heading)
-4. End with a forward-looking conclusion
-5. Pick a category from: {', '.join(CATEGORIES)}
-6. Generate 3-5 relevant tags from these options: ai-strategy, implementation, organizational-change,
-   people-culture, adoption, employee-experience, partnership, getting-started, leadership,
-   training, agents, productivity, change-management
-7. Write a meta description under 160 characters
-8. Write a subtitle (one line)
-9. Generate a URL slug (lowercase, hyphens, no special chars)
+CONTENT STRUCTURE REQUIREMENTS:
+1. The post should be 1000-1500 words
+2. Use 4-6 H2 sections (## headers in markdown) — each H2 should be a clear,
+   question-like or keyword-rich phrase that someone might search for
+3. Use H3 subheadings (###) within sections where it adds clarity
+4. Open with a compelling hook paragraph (no heading) that includes the primary keyword
+5. The first paragraph should directly answer the core question of the article
+   (this helps AI assistants and featured snippets)
+6. Use short paragraphs (2-4 sentences max)
+7. Include bold text (**keyword phrases**) for key concepts
+8. End with a forward-looking conclusion paragraph
+
+SEO/AEO REQUIREMENTS:
+9. Pick a category from: {', '.join(CATEGORIES)}
+10. Generate 3-5 relevant tags from: ai-strategy, implementation, organizational-change,
+    people-culture, adoption, employee-experience, partnership, getting-started, leadership,
+    training, agents, productivity, change-management
+11. Write a meta description under 160 characters that includes the primary keyword
+    and a clear value proposition
+12. Write a subtitle (one compelling line)
+13. Generate a URL slug (lowercase, hyphens, no special chars, include primary keyword)
+14. Write a one-sentence "tldr" that captures the single most important takeaway —
+    this will appear as a highlighted callout box at the top of the article
+15. Write 2-3 FAQ items (question + answer pairs) that are closely related to the
+    article topic. Answers should be 1-2 sentences. These become FAQ schema markup
+    which helps the article appear in Google's "People Also Ask" and AI assistant responses.
 
 Respond in this exact JSON format:
 {{
     "title": "The Post Title",
     "subtitle": "A compelling subtitle",
-    "description": "Meta description under 160 chars",
+    "description": "Meta description under 160 chars with primary keyword",
     "category": "Category Name",
     "tags": ["tag1", "tag2", "tag3"],
     "keywords": "comma, separated, seo, keywords",
     "slug": "the-post-slug",
     "read_time": 7,
-    "content": "The full markdown content of the post (H2 headers, paragraphs, bold text). Do NOT include the title as an H1 — the layout handles that."
+    "tldr": "One sentence key takeaway for the callout box",
+    "faq": [
+        {{"q": "A question someone might ask?", "a": "A direct, concise answer."}},
+        {{"q": "Another related question?", "a": "Another direct answer."}}
+    ],
+    "content": "The full markdown content of the post (H2 headers, H3 subheaders, paragraphs, bold text). Do NOT include the title as an H1 — the layout handles that."
 }}
 """
 
@@ -151,6 +172,12 @@ def save_post(post_data):
         "image": "/growthMAX.PNG",
         "slug": slug,
     }
+
+    # Add optional SEO/AEO fields
+    if post_data.get("tldr"):
+        front_matter["tldr"] = post_data["tldr"]
+    if post_data.get("faq"):
+        front_matter["faq"] = post_data["faq"]
 
     content = f"---\n{yaml.dump(front_matter, default_flow_style=False, allow_unicode=True)}---\n\n{post_data['content']}\n"
 

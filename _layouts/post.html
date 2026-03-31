@@ -6,7 +6,11 @@
 	<meta name="keywords" content="{{ page.keywords }}">
 	{% endif %}
 	<meta name="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-	<!-- JSON-LD Schema Markup -->
+	{% if page.date_modified %}
+	<meta name="article:modified_time" content="{{ page.date_modified | date_to_xmlschema }}">
+	{% endif %}
+	<meta name="author" content="GrowthMax Inc">
+	<!-- JSON-LD BlogPosting Schema -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
@@ -17,10 +21,13 @@
 		"datePublished": "{{ page.date | date_to_xmlschema }}",
 		{% if page.date_modified %}
 		"dateModified": "{{ page.date_modified | date_to_xmlschema }}",
+		{% else %}
+		"dateModified": "{{ page.date | date_to_xmlschema }}",
 		{% endif %}
 		"author": {
 			"@type": "Organization",
 			"name": "GrowthMax Inc",
+			"url": "{{ '/' | absolute_url }}",
 			"logo": {
 				"@type": "ImageObject",
 				"url": "{{ '/growthMAX.PNG' | absolute_url }}",
@@ -31,6 +38,7 @@
 		"publisher": {
 			"@type": "Organization",
 			"name": "GrowthMax Inc",
+			"url": "{{ '/' | absolute_url }}",
 			"logo": {
 				"@type": "ImageObject",
 				"url": "{{ '/growthMAX.PNG' | absolute_url }}",
@@ -41,10 +49,15 @@
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "{{ page.url | absolute_url }}"
-		}
+		},
+		"wordCount": "{{ content | strip_html | number_of_words }}",
+		"articleSection": "{{ page.category | escape }}"
+		{% if page.tags.size > 0 %}
+		,"keywords": "{{ page.tags | join: ', ' }}"
+		{% endif %}
 	}
 	</script>
-	{% if page.breadcrumbs != false %}
+	<!-- BreadcrumbList Schema -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
@@ -71,59 +84,113 @@
 		]
 	}
 	</script>
+	{% if page.faq %}
+	<!-- FAQPage Schema for AEO -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": [
+			{% for item in page.faq %}
+			{
+				"@type": "Question",
+				"name": "{{ item.q | escape }}",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "{{ item.a | escape }}"
+				}
+			}{% unless forloop.last %},{% endunless %}
+			{% endfor %}
+		]
+	}
+	</script>
 	{% endif %}
 </head>
 <body class="bg-sky-50 text-gray-900 antialiased">
 	{% include nav.html %}
 
 	<!-- Blog Header -->
-	<div class="mt-16 h-96 bg-gradient-to-br from-cyan-600 to-blue-700 relative overflow-hidden">
-		<div class="absolute inset-0 flex items-center justify-center">
-			<div class="text-center text-white px-6">
-				<h1 class="text-4xl md:text-5xl font-light tracking-tight mb-4">{{ page.title }}</h1>
-				{% if page.subtitle %}
-				<p class="text-lg md:text-xl font-light max-w-2xl mx-auto">{{ page.subtitle }}</p>
-				{% endif %}
-			</div>
-		</div>
-	</div>
-
-	<!-- Blog Content -->
-	<article class="py-12 md:py-20 px-6">
-		<div class="max-w-3xl mx-auto">
-			<!-- Breadcrumb -->
-			<nav class="mb-6 text-sm text-cyan-600">
-				<a href="/" class="hover:text-cyan-900">Home</a>
-				<span class="mx-2">&rsaquo;</span>
-				<a href="/resources/blog.html" class="hover:text-cyan-900">Blog</a>
-				<span class="mx-2">&rsaquo;</span>
-				<span class="text-cyan-800">{{ page.title }}</span>
-			</nav>
-
-			<div class="mb-8 text-cyan-600 text-sm">
-				{% if page.category %}
-				<span class="font-semibold uppercase tracking-wider">{{ page.category }}</span>
-				<span class="mx-2">&bull;</span>
-				{% endif %}
-				<span>{{ page.date | date: "%B %d, %Y" }}</span>
+	<header class="mt-16 bg-gradient-to-br from-cyan-600 to-blue-700 py-16 md:py-24 px-6">
+		<div class="max-w-3xl mx-auto text-center text-white">
+			{% if page.category %}
+			<p class="text-sm font-medium uppercase tracking-wider text-cyan-200 mb-4">{{ page.category }}</p>
+			{% endif %}
+			<h1 class="text-3xl md:text-5xl font-light tracking-tight mb-4 leading-tight">{{ page.title }}</h1>
+			{% if page.subtitle %}
+			<p class="text-lg md:text-xl font-light text-cyan-100 max-w-2xl mx-auto mb-6">{{ page.subtitle }}</p>
+			{% endif %}
+			<div class="flex items-center justify-center gap-3 text-cyan-200 text-sm">
+				<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
 				{% if page.read_time %}
-				<span class="mx-2">&bull;</span>
+				<span>&bull;</span>
 				<span>{{ page.read_time }} min read</span>
 				{% endif %}
 			</div>
+		</div>
+	</header>
 
-			<div class="prose prose-lg max-w-none text-cyan-900">
+	<!-- Blog Content -->
+	<article class="py-12 md:py-16 px-6" itemscope itemtype="https://schema.org/BlogPosting">
+		<meta itemprop="headline" content="{{ page.title | escape }}">
+		<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">
+		<meta itemprop="author" content="GrowthMax Inc">
+
+		<div class="max-w-3xl mx-auto">
+			<!-- Breadcrumb -->
+			<nav aria-label="Breadcrumb" class="mb-8 text-sm text-cyan-600">
+				<ol class="flex items-center gap-2">
+					<li><a href="/" class="hover:text-cyan-900 transition-colors">Home</a></li>
+					<li><span class="text-cyan-400">&rsaquo;</span></li>
+					<li><a href="/resources/blog.html" class="hover:text-cyan-900 transition-colors">Blog</a></li>
+					<li><span class="text-cyan-400">&rsaquo;</span></li>
+					<li class="text-cyan-800 truncate max-w-xs">{{ page.title }}</li>
+				</ol>
+			</nav>
+
+			<!-- Key Takeaway / TLDR for AEO -->
+			{% if page.tldr %}
+			<div class="mb-10 p-6 bg-cyan-50 border-l-4 border-cyan-600 rounded-r-lg">
+				<p class="text-sm font-semibold text-cyan-900 uppercase tracking-wider mb-2">Key Takeaway</p>
+				<p class="text-cyan-800 font-light leading-relaxed">{{ page.tldr }}</p>
+			</div>
+			{% endif %}
+
+			<!-- Article Content with Tailwind Typography -->
+			<div class="prose prose-lg prose-cyan max-w-none
+				prose-headings:font-semibold prose-headings:text-cyan-900 prose-headings:tracking-tight
+				prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:border-b prose-h2:border-cyan-100 prose-h2:pb-3
+				prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
+				prose-p:text-cyan-800 prose-p:font-light prose-p:leading-relaxed
+				prose-a:text-cyan-600 prose-a:underline prose-a:decoration-cyan-300 hover:prose-a:text-cyan-900
+				prose-strong:text-cyan-900 prose-strong:font-semibold
+				prose-ul:text-cyan-800 prose-ol:text-cyan-800
+				prose-li:font-light prose-li:leading-relaxed
+				prose-blockquote:border-cyan-400 prose-blockquote:text-cyan-700 prose-blockquote:font-light prose-blockquote:italic
+				prose-hr:border-cyan-200" itemprop="articleBody">
 				{{ content }}
 			</div>
 
-			<div class="mt-12 pt-8 border-t border-cyan-200">
-				<p class="text-cyan-700 font-light mb-4">Ready to build clarity in your organization?</p>
-				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-full font-medium hover:shadow-lg transition-all">
+			<!-- Tags -->
+			{% if page.tags.size > 0 %}
+			<div class="mt-10 pt-6 border-t border-cyan-200">
+				<div class="flex flex-wrap gap-2">
+					{% for tag in page.tags %}
+					<span class="px-3 py-1 text-xs font-medium text-cyan-700 bg-cyan-50 border border-cyan-200 rounded-full">{{ tag }}</span>
+					{% endfor %}
+				</div>
+			</div>
+			{% endif %}
+
+			<!-- CTA -->
+			<div class="mt-12 p-8 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-2xl text-center">
+				<p class="text-white text-lg font-light mb-2">Ready to build clarity in your organization?</p>
+				<p class="text-cyan-200 text-sm mb-6">Let's explore how AI partnership can amplify your team's expertise.</p>
+				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-white text-cyan-700 rounded-full font-medium hover:shadow-lg transition-all">
 					Let's Talk
 				</a>
 			</div>
 
-			<!-- Related Posts (auto-generated from tags) -->
+			<!-- Related Posts -->
 			{% assign related = site.posts | where_exp: "post", "post.url != page.url" %}
 			{% if page.tags.size > 0 %}
 				{% assign related = "" | split: "" %}
@@ -138,13 +205,16 @@
 			{% endif %}
 			{% assign related = related | slice: 0, 3 %}
 			{% if related.size > 0 %}
-			<div class="mt-16 pt-8 border-t border-cyan-200">
-				<h3 class="text-xl font-light text-cyan-900 mb-6">Related Posts</h3>
+			<div class="mt-16">
+				<h2 class="text-2xl font-light text-cyan-900 mb-6">Continue Reading</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{% for post in related limit:2 %}
-					<a href="{{ post.url }}" class="p-4 border border-cyan-200 rounded-lg hover:shadow-md transition-shadow">
-						<h4 class="font-medium text-cyan-900 mb-2">{{ post.title }}</h4>
-						<p class="text-sm text-cyan-700">{{ post.description | truncate: 100 }}</p>
+					<a href="{{ post.url }}" class="group p-6 bg-white border border-cyan-200 rounded-2xl hover:shadow-lg transition-all">
+						{% if post.category %}
+						<p class="text-xs font-medium text-blue-600 uppercase tracking-wider mb-2">{{ post.category }}</p>
+						{% endif %}
+						<h3 class="font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">{{ post.title }}</h3>
+						<p class="text-sm text-cyan-700 font-light">{{ post.description | truncate: 120 }}</p>
 					</a>
 					{% endfor %}
 				</div>
