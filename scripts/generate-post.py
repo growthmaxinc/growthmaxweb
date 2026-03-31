@@ -5,6 +5,7 @@ Called by GitHub Actions on a schedule (Mon/Wed/Fri).
 """
 
 import os
+import sys
 import json
 import yaml
 import re
@@ -163,7 +164,7 @@ def main():
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         print("Error: ANTHROPIC_API_KEY not set")
-        return
+        sys.exit(1)
 
     client = Anthropic(api_key=api_key)
 
