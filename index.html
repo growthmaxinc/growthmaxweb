@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -287,21 +289,13 @@
 				</p>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-				<a href="/blog-why-ai-implementations-fail.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
-					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">AI Strategy</p>
-					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">Why AI Implementations Fail</h3>
-					<p class="text-sm text-cyan-700 font-light">The problem isn't the technology. It's the gap between adoption and alignment.</p>
+				{% for post in site.posts limit:3 %}
+				<a href="{{ post.url }}" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
+					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">{{ post.category }}</p>
+					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">{{ post.title }}</h3>
+					<p class="text-sm text-cyan-700 font-light">{{ post.description | truncate: 100 }}</p>
 				</a>
-				<a href="/blog-where-do-i-fit-crisis.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
-					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">People & Culture</p>
-					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">The "Where Do I Fit?" Crisis</h3>
-					<p class="text-sm text-cyan-700 font-light">Understanding employee anxiety in AI adoption and what leaders can do about it.</p>
-				</a>
-				<a href="/blog-your-first-ai-agent.html" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
-					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">Getting Started</p>
-					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">Your First AI Agent</h3>
-					<p class="text-sm text-cyan-700 font-light">Start small for maximum impact. A practical guide to your first custom AI agent.</p>
-				</a>
+				{% endfor %}
 			</div>
 			<div class="text-center">
 				<a href="/resources/blog.html" class="inline-block px-8 py-3 border-2 border-cyan-700 text-cyan-800 rounded-full font-medium hover:bg-cyan-700 hover:text-white transition-all">
