@@ -175,7 +175,7 @@
 			<div class="mt-10 pt-6 border-t border-cyan-200">
 				<div class="flex flex-wrap gap-2">
 					{% for tag in page.tags %}
-					<span class="px-3 py-1 text-xs font-medium text-cyan-700 bg-cyan-50 border border-cyan-200 rounded-full">{{ tag }}</span>
+					<a href="/tags/{{ tag }}/" class="px-3 py-1 text-xs font-medium text-cyan-700 bg-cyan-50 border border-cyan-200 rounded-full hover:bg-cyan-100 hover:text-cyan-900 transition-colors">{{ tag }}</a>
 					{% endfor %}
 				</div>
 			</div>

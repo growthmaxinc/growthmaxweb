@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include head.html %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "CollectionPage",
+		"name": "{{ page.title | escape }}",
+		"description": "{{ page.description | escape }}",
+		"url": "{{ page.url | absolute_url }}"
+	}
+	</script>
+</head>
+<body class="bg-sky-50 text-gray-900 antialiased">
+	{% include nav.html %}
+
+	<!-- Tag Header -->
+	<section class="pt-24 pb-12 md:pb-16 px-6 bg-gradient-to-br from-cyan-50 via-blue-50 to-sky-50">
+		<div class="max-w-4xl mx-auto text-center">
+			<p class="text-sm font-medium text-blue-600 uppercase tracking-wider mb-3">Tagged</p>
+			<h1 class="text-3xl md:text-5xl font-light text-cyan-900 tracking-tight mb-4">{{ page.tag_name }}</h1>
+			{% if page.description %}
+			<p class="text-lg text-cyan-700 font-light">{{ page.description }}</p>
+			{% endif %}
+		</div>
+	</section>
+
+	<!-- Posts with this tag -->
+	<section class="py-12 md:py-20 px-6 bg-white">
+		<div class="max-w-4xl mx-auto">
+			{% assign tagged_posts = site.tags[page.tag] %}
+			{% if tagged_posts.size > 0 %}
+			<div class="space-y-8">
+				{% for post in tagged_posts %}
+				<a href="{{ post.url }}" class="block group p-6 bg-white border border-cyan-200 rounded-2xl hover:shadow-lg transition-all">
+					<div class="flex flex-col md:flex-row md:items-start md:gap-6">
+						<div class="flex-1">
+							{% if post.category %}
+							<p class="text-xs font-medium text-blue-600 uppercase tracking-wider mb-2">{{ post.category }}</p>
+							{% endif %}
+							<h2 class="text-xl font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">{{ post.title }}</h2>
+							<p class="text-sm text-cyan-600 mb-3">{{ post.date | date: "%B %d, %Y" }}{% if post.read_time %} &bull; {{ post.read_time }} min read{% endif %}</p>
+							<p class="text-cyan-700 font-light">{{ post.description }}</p>
+						</div>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+			{% else %}
+			<p class="text-cyan-700 font-light text-center">No posts found with this tag.</p>
+			{% endif %}
+
+			<div class="mt-12 text-center">
+				<a href="/resources/blog.html" class="inline-block px-8 py-3 border-2 border-cyan-700 text-cyan-800 rounded-full font-medium hover:bg-cyan-700 hover:text-white transition-all">
+					View All Posts
+				</a>
+			</div>
+		</div>
+	</section>
+
+	{% include footer.html %}
+	{% include scripts.html %}
+</body>
+</html>
