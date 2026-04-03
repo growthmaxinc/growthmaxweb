@@ -8,6 +8,8 @@ tags: [people-culture, adoption, employee-experience]
 keywords: "employee anxiety, AI adoption, workforce transformation, AI partnership"
 image: /growthMAX.PNG
 slug: where-do-i-fit-crisis
+redirect_from:
+  - /blog-where-do-i-fit-crisis.html
 ---
 
 Your company announces AI transformation. The executives talk about efficiency gains and competitive advantage. The marketing team runs a campaign about "embracing the future." You attend the training on ChatGPT. You're intellectually excited about what's possible.

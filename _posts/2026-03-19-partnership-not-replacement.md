@@ -8,6 +8,8 @@ tags: [ai-strategy, partnership, adoption]
 keywords: "AI partnership, human-AI collaboration, AI adoption strategy, AI framing"
 image: /growthMAX.PNG
 slug: partnership-not-replacement
+redirect_from:
+  - /blog-partnership-not-replacement.html
 ---
 
 The dominant narrative about AI is: robots are coming for your job. Displacement. Disruption. The future without you. This framing is everywhere. It's in the news. It's in conversations. And it's killing AI adoption.

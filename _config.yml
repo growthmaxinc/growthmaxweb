@@ -14,6 +14,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
 
 # SEO tag defaults
 author: GrowthMax Inc
@@ -36,6 +37,10 @@ defaults:
     values:
       layout: post
       author: GrowthMax Inc
+  - scope:
+      path: "tags"
+    values:
+      sitemap: false
   - scope:
       path: ""
     values:

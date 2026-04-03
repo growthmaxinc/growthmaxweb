@@ -8,6 +8,8 @@ tags: [getting-started, implementation, ai-strategy]
 keywords: "AI implementation strategy, starting with AI, first AI agent, AI adoption best practices, organizational change"
 image: /growthMAX.PNG
 slug: your-first-ai-agent
+redirect_from:
+  - /blog-your-first-ai-agent.html
 ---
 
 The tempting move is to go big. Enterprise-wide transformation. New processes. New training. New tools across the organization. You want to move fast and show impact. So you plan the massive initiative.
