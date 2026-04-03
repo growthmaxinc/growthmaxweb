@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include head.html %}
+	{% if page.schema %}
+	{{ page.schema }}
+	{% endif %}
+</head>
+<body class="bg-sky-50 text-gray-900 antialiased">
+	{% include nav.html %}
+
+	{{ content }}
+
+	{% include footer.html %}
+	{% include scripts.html %}
+</body>
+</html>
