@@ -42,19 +42,145 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 		"description": "Custom AI agents and training for organizations ready to scale with agentic AI."
 	}
 	</script>
+	<style>
+		/* Animated gradient mesh for hero */
+		.hero-mesh {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+			z-index: 0;
+		}
+		.hero-mesh::before {
+			content: '';
+			position: absolute;
+			width: 150%;
+			height: 150%;
+			top: -25%;
+			left: -25%;
+			background:
+				radial-gradient(ellipse 600px 600px at 20% 30%, rgba(6,182,212,0.15) 0%, transparent 70%),
+				radial-gradient(ellipse 500px 500px at 75% 60%, rgba(99,102,241,0.12) 0%, transparent 70%),
+				radial-gradient(ellipse 400px 400px at 50% 80%, rgba(14,165,233,0.10) 0%, transparent 70%);
+			animation: meshDrift 20s ease-in-out infinite alternate;
+		}
+		@keyframes meshDrift {
+			0% { transform: translate(0, 0) rotate(0deg); }
+			33% { transform: translate(30px, -20px) rotate(1deg); }
+			66% { transform: translate(-20px, 15px) rotate(-1deg); }
+			100% { transform: translate(10px, -10px) rotate(0.5deg); }
+		}
+		/* Floating shapes */
+		.hero-shape {
+			position: absolute;
+			border-radius: 50%;
+			opacity: 0.08;
+			filter: blur(1px);
+		}
+		.hero-shape-1 {
+			width: 300px; height: 300px;
+			background: linear-gradient(135deg, #06b6d4, #6366f1);
+			top: 10%; right: 5%;
+			animation: float1 15s ease-in-out infinite;
+		}
+		.hero-shape-2 {
+			width: 200px; height: 200px;
+			background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+			bottom: 15%; left: 8%;
+			animation: float2 18s ease-in-out infinite;
+		}
+		.hero-shape-3 {
+			width: 150px; height: 150px;
+			background: linear-gradient(135deg, #6366f1, #0ea5e9);
+			top: 55%; left: 65%;
+			animation: float3 12s ease-in-out infinite;
+		}
+		@keyframes float1 {
+			0%, 100% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(-30px, 25px) scale(1.05); }
+		}
+		@keyframes float2 {
+			0%, 100% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(20px, -30px) scale(0.95); }
+		}
+		@keyframes float3 {
+			0%, 100% { transform: translate(0, 0); }
+			50% { transform: translate(-15px, -20px); }
+		}
+		/* Process timeline connector */
+		.timeline-connector {
+			position: relative;
+		}
+		.timeline-connector::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: -2rem;
+			width: 2rem;
+			height: 2px;
+			background: linear-gradient(to right, #0891b2, #4f46e5);
+			display: none;
+		}
+		@media (min-width: 768px) {
+			.timeline-connector::after { display: block; }
+			.timeline-connector:last-child::after { display: none; }
+		}
+		/* Solution card gradient border on hover */
+		.solution-card {
+			position: relative;
+			overflow: hidden;
+			transition: all 0.3s ease;
+		}
+		.solution-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 4px;
+			height: 100%;
+			background: linear-gradient(to bottom, #06b6d4, #4f46e5);
+			transform: scaleY(0);
+			transform-origin: bottom;
+			transition: transform 0.3s ease;
+		}
+		.solution-card:hover::before {
+			transform: scaleY(1);
+			transform-origin: top;
+		}
+		.solution-card:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 20px 40px -12px rgba(6,182,212,0.15);
+		}
+		/* Trust logo grayscale */
+		.trust-logo {
+			filter: grayscale(100%);
+			opacity: 0.5;
+			transition: all 0.3s ease;
+		}
+		.trust-logo:hover {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
+	</style>
 </head>
 <body class="bg-sky-50 text-gray-900 antialiased">
 	{% include nav.html %}
+
 	<!-- Hero Section -->
-	<section id="home" class="min-h-screen flex items-center justify-center px-6">
-		<div class="text-center max-w-4xl mx-auto">
-			<h1 class="text-6xl md:text-7xl font-light tracking-tight text-cyan-900 max-w-3xl mx-auto leading-relaxed mb-8">
+	<section id="home" class="min-h-screen flex items-center justify-center px-6 relative">
+		<div class="hero-mesh">
+			<div class="hero-shape hero-shape-1"></div>
+			<div class="hero-shape hero-shape-2"></div>
+			<div class="hero-shape hero-shape-3"></div>
+		</div>
+		<div class="text-center max-w-4xl mx-auto relative z-10">
+			<p data-aos="fade-down" data-aos-delay="0" class="text-sm font-medium text-cyan-600 uppercase tracking-widest mb-6">AI Consultancy &amp; Agent Development</p>
+			<h1 data-aos="fade-up" data-aos-delay="100" class="text-6xl md:text-7xl font-light tracking-tight text-cyan-900 max-w-3xl mx-auto leading-relaxed mb-6">
 				Partnership. Not Replacement.
 			</h1>
-			<p class="text-lg md:text-xl text-cyan-800 font-light max-w-2xl mx-auto leading-relaxed mb-8">
+			<p data-aos="fade-up" data-aos-delay="200" class="text-lg md:text-xl text-cyan-800 font-light max-w-2xl mx-auto leading-relaxed mb-10">
 				Custom AI agents designed to augment your expertise, amplify your judgment, and help you achieve outcomes neither of you could alone.
 			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+			<div data-aos="fade-up" data-aos-delay="300" class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all">
 					Let's Talk
 				</a>
@@ -68,8 +194,8 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 	<!-- About Section -->
 	<section id="about" class="py-12 md:py-20 px-6">
 		<div class="max-w-4xl mx-auto">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About GrowthMax</h2>
-			<div class="text-base md:text-lg text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto space-y-6">
+			<h2 data-aos="fade-up" class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">About GrowthMax</h2>
+			<div data-aos="fade-up" data-aos-delay="100" class="text-base md:text-lg text-cyan-800 font-light leading-relaxed max-w-3xl mx-auto space-y-6">
 				<p>
 					<strong class="text-cyan-900">Organizations are adopting AI. People want to use it. But there's confusion at both levels.</strong>
 					Teams are scattered across fragmented tools. Leadership lacks a coherent adoption strategy. And individuals are asking: "Where do I fit?" The gap isn't resistance &mdash; it's disorientation while culture lags behind technology.
@@ -84,84 +210,88 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 		</div>
 	</section>
 
-	<!-- Process Section -->
-	<section id="process" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
+	<!-- Process Section — Horizontal Timeline -->
+	<section id="process" class="py-12 md:py-24 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
 		<div class="max-w-6xl mx-auto">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">Our Process</h2>
-			<p class="text-base md:text-lg text-center text-cyan-800 font-light max-w-2xl mx-auto mb-16">
+			<h2 data-aos="fade-up" class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center text-cyan-900">Our Process</h2>
+			<p data-aos="fade-up" data-aos-delay="100" class="text-base md:text-lg text-center text-cyan-800 font-light max-w-2xl mx-auto mb-16">
 				A structured, end-to-end approach to building your custom AI agent. From discovery to deployment and beyond.
 			</p>
 
-			<!-- Process Steps Grid - Top Row (3) -->
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-				<!-- Step 1: Assess -->
-				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
-					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-						<span class="text-white font-bold text-lg">1</span>
+			<!-- Timeline Track -->
+			<div class="relative max-w-5xl mx-auto">
+				<!-- Horizontal line (desktop) -->
+				<div class="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400"></div>
+
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
+					<!-- Step 1 -->
+					<div data-aos="fade-up" data-aos-delay="0" class="relative text-center">
+						<div class="w-24 h-24 mx-auto mb-6 relative z-10">
+							<div class="w-full h-full rounded-2xl bg-white shadow-lg border border-cyan-200 flex items-center justify-center group hover:shadow-xl hover:border-cyan-300 transition-all">
+								<svg class="w-10 h-10 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+							</div>
+						</div>
+						<span class="inline-block text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full px-3 py-1 mb-3">Step 1</span>
+						<h3 class="text-lg font-semibold text-cyan-900 mb-2">Assess</h3>
+						<p class="text-sm text-cyan-800 font-light leading-relaxed">Understand your role, workflows, pain points, and opportunities.</p>
 					</div>
-					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Assess</h3>
-					<p class="text-sm text-cyan-800 font-light leading-relaxed">
-						Understand your role, workflows, pain points, and opportunities. Deep dive into what matters most.
-					</p>
-				</div>
 
-				<!-- Step 2: Strategy -->
-				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
-					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-						<span class="text-white font-bold text-lg">2</span>
+					<!-- Step 2 -->
+					<div data-aos="fade-up" data-aos-delay="100" class="relative text-center">
+						<div class="w-24 h-24 mx-auto mb-6 relative z-10">
+							<div class="w-full h-full rounded-2xl bg-white shadow-lg border border-cyan-200 flex items-center justify-center hover:shadow-xl hover:border-cyan-300 transition-all">
+								<svg class="w-10 h-10 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" /></svg>
+							</div>
+						</div>
+						<span class="inline-block text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full px-3 py-1 mb-3">Step 2</span>
+						<h3 class="text-lg font-semibold text-cyan-900 mb-2">Strategy</h3>
+						<p class="text-sm text-cyan-800 font-light leading-relaxed">Design agent capabilities and plan integration with your systems.</p>
 					</div>
-					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Strategy</h3>
-					<p class="text-sm text-cyan-800 font-light leading-relaxed">
-						Design agent capabilities, define approach, and plan integration with your existing systems.
-					</p>
-				</div>
 
-				<!-- Step 3: Build -->
-				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
-					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-						<span class="text-white font-bold text-lg">3</span>
+					<!-- Step 3 -->
+					<div data-aos="fade-up" data-aos-delay="200" class="relative text-center">
+						<div class="w-24 h-24 mx-auto mb-6 relative z-10">
+							<div class="w-full h-full rounded-2xl bg-white shadow-lg border border-cyan-200 flex items-center justify-center hover:shadow-xl hover:border-cyan-300 transition-all">
+								<svg class="w-10 h-10 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.25-3.03a.75.75 0 010-1.28l5.25-3.03a.75.75 0 011.08.67v6.06a.75.75 0 01-1.08.67zM17.25 12l-5.25 3.03a.75.75 0 01-1.08-.67V8.3a.75.75 0 011.08-.67l5.25 3.03a.75.75 0 010 1.34z" /><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 8.25v-.75A2.25 2.25 0 0012 5.25h0A2.25 2.25 0 009.75 7.5v.75" /></svg>
+							</div>
+						</div>
+						<span class="inline-block text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full px-3 py-1 mb-3">Step 3</span>
+						<h3 class="text-lg font-semibold text-cyan-900 mb-2">Build</h3>
+						<p class="text-sm text-cyan-800 font-light leading-relaxed">Develop and deploy your custom AI agent, fast and focused.</p>
 					</div>
-					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Build</h3>
-					<p class="text-sm text-cyan-800 font-light leading-relaxed">
-						Develop and deploy your custom AI agent. Fast, focused, and ready for real-world use.
-					</p>
-				</div>
-			</div>
 
-			</div>
-
-
-			<!-- Process Steps Grid - Bottom Row (2, centered) -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto mt-8">
-				<!-- Step 4: Test -->
-				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
-					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-						<span class="text-white font-bold text-lg">4</span>
+					<!-- Step 4 -->
+					<div data-aos="fade-up" data-aos-delay="300" class="relative text-center">
+						<div class="w-24 h-24 mx-auto mb-6 relative z-10">
+							<div class="w-full h-full rounded-2xl bg-white shadow-lg border border-cyan-200 flex items-center justify-center hover:shadow-xl hover:border-cyan-300 transition-all">
+								<svg class="w-10 h-10 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>
+							</div>
+						</div>
+						<span class="inline-block text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full px-3 py-1 mb-3">Step 4</span>
+						<h3 class="text-lg font-semibold text-cyan-900 mb-2">Test</h3>
+						<p class="text-sm text-cyan-800 font-light leading-relaxed">Refine through iteration and real-world feedback.</p>
 					</div>
-					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Test</h3>
-					<p class="text-sm text-cyan-800 font-light leading-relaxed">
-						Refine through iteration and real-world feedback. Continuous improvement from day one.
-					</p>
-				</div>
 
-				<!-- Step 5: Amplify -->
-				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-cyan-200 text-center">
-					<div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-						<span class="text-white font-bold text-lg">5</span>
+					<!-- Step 5 -->
+					<div data-aos="fade-up" data-aos-delay="400" class="relative text-center">
+						<div class="w-24 h-24 mx-auto mb-6 relative z-10">
+							<div class="w-full h-full rounded-2xl bg-white shadow-lg border border-cyan-200 flex items-center justify-center hover:shadow-xl hover:border-cyan-300 transition-all">
+								<svg class="w-10 h-10 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+							</div>
+						</div>
+						<span class="inline-block text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full px-3 py-1 mb-3">Step 5</span>
+						<h3 class="text-lg font-semibold text-cyan-900 mb-2">Amplify</h3>
+						<p class="text-sm text-cyan-800 font-light leading-relaxed">Scale performance with your organization as you grow.</p>
 					</div>
-					<h3 class="text-lg font-semibold text-cyan-900 mb-3">Amplify</h3>
-					<p class="text-sm text-cyan-800 font-light leading-relaxed">
-						Optimize performance and scale with your organization. Your agent grows as you grow.
-					</p>
 				</div>
 			</div>
 
 			<!-- Process Philosophy -->
-			<div class="mt-12 max-w-3xl mx-auto text-center">
+			<div data-aos="fade-up" class="mt-16 max-w-3xl mx-auto text-center">
 				<p class="text-base md:text-lg text-cyan-800 font-light leading-relaxed mb-8">
-					Our process is grounded in partnership. Every step is designed to ensure your agent augments your expertise, amplifies your judgment, and creates outcomes neither of you could achieve alone.
+					Our process is grounded in partnership. Every step ensures your agent augments your expertise, amplifies your judgment, and creates outcomes neither of you could achieve alone.
 				</p>
-				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg transition-all">
+				<a href="mailto:hi@growthmaxinc.com" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all">
 					Let's Talk
 				</a>
 			</div>
@@ -172,8 +302,8 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 	<section class="py-12 md:py-20 px-6">
 		<div class="max-w-6xl mx-auto">
 			<div class="text-center mb-12">
-				<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900">Solutions</h2>
-				<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
+				<h2 data-aos="fade-up" class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900">Solutions</h2>
+				<p data-aos="fade-up" data-aos-delay="100" class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
 					We offer three complementary approaches to building AI capability in your organization.
 				</p>
 			</div>
@@ -181,33 +311,68 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 			<!-- Solutions Grid -->
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				<!-- Solution 1 -->
-				<div class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+				<div data-aos="fade-up" data-aos-delay="0" class="solution-card bg-white rounded-2xl p-8 shadow-md border border-cyan-200">
+					<div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center mb-6">
+						<svg class="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg>
+					</div>
 					<h3 class="text-2xl font-light text-cyan-900 mb-4">Custom AI Agent Development</h3>
 					<p class="text-cyan-800 font-light mb-6">We design and deploy AI agents built for your specific role and workflows. An always-on expert that amplifies your judgment.</p>
-					<a href="/solutions/agent-development.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium">
+					<a href="/solutions/agent-development.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium group">
 						Learn More
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
 					</a>
 				</div>
 
 				<!-- Solution 2 -->
-				<div class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+				<div data-aos="fade-up" data-aos-delay="100" class="solution-card bg-white rounded-2xl p-8 shadow-md border border-cyan-200">
+					<div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center mb-6">
+						<svg class="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+					</div>
 					<h3 class="text-2xl font-light text-cyan-900 mb-4">AI Engineer Bootcamp</h3>
 					<p class="text-cyan-800 font-light mb-6">Equip your team to build production-ready agents through hands-on learning via Hyperskill partnership.</p>
-					<a href="/solutions/bootcamp.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium">
+					<a href="/solutions/bootcamp.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium group">
 						Learn More
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
 					</a>
 				</div>
 
 				<!-- Solution 3 -->
-				<div class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow">
+				<div data-aos="fade-up" data-aos-delay="200" class="solution-card bg-white rounded-2xl p-8 shadow-md border border-cyan-200">
+					<div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center mb-6">
+						<svg class="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>
+					</div>
 					<h3 class="text-2xl font-light text-cyan-900 mb-4">AI Foundations Bootcamp</h3>
 					<p class="text-cyan-800 font-light mb-6">Enable cross-functional teams to see AI as partnership, not replacement. Build organizational AI literacy.</p>
-					<a href="/solutions/foundations.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium">
+					<a href="/solutions/foundations.html" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-medium group">
 						Learn More
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
 					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Trust Signals Section -->
+	<section class="py-12 md:py-16 px-6 border-y border-cyan-200 bg-white">
+		<div class="max-w-5xl mx-auto">
+			<p data-aos="fade-up" class="text-center text-sm font-medium text-cyan-600 uppercase tracking-widest mb-10">Trusted by forward-thinking organizations</p>
+			<!-- Client logos placeholder — replace with real logos -->
+			<div data-aos="fade-up" data-aos-delay="100" class="flex flex-wrap items-center justify-center gap-10 md:gap-16 mb-12">
+				<div class="w-28 h-10 rounded bg-cyan-100/60 flex items-center justify-center text-cyan-400 text-xs font-medium">Logo 1</div>
+				<div class="w-28 h-10 rounded bg-cyan-100/60 flex items-center justify-center text-cyan-400 text-xs font-medium">Logo 2</div>
+				<div class="w-28 h-10 rounded bg-cyan-100/60 flex items-center justify-center text-cyan-400 text-xs font-medium">Logo 3</div>
+				<div class="w-28 h-10 rounded bg-cyan-100/60 flex items-center justify-center text-cyan-400 text-xs font-medium">Logo 4</div>
+				<div class="w-28 h-10 rounded bg-cyan-100/60 flex items-center justify-center text-cyan-400 text-xs font-medium">Logo 5</div>
+			</div>
+			<!-- Testimonial -->
+			<div data-aos="fade-up" data-aos-delay="200" class="max-w-3xl mx-auto text-center">
+				<svg class="w-10 h-10 text-cyan-200 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+				<blockquote class="text-lg md:text-xl text-cyan-800 font-light leading-relaxed italic mb-6">
+					"Replace this with a real client testimonial about the impact of working with GrowthMax. One to two sentences that speak to concrete outcomes."
+				</blockquote>
+				<div>
+					<p class="text-sm font-medium text-cyan-900">Client Name</p>
+					<p class="text-xs text-cyan-600">Title, Company</p>
 				</div>
 			</div>
 		</div>
@@ -217,21 +382,21 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 	<section class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
 		<div class="max-w-5xl mx-auto">
 			<div class="text-center mb-12">
-				<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-6 text-cyan-900">Thoughts on AI & Partnership</h2>
-				<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
+				<h2 data-aos="fade-up" class="text-3xl md:text-5xl font-light tracking-tight mb-6 text-cyan-900">Thoughts on AI & Partnership</h2>
+				<p data-aos="fade-up" data-aos-delay="100" class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mx-auto">
 					Our latest insights on AI adoption, human-AI partnership, and building organizations where technology and people thrive together.
 				</p>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
 				{% for post in site.posts limit:3 %}
-				<a href="{{ post.url }}" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg transition-shadow group">
+				<a data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}" href="{{ post.url }}" class="bg-white rounded-2xl p-6 shadow-md border border-cyan-200 hover:shadow-lg hover:-translate-y-1 transition-all group">
 					<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">{{ post.category }}</p>
 					<h3 class="text-lg font-medium text-cyan-900 mb-2 group-hover:text-blue-700 transition-colors">{{ post.title }}</h3>
 					<p class="text-sm text-cyan-700 font-light">{{ post.description | truncate: 100 }}</p>
 				</a>
 				{% endfor %}
 			</div>
-			<div class="text-center">
+			<div data-aos="fade-up" class="text-center">
 				<a href="/resources/blog.html" class="inline-block px-8 py-3 border-2 border-cyan-700 text-cyan-800 rounded-full font-medium hover:bg-cyan-700 hover:text-white transition-all">
 					View All Posts
 				</a>
@@ -242,11 +407,11 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 	<!-- Team Section -->
 	<section id="team" class="py-12 md:py-20 px-6">
 		<div class="max-w-6xl mx-auto">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 md:mb-12 text-center text-cyan-900">Team</h2>
+			<h2 data-aos="fade-up" class="text-3xl md:text-5xl font-light tracking-tight mb-8 md:mb-12 text-center text-cyan-900">Team</h2>
 			<!-- Team Grid -->
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
 				<!-- Founder 1 -->
-				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+				<div data-aos="fade-up" data-aos-delay="0" class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200 hover:shadow-xl hover:-translate-y-1 transition-all">
 					<div class="mb-6">
 						<img src="chris_gemini_cartoon.png" alt="Chris Angell" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
 					</div>
@@ -262,7 +427,7 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 					</a>
 				</div>
 				<!-- Founder 2 -->
-				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+				<div data-aos="fade-up" data-aos-delay="100" class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200 hover:shadow-xl hover:-translate-y-1 transition-all">
 					<div class="mb-6">
 						<img src="debamitro_gemini_cartoon.png" alt="Debamitro Chakraborti" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
 					</div>
@@ -278,7 +443,7 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 					</a>
 				</div>
 				<!-- Founder 3 -->
-				<div class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200">
+				<div data-aos="fade-up" data-aos-delay="200" class="text-center bg-white/80 rounded-3xl p-6 md:p-8 shadow-lg border border-cyan-200 hover:shadow-xl hover:-translate-y-1 transition-all">
 					<div class="mb-6">
 						<img src="rajanish_gemini_cartoon.png" alt="Rajanish Dass" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full object-cover border-4 border-cyan-300">
 					</div>
@@ -297,9 +462,26 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 		</div>
 	</section>
 
+	<!-- AI Readiness Assessment CTA -->
+	<section class="py-12 md:py-20 px-6 bg-gradient-to-br from-blue-600 to-indigo-700 relative overflow-hidden">
+		<!-- Decorative shapes -->
+		<div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2"></div>
+		<div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2"></div>
+		<div data-aos="fade-up" class="max-w-3xl mx-auto text-center relative z-10">
+			<span class="inline-block text-sm font-medium text-blue-200 uppercase tracking-widest mb-4">Free Assessment</span>
+			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-6 text-white">How ready is your organization for AI?</h2>
+			<p class="text-lg text-blue-100 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+				Take our 5-minute AI Readiness Assessment to discover where you stand, where the biggest opportunities are, and what to do next.
+			</p>
+			<a href="mailto:hi@growthmaxinc.com?subject=AI%20Readiness%20Assessment" class="inline-block px-10 py-4 bg-white text-blue-700 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all">
+				Take the Assessment
+			</a>
+		</div>
+	</section>
+
 	<!-- Contact Section -->
 	<section id="contact" class="py-12 md:py-20 px-6">
-		<div class="max-w-2xl mx-auto text-center">
+		<div data-aos="fade-up" class="max-w-2xl mx-auto text-center">
 			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">Let's Talk</h2>
 			<p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed">
 				Ready to explore what a personal AI agent could do for your role? Let's talk about partnership, not replacement.
