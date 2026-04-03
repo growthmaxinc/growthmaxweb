@@ -51,3 +51,7 @@ A personal agent is a practical interim bridge while that evolution happens. It 
 One person with one agent becomes two, then five, then twenty. Each person sees someone else thriving with partnership. Each person asks: "Can we build one for my role?" Adoption compounds. Momentum builds. And suddenly, you're not pushing transformation. You're scaling it.
 
 This is how organizations that "adopt AI successfully" actually do it. Not with big mandates. Not with enterprise initiatives. But with one clear win that creates momentum for the next, and the next.
+
+Once your first agent is running, the next question is how to prove its value. We wrote a practical guide to [measuring ROI on your first AI agent](/blog/measure-roi-first-ai-agent/) that covers exactly that.
+
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

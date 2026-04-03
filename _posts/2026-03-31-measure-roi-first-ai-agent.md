@@ -81,3 +81,7 @@ Create a simple dashboard that leadership can understand at a glance. Include bo
 Remember that ROI measurement is itself a partnership between human judgment and data analysis. The numbers tell you what happened, but human insight tells you why it happened and what to do next.
 
 Measuring AI ROI isn't about proving your technology works --- it's about proving your people are more effective because of it.
+
+Not sure where to start? Read our guide on [picking your first AI agent](/blog/your-first-ai-agent/) — the right first use case makes measurement much easier.
+
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
