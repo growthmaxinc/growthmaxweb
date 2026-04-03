@@ -8,8 +8,6 @@ tags: [ai-strategy, implementation, organizational-change]
 keywords: "AI implementation, AI adoption, organizational change, AI strategy"
 image: /growthMAX.PNG
 slug: why-ai-implementations-fail
-redirect_from:
-  - /blog-why-ai-implementations-fail.html
 ---
 
 Your organization just approved a $500K AI initiative. The executive team is excited. The board is watching. You've got the budget, the tools, and the mandate to transform. Six months later, half the team is still using spreadsheets. The other half tried the new AI tools for two weeks and went back to what they know. This isn't rare. This is the norm.
