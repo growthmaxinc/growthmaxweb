@@ -40,7 +40,7 @@ The most effective AI transformations begin with understanding your team's curre
 
 Technology doesn't transform organizations. People using technology transform organizations.
 
-When we analyze successful AI implementations, the pattern is clear: teams that spent significant time on the human elements — communication, training, workflow design — consistently outperform those that jumped straight to tool deployment.
+When we analyze successful AI implementations, the pattern is clear: teams that spent significant time on the human elements — communication, training, workflow design — consistently outperform those that jumped straight to tool deployment. In fact, [organizational disorientation is the top reason AI implementations fail](/blog/why-ai-implementations-fail/).
 
 The failure pattern is equally consistent. Organizations rush to implement AI tools, then wonder why adoption stalls at 20%. **The missing piece isn't better technology — it's better preparation of the people who'll use it**.
 
@@ -52,7 +52,7 @@ Consider this: your team has been doing their jobs effectively without AI. From 
 
 Your team's biggest concern isn't learning new tools — it's whether they'll have jobs next year.
 
-This fear shows up as reluctance to engage with AI training, minimal usage of deployed tools, or active skepticism about AI initiatives. **Address this directly and early**. Share your partnership model explicitly: AI augments their expertise, it doesn't replace their judgment.
+This fear shows up as reluctance to engage with AI training, minimal usage of deployed tools, or active skepticism about AI initiatives. **Address this directly and early**. Share your partnership model explicitly: AI augments their expertise, it doesn't replace their judgment. We explore this dynamic in depth in [the "Where do I fit?" crisis](/blog/where-do-i-fit-crisis/).
 
 ### The Competence Gap
 
@@ -134,6 +134,8 @@ The organizations seeing transformational results from AI aren't necessarily usi
 
 **Your technology choices matter less than your people's readiness to use them well**. A simple AI tool adopted enthusiastically across your team delivers more value than sophisticated technology that sits unused.
 
-This people-first approach takes longer upfront but accelerates results once implementation begins. Teams that understand why they're adopting AI, how it benefits their specific work, and what success looks like consistently outperform those handed tools without context.
+This people-first approach takes longer upfront but accelerates results once implementation begins. Teams that understand why they're adopting AI, how it benefits their specific work, and what success looks like consistently outperform those handed tools without context. If you're ready to put this into action, our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) gives you a week-by-week framework.
 
 Start with your people. The technology will follow naturally — and actually get used.
+
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

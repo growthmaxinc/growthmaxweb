@@ -44,7 +44,7 @@ Start by identifying your **AI adoption team**. This should include a business s
 
 Hold alignment sessions to define success metrics upfront. What specific outcomes are you trying to achieve? How will you measure them? Document these answers clearly.
 
-Address the elephant in the room: **job displacement fears**. Have honest conversations about how AI will augment roles, not replace them. This isn't just feel-good messaging --- teams that feel threatened won't adopt new tools effectively.
+Address the elephant in the room: **job displacement fears**. Have honest conversations about how AI will augment roles, not replace them. This isn't just feel-good messaging --- teams that feel threatened won't adopt new tools effectively. A [people-first AI strategy](/blog/people-first-ai-strategy/) can help you navigate this.
 
 **Week 3-4: Use Case Selection**
 
@@ -54,7 +54,7 @@ Identify 2-3 potential use cases for your pilot. Look for tasks that are:
 - Not mission-critical (perfect for learning)
 - Performed by willing early adopters
 
-Avoid the temptation to solve your biggest problem first. **Start with meaningful but manageable challenges** where you can learn without high stakes.
+Avoid the temptation to solve your biggest problem first. **Start with meaningful but manageable challenges** where you can learn without high stakes. Our guide on [picking your first AI agent](/blog/your-first-ai-agent/) walks through this selection process in detail.
 
 End month one with a clear project charter: defined use cases, success metrics, timeline, and team roles.
 
@@ -64,7 +64,7 @@ Month two is where you move from planning to action. This phase focuses on build
 
 **Week 5-6: Solution Selection and Setup**
 
-Now you decide: custom AI agent or existing tool? For most organizations starting their AI journey, **begin with existing solutions** when possible. Custom development can come later as you learn what works.
+Now you decide: [custom AI agent or existing tool](/blog/custom-ai-agents-vs-off-shelf-tools-when-to-build/)? For most organizations starting their AI journey, **begin with existing solutions** when possible. Custom development can come later as you learn what works.
 
 If you're building custom agents, keep the initial version simple. Focus on core functionality, not bells and whistles. The goal is learning, not perfection.
 
@@ -131,3 +131,5 @@ This 90-day framework works because it balances speed with sustainability. It ac
 Start by identifying your stakeholder team and scheduling those crucial alignment conversations. The organizations that see the best results are those that invest properly in the foundation phase.
 
 Remember: the goal isn't to have AI everywhere in 90 days. It's to have AI working well somewhere, with a proven path to expand. That's how you build AI capabilities that actually move your business forward.
+
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

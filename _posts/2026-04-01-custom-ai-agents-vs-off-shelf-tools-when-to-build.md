@@ -63,7 +63,7 @@ The partnership model becomes especially important here. Custom agents amplify y
 
 Custom AI agents require significant upfront investment. Development costs typically range from $50,000 to $200,000 or more, depending on complexity. Factor in ongoing maintenance, updates, and potential scaling needs.
 
-However, the **long-term ROI** can justify this investment when the agent addresses high-value, repetitive workflows that consume significant human hours. Calculate the cost of the problem you're solving, not just the cost of the solution.
+However, the **long-term ROI** can justify this investment when the agent addresses high-value, repetitive workflows that consume significant human hours. Calculate the cost of the problem you're solving, not just the cost of the solution. Our guide on [measuring ROI on your first AI agent](/blog/measure-roi-first-ai-agent/) breaks down exactly how to do this.
 
 ## How Workflow Complexity Drives Your Decision
 
@@ -89,7 +89,7 @@ Most successful AI implementations follow a **progressive approach** rather than
 
 **Months 7-12**: Begin custom development for high-impact, poorly-served workflows while continuing to expand off-the-shelf usage in other areas.
 
-This timeline allows you to build **organizational AI literacy** before tackling complex custom projects. Your team understands AI capabilities and limitations, making them better partners in custom agent development.
+This timeline allows you to build **organizational AI literacy** before tackling complex custom projects. Your team understands AI capabilities and limitations, making them better partners in custom agent development. For a detailed week-by-week breakdown, see our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/).
 
 ### Risk Mitigation Through Phased Implementation
 
@@ -133,4 +133,6 @@ Ask these specific questions about each potential AI use case:
 
 Your answers will point toward the most strategic approach for each situation.
 
-The future belongs to organizations that **augment human expertise** with the right AI tools at the right time. Whether that means starting with proven off-the-shelf solutions or investing in custom agents depends on your specific context, but the key is starting strategically and building systematically. Your AI journey should amplify your team's unique strengths, not force them into generic workflows that miss the mark.
+The future belongs to organizations that **augment human expertise** with the right AI tools at the right time. Whether that means starting with proven off-the-shelf solutions or investing in custom agents depends on your specific context, but the key is starting strategically and building systematically. Your AI journey should amplify your team's unique strengths, not force them into generic workflows that miss the mark. If you're ready to take the first step, our guide on [picking your first AI agent](/blog/your-first-ai-agent/) will help you choose the right starting point.
+
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
