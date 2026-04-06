@@ -12,7 +12,8 @@ faq:
 - a: Custom agents take 3-6 months to build and deploy, while off-the-shelf solutions
     can be implemented in days or weeks.
   q: How long does it take to deploy a custom AI agent?
-image: /growthMAX.PNG
+image: /blog-custom-ai-agents-vs-off-shelf.png
+image_alt: Illustration comparing custom AI agent development with off-the-shelf tools
 keywords: custom AI agents, off-the-shelf AI tools, AI implementation, AI strategy,
   when to build AI agents
 read_time: 6

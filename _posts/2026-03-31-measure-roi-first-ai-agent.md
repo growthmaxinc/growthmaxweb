@@ -2,7 +2,8 @@
 category: Implementation
 description: Learn practical methods to measure real ROI on your first AI agent implementation.
   Focus on outcomes that matter, not vanity metrics.
-image: /growthMAX.PNG
+image: /blog-measure-roi-first-ai-agent.png
+image_alt: Illustration of a person reviewing AI performance dashboards and metrics
 keywords: AI ROI, measuring AI success, AI agent implementation, AI business value,
   AI metrics
 read_time: 6

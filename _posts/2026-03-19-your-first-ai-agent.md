@@ -6,7 +6,8 @@ category: "Implementation Strategy"
 read_time: 8
 tags: [getting-started, implementation, ai-strategy]
 keywords: "AI implementation strategy, starting with AI, first AI agent, AI adoption best practices, organizational change"
-image: /growthMAX.PNG
+image: /blog-your-first-ai-agent.png
+image_alt: Illustration of a person planting a seedling representing starting small with AI
 slug: your-first-ai-agent
 ---
 

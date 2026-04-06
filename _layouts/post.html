@@ -129,6 +129,15 @@
 		</div>
 	</header>
 
+	<!-- Hero Image -->
+	{% if page.image and page.image != '/growthMAX.PNG' %}
+	<div class="bg-white border-b border-cyan-200">
+		<div class="max-w-4xl mx-auto">
+			<img src="{{ page.image }}" alt="{{ page.image_alt | default: page.title }}" class="w-full h-auto" loading="eager">
+		</div>
+	</div>
+	{% endif %}
+
 	<!-- Blog Content -->
 	<article class="py-12 md:py-16 px-6" itemscope itemtype="https://schema.org/BlogPosting">
 		<meta itemprop="headline" content="{{ page.title | escape }}">

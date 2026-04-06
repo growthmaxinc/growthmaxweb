@@ -6,7 +6,8 @@ category: "Employee Experience"
 read_time: 7
 tags: [people-culture, adoption, employee-experience]
 keywords: "employee anxiety, AI adoption, workforce transformation, AI partnership"
-image: /growthMAX.PNG
+image: /blog-where-do-i-fit-crisis.png
+image_alt: Illustration of a person reflecting on their role amid AI transformation
 slug: where-do-i-fit-crisis
 ---
 

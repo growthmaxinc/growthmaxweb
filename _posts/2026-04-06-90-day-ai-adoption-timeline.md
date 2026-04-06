@@ -12,7 +12,8 @@ faq:
 - a: While possible, rushing AI adoption often leads to poor user adoption and suboptimal
     outcomes that take longer to fix than doing it right initially.
   q: Can you implement AI faster than 90 days?
-image: /growthMAX.PNG
+image: /blog-90-day-ai-adoption-timeline.png
+image_alt: Illustration of a timeline showing three phases of AI adoption over 90 days
 keywords: 90-day AI adoption timeline, AI implementation plan, AI adoption framework,
   AI rollout timeline, AI implementation schedule
 read_time: 8
