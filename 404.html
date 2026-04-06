@@ -1,0 +1,33 @@
+---
+title: "Page Not Found - GrowthMax Inc"
+description: "The page you're looking for doesn't exist."
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include head.html %}
+	<link rel="canonical" href="https://growthmaxinc.com/">
+	<script>
+		// Redirect known legacy URLs to the homepage
+		var path = window.location.pathname.toLowerCase();
+		if (path === '/index.php' || path === '/index.asp' || path === '/default.html') {
+			window.location.replace('https://growthmaxinc.com/');
+		}
+	</script>
+</head>
+<body class="bg-sky-50 text-gray-900 antialiased">
+	{% include nav.html %}
+
+	<section class="pt-32 pb-20 px-6">
+		<div class="max-w-2xl mx-auto text-center">
+			<h1 class="text-6xl md:text-7xl font-light tracking-tight text-cyan-900 mb-6">404</h1>
+			<p class="text-xl text-cyan-800 font-light leading-relaxed mb-8">The page you're looking for doesn't exist or has been moved.</p>
+			<a href="/" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-shadow">Back to Home</a>
+		</div>
+	</section>
+
+	{% include footer.html %}
+	{% include scripts.html %}
+</body>
+</html>

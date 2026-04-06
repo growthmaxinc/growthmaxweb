@@ -41,10 +41,6 @@ defaults:
     values:
       layout: null
 
-# Include non-standard file types in build
-include:
-  - index.php
-
 # Exclude from build
 exclude:
   - Gemfile
