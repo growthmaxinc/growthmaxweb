@@ -6,7 +6,7 @@ category: "AI Adoption Strategy"
 read_time: 7
 tags: [ai-strategy, implementation, organizational-change]
 keywords: "AI implementation, AI adoption, organizational change, AI strategy"
-image: /blog-why-ai-implementations-fail.png
+image: /blog-why-ai-implementations-fail.jpg
 image_alt: Illustration of fragmented puzzle pieces representing disconnected AI implementation
 slug: why-ai-implementations-fail
 ---

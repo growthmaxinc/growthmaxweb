@@ -13,7 +13,7 @@ faq:
 - a: Typically 2-4 weeks for assessment and planning, with ongoing communication and
     training that continues throughout implementation.
   q: How long should you spend on the people strategy before implementing AI?
-image: /blog-people-first-ai-strategy.png
+image: /blog-people-first-ai-strategy.jpg
 image_alt: Illustration of a team of people with AI technology supporting them in the background
 keywords: people-first AI strategy, AI adoption strategy, AI transformation, human-centered
   AI, AI change management

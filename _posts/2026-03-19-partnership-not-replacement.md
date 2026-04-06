@@ -6,7 +6,7 @@ category: "Partnership Model"
 read_time: 8
 tags: [ai-strategy, partnership, adoption]
 keywords: "AI partnership, human-AI collaboration, AI adoption strategy, AI framing"
-image: /blog-partnership-not-replacement.png
+image: /blog-partnership-not-replacement.jpg
 image_alt: Illustration of a human and AI working together as collaborative partners
 slug: partnership-not-replacement
 ---
