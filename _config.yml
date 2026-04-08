@@ -53,3 +53,5 @@ exclude:
   - .github
   - node_modules
   - vendor
+  - index.php
+  - blog-people-first
