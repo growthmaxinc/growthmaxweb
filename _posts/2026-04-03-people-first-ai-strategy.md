@@ -133,7 +133,7 @@ Measure skills development through practical assessments, not theoretical tests.
 
 The organizations seeing transformational results from AI aren't necessarily using the most advanced tools — they're using any AI tools effectively because their people strategy created the foundation for success.
 
-**Your technology choices matter less than your people's readiness to use them well**. A simple AI tool adopted enthusiastically across your team delivers more value than sophisticated technology that sits unused.
+**Your technology choices matter less than your people's readiness to use them well**. A simple AI tool adopted enthusiastically across your team delivers more value than sophisticated technology that sits unused. And when you budget for this people-first approach properly — accounting for [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/) — you set realistic expectations that sustain long-term success.
 
 This people-first approach takes longer upfront but accelerates results once implementation begins. Teams that understand why they're adopting AI, how it benefits their specific work, and what success looks like consistently outperform those handed tools without context. If you're ready to put this into action, our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) gives you a week-by-week framework.
 

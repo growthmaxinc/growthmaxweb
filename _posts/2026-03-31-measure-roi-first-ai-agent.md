@@ -57,7 +57,7 @@ Track both, but use leading indicators to guide day-to-day optimization efforts.
 
 Most ROI calculations focus on obvious costs (software, implementation, training) and obvious benefits (time saved, errors reduced). But the hidden elements often determine true ROI.
 
-**Hidden costs** include ongoing maintenance, data quality management, and the learning curve productivity dip. Don't forget the opportunity cost of the human time invested in training and adoption.
+**Hidden costs** include ongoing maintenance, data quality management, and the learning curve productivity dip. Don't forget the opportunity cost of the human time invested in training and adoption. We break down the full scope of these expenses in our guide to [the hidden costs of AI implementation](/blog/hidden-costs-ai-implementation-beyond-technology-budget/).
 
 **Hidden benefits** are often more significant than the obvious ones. Improved employee satisfaction from eliminating tedious work. Reduced turnover because people can focus on meaningful tasks. Enhanced decision-making because information is more accessible and consistent.
 
