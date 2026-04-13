@@ -453,20 +453,76 @@ description: "GrowthMax builds custom AI agents tailored to your role. Augment y
 
 	<!-- Contact Section -->
 	<section id="contact" class="py-12 md:py-20 px-6">
-		<div data-aos="fade-up" class="max-w-2xl mx-auto text-center">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-8 text-cyan-900">Let's Talk</h2>
-			<p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed">
-				Ready to explore what a personal AI agent could do for your role? Let's talk about partnership, not replacement.
+		<div class="max-w-2xl mx-auto">
+			<div data-aos="fade-up" class="text-center mb-10">
+				<h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4 text-cyan-900">Let's Talk</h2>
+				<p class="text-base md:text-xl text-cyan-800 font-light leading-relaxed">
+					Ready to explore what a personal AI agent could do for your role? Tell us a little about yourself and we'll be in touch.
+				</p>
+			</div>
+			<form data-aos="fade-up" data-aos-delay="100" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-white rounded-2xl p-8 shadow-md border border-cyan-200 space-y-6">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div>
+						<label for="contact-name" class="block text-sm font-medium text-cyan-900 mb-2">Name</label>
+						<input type="text" id="contact-name" name="name" required
+							class="w-full px-4 py-3 rounded-xl border border-cyan-200 bg-sky-50/50 text-cyan-900 placeholder-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+							placeholder="Your name">
+					</div>
+					<div>
+						<label for="contact-email" class="block text-sm font-medium text-cyan-900 mb-2">Email</label>
+						<input type="email" id="contact-email" name="email" required
+							class="w-full px-4 py-3 rounded-xl border border-cyan-200 bg-sky-50/50 text-cyan-900 placeholder-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+							placeholder="you@company.com">
+					</div>
+				</div>
+				<div>
+					<label for="contact-company" class="block text-sm font-medium text-cyan-900 mb-2">Company <span class="text-cyan-500 font-light">(optional)</span></label>
+					<input type="text" id="contact-company" name="company"
+						class="w-full px-4 py-3 rounded-xl border border-cyan-200 bg-sky-50/50 text-cyan-900 placeholder-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+						placeholder="Your organization">
+				</div>
+				<div>
+					<label for="contact-message" class="block text-sm font-medium text-cyan-900 mb-2">How can we help?</label>
+					<textarea id="contact-message" name="message" rows="4" required
+						class="w-full px-4 py-3 rounded-xl border border-cyan-200 bg-sky-50/50 text-cyan-900 placeholder-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none"
+						placeholder="Tell us about your role and what you're looking to accomplish with AI..."></textarea>
+				</div>
+				<!-- Honeypot for spam prevention -->
+				<input type="text" name="_gotcha" style="display:none">
+				<div class="text-center">
+					<button type="submit"
+						class="inline-block px-10 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all">
+						Send Message
+					</button>
+				</div>
+			</form>
+			<p data-aos="fade-up" data-aos-delay="200" class="text-center mt-6 text-sm text-cyan-700 font-light">
+				Or email us directly at
+				<a href="mailto:hi@growthmaxinc.com" class="text-cyan-600 hover:text-cyan-900 font-medium underline transition-colors">hi@growthmaxinc.com</a>
 			</p>
-			<a href="mailto:hi@growthmaxinc.com" class="inline-block mt-6 text-xl md:text-2xl text-cyan-700 hover:text-cyan-900 font-medium transition-colors underline">
-				hi@growthmaxinc.com
-			</a>
 		</div>
 	</section>
 
 	{% include footer.html %}
 
 	{% include scripts.html %}
+
+	<!-- GA4 contact form submission tracking -->
+	<script>
+		(function() {
+			var form = document.querySelector('#contact form');
+			if (form) {
+				form.addEventListener('submit', function() {
+					if (typeof gtag === 'function') {
+						gtag('event', 'generate_lead', {
+							event_category: 'Contact',
+							event_label: 'Homepage Contact Form'
+						});
+					}
+				});
+			}
+		})();
+	</script>
 
 	<!-- ElevenLabs ConvAI Chatbot with pulsating glow effect -->
 	<style>
