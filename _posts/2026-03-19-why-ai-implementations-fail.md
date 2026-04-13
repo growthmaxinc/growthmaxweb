@@ -43,6 +43,6 @@ That one person becomes the proof of concept. Others see them thriving and ask: 
 
 AI implementations fail not because AI doesn't work. They fail because organizations skip the foundation: helping people understand their role in the partnership. Start with one focused agent. Show what partnership looks like. Build confidence. Build momentum. Then scale with clarity instead of chaos.
 
-Ready to start with that one focused agent? Read [why starting small is your smartest move](/blog/your-first-ai-agent/) and how to [address the "Where do I fit?" anxiety](/blog/where-do-i-fit-crisis/) that's quietly slowing your adoption.
+Ready to start with that one focused agent? Read [why starting small is your smartest move](/blog/your-first-ai-agent/) and how to [address the "Where do I fit?" anxiety](/blog/where-do-i-fit-crisis/) that's quietly slowing your adoption. And if your AI project has already lost momentum, here's [how to diagnose the stall and get back on track](/blog/why-ai-agent-project-stalled-how-get-back-on-track/).
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

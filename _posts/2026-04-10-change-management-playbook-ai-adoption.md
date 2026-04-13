@@ -138,7 +138,7 @@ Pair overwhelmed employees with champions for peer support. **Learning from coll
 
 Successful change management doesn't end when the AI tools are deployed. **Sustaining adoption** requires ongoing attention to the human elements.
 
-Regular check-ins with early adopters prevent backsliding. Celebrate success stories publicly. Continue addressing new concerns as people's AI experience deepens.
+Regular check-ins with early adopters prevent backsliding. Celebrate success stories publicly. Continue addressing new concerns as people's AI experience deepens. If momentum does start to fade, act quickly — our guide on [reviving stalled AI projects](/blog/why-ai-agent-project-stalled-how-get-back-on-track/) covers the diagnostic and recovery steps.
 
 Create advancement opportunities tied to AI collaboration skills. When people see career benefits from AI partnership, adoption becomes self-reinforcing.
 
