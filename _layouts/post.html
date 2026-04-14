@@ -179,6 +179,21 @@
 				{{ content }}
 			</div>
 
+			<!-- Visible FAQ section (mirrors FAQPage schema above) -->
+			{% if page.faq %}
+			<section class="mt-16 not-prose">
+				<h2 class="text-2xl font-light text-cyan-900 mb-6 border-b border-cyan-100 pb-3">Frequently asked questions</h2>
+				<div class="space-y-4">
+					{% for item in page.faq %}
+					<div class="bg-white p-6 rounded-2xl border border-cyan-200 shadow-md">
+						<h3 class="text-lg font-medium text-cyan-900 mb-3">{{ item.q }}</h3>
+						<p class="text-cyan-800 font-light leading-relaxed">{{ item.a }}</p>
+					</div>
+					{% endfor %}
+				</div>
+			</section>
+			{% endif %}
+
 			<!-- Tags -->
 			{% if page.tags.size > 0 %}
 			<div class="mt-10 pt-6 border-t border-cyan-200">

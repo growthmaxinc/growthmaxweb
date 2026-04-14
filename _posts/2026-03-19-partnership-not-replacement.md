@@ -1,14 +1,27 @@
 ---
 title: "Partnership, Not Replacement"
 subtitle: "How reframing AI as partnership instead of replacement transforms adoption"
-description: "How reframing AI as partnership instead of replacement changes everything about adoption. The operating principle that determines competitive advantage."
+description: "The partnership model for enterprise AI — why framing AI as augmentation instead of replacement is the operating principle that determines whether adoption succeeds or stalls."
 category: "Partnership Model"
 read_time: 8
 tags: [ai-strategy, partnership, adoption]
-keywords: "AI partnership, human-AI collaboration, AI adoption strategy, AI framing"
+keywords: "AI partnership, AI augmentation, human-AI collaboration, augmentation vs automation, AI adoption strategy"
 image: /blog-partnership-not-replacement.jpg
 image_alt: Illustration of a human and AI working together as collaborative partners
 slug: partnership-not-replacement
+date_modified: 2026-04-14
+tldr: "The partnership model reframes AI from 'replacement of your people' to 'amplification of your people's expertise.' This is not feel-good language — it is the operating principle that determines whether adoption pulls forward organically or stalls into resistance."
+faq:
+  - q: "What is the AI partnership model?"
+    a: "The partnership model treats AI as a collaborator that amplifies human judgment, not a replacement for it. Humans bring context, strategy, and accountability; AI brings scale, pattern recognition, and tireless execution. Together they achieve outcomes neither could reach alone. It is the operating principle that determines whether AI adoption succeeds."
+  - q: "What is the difference between AI augmentation and automation?"
+    a: "Automation removes the human from the loop — the task runs without you. Augmentation keeps the human as the decision-maker and amplifies their work. Most 'AI' initiatives mislabel augmentation as automation, which causes resistance and weak results. Knowing which mode applies to which task is a core strategy decision."
+  - q: "Why does the partnership framing matter for AI adoption?"
+    a: "When people hear 'AI adoption,' their brain hears 'replacement' — and that triggers defensive behaviors that kill adoption: avoidance, skepticism, quiet resistance. When they hear 'partnership,' it triggers curiosity and experimentation instead. The frame determines whether you get forced compliance or enthusiastic pull."
+  - q: "What does human-AI partnership actually look like in practice?"
+    a: "A custom AI agent handles the repetitive, judgment-light parts of a role — data gathering, formatting, first drafts, routine triage. The human handles judgment calls, relationships, strategy, and accountability. The person ends up doing more of the work they were hired for, with better consistency on the parts they were not."
+  - q: "Is 'AI partnership' just marketing language?"
+    a: "It is not. It is a structural decision that shapes how agents are scoped, how roles are redesigned, how adoption is measured, and how employees are retrained. Organizations that embed partnership thinking in their AI strategy see measurably faster adoption and fewer stalled pilots than those that treat it as a tagline."
 ---
 
 The dominant narrative about AI is: robots are coming for your job. Displacement. Disruption. The future without you. This framing is everywhere. It's in the news. It's in conversations. And it's killing AI adoption.
