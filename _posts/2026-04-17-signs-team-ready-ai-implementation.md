@@ -12,7 +12,9 @@ faq:
 - a: It's possible but much harder—undocumented processes make it difficult to identify
     where AI can best augment human work.
   q: Can we implement AI if our processes aren't fully documented?
-image: /growthMAX.PNG
+image: /blog-signs-team-ready-ai.jpg
+image_alt: Flat vector illustration of five readiness signals — documented processes,
+  leadership buy-in, curious team culture, clear pain point, and capacity to invest
 keywords: AI implementation readiness, team ready for AI, AI adoption readiness assessment,
   when to implement AI
 read_time: 6
@@ -31,7 +33,7 @@ tldr: Team readiness matters more than technology readiness when it comes to suc
   AI implementation.
 ---
 
-**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness.
+**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness — a theme we explore more deeply in our pillar guide on [enterprise AI strategy and AI agents for business](/ai-agents-for-business.html).
 
 After working with dozens of organizations on their first AI implementations, we've identified clear patterns that predict success or failure. Here are the specific signs that indicate your team is ready to move forward—and the warning signals that suggest you should address some fundamentals first.
 
@@ -83,13 +85,13 @@ Successful AI implementation requires dedicated attention, especially in the ear
 
 This doesn't mean hiring additional staff. It means being realistic about the learning curve and ensuring that key team members aren't already stretched to capacity.
 
-The most successful implementations we've seen dedicate 10-15% of someone's time to AI learning and iteration during the first 90 days. Organizations that try to squeeze AI adoption into already-full schedules struggle with effective adoption.
+The most successful implementations we've seen dedicate 10-15% of someone's time to AI learning and iteration during the first 90 days — a cadence we map out in our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/). Organizations that try to squeeze AI adoption into already-full schedules struggle with effective adoption.
 
 ## Warning Signs: When to Wait
 
 ### Active Resistance to Any New Tools
 
-If your team pushes back on basic productivity tools or process improvements, they're not ready for AI. Address the underlying change management challenges first.
+If your team pushes back on basic productivity tools or process improvements, they're not ready for AI. Address the underlying [change management fundamentals for AI adoption](/blog/change-management-playbook-ai-adoption/) first.
 
 AI implementation amplifies existing organizational dynamics. Teams that resist change will resist AI, regardless of its potential benefits.
 
@@ -109,6 +111,6 @@ Most organizations don't need to check every box before starting with AI. But ha
 
 The key insight is that **team readiness matters more than technology readiness**. Organizations with prepared teams can successfully adopt simpler AI tools, while unprepared teams struggle even with sophisticated technology.
 
-If you're seeing mostly positive signs, consider starting with a small pilot project focused on augmenting one specific workflow. If you're seeing warning signs, address the people and process fundamentals first.
+If you're seeing mostly positive signs, consider starting with a small pilot project focused on augmenting one specific workflow — our guide to [building your first AI agent](/blog/your-first-ai-agent/) walks through exactly how to scope that. If you're seeing warning signs, address the people and process fundamentals with a [people-first AI strategy](/blog/people-first-ai-strategy/) first.
 
 The organizations that succeed with AI are those that recognize it as a partnership between human expertise and technological capability. When your team is ready for that partnership, the technology implementation becomes much more straightforward.

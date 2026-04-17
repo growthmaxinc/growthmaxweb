@@ -140,7 +140,7 @@ Successful change management doesn't end when the AI tools are deployed. **Susta
 
 Regular check-ins with early adopters prevent backsliding. Celebrate success stories publicly. Continue addressing new concerns as people's AI experience deepens. If momentum does start to fade, act quickly — our guide on [reviving stalled AI projects](/blog/why-ai-agent-project-stalled-how-get-back-on-track/) covers the diagnostic and recovery steps.
 
-Create advancement opportunities tied to AI collaboration skills. When people see career benefits from AI partnership, adoption becomes self-reinforcing.
+Create advancement opportunities tied to AI collaboration skills. When people see career benefits from AI partnership, adoption becomes self-reinforcing — and pair this with a steady drumbeat of [training alongside implementation](/blog/ai-training-vs-implementation-why-you-need-both/) rather than treating them as separate workstreams.
 
 Most importantly, maintain the **partnership narrative**. Every communication, every training session, every success story should reinforce that AI amplifies human expertise rather than replacing it. And be realistic about [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/) — change management is an investment, not an expense.
 

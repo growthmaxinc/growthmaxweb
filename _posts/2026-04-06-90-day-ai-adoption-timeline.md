@@ -66,7 +66,7 @@ This timeline balances the urgency most leaders feel with the careful planning t
 
 ## Days 1-30: Building Your Foundation
 
-The first month isn't about technology --- it's about people and processes. This foundation phase determines whether your AI implementation will thrive or struggle.
+The first month isn't about technology --- it's about people and processes. This foundation phase determines whether your AI implementation will thrive or struggle. Before you even start the clock, it's worth checking the [5 signs your team is ready for AI implementation](/blog/signs-team-ready-ai-implementation/) — running the timeline without those fundamentals in place is the most common reason week one feels like chaos.
 
 **Week 1-2: Stakeholder Alignment**
 
