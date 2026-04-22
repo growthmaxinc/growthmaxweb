@@ -1,0 +1,50 @@
+{%- comment -%}
+Emits a BreadcrumbList JSON-LD block plus a visible breadcrumb nav.
+Designed to be placed immediately after the hero section (before main content)
+on pages that use a custom layout rather than _layouts/post.html.
+
+Required parameters:
+  section      -- middle breadcrumb label (e.g. "Solutions", "Resources")
+  section_url  -- URL the middle breadcrumb links to (absolute or root-relative)
+  current      -- final breadcrumb label (the current page's title)
+
+Usage:
+  {% include breadcrumbs.html section="Solutions" section_url="/#solutions" current="AI Agent Development" %}
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": "Home",
+			"item": "{{ '/' | absolute_url }}"
+		},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"name": "{{ include.section | escape }}",
+			"item": "{{ include.section_url | absolute_url }}"
+		},
+		{
+			"@type": "ListItem",
+			"position": 3,
+			"name": "{{ include.current | escape }}",
+			"item": "{{ page.url | absolute_url }}"
+		}
+	]
+}
+</script>
+<nav aria-label="Breadcrumb" class="mt-16 bg-cyan-50/60 border-b border-cyan-200">
+	<div class="max-w-6xl mx-auto px-6 py-3">
+		<ol class="flex items-center gap-2 text-sm text-cyan-600 flex-wrap">
+			<li><a href="/" class="hover:text-cyan-900 transition-colors">Home</a></li>
+			<li aria-hidden="true"><span class="text-cyan-400">&rsaquo;</span></li>
+			<li><a href="{{ include.section_url }}" class="hover:text-cyan-900 transition-colors">{{ include.section }}</a></li>
+			<li aria-hidden="true"><span class="text-cyan-400">&rsaquo;</span></li>
+			<li class="text-cyan-800 truncate max-w-xs" aria-current="page">{{ include.current }}</li>
+		</ol>
+	</div>
+</nav>
