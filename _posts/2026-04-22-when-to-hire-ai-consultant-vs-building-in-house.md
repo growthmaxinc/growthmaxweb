@@ -12,7 +12,10 @@ faq:
 - a: When AI is core to your competitive advantage and you plan multiple AI initiatives
     over the next 2-3 years.
   q: When should I definitely build AI capabilities in-house?
-image: /growthMAX.PNG
+image: /blog-when-to-hire-ai-consultant-vs-building-in-house.jpg
+image_alt: Flat vector illustration weighing AI consultants against in-house AI teams
+  — speed and proven playbook on one side, durable capability and strategic moat on
+  the other
 keywords: AI consultant, AI implementation, in-house AI development, AI strategy,
   custom AI agents
 read_time: 6

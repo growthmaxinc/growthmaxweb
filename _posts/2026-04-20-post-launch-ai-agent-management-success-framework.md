@@ -12,7 +12,9 @@ faq:
 - a: Plan for weekly check-ins during the first month, then shift to bi-weekly reviews
     as usage patterns stabilize and user confidence grows.
   q: How often should we update or refine our AI agent after launch?
-image: /growthMAX.PNG
+image: /blog-post-launch-ai-agent-management.jpg
+image_alt: Flat vector illustration of the post-launch success framework — a five-step
+  timeline from launch to support, feedback, iteration, and scaled impact
 keywords: post-launch AI management, AI agent deployment, AI implementation success,
   AI adoption strategy, managing AI agents
 read_time: 8

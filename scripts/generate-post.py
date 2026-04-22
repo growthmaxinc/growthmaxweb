@@ -13,6 +13,15 @@ from datetime import datetime
 from pathlib import Path
 from anthropic import Anthropic
 
+# Local module — programmatic flat-vector hero image renderer.
+sys.path.insert(0, str(Path(__file__).parent))
+import importlib.util
+_spec = importlib.util.spec_from_file_location(
+    "hero_image", str(Path(__file__).parent / "generate-hero-image.py")
+)
+hero_image = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(hero_image)
+
 # --- Configuration ---
 
 POSTS_DIR = Path("_posts")
@@ -155,7 +164,86 @@ Respond in this exact JSON format:
 
     return json.loads(text.strip())
 
-def save_post(post_data):
+HERO_IMAGE_SPEC_PROMPT = """
+You are designing a flat-vector hero illustration for a GrowthMax blog post.
+The renderer supports three layouts. Pick whichever best matches the post's
+structure and produce a JSON spec.
+
+Post title:    {title}
+Post subtitle: {subtitle}
+TL;DR:         {tldr}
+
+LAYOUTS
+
+1) "timeline" — 3 to 5 sequential stages in a horizontal flow.
+   Use when the post describes a process, roadmap, phases, or steps over time.
+   Each step: {{ "icon": "<icon>", "label": "<2-3 words>" }}.
+
+2) "split" — two contrasting options joined by a center "decision" circle.
+   Use when the post compares two approaches (A vs B, build vs buy, etc.).
+   left/right: {{ "icon": "<icon>", "label": "<1-2 words>", "sub": "<short phrase>" }}.
+   center: {{ "label": "<1 word verb>", "sub": "<2-3 words>" }}.
+
+3) "cards" — 3 to 5 cards in a row, each with icon and label.
+   Use when the post lists discrete signals, principles, pillars, or categories.
+   Each card: {{ "icon": "<icon>", "label": "<2-3 words>", "highlight": <bool> }}.
+   Mark at most one card "highlight": true (for the most central idea).
+
+ALLOWED ICONS:
+check, person, question, target, clock, book, rocket, gear, chart, cycle, flag, scale, chat
+
+COMMON FIELDS (always include):
+- "header": 2-5 uppercase-ish words, the concept label across the top.
+- "footer_title": A short benefit-oriented title (3-6 words), NOT the post title verbatim.
+- "footer_subtitle": A one-line supporting phrase (<= 10 words).
+
+Also return "alt": a single-sentence alt-text description of the illustration.
+
+Respond with ONLY a JSON object (no prose, no code fences) of the form:
+{{
+  "layout": "timeline" | "split" | "cards",
+  "header": "...",
+  "footer_title": "...",
+  "footer_subtitle": "...",
+  "alt": "...",
+  ...layout-specific fields...
+}}
+"""
+
+def generate_hero_image(client, post_data, out_dir=Path(".")):
+    """Ask Claude for a hero-image spec, then render it with the local renderer.
+
+    Returns (image_path, alt_text) or (None, None) if generation fails — callers
+    should fall back to the default /growthMAX.PNG.
+    """
+    prompt = HERO_IMAGE_SPEC_PROMPT.format(
+        title=post_data.get("title", ""),
+        subtitle=post_data.get("subtitle", ""),
+        tldr=post_data.get("tldr", ""),
+    )
+    try:
+        resp = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        text = resp.content[0].text
+        if "```json" in text:
+            text = text.split("```json")[1].split("```")[0]
+        elif "```" in text:
+            text = text.split("```")[1].split("```")[0]
+        cfg = json.loads(text.strip())
+        alt = cfg.pop("alt", "Flat vector hero illustration for the blog post")
+        slug = post_data["slug"]
+        out_path = out_dir / f"blog-{slug}.jpg"
+        hero_image.render(cfg, str(out_path))
+        print(f"Generated hero image: {out_path}")
+        return out_path, alt
+    except Exception as e:
+        print(f"Hero image generation failed, falling back to default: {e}", file=sys.stderr)
+        return None, None
+
+def save_post(post_data, image_path=None, image_alt=None):
     """Save the generated post as a Jekyll markdown file."""
     today = datetime.now().strftime("%Y-%m-%d")
     slug = post_data["slug"]
@@ -169,9 +257,11 @@ def save_post(post_data):
         "read_time": post_data["read_time"],
         "tags": post_data["tags"],
         "keywords": post_data["keywords"],
-        "image": "/growthMAX.PNG",
+        "image": f"/{image_path.name}" if image_path else "/growthMAX.PNG",
         "slug": slug,
     }
+    if image_alt:
+        front_matter["image_alt"] = image_alt
 
     # Add optional SEO/AEO fields
     if post_data.get("tldr"):
@@ -201,7 +291,8 @@ def main():
     POSTS_DIR.mkdir(exist_ok=True)
 
     post_data = generate_post(client, topic=topic)
-    save_post(post_data)
+    image_path, image_alt = generate_hero_image(client, post_data, out_dir=Path("."))
+    save_post(post_data, image_path=image_path, image_alt=image_alt)
 
 if __name__ == "__main__":
     main()

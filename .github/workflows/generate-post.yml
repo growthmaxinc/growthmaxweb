@@ -35,7 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install anthropic pyyaml
+        run: pip install anthropic pyyaml Pillow
 
       - name: Generate blog post
         env:
@@ -48,7 +48,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add _posts/
+          # Include both the new post markdown and its generated hero image.
+          # The 'blog-*.jpg' pattern matches the naming convention used by
+          # scripts/generate-post.py's generate_hero_image() helper.
+          git add _posts/ 'blog-*.jpg'
           if git diff --staged --quiet; then
             echo "No new posts to commit"
             echo "has_new_post=false" >> $GITHUB_OUTPUT
