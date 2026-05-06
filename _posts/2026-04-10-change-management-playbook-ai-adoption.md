@@ -39,13 +39,13 @@ Your AI technology might be flawless, but if your people aren't ready for it, yo
 
 ## How do you manage change during AI adoption?
 
-AI change management differs from traditional software transitions because it triggers existential questions: Will I still be needed? How do I stay relevant? Address these directly through psychological safety sessions and transparent communication. Build champions through early-access experience, not just identifying natural adopters. Create gradual exposure starting with clear augmentation examples. Measure sentiment and emotional indicators, not just adoption metrics. A 90-day timeline includes foundation communication (days 1–30), pilot refinement (days 31–60), and scaling with champions (days 61–90). Sustain adoption through ongoing celebrations and career advancement tied to AI partnership skills.
+AI change management differs fundamentally from traditional software transitions because it triggers existential questions people don't voice aloud: Will I still be needed? How do I remain valuable? These fears require direct, honest engagement through psychological safety sessions, transparent communication about the partnership model, and concrete examples showing augmentation not replacement.
 
 Successful AI adoption happens when you treat it as an organizational transformation, not just a technology upgrade. The companies that get this right build a [people-first AI strategy](/blog/people-first-ai-strategy/) and spend more time on people preparation than on technical configuration. This is the foundation of any effective [AI adoption playbook](/resources/ai-adoption-playbook/).
 
 ## What does an AI change management playbook include?
 
-A successful playbook addresses psychological safety, champions, gradual exposure, and sentiment measurement. Days 1–30: Manager alignment on partnership message, organization-wide AI literacy, champion selection. Days 31–60: Introduce AI tools to champions, gather obsessive feedback, iterate rollout plans. Days 61–90: Broad rollout with champions as peer trainers, high-touch support, momentum-building quick wins. Ongoing: Regular check-ins, public success celebration, career advancement tied to AI skills, sustained partnership narrative. Separate change management from technology tracks — most implementations fail by focusing on technology first instead of people preparation.
+A comprehensive playbook addresses four core pillars: psychological safety for honest conversations, active champion development from diverse groups, gradual exposure to build competence, and continuous sentiment measurement to catch concerns early. Foundation phase (days 1–30) focuses on manager alignment around partnership messaging, organization-wide AI literacy education, and strategic champion selection.
 
 **AI triggers existential questions** that typical change management doesn't address. Will I still be needed? What happens to my expertise? How do I stay relevant? This is the ["Where do I fit?" crisis](/blog/where-do-i-fit-crisis/) that derails even the best-planned implementations.
 
@@ -119,7 +119,7 @@ Maintain high-touch support during this phase. Quick wins early in broad deploym
 
 ## Why does AI adoption need a different change approach than other transformations?
 
-AI adoption is fundamentally different because it questions job security and professional identity, not just workflow. Traditional change management addresses tool learning and process changes; AI requires addressing existential anxiety. People can actively undermine AI rollouts through poor inputs or spreading negative sentiment, unlike passive resistance to software. The stakes are higher because partnership quality determines success, not just usage. AI change management must create psychological safety for honest conversations, build champions through experience rather than identification, provide gradual exposure before full deployment, and measure sentiment alongside metrics. Most AI initiatives fail at the change management layer, not the technology layer.
+AI questions job security and identity, not workflows. Traditional change addresses tool learning; AI requires addressing existential anxiety. People undermine rollouts through poor inputs or sentiment. Partnership quality determines success. Effective AI change requires psychological safety, experience-built champions, gradual exposure, and sentiment measurement. Most AI failures occur at the change layer.
 
 **Reframe the conversation** from replacement to enhancement. Instead of "AI can do this task," say "AI can handle the routine parts so you can focus on the strategic elements."
 

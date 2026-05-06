@@ -40,7 +40,7 @@ Your shiny new AI strategy document sits in a folder while your team continues d
 
 ## What is a people-first AI strategy?
 
-A people-first AI strategy puts human concerns and capabilities before technology choices. It includes skills assessments, clear communication about why AI benefits each role, explicit partnership messaging addressing replacement fears, and training that matches how people actually work. It identifies early adopters and those needing support. It creates personalized value propositions for specific jobs, not generic efficiency promises. It establishes transparent communication rhythms and peer learning networks. Success is measured by engagement and confidence, not usage metrics alone.
+A people-first AI strategy puts human concerns and capabilities before technology choices. It includes skills assessments, clear communication about why AI benefits each role, explicit partnership messaging addressing replacement fears, and training that matches how people actually work. It identifies early adopters and those needing support.
 
 This foundation is central to any [AI adoption playbook](/resources/ai-adoption-playbook/) that actually works.
 
@@ -56,7 +56,7 @@ Consider this: your team has been doing their jobs effectively without AI. From 
 
 ## Why does AI adoption fail without a people strategy?
 
-Technology-first strategies ignore the human concerns that drive resistance. People resist tools they don't understand, fear AI will replace their jobs, or lack confidence to learn new systems. They can't see how AI benefits their specific work when messaging focuses on generic efficiency. Change management fails when people aren't involved in planning and don't understand their role in the new setup. Without addressing these human concerns — replacement anxiety, competence gaps, personalized value propositions — adoption stalls even with excellent tools.
+Technology-first strategies ignore the core human anxieties that fuel resistance. People avoid tools when they don't understand the purpose, fear AI could eliminate their role, or lack confidence in their ability to learn new systems. Without explicit partnership messaging and role clarity, that resistance quietly kills adoption.
 
 This fear shows up as reluctance to engage with AI training, minimal usage of deployed tools, or active skepticism about AI initiatives. **Address this directly and early**. Share your partnership model explicitly: AI augments their expertise, it doesn't replace their judgment. We explore this dynamic in depth in [the "Where do I fit?" crisis](/blog/where-do-i-fit-crisis/).
 
@@ -126,7 +126,7 @@ Establish mentorship pairs between early adopters and those needing more support
 
 ## How do you put people first when implementing AI?
 
-Start with skills assessment and early adopter identification before choosing tools. Create personalized value propositions for specific roles using real before-and-after scenarios from daily work. Establish transparent communication rhythms beyond one-time announcements. Design training tracks matching comfort levels and job requirements, pairing learning with immediate real-world application. Build peer learning networks and mentorship pairs. Measure success by engagement, confidence, and capability development — not just usage metrics. Address replacement fears directly through partnership messaging. Shift focus from technology deployment to people readiness.
+Start with skills assessment and early adopter identification before choosing tools. Create role-specific value propositions from real work scenarios. Establish continuous communication beyond announcements. Design training matching comfort levels with immediate application. Build peer mentorship networks. Measure engagement and confidence, not just usage. Address replacement fears directly. Prioritize people readiness over speed.
 
 Your AI strategy dashboard should track human indicators alongside technical ones.
 

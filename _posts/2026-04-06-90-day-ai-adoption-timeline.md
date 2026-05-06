@@ -30,7 +30,7 @@ tags:
 - change-management
 - adoption
 title: The 90-Day AI Adoption Timeline That Actually Works
-tldr: "Successful enterprise AI adoption follows a structured 90-day timeline in three focused phases: foundation building (days 1–30), pilot implementation (days 31–60), and scaling preparation (days 61–90). Rushing the foundation phase is the most common reason pilots fail."
+tldr: "Successful 90-day AI adoption follows three phases: foundation (days 1–30), pilot (days 31–60), and scaling prep (days 61–90). Rushing the foundation phase is the most common reason pilots fail."
 ---
 
 <script type="application/ld+json">
@@ -67,7 +67,7 @@ Most AI adoption timelines are either unrealistically aggressive ("implement AI 
 
 ## What is a 90-day AI adoption plan?
 
-A structured 90-day framework divides adoption into three phases. Days 1–30: Foundation building — align stakeholders, define success metrics, address job displacement anxiety, select 1–2 manageable use cases. Days 31–60: Pilot implementation — choose custom or off-the-shelf, build simple version, run pilot with 3–5 early adopters, gather qualitative feedback. Days 61–90: Scaling preparation — analyze results, refine solution, create training materials and scaling playbook, plan rollout to next user groups. The discipline is not skipping foundation phase to rush to production.
+A structured 90-day framework divides adoption into three phases. Days 1–30: Foundation building — align stakeholders, define success metrics, address job displacement anxiety, select 1–2 manageable use cases. Days 31–60: Pilot implementation — choose custom or off-the-shelf, build simple version, run pilot with 3–5 early adopters, gather qualitative feedback.
 
 This timeline is at the heart of any effective [AI adoption playbook](/resources/ai-adoption-playbook/). It balances the urgency most leaders feel with the careful planning that ensures lasting success, designed around three focused phases that build on each other, with clear milestones and deliverables at each stage.
 
@@ -97,7 +97,7 @@ End month one with a clear project charter: defined use cases, success metrics, 
 
 ## What happens in each 30-day phase of AI adoption?
 
-Days 1–30 foundation: Identify adoption team, align on success metrics, address replacement fears directly, select 1–2 winnable use cases. End with project charter. Days 31–60 pilot: Decide custom or off-the-shelf, build simple version, test with 3–5 early adopters, gather qualitative feedback, iterate minor issues. End with documented results and lessons. Days 61–90 scaling prep: Analyze pilot data, create scaling playbook, develop training from real examples, plan broader rollout, address remaining concerns with pilot results. Rushing foundation phase is the most common reason pilots fail.
+Month one focuses on foundation: form your adoption team, align stakeholders on specific success metrics, address job-displacement fears directly and honestly, select 1–2 winnable use cases where you can demonstrate quick results. End with a detailed project charter documenting scope, metrics, timeline, and roles.
 
 Month two is where you move from planning to action. This phase focuses on building and testing your first AI solution.
 
@@ -145,7 +145,7 @@ Address any remaining resistance by sharing concrete pilot results and testimoni
 
 ## How long does AI adoption realistically take?
 
-A structured 90-day window gets from approved budget to pilot results with scaling starting in month four. Foundation phase alone requires 30 days minimum — skipping it causes month-two backtracking. Enterprise-wide maturity takes 12–24 months, not 90 days. Trying to compress broader adoption into 90 days is the most common reason AI projects stall. Rushing foundation phase to save time produces pilots that work in demos but fail in production due to skipped human and process questions. Start with 90-day pilot discipline, then scale methodically.
+A structured 90-day window moves from approval to working pilot results. Foundation requires 30 days minimum—skipping causes backtracking. Enterprise-wide maturity takes 12–24 months, not 90 days. Rushing foundation produces demos that fail in production. Discipline around 90-day pilots prevents the common stall and enables orderly scaling thereafter.
 
 After 90 days, you should have:
 

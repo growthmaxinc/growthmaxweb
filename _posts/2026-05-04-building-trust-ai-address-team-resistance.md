@@ -39,7 +39,7 @@ tldr: Trust in AI comes from transparency about what the technology will and won
 
 ## How do you build trust in AI with your team?
 
-Start with transparent communication about what AI will and won't do specifically in your context. Explain human oversight mechanisms clearly so people understand their continued role. Address job displacement fears directly with honest conversations about role evolution, not evasive optimism. Create early wins using tasks people find tedious, making benefits visible and hard to dispute. Include teams in AI decision-making and implementation planning for ownership. Use language emphasizing augmentation over automation. Be transparent about AI limitations and failure modes. Establish feedback loops where teams report issues and see improvements. Trust builds over 3-6 months of consistent results and clear partnership messaging.
+Start with transparent communication about what AI will and won't do specifically in your context. Explain human oversight mechanisms clearly so people understand their continued role. Address job displacement fears directly with honest conversations about role evolution, not evasive optimism.
 
 Trust emerges when people understand exactly what AI will do, what it won't do, and how it fits into their daily work. This clarity eliminates the uncertainty that breeds resistance and creates space for genuine partnership between humans and AI systems. It's a cornerstone of any effective [AI adoption playbook](/resources/ai-adoption-playbook/).
 
@@ -91,7 +91,7 @@ This hands-on experience builds familiarity and reduces the mystery factor that 
 
 ## How do you address team resistance to AI?
 
-Proactive trust-building prevents resistance from becoming entrenched. Address job displacement fears directly with honest conversations about role evolution — tasks shift to AI but human expertise becomes more valuable. Use specific before-and-after scenarios people recognize. Create hands-on working sessions in low-stakes environments, not just passive demos. Involve teams in AI decision-making for ownership. Establish feedback channels and respond visibly to problems. Celebrate successes, making clear how human judgment enabled them. Transparency about limitations and failure modes builds trust faster than overselling capabilities. Include examples of role enhancement from other companies. Most importantly, demonstrate through consistent communication and follow-through that leadership understands AI's boundaries.
+Proactive trust-building prevents resistance from hardening into organizational skepticism. Address job displacement fears directly and honestly through conversations about real role evolution—routine tasks shift to AI while human expertise becomes increasingly valuable for judgment and strategy. Show concrete examples of how people's roles are enhanced, not diminished.
 
 Be honest about how roles will evolve. Some tasks will shift to AI, but human expertise becomes more valuable, not less. People move from executing routine work to making strategic decisions with better information.
 
@@ -107,7 +107,7 @@ Share examples from other companies where AI adoption led to role enhancement ra
 
 ## Why does team resistance to AI matter more than the technology itself?
 
-Resistance signals deeper organizational issues — lack of trust, poor change management, or misaligned incentives. Technology succeeds when people adopt it; people resist change they don't understand or don't believe in. Unaddressed resistance creates passive sabotage: minimal usage, poor inputs, negative sentiment spreading. Active partnership with enthusiastic team members produces 3x better outcomes than imposed AI tools. Resistance to AI reflects resistance to change generally, indicating the organization isn't ready regardless of technology quality. Addressing resistance proactively prevents it from becoming entrenched, making future technology adoption harder.
+Resistance signals deeper organizational issues — lack of trust, poor change management, or misaligned incentives. Technology only succeeds when people adopt it, and people resist change they don't understand or believe in. Unaddressed resistance creates passive sabotage: minimal usage, poor inputs, negative sentiment that spreads. The cause sits upstream of the tool itself.
 
 **Transparency about limitations** builds more trust than overselling capabilities. Acknowledge what AI can't do and how the organization will handle those gaps.
 

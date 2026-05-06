@@ -32,7 +32,7 @@ You've deployed your first [custom AI agent](/solutions/agent-development/). It'
 
 ## How do you measure ROI on your first AI agent?
 
-Start with business outcomes, not technology metrics. If your goal was reducing response times, measure actual customer response time — not AI responses generated. Use a three-layer framework: efficiency gains (time saved, cost reduced), quality improvements (error rates, consistency), and strategic enablement (new initiatives now possible). Track both leading indicators (adoption, satisfaction) and lagging indicators (ultimate business outcomes). Factor in hidden costs and benefits. Measure partnership quality alongside productivity, including team confidence and perceived job improvement.
+Start with business outcomes, not technology metrics. If your goal was reducing response times, measure actual customer response time — not AI responses generated. Use a three-layer framework: efficiency gains (time saved, cost reduced), quality improvements (error rates, consistency), and strategic enablement (new initiatives now possible).
 
 Most organizations jump into AI implementation without establishing clear measurement frameworks. They end up with impressive-sounding but ultimately meaningless metrics like "AI interactions per day" or "time spent using AI tools."
 
@@ -48,7 +48,7 @@ This approach also helps you avoid the common trap of measuring activity instead
 
 ## What metrics actually prove an AI agent is working?
 
-Track business outcomes aligned to your original goal, not activity metrics. Measure efficiency gains through time savings and cost reduction. Measure quality improvements via error rates and consistency. Measure strategic enablement by counting new initiatives now possible because people aren't buried in routine work. Use both leading indicators (adoption, satisfaction) for course correction and lagging indicators (ultimate outcomes) for long-term proof. Include hidden benefits like reduced turnover and improved decision-making, which often exceed obvious time savings.
+True proof isn't vanity metrics like total messages or user login counts. Track three tangible outcomes: hours saved per active user weekly, decision quality improvements like reduced errors or faster cycle times, and actual weekly active adoption rate. Multiply hours saved by loaded labor cost and compare against implementation cost.
 
 Effective AI ROI measurement works across three layers: efficiency gains, quality improvements, and strategic enablement.
 
@@ -70,7 +70,7 @@ Track both, but use leading indicators to guide day-to-day optimization efforts.
 
 ## How long until an AI agent shows real ROI?
 
-Efficiency gains and leading indicators appear within 4-6 weeks of active use. Meaningful business impact typically materializes within 90 days. Full ROI accounting includes both obvious costs (software, training) and hidden costs (maintenance, data quality, learning-curve dip). Hidden benefits often exceed obvious ones: improved employee satisfaction, reduced turnover from meaningful work, enhanced decision-making. True ROI emerges through human-AI partnership quality, not technology efficiency alone.
+Efficiency gains appear within 4–6 weeks of active use; full business impact materializes within 90 days. ROI calculation requires accounting for both obvious costs (software, training) and hidden costs (maintenance, data quality). Hidden benefits often exceed obvious ones: improved satisfaction, reduced turnover, better decisions. True ROI emerges through partnership quality, not pure technology efficiency.
 
 Most ROI calculations focus on obvious costs (software, implementation, training) and obvious benefits (time saved, errors reduced). But the hidden elements often determine true ROI.
 

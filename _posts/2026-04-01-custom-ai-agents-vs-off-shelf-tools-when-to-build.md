@@ -40,7 +40,7 @@ The question isn't whether your organization needs AI --- it's whether you shoul
 
 ## Should we build or buy AI agents?
 
-Build custom when the agent touches differentiated judgment — work where your experts outperform the market. Buy off-the-shelf for generic, commoditized tasks. Most organizations over-build on commodity work and under-build on differentiated workflows. A strategic approach uses off-the-shelf tools to prove value and build AI literacy first, then moves to custom agents for high-impact workflows where existing solutions create friction or compliance risk.
+Build custom agents when they touch the judgment that differentiates you—work where your experts outperform the market and create competitive advantage. Buy off-the-shelf for generic, commoditized tasks that exist everywhere. Most organizations make the strategic mistake of over-building on commodity tasks while under-investing in custom agents where they create real differentiation.
 
 This decision is foundational to your broader [enterprise AI strategy](/ai-agents-for-business/).
 
@@ -62,7 +62,7 @@ These tools also shine when you need broad adoption across diverse teams. Their 
 
 ## When does a custom AI agent beat an off-the-shelf tool?
 
-Custom agents win when three conditions align: your workflow is highly specific to your organization, off-the-shelf solutions create significant friction or compliance risk, and the agent touches judgment that differentiates your business. Expect development costs of $40,000-$250,000 and timelines of 6-12 weeks for focused agents. If any of the three conditions is weak, off-the-shelf is usually the better choice. Most organizations benefit from starting with off-the-shelf tools, then building custom agents for high-impact, poorly-served workflows.
+Custom agents win when three conditions align: your workflow is highly specific to your organization, off-the-shelf solutions create significant friction or compliance risk, and the agent touches judgment that differentiates your business. Expect development costs of $40,000-$250,000 and timelines of 6-12 weeks for focused agents.
 
 Custom AI agents become the better choice when your workflows are **highly specific** or when off-the-shelf solutions create more friction than value. Think complex approval processes, industry-specific compliance requirements, or workflows that require deep integration with proprietary systems.
 

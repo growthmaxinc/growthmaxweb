@@ -38,7 +38,7 @@ You've done the research, identified the perfect AI use case, and built a compel
 
 ## How do you get executive buy-in for AI projects?
 
-Lead with business outcomes and strategic priorities, not technology or technical capabilities. Executives think in terms of competitive advantage and risk management, not algorithms. Address three layers: strategic alignment (connect AI to existing priorities), risk mitigation (be honest about challenges and mitigation plans), and competitive context (what happens if we don't adopt). Answer the questions running through executive minds: How does this connect to strategy? What if it fails? How does this affect our people? What will this actually require? Initial buy-in takes 2-3 conversations; sustained support requires 30-60 days of alignment. Use specific examples from affected team members to address job displacement fears.
+Lead with business outcomestrategic priorities, not technology or technical capabilities. Executives think in terms of competitive advantage and risk management, not algorithms. Address three layers: strategic alignment (connect AI to existing priorities), risk mitigation (be honest about challenges and mitigation plans), and competitive context (what happens if we don't adopt).
 
 **Executive buy-in is the make-or-break factor** for AI project success. Without leadership alignment, even the most technically sound AI initiatives stall, get defunded, or launch without the organizational support they need to succeed. This is a critical component of your [AI adoption playbook](/resources/ai-adoption-playbook/) that's often overlooked.
 
@@ -58,7 +58,7 @@ This skepticism isn't a barrier to overcome; it's valuable input to incorporate.
 
 ## Why do AI projects fail without executive sponsorship?
 
-Without leadership alignment, AI initiatives lack sustained funding, organizational support, and decision-making authority needed for success. Skeptical executives who aren't convinced of business connection let projects stall. Leaders viewing AI primarily as cost-cutting create resistance and distrust rather than enthusiasm. Executives who don't understand their ongoing role in AI success withdraw support at critical moments. Projects lose priority when business case isn't connected to existing strategic initiatives. The competitive advantage message never lands when executives can't envision long-term implications.
+Without clear executive alignment, AI initiatives lack the sustained funding, cross-functional organizational support, and decision-making authority necessary for real success. When executives aren't genuinely convinced of the business connection to their priorities, projects quietly lose momentum and eventually stall even after promising starts.
 
 Before diving into your AI pitch, understand the questions running through executive minds. These aren't usually about technical specifications.
 
@@ -96,7 +96,7 @@ Most importantly, explain how you'll measure progress and make adjustments. Exec
 
 ## What do executives actually need to hear about AI?
 
-Three things: clear connection to existing business strategy and competitive advantage (not vague technology promises), honest assessment of downside risk and implementation challenges (executives respect realistic thinking), and specific understanding of what their ongoing role will be in success. Address job displacement directly with examples from affected team members, not abstract partnership rhetoric. Show phased value creation with early wins justifying continued investment toward long-term benefits. Use business impact language (customer satisfaction, decision velocity) not technical progress metrics. Create executive champions by helping leaders articulate how AI amplifies their judgment and strategic thinking.
+Three things: a clear link to existing business strategy and competitive advantage (not vague technology promises), an honest assessment of downside risk and implementation challenges, and a specific picture of their ongoing role in making it work. Use business-impact language — customer satisfaction, decision velocity — not technical progress metrics.
 
 "What happens if we don't do this?" is often more compelling than "What happens if we do?" Help leadership understand the competitive implications of AI adoption --- and AI inaction.
 

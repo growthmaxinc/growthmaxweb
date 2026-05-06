@@ -26,22 +26,20 @@ Your company announces AI transformation. The executives talk about efficiency g
 
 ## How do we handle employee resistance to AI?
 
-Address the unspoken anxiety: "Where do I fit?" This question doesn't get asked out loud — it shows up as skepticism masking fear. Generic training and tools don't answer this personal question; they intensify it. The solution is showing tangibly what partnership looks like through role-specific custom AI agents. When one person experiences their AI agent handling routine work while they focus on judgment and strategy, the question shifts to "How do I use this partnership better?" Visible success creates pull-based adoption. Organizations that answer role clarity directly see enthusiastic adoption; those that avoid it face persistent quiet resistance regardless of tool quality.
+Address the core unspoken anxiety: "Where do I fit?" This question doesn't emerge in surveys; it surfaces as skepticism and avoidance. Generic training amplifies the fear. Show what partnership looks like concretely by deploying role-specific agents that demonstrate exactly how each person's judgment gets amplified.
 
-## The invisible anxiety that kills adoption.
-
+## The invisible anxiety that kills adoption
 McKinsey's research on individual experience during AI adoption reveals something critical: people aren't resisting AI. They're experiencing a crisis of clarity about their role. The anxiety isn't irrational. It's the logical response to uncertainty about your future in an AI-powered organization.
 
 And when anxiety goes unaddressed, adoption stops. People don't embrace the tool. They avoid it. They find reasons to stick with what they know. They wait. They hope the trend passes. And it looks like resistance. But it's actually just fear without a clear answer.
 
 ## Why do employees feel anxious during AI adoption?
 
-The central anxiety is unspoken: "If AI can do parts of my job, where do I fit?" This question doesn't appear in satisfaction surveys — it shows up as masked resistance: "This doesn't fit our workflow." "The tool is immature." Generic training on broad AI capabilities doesn't answer the personal question; it amplifies anxiety. People need clarity about their specific role in an AI-powered workflow, not abstract capability demos. Without this clarity, people avoid the tool despite excitement about possibilities. Anxiety subsides only when they experience partnership showing they handle judgment/strategy while AI handles routine work.
+The core anxiety emerges silently: "If AI can handle parts of my work, what's my role now?" This question doesn't surface in formal feedback; it manifests as avoidance and hesitation. Without clarity about how your judgment amplifies rather than disappears, that anxiety only deepens and hardens into resistance.
 
 So people stay anxious. They use the tool. But they don't trust it. They don't build confidence. And the moment pressure increases or deadlines tighten, they go back to doing it the old way---the way they know, the way they trust, the way that makes them feel in control.
 
-## What actually creates clarity.
-
+## What actually creates clarity
 A custom AI agent built specifically for your role answers the real question: Where do I fit? It shows you, tangibly, what partnership looks like:
 
 The agent handles the repetitive analysis, the tedious drafting, the pattern-finding that consumed your time. You handle the judgment. The strategy. The creative decisions that only humans can make. The work gets done faster. You're less burned out. Your expertise is amplified, not displaced.
@@ -50,7 +48,7 @@ And suddenly, the question shifts from "Where do I fit?" to "How do I use this p
 
 ## How do custom AI agents resolve the 'where do I fit?' question?
 
-Custom agents built for specific roles show tangibly what partnership looks like: the agent handles repetitive, judgment-light work while humans do strategy, judgment, creative decisions, relationship-building. People see their expertise amplified, not displaced. One person's visible success spreads adoption organically — others ask "Can we build one for my role?" This pull-based adoption driven by clarity replaces push-based resistance driven by anxiety. Generic tools don't answer role clarity; custom agents do. The path from "Where do I fit?" to "This makes me better" requires specific, role-designed partnership, not broad capability training.
+Custom agents show tangibly what partnership looks like: agents handle repetitive judgment-light work while humans do strategy and relationships. People see expertise amplified, not displaced. One person's success spreads adoption organically. This clarity-driven pull adoption replaces anxiety-driven resistance. The path from "Where do I fit?" to "This makes me better" requires role-designed partnership.
 
 The path from "Where do I fit?" to "This makes me better at what I do" isn't through generic tools. It's through clarity about your specific role. It's through partnership that's designed for you.
 

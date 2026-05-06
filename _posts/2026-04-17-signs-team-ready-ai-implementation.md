@@ -40,7 +40,7 @@ tldr: Team readiness matters more than technology readiness when it comes to suc
 
 ## How do you know your team is ready for AI?
 
-Look for five green flags: processes documented (even informally), leadership framing AI as partnership not cost-cutting, team culture asks "how can we do this better?" regularly, clear success metrics for current work exist, and someone has 10-15% capacity for learning during pilot phase. Red flags: active resistance to basic tools, leadership motivated by headcount reduction, no picture of current work quality. Team readiness matters more than technology readiness. Organizations with prepared teams succeed with simple tools; unprepared teams struggle with sophisticated ones.
+Look for documented processes (informal is fine), leadership framing AI as partnership, culture that asks "how can we do this better?", clear success metrics, and 10–15% capacity for learning during the pilot. Red flags: active resistance to tools, leadership driven by headcount reduction, no quality standards for current work.
 
 After working with dozens of organizations on their first AI implementations, we've identified clear patterns that predict success or failure. Here are the specific signs that indicate your team is ready to move forward—and the warning signals that suggest you should address some fundamentals first.
 
@@ -96,7 +96,7 @@ The most successful implementations we've seen dedicate 10-15% of someone's time
 
 ## What are the signs a team is NOT ready for AI implementation?
 
-Three major red flags indicate you should wait: active resistance to basic tools or process changes signals deeper organizational dynamics that AI will amplify; leadership viewing AI primarily as headcount reduction creates trust issues and active resistance; absence of clear current-work quality standards means you can't measure whether AI is helping or hurting. Address change management fundamentals, reframe strategic vision, and establish basic metrics first. Teams that resist any change will resist AI. Leaders focused on cost-cutting rather than capability-building create resistance that undermines technical implementation.
+Three red flags: active resistance to tools signals organizational dynamics AI will amplify; leadership viewing AI as headcount reduction creates distrust; no quality standards means you can't measure AI's impact. Address change management fundamentals, reframe vision around partnership, and establish basic metrics before proceeding.
 
 ### Active Resistance to Any New Tools
 
@@ -116,7 +116,7 @@ Without understanding what good work looks like currently, you can't determine w
 
 ## What needs to be in place before starting an AI project?
 
-Core readiness requirements: documented processes showing current workflows, leadership committed to partnership framing not cost-cutting, team culture that asks improvement questions, clear success metrics for current work, dedicated capacity (10-15%) during pilot phase. Less critical but helpful: existing comfort with tool adoption, executive sponsorship, basic AI literacy. Most organizations don't need every box checked — more green flags than red flags significantly improve success chances. If seeing warning signs, address people and process fundamentals with a people-first strategy before technical implementation.
+Core readiness requirements: documented processes showing current workflows, leadership committed to partnership framing not cost-cutting, team culture that asks improvement questions, clear success metrics for current work, dedicated capacity (10-15%) during pilot phase. Less critical but helpful: existing comfort with tool adoption, executive sponsorship, basic AI literacy.
 
 Most organizations don't need to check every box before starting with AI. But having more green flags than red ones significantly improves your chances of successful implementation.
 

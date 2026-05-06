@@ -37,7 +37,7 @@ Your finance team approved the AI software budget, the technology is impressive,
 
 ## What are the hidden costs of AI implementation?
 
-Most organizations underestimate AI implementation costs by 40-60%, overlooking people development (30-40% of investment), change management (20-30%), and integration work (15-25%) beyond software licensing. Training spans 6-12 months as teams learn to partner with AI. Inadequate budgeting delays results, reduces adoption, and creates long-term opportunity costs that compound. True budgeting requires 60-80 cents in people and process investment for every dollar spent on software.
+Most organizations underestimate AI implementation costs by 40-60%, overlooking people development (30-40% of investment), change management (20-30%), and integration work (15-25%) beyond software licensing. Training spans 6-12 months as teams learn to partner with AI. Inadequate budgeting delays results, reduces adoption, and creates long-term opportunity costs that compound.
 
 This is a critical blind spot in any [enterprise AI strategy](/ai-agents-for-business/), and addressing it directly improves your chances of success dramatically.
 
@@ -99,7 +99,7 @@ Consider pilot program economics carefully. While starting small reduces risk, i
 
 ## Why does AI cost more than the software license suggests?
 
-Beyond software, you're paying for people development, change management, process redesign, integration work, and data preparation — often totaling 60-80% more than technology costs. Incomplete budgets delay results and reduce adoption rates, creating opportunity costs that compound. Failed implementations breed organizational skepticism that hampers future initiatives. The real investment is capability building that produces dividends across multiple projects over years, not single-project ROI.
+Beyond software licenses, you fund people development, change management, process redesign, system integration work, and data preparation—often adding 60–80% to technology costs. Budgets that underestimate these investments delay results and suppress adoption rates, creating opportunity costs and competitive disadvantages that compound over quarters and years.
 
 When justifying comprehensive AI budgets, focus on **outcomes rather than features**. Calculate the cost of not implementing AI successfully: competitor advantages, missed efficiency gains, and employee frustration with inadequate tools.
 
