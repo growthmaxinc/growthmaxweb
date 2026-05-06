@@ -34,7 +34,7 @@ tldr: Successful AI adoption is 80% change management and 20% technology — foc
 
 Your AI technology might be flawless, but if your people aren't ready for it, your implementation will fail. **Change management for AI adoption** requires a fundamentally different approach than traditional software rollouts because AI touches something deeper --- how people see their value and future at work.
 
-Successful AI adoption happens when you treat it as an organizational transformation, not just a technology upgrade. The companies that get this right build a [people-first AI strategy](/blog/people-first-ai-strategy/) and spend more time on people preparation than on technical configuration.
+Successful AI adoption happens when you treat it as an organizational transformation, not just a technology upgrade. The companies that get this right build a [people-first AI strategy](/blog/people-first-ai-strategy/) and spend more time on people preparation than on technical configuration. This is the foundation of any effective [AI adoption playbook](/resources/ai-adoption-playbook/).
 
 ## Why Traditional Change Management Falls Short for AI
 
@@ -145,5 +145,12 @@ Create advancement opportunities tied to AI collaboration skills. When people se
 Most importantly, maintain the **partnership narrative**. Every communication, every training session, every success story should reinforce that AI amplifies human expertise rather than replacing it. And be realistic about [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/) — change management is an investment, not an expense.
 
 The organizations that master AI change management don't just successfully deploy technology --- they create cultures where humans and AI partnership becomes a competitive advantage. The playbook isn't complicated, but it requires commitment to putting people first in your AI transformation.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)
+- [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

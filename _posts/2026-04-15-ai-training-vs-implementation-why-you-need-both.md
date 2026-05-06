@@ -32,9 +32,9 @@ tldr: Successful AI adoption isn't about choosing between training your people o
   implementing new technology — it's about orchestrating both simultaneously.
 ---
 
-Most organizations approach AI adoption as an either-or decision: either focus on getting the technology right, or invest heavily in training people to use it. This false choice is why so many AI initiatives struggle to deliver their promised value — and it's one of the core themes in our pillar on [enterprise AI strategy and AI agents for business](/ai-agents-for-business.html).
+Most organizations approach AI adoption as an either-or decision: either focus on getting the technology right, or invest heavily in training people to use it. This false choice is why so many AI initiatives struggle to deliver their promised value.
 
-**Successful AI adoption requires both strategic implementation and comprehensive training**, working together like two engines powering the same aircraft. You can't fly with just one.
+**Successful AI adoption requires both strategic implementation and comprehensive training**, working together like two engines powering the same aircraft. You can't fly with just one. This is a central principle in our [AI Literacy & Training](/solutions/foundations/) offering.
 
 ## Why Implementation-Only Approaches Fall Short
 
@@ -124,4 +124,9 @@ But also monitor capability metrics: training completion rates, skill assessment
 
 Building AI capability isn't about choosing between great technology or great training. It's about orchestrating both to create something more powerful than either alone. When your people are prepared and your tools are purpose-built, AI becomes what it should be: a genuine partner in better outcomes.
 
-Related reading: [the change management playbook for AI adoption](/blog/change-management-playbook-ai-adoption/), [a people-first AI strategy](/blog/people-first-ai-strategy/), and the [5 signs your team is ready for AI implementation](/blog/signs-team-ready-ai-implementation/).
+---
+
+**Related reading:**
+- [AI Literacy & Training](/solutions/foundations/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)
+- [90-Day AI Adoption Timeline](/blog/90-day-ai-adoption-timeline/)

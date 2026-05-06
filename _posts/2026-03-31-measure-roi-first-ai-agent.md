@@ -17,11 +17,11 @@ tags:
 title: How to Measure ROI on Your First AI Agent
 ---
 
-You've deployed your first AI agent. It's working. People are using it. But when leadership asks "What's the return on investment?" you realize you're not quite sure how to answer.
+You've deployed your first [custom AI agent](/solutions/agent-development/). It's working. People are using it. But when leadership asks "What's the return on investment?" you realize you're not quite sure how to answer.
 
 You're not alone. Most organizations jump into AI implementation without establishing clear measurement frameworks. They end up with impressive-sounding but ultimately meaningless metrics like "AI interactions per day" or "time spent using AI tools."
 
-Here's how to measure what actually matters.
+Here's how to measure what actually matters. This measurement discipline is critical for justifying future investments and refining your overall [AI strategy](/ai-agents-for-business/).
 
 ## Start With Your Business Outcome, Not AI Metrics
 
@@ -82,6 +82,13 @@ Create a simple dashboard that leadership can understand at a glance. Include bo
 Remember that ROI measurement is itself a partnership between human judgment and data analysis. The numbers tell you what happened, but human insight tells you why it happened and what to do next.
 
 Measuring AI ROI isn't about proving your technology works --- it's about proving your people are more effective because of it.
+
+---
+
+**Related reading:**
+- [Custom AI Agent Development](/solutions/agent-development/)
+- [Your First AI Agent: Why Starting Small Is Your Smartest Move](/blog/your-first-ai-agent/)
+- [The Hidden Costs of AI Implementation](/blog/hidden-costs-ai-implementation-beyond-technology-budget/)
 
 Not sure where to start? Read our guide on [picking your first AI agent](/blog/your-first-ai-agent/) — the right first use case makes measurement much easier.
 

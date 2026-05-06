@@ -33,7 +33,7 @@ tldr: Executive buy-in for AI isn't about selling technology—it's about aligni
 
 You've done the research, identified the perfect AI use case, and built a compelling business case. But when you present to leadership, you get polite nods and a "we'll think about it" that stretches into months. Sound familiar?
 
-**Executive buy-in is the make-or-break factor** for AI project success. Without leadership alignment, even the most technically sound AI initiatives stall, get defunded, or launch without the organizational support they need to succeed.
+**Executive buy-in is the make-or-break factor** for AI project success. Without leadership alignment, even the most technically sound AI initiatives stall, get defunded, or launch without the organizational support they need to succeed. This is a critical component of your [AI adoption playbook](/resources/ai-adoption-playbook/) that's often overlooked.
 
 The good news? Getting executive buy-in isn't about having the flashiest AI demo or the biggest promised ROI. It's about understanding what leadership actually cares about and showing how AI amplifies their existing priorities.
 
@@ -130,3 +130,10 @@ The strongest executive buy-in comes when leadership becomes advocates for your 
 Help executives understand how to talk about your AI project with their peers, board members, or other stakeholders. Give them the language and examples they need to become effective champions.
 
 Executive buy-in for AI isn't about convincing skeptics to love technology. It's about showing how AI amplifies the business judgment and strategic thinking that got them to leadership positions in the first place. When executives see AI as a partner to their expertise rather than a replacement for their decision-making, support becomes sustainable and authentic.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [How to Scale AI Adoption After First Success](/blog/how-to-scale-ai-adoption-after-first-success/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)

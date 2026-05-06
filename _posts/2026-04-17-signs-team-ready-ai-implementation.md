@@ -33,7 +33,7 @@ tldr: Team readiness matters more than technology readiness when it comes to suc
   AI implementation.
 ---
 
-**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness — a theme we explore more deeply in our pillar guide on [enterprise AI strategy and AI agents for business](/ai-agents-for-business.html).
+**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness — a theme we explore more deeply in the [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) and our [AI adoption playbook](/resources/ai-adoption-playbook/).
 
 After working with dozens of organizations on their first AI implementations, we've identified clear patterns that predict success or failure. Here are the specific signs that indicate your team is ready to move forward—and the warning signals that suggest you should address some fundamentals first.
 
@@ -114,3 +114,10 @@ The key insight is that **team readiness matters more than technology readiness*
 If you're seeing mostly positive signs, consider starting with a small pilot project focused on augmenting one specific workflow — our guide to [building your first AI agent](/blog/your-first-ai-agent/) walks through exactly how to scope that. If you're seeing warning signs, address the people and process fundamentals with a [people-first AI strategy](/blog/people-first-ai-strategy/) first.
 
 The organizations that succeed with AI are those that recognize it as a partnership between human expertise and technological capability. When your team is ready for that partnership, the technology implementation becomes much more straightforward.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [90-Day AI Adoption Timeline](/blog/90-day-ai-adoption-timeline/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)

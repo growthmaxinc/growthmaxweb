@@ -26,6 +26,8 @@ faq:
 
 Your organization just approved a $500K AI initiative. The executive team is excited. The board is watching. You've got the budget, the tools, and the mandate to transform. Six months later, half the team is still using spreadsheets. The other half tried the new AI tools for two weeks and went back to what they know. This isn't rare. This is the norm.
 
+Understanding failure patterns is the first step toward building a solid [AI adoption playbook](/resources/ai-adoption-playbook/) that actually works.
+
 ## The problem isn't the technology.
 
 AI tools work. ChatGPT is genuinely useful. Claude can draft code. Specialized agents can analyze data faster than humans ever could. But tools don't transform organizations. People do. And when people don't understand *why* they're supposed to change, or *how* the change fits into their role and their organization's strategy, they don't change---no matter how good the tool is.
@@ -57,5 +59,12 @@ That one person becomes the proof of concept. Others see them thriving and ask: 
 AI implementations fail not because AI doesn't work. They fail because organizations skip the foundation: helping people understand their role in the partnership. Start with one focused agent. Show what partnership looks like. Build confidence. Build momentum. Then scale with clarity instead of chaos.
 
 Ready to start with that one focused agent? Read [why starting small is your smartest move](/blog/your-first-ai-agent/) and how to [address the "Where do I fit?" anxiety](/blog/where-do-i-fit-crisis/) that's quietly slowing your adoption. And if your AI project has already lost momentum, here's [how to diagnose the stall and get back on track](/blog/why-ai-agent-project-stalled-how-get-back-on-track/).
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

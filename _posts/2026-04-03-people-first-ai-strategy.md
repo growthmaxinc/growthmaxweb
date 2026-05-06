@@ -35,7 +35,7 @@ tldr: Successful AI strategies focus on people first, technology second — addr
 
 Your shiny new AI strategy document sits in a folder while your team continues doing things the old way. Sound familiar? The issue isn't your technology choices or implementation timeline — it's that **successful AI adoption starts with people, not processors**. Organizations that build their AI strategy around human needs and concerns see adoption rates 3x higher than those leading with technology.
 
-The most effective AI transformations begin with understanding your team's current state, addressing their concerns, and building capabilities before any AI tool touches their workflow.
+The most effective AI transformations begin with understanding your team's current state, addressing their concerns, and building capabilities before any AI tool touches their workflow. This foundation is central to any [AI adoption playbook](/resources/ai-adoption-playbook/) that actually works.
 
 ## What Makes AI Adoption Succeed or Fail
 
@@ -138,5 +138,12 @@ The organizations seeing transformational results from AI aren't necessarily usi
 This people-first approach takes longer upfront but accelerates results once implementation begins. Teams that understand why they're adopting AI, how it benefits their specific work, and what success looks like consistently outperform those handed tools without context. If you're ready to put this into action, our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) gives you a week-by-week framework.
 
 Start with your people. The technology will follow naturally — and actually get used.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [Why AI Implementations Fail](/blog/why-ai-implementations-fail/)
+- [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

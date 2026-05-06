@@ -26,7 +26,7 @@ faq:
 
 The dominant narrative about AI is: robots are coming for your job. Displacement. Disruption. The future without you. This framing is everywhere. It's in the news. It's in conversations. And it's killing AI adoption.
 
-But organizations that successfully adopt AI don't frame it this way. They reframe it. Not "humans versus machines." But "humans plus machines." Not "AI replaces what you do." But "AI amplifies what only you can do."
+But organizations that successfully adopt AI don't frame it this way. They reframe it. Not "humans versus machines." But "humans plus machines." Not "AI replaces what you do." But "AI amplifies what only you can do." This is the core of our [Partnership operating model](/partnership/).
 
 This reframe changes everything about how people adopt, how teams organize, and how organizations evolve.
 
@@ -59,5 +59,12 @@ Organizations that nail the partnership frame don't struggle with adoption. They
 "Partnership" isn't feel-good language. It's the operating principle that determines whether AI becomes a competitive advantage or a cultural crisis. The way you frame AI adoption determines how your organization evolves for the next decade.
 
 Without this frame, employees face a [quiet identity crisis](/blog/where-do-i-fit-crisis/) that no training program can solve. With it, [even your first AI agent](/blog/your-first-ai-agent/) becomes a proof point that accelerates everything that follows.
+
+---
+
+**Related reading:**
+- [Partnership Operating Model](/partnership/)
+- [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
+- [Your First AI Agent: Why Starting Small Is Your Smartest Move](/blog/your-first-ai-agent/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

@@ -32,7 +32,7 @@ tldr: Successful AI scaling requires strategic team selection, clear governance 
 
 Your AI pilot just delivered impressive results. Customer service response times dropped by 40%, or your sales team is closing deals 25% faster with AI-powered insights. Now leadership wants to know: how do we roll this out everywhere?
 
-The path from **successful AI pilot to organization-wide adoption** requires strategic planning, careful team selection, and a deep understanding of how different departments work. Rushing this phase is where most companies stumble, turning early wins into costly mistakes.
+The path from **successful AI pilot to organization-wide adoption** requires strategic planning, careful team selection, and a deep understanding of how different departments work. This is where your [AI adoption playbook](/resources/ai-adoption-playbook/) comes into play. Rushing this phase is where most companies stumble, turning early wins into costly mistakes.
 
 ## Why Most AI Scaling Efforts Fail
 
@@ -123,3 +123,10 @@ This means developing internal capabilities for recognizing AI opportunities, ma
 The companies that succeed with AI long-term are those that view scaling as a capability-building exercise, not just a technology rollout. They invest in people, processes, and partnerships that sustain AI adoption well beyond the initial excitement of pilot success.
 
 Your first AI success proved the technology works. Scaling that success proves your organization can adapt, learn, and thrive alongside artificial intelligence.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [Why Your Second AI Project Matters More Than Your First](/blog/why-your-second-ai-project-matters-more-than-your-first/)
+- [Change Management Playbook for AI Adoption](/blog/change-management-playbook-ai-adoption/)

@@ -33,9 +33,9 @@ tldr: Start with off-the-shelf tools to prove value and understand your needs, t
   effectively.
 ---
 
-The question isn't whether your organization needs AI --- it's whether you should build custom agents or start with existing tools. **The right choice depends on your specific workflow complexity, budget, and timeline**, but most organizations benefit from a strategic progression rather than an all-or-nothing approach.
+The question isn't whether your organization needs AI --- it's whether you should build [custom AI agents](/solutions/agent-development/) or start with existing tools. **The right choice depends on your specific workflow complexity, budget, and timeline**, but most organizations benefit from a strategic progression rather than an all-or-nothing approach.
 
-Start with off-the-shelf solutions to prove value and understand your needs. Move to custom development when you have workflows that existing tools simply can't handle effectively.
+Start with off-the-shelf solutions to prove value and understand your needs. Move to custom development when you have workflows that existing tools simply can't handle effectively. This decision is foundational to your broader [enterprise AI strategy](/ai-agents-for-business/).
 
 ## What Makes Off-the-Shelf AI Tools the Smart Starting Point
 
@@ -136,5 +136,12 @@ Ask these specific questions about each potential AI use case:
 Your answers will point toward the most strategic approach for each situation.
 
 The future belongs to organizations that **augment human expertise** with the right AI tools at the right time. Whether that means starting with proven off-the-shelf solutions or investing in custom agents depends on your specific context, but the key is starting strategically and building systematically. Your AI journey should amplify your team's unique strengths, not force them into generic workflows that miss the mark. If you're ready to take the first step, our guide on [picking your first AI agent](/blog/your-first-ai-agent/) will help you choose the right starting point.
+
+---
+
+**Related reading:**
+- [Custom AI Agent Development](/solutions/agent-development/)
+- [Your First AI Agent: Why Starting Small Is Your Smartest Move](/blog/your-first-ai-agent/)
+- [Measuring ROI on Your First AI Agent](/blog/measure-roi-first-ai-agent/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

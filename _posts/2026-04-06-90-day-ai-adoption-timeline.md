@@ -62,7 +62,7 @@ tldr: "Successful enterprise AI adoption follows a structured 90-day timeline in
 
 Most AI adoption timelines are either unrealistically aggressive ("implement AI in 30 days!") or so vague they're useless ("begin your AI journey"). The reality is that **meaningful AI adoption takes about 90 days** when done thoughtfully --- enough time to build proper foundations without losing momentum.
 
-This timeline balances the urgency most leaders feel with the careful planning that ensures lasting success. It's designed around three focused phases that build on each other, with clear milestones and deliverables at each stage.
+This timeline is at the heart of any effective [AI adoption playbook](/resources/ai-adoption-playbook/). It balances the urgency most leaders feel with the careful planning that ensures lasting success, designed around three focused phases that build on each other, with clear milestones and deliverables at each stage.
 
 ## Days 1-30: Building Your Foundation
 
@@ -161,5 +161,12 @@ This 90-day framework works because it balances speed with sustainability. It ac
 Start by identifying your stakeholder team and scheduling those crucial alignment conversations. The organizations that see the best results are those that invest properly in the foundation phase.
 
 Remember: the goal isn't to have AI everywhere in 90 days. It's to have AI working well somewhere, with a proven path to expand. That's how you build AI capabilities that actually move your business forward.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)
+- [Signs Your Team Is Ready for AI Implementation](/blog/signs-team-ready-ai-implementation/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

@@ -13,7 +13,7 @@ slug: your-first-ai-agent
 
 The tempting move is to go big. Enterprise-wide transformation. New processes. New training. New tools across the organization. You want to move fast and show impact. So you plan the massive initiative.
 
-But the organizations seeing the fastest adoption, the least resistance, and the best results? They start small. They pick one person. One role. One focused agent. They avoid the chaos of enterprise change and build momentum instead.
+But the organizations seeing the fastest adoption, the least resistance, and the best results? They start small. They pick one person. One role. One [focused custom AI agent](/solutions/agent-development/). They avoid the chaos of enterprise change and build momentum instead.
 
 ## Why big initiatives create big problems.
 
@@ -45,7 +45,7 @@ The best choice isn't necessarily the most senior person or the biggest role. It
 
 You don't need perfect organizational alignment. You don't need to have solved change management across the enterprise. You don't need to have culture, skills, and infrastructure all figured out. Your organization is still evolving. That's normal.
 
-A personal agent is a practical interim bridge while that evolution happens. It shows people what partnership looks like. It builds confidence. It creates momentum. And then, as your organization evolves---as culture changes, skills develop, infrastructure improves---your agent can scale with it.
+A personal agent is a practical interim bridge while that evolution happens. It shows people what partnership looks like. It builds confidence. It creates momentum. And then, as your organization evolves---as culture changes, skills develop, infrastructure improves---your agent can scale with it. Even when [choosing between custom agents and off-shelf tools](/blog/custom-ai-agents-vs-off-shelf-tools-when-to-build/), the principle remains the same: start small, prove the value, then scale.
 
 ## From one agent to organizational transformation.
 
@@ -54,5 +54,12 @@ One person with one agent becomes two, then five, then twenty. Each person sees 
 This is how organizations that "adopt AI successfully" actually do it. Not with big mandates. Not with enterprise initiatives. But with one clear win that creates momentum for the next, and the next.
 
 Once your first agent is running, the next question is how to prove its value. We wrote a practical guide to [measuring ROI on your first AI agent](/blog/measure-roi-first-ai-agent/) that covers exactly that.
+
+---
+
+**Related reading:**
+- [Custom AI Agent Development](/solutions/agent-development/)
+- [Measuring ROI on Your First AI Agent](/blog/measure-roi-first-ai-agent/)
+- [Custom AI Agents vs. Off-Shelf Tools: When to Build](/blog/custom-ai-agents-vs-off-shelf-tools-when-to-build/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

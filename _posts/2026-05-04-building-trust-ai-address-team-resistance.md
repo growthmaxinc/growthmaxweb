@@ -34,7 +34,7 @@ tldr: Trust in AI comes from transparency about what the technology will and won
 
 **Building trust in AI** isn't just about showcasing impressive demos or citing industry statistics. It's about addressing the very human concerns that arise when new technology enters established workflows. The teams that succeed with AI adoption spend as much time on trust-building as they do on technical implementation.
 
-Trust emerges when people understand exactly what AI will do, what it won't do, and how it fits into their daily work. This clarity eliminates the uncertainty that breeds resistance and creates space for genuine partnership between humans and AI systems.
+Trust emerges when people understand exactly what AI will do, what it won't do, and how it fits into their daily work. This clarity eliminates the uncertainty that breeds resistance and creates space for genuine partnership between humans and AI systems. It's a cornerstone of any effective [AI adoption playbook](/resources/ai-adoption-playbook/).
 
 ## Why Trust Issues Emerge Before AI Even Arrives
 
@@ -129,3 +129,10 @@ Establish clear channels for ongoing input about AI performance. Teams should fe
 Use this feedback to **continuously improve AI performance** and demonstrate that human judgment remains central to the system's evolution.
 
 Building trust in AI is really about building trust in the organization's approach to change. When teams see thoughtful planning, honest communication, and genuine partnership, they become advocates for AI adoption rather than obstacles to overcome. The technology succeeds because the people strategy succeeds first.
+
+---
+
+**Related reading:**
+- [AI Adoption Playbook](/resources/ai-adoption-playbook/)
+- [Change Management Playbook for AI Adoption](/blog/change-management-playbook-ai-adoption/)
+- [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)

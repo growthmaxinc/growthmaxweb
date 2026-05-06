@@ -15,7 +15,7 @@ Your company announces AI transformation. The executives talk about efficiency g
 
 And then, in a quiet moment, you ask yourself: "If a machine can now draft emails, write code, analyze data, and generate ideas---what exactly am I still here for?"
 
-This question doesn't get asked out loud. It shows up as resistance that masquerades as skepticism. "The tool is immature." "This doesn't fit our workflow." "Let's wait and see how it evolves." But the real question underneath is: Where do I fit?
+This question doesn't get asked out loud. It shows up as resistance that masquerades as skepticism. "The tool is immature." "This doesn't fit our workflow." "Let's wait and see how it evolves." But the real question underneath is: Where do I fit? This is the central anxiety that our [Partnership operating model](/partnership/) addresses head-on.
 
 ## The invisible anxiety that kills adoption.
 
@@ -44,5 +44,12 @@ When one person experiences this clarity---when they see that AI augments their 
 The path from "Where do I fit?" to "This makes me better at what I do" isn't through generic tools. It's through clarity about your specific role. It's through partnership that's designed for you.
 
 This anxiety is one of the top reasons [AI implementations fail](/blog/why-ai-implementations-fail/). The good news: it's solvable — and it starts with [one focused agent for one person](/blog/your-first-ai-agent/).
+
+---
+
+**Related reading:**
+- [Partnership Operating Model](/partnership/)
+- [Partnership, Not Replacement](/blog/partnership-not-replacement/)
+- [Why AI Implementations Fail](/blog/why-ai-implementations-fail/)
 
 *This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*

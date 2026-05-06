@@ -32,7 +32,7 @@ tldr: The real work of AI success begins after deployment --- focus on user adop
   a finish line.
 ---
 
-Your AI agent just went live. The development work is done, the integration is complete, and everyone's waiting to see results. But here's what most teams discover: **launching your AI agent isn't the finish line --- it's mile one of a much longer journey.**
+Your [custom AI agent](/solutions/agent-development/) just went live. The development work is done, the integration is complete, and everyone's waiting to see results. But here's what most teams discover: **launching your AI agent isn't the finish line --- it's mile one of a much longer journey.**
 
 Successful post-launch AI management focuses on three critical areas: supporting user adoption, capturing feedback for continuous improvement, and building sustainable partnership patterns between human expertise and AI capabilities. The organizations that treat deployment as a beginning rather than an ending see 3x higher success rates in their AI initiatives.
 
@@ -50,7 +50,7 @@ These are partnership questions, not technology questions. And they require ongo
 
 ## Building Your User Adoption Support System
 
-Effective post-launch support isn't about troubleshooting technical problems --- it's about **helping people develop judgment** about when and how to partner with AI.
+Effective post-launch support isn't about troubleshooting technical problems --- it's about **helping people develop judgment** about when and how to partner with AI. This is where the [partnership model](/partnership/) truly comes alive in practice.
 
 Start with **embedded champions**. Identify 2-3 early adopters who've shown enthusiasm during testing. Give them direct access to you for questions and position them as peer resources for their colleagues.
 
@@ -131,3 +131,10 @@ This transition happens naturally when you've built strong foundations: users wh
 The organizations that succeed long-term view their AI agents as **evolving partnerships** rather than deployed tools. They invest in developing human judgment alongside AI capabilities. They measure partnership quality alongside productivity gains.
 
 Most importantly, they remember that the goal isn't to create AI dependency --- it's to amplify human expertise through thoughtful collaboration. That partnership deepens over time, but only if you nurture it consistently from day one.
+
+---
+
+**Related reading:**
+- [Custom AI Agent Development](/solutions/agent-development/)
+- [Measuring ROI on Your First AI Agent](/blog/measure-roi-first-ai-agent/)
+- [Why AI Agent Projects Stall](/blog/why-ai-agent-project-stalled-how-get-back-on-track/)

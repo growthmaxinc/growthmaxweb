@@ -16,8 +16,8 @@ permalink: /resources/blog.html
 	<!-- Hero Section -->
 	<section class="pt-10 pb-12 md:pb-16 px-6 bg-gradient-to-br from-cyan-50 via-blue-50 to-sky-50">
 		<div class="max-w-4xl mx-auto text-center">
-			<h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">Blog</h1>
-			<p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-700">Insights on AI implementation, adoption strategies, and building partnership-based AI agents.</p>
+			<h1 data-aos="fade-up" class="text-4xl md:text-5xl font-light tracking-tight text-cyan-900 mb-4">Blog</h1>
+			<p data-aos="fade-up" data-aos-delay="100" class="text-base md:text-lg text-cyan-800 font-light leading-relaxed">Insights on AI implementation, adoption strategies, and building partnership-based AI agents.</p>
 		</div>
 	</section>
 
@@ -26,7 +26,7 @@ permalink: /resources/blog.html
 		<div class="max-w-6xl mx-auto">
 			<div class="grid md:grid-cols-2 gap-8">
 				{% for post in site.posts %}
-				<div data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}" class="bg-white rounded-lg border border-cyan-200 overflow-hidden hover:shadow-lg transition-shadow">
+				<div data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}" class="bg-white rounded-2xl border border-cyan-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
 					{% if post.image and post.image != '/growthMAX.PNG' %}
 					<img src="{{ post.image }}" alt="{{ post.image_alt | default: post.title }}" class="w-full h-48 object-cover" loading="lazy">
 					{% else %}
@@ -34,9 +34,9 @@ permalink: /resources/blog.html
 					{% endif %}
 					<div class="p-6">
 						<p class="text-xs font-medium text-blue-600 mb-2 uppercase tracking-wide">{{ post.category }}</p>
-						<h3 class="text-xl font-bold text-cyan-900 mb-2">{{ post.title }}</h3>
-						<p class="text-gray-700 mb-2 text-sm">{{ post.date | date: "%B %d, %Y" }} • {{ post.read_time }} min read</p>
-						<p class="text-gray-700 mb-4">{{ post.description }}</p>
+						<h3 class="text-xl font-medium text-cyan-900 mb-2">{{ post.title }}</h3>
+						<p class="text-sm text-cyan-700 font-light mb-2">{{ post.date | date: "%B %d, %Y" }} &bull; {{ post.read_time }} min read</p>
+						<p class="text-cyan-800 font-light mb-4">{{ post.description }}</p>
 						<a href="{{ post.url }}" class="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-800 transition-colors font-medium">
 							Read Article
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -51,9 +51,9 @@ permalink: /resources/blog.html
 	<!-- CTA Section -->
 	<section class="py-12 md:py-20 px-6 bg-gradient-to-r from-cyan-600 to-blue-600">
 		<div data-aos="fade-up" class="max-w-4xl mx-auto text-center">
-			<h2 class="text-3xl font-bold text-white mb-4">Ready to explore AI for your team?</h2>
-			<p class="text-cyan-100 mb-8 text-lg">Let's discuss how partnership-based AI can amplify your capabilities.</p>
-			<a href="/#contact" class="inline-block bg-white text-cyan-600 px-8 py-3 rounded-md font-semibold hover:bg-cyan-50 transition-colors">
+			<h2 class="text-3xl md:text-4xl font-light tracking-tight text-white mb-4">Ready to explore AI for your team?</h2>
+			<p class="text-cyan-100 mb-8 text-lg font-light">Let's discuss how partnership-based AI can amplify your capabilities.</p>
+			<a href="/#contact" class="inline-block bg-white text-cyan-700 px-8 py-3 rounded-full font-medium hover:bg-cyan-50 hover:shadow-lg transition-all">
 				Let's Talk
 			</a>
 		</div>

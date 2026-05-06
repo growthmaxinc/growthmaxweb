@@ -34,7 +34,7 @@ tldr: Successful AI training focuses on building confidence through hands-on pra
 
 Your team needs AI training, but the last thing you want is to create more anxiety in an already uncertain time. The key isn't cramming everyone into a conference room for death-by-PowerPoint sessions about machine learning algorithms.
 
-**Effective AI training builds confidence through hands-on practice with real work scenarios.** It starts with addressing concerns, focuses on augmenting existing skills, and gives people control over their learning pace. Done right, training becomes the foundation for sustained AI adoption across your organization.
+**Effective AI training builds confidence through hands-on practice with real work scenarios.** It starts with addressing concerns, focuses on augmenting existing skills, and gives people control over their learning pace. Done right, training becomes the foundation for sustained AI adoption across your organization. This is core to our [AI Literacy & Training program](/solutions/foundations/).
 
 Here's how to design AI training that your team will actually embrace.
 
@@ -160,3 +160,10 @@ Establish regular check-ins, peer mentoring systems, and channels for getting he
 The most successful organizations treat AI training as an ongoing capability development process, not a one-time event. They build cultures where continuous learning and adaptation become natural parts of how work gets done.
 
 Your team is ready to learn. They just need training that respects their intelligence, addresses their concerns, and shows them how AI can make their work more meaningful --- not more precarious. Start there, and everything else becomes much easier.
+
+---
+
+**Related reading:**
+- [AI Literacy & Training](/solutions/foundations/)
+- [AI Training vs. Implementation: Why You Need Both](/blog/ai-training-vs-implementation-why-you-need-both/)
+- [People-First AI Strategy](/blog/people-first-ai-strategy/)
