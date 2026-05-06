@@ -54,3 +54,5 @@ exclude:
   - node_modules
   - vendor
   - blog-people-first
+  - mockup-design-elements.html
+  - PUSH_THIS.sh
