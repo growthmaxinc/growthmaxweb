@@ -1,0 +1,29 @@
+name: SEO + AEO Audit
+
+# Runs on every push to main and every PR. Status check blocks merges
+# that introduce SEO/AEO regressions. The script enforces SEO-STANDARDS.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run SEO/AEO audit
+        run: python scripts/seo_aeo_audit.py

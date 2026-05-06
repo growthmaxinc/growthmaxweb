@@ -26,6 +26,13 @@ _spec = importlib.util.spec_from_file_location(
 hero_image = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(hero_image)
 
+# AEO self-validation: imported from the same audit module that CI uses,
+# so the pipeline enforces the exact same standard as humans + CI.
+from seo_aeo_audit import validate_post_data, AEO_MIN, AEO_MAX, META_DESC_MAX
+
+# Maximum number of regeneration attempts when AEO validation fails.
+MAX_GENERATION_RETRIES = 3
+
 # --- Configuration ---
 
 POSTS_DIR = Path("_posts")
@@ -253,7 +260,7 @@ def get_existing_posts():
     return posts
 
 
-def build_prompt(plan_row, aeo_qs, siblings):
+def build_prompt(plan_row, aeo_qs, siblings, prior_errors=None):
     pillar = PILLARS.get(plan_row["pillar"], {})
     pillar_url = pillar.get("url", "")
     pillar_name = pillar.get("name", "")
@@ -270,8 +277,21 @@ def build_prompt(plan_row, aeo_qs, siblings):
     existing = get_existing_posts()
     existing_list = "\n".join(f"- {t}" for t in existing[-15:])  # last 15 to keep prompt tight
 
+    # If a prior generation attempt failed validation, surface the specific
+    # errors so this attempt can correct them. This is the retry-feedback loop.
+    retry_block = ""
+    if prior_errors:
+        retry_block = (
+            "\n\nYOUR PREVIOUS ATTEMPT FAILED THE AEO AUDIT. "
+            "Fix these specific issues in this attempt:\n"
+            + "\n".join(f"  - {e}" for e in prior_errors)
+            + "\n"
+            "The 40-60 word constraint on each question H2's first paragraph is non-negotiable — "
+            "count words as you write each one.\n"
+        )
+
     return f"""
-{BRAND_VOICE}
+{BRAND_VOICE}{retry_block}
 
 Generate a complete blog post for the GrowthMax Inc website, optimized for both
 search engines (SEO) and answer engines / AI assistants (AEO).
@@ -296,6 +316,12 @@ list (use the answer angle as your guide for what to write directly under each):
 
 Place a 40–60 word direct answer in the FIRST PARAGRAPH under each question H2.
 That paragraph is what answer engines will quote.
+
+WORD COUNT IS CHECKED BY AN AUTOMATED AUDIT BEFORE THIS POST IS SAVED.
+Any first-paragraph answer outside 40–60 words will reject this generation
+and trigger a retry. Count words as you write each one. Aim for 50 words
+(middle of range = safety margin). Don't pad with filler; if a topic genuinely
+needs more words, put the elaboration in the SECOND paragraph of that section.
 
 EXISTING POSTS (do not duplicate these topics):
 {existing_list}
@@ -348,8 +374,8 @@ Respond in this exact JSON format (no prose around it):
 """
 
 
-def generate_post(client, plan_row, aeo_qs, siblings):
-    prompt = build_prompt(plan_row, aeo_qs, siblings)
+def generate_post(client, plan_row, aeo_qs, siblings, prior_errors=None):
+    prompt = build_prompt(plan_row, aeo_qs, siblings, prior_errors=prior_errors)
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=4096,
@@ -361,6 +387,32 @@ def generate_post(client, plan_row, aeo_qs, siblings):
     elif "```" in text:
         text = text.split("```")[1].split("```")[0]
     return json.loads(text.strip())
+
+
+def generate_post_with_validation(client, plan_row, aeo_qs, siblings):
+    """Generate a post and validate it against AEO rules. Retry up to
+    MAX_GENERATION_RETRIES times with feedback if validation fails.
+
+    Returns the validated post_data dict, or raises RuntimeError if all
+    attempts fail (workflow exits non-zero, calendar row stays Not started).
+    """
+    prior_errors = None
+    for attempt in range(1, MAX_GENERATION_RETRIES + 1):
+        print(f"\n=== Generation attempt {attempt}/{MAX_GENERATION_RETRIES} ===")
+        candidate = generate_post(client, plan_row, aeo_qs, siblings, prior_errors=prior_errors)
+        passed, errors = validate_post_data(candidate)
+        if passed:
+            print(f"  ✓ AEO validation passed on attempt {attempt}")
+            return candidate
+        print(f"  ✗ AEO validation failed ({len(errors)} errors):")
+        for e in errors:
+            print(f"    - {e}")
+        prior_errors = errors
+
+    raise RuntimeError(
+        f"Generation failed AEO validation after {MAX_GENERATION_RETRIES} attempts. "
+        f"Last errors: {prior_errors}. Calendar row will remain 'Not started' for next run."
+    )
 
 
 HERO_IMAGE_SPEC_PROMPT = """
@@ -551,7 +603,12 @@ def main():
     siblings = sibling_spokes(sheets["master"], plan_row["pillar"], exclude_keyword=plan_row["keyword"])
     print(f"Found {len(aeo_qs)} AEO questions, {len(siblings)} published siblings for pillar {plan_row['pillar']}")
 
-    post_data = generate_post(client, plan_row, aeo_qs, siblings)
+    try:
+        post_data = generate_post_with_validation(client, plan_row, aeo_qs, siblings)
+    except RuntimeError as e:
+        print(f"FATAL: {e}", file=sys.stderr)
+        sys.exit(1)
+
     image_path, image_alt = generate_hero_image(client, post_data, out_dir=Path("."))
     _, public_url = save_post(post_data, image_path=image_path, image_alt=image_alt)
 
