@@ -48,6 +48,13 @@ jobs:
         # audit here as a belt-and-suspenders check before commit.
         run: python scripts/seo_aeo_audit.py
 
+      - name: Validate hero image is on-brand
+        # The canonical PIL renderer always emits 1200x630. This guards
+        # against any future fallback path that might produce off-brand
+        # dimensions before the image reaches main. See
+        # scripts/skills/growthmax-imagery/SKILL.md.
+        run: python scripts/validate_hero_images.py
+
       - name: Commit and push
         id: commit
         run: |
