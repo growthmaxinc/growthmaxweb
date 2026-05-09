@@ -33,7 +33,11 @@ import yaml
 
 REPO = Path(__file__).resolve().parent.parent
 POSTS_DIR = REPO / "_posts"
-SAMPLES_DIR = REPO / "samples"
+# OUTPUT_DIR env var lets the backfill workflow write directly to repo root
+# instead of /samples/. Defaults to /samples/ for the preview workflow.
+SAMPLES_DIR = Path(os.environ.get("OUTPUT_DIR", "")) if os.environ.get("OUTPUT_DIR") else REPO / "samples"
+if not SAMPLES_DIR.is_absolute():
+    SAMPLES_DIR = REPO / SAMPLES_DIR
 
 
 def find_post_file(slug):

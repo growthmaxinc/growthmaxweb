@@ -1,0 +1,58 @@
+name: Backfill All Hero Images
+
+# One-shot workflow that regenerates hero images for ALL 20 published blog
+# posts using the canonical Imagen pipeline + the growthmax-imagery skill.
+# Triggered manually via workflow_dispatch. Commits the new heroes directly
+# to the repo root (overwriting existing blog-*.jpg files), and cleans up
+# the /samples/ and /poc-samples/ scratch folders in the same commit.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic google-genai Pillow pyyaml
+
+      - name: Render all 20 hero images
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IMAGE_MODEL_TIER: paid
+          # All 20 published slugs, ordered same as _posts/ filenames
+          SLUGS: partnership-not-replacement,where-do-i-fit-crisis,why-ai-implementations-fail,your-first-ai-agent,measure-roi-first-ai-agent,custom-ai-agents-vs-off-shelf,people-first-ai-strategy,90-day-ai-adoption-timeline,hidden-costs-ai-implementation,change-management-playbook,stalled-ai-project,ai-training-vs-implementation,signs-team-ready-ai,post-launch-ai-agent-management,when-to-hire-ai-consultant-vs-building-in-house,how-to-scale-ai-adoption-after-first-success,why-your-second-ai-project-matters-more-than-your-first,executive-buy-in-ai-projects-leadership-alignment,how-to-train-team-ai-without-overwhelm,building-trust-ai-address-team-resistance
+          # Render to repo root, not /samples/
+          OUTPUT_DIR: '.'
+        run: python scripts/render_samples.py
+
+      - name: Cleanup scratch folders
+        run: |
+          rm -rf samples poc-samples
+          echo "scratch folders removed"
+
+      - name: Commit backfill
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 'blog-*.jpg' samples poc-samples 2>/dev/null || true
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes — backfill produced nothing new"
+            exit 1
+          fi
+          git commit -m "Backfill 20 hero images via Imagen 4 (canonical look)"
+          git push
