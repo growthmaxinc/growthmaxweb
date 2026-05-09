@@ -168,8 +168,10 @@ class HeroImageGenerator:
     # -----------------------------------------------------------------
     def imagen_generate(self, prompt):
         """Call Imagen 3 with the assembled prompt. Returns raw image bytes."""
+        # Imagen 4 is the GA model as of May 2026. If this 404s in the future,
+        # run .github/workflows/list-imagen-models.yml to see what's available.
         result = self.gemini.models.generate_images(
-            model="imagen-3.0-generate-002",
+            model="imagen-4.0-generate-001",
             prompt=prompt,
             config=genai_types.GenerateImagesConfig(
                 number_of_images=1,
