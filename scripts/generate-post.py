@@ -415,55 +415,102 @@ def generate_post_with_validation(client, plan_row, aeo_qs, siblings):
     )
 
 
-HERO_IMAGE_SPEC_PROMPT = """
-You are designing a flat-vector hero illustration for a GrowthMax blog post.
-The renderer supports three layouts. Pick whichever best matches the post's
-structure and produce a JSON spec.
+# Path to the imagery skill — single source of truth for hero image creative
+# direction. Loaded fresh on every run so edits to the skill take effect on the
+# next pipeline tick without a code change here.
+IMAGERY_SKILL_PATH = Path(__file__).parent / "skills" / "growthmax-imagery" / "SKILL.md"
+
+# Minimal machine-readable spec the LLM still needs to know — the JSON shape
+# the renderer expects. The CREATIVE DIRECTION (layout selection, copy craft,
+# character caps, icon strategy, validation) lives in IMAGERY_SKILL_PATH.
+HERO_RENDERER_SCHEMA = """
+RENDERER SCHEMA (output this JSON, nothing else, no code fences):
+
+Common fields, always required:
+  "layout": "timeline" | "split" | "cards"
+  "header": string  (the top label — see SKILL.md §Header copy)
+  "footer_title": string  (the editorial line — see SKILL.md §Footer title)
+  "footer_subtitle": string  (the supporting line — see SKILL.md §Footer subtitle)
+  "alt": string  (one sentence, screen-reader description of the illustration)
+
+Layout-specific fields:
+
+  layout = "timeline":
+    "steps": [{ "icon": <icon>, "label": <string> }, ...]   (3 to 5 entries)
+
+  layout = "split":
+    "left":   { "icon": <icon>, "label": <string>, "sub": <string> }
+    "center": { "label": <string>, "sub": <string> }
+    "right":  { "icon": <icon>, "label": <string>, "sub": <string> }
+
+  layout = "cards":
+    "cards": [{ "icon": <icon>, "label": <string>, "highlight": <bool> }, ...]
+    (3 to 5 entries, AT MOST one with highlight=true)
+
+Allowed icons:
+  check, person, question, target, clock, book, rocket, gear, chart, cycle,
+  flag, scale, chat
+
+CHARACTER CAPS (hard — see SKILL.md §Hard renderer constraints for derivation):
+  header              ≤ 24 chars
+  footer_title        ≤ 40 chars
+  footer_subtitle     ≤ 65 chars
+  card label          ≤ 26 chars
+  timeline step label ≤ 26 chars
+  split column label  ≤ 14 chars  (UPPERCASE in render — count carefully)
+  split column sub    ≤ 60 chars
+  split center label  ≤ 7 chars   (UPPERCASE)
+  split center sub    ≤ 18 chars
+"""
+
+
+def _load_imagery_skill():
+    """Read the canonical creative-direction skill. If missing, fail hard —
+    we do not generate hero images without the skill loaded, because that's
+    how off-brand drift happens."""
+    if not IMAGERY_SKILL_PATH.exists():
+        raise FileNotFoundError(
+            f"Imagery skill not found at {IMAGERY_SKILL_PATH}. "
+            "This file is the source of truth for hero image creative direction "
+            "and must be present for the pipeline to run. See "
+            "scripts/skills/growthmax-imagery/SKILL.md."
+        )
+    return IMAGERY_SKILL_PATH.read_text()
+
+
+HERO_IMAGE_USER_PROMPT = """
+You are designing the hero image for a new GrowthMax blog post. Apply the
+creative direction in the skill above (treat every rule there as binding) and
+output a JSON spec that the renderer can consume.
 
 Post title:    {title}
 Post subtitle: {subtitle}
 TL;DR:         {tldr}
 
-LAYOUTS
-
-1) "timeline" — 3 to 5 sequential stages in a horizontal flow.
-   Use when the post describes a process, roadmap, phases, or steps over time.
-   Each step: {{ "icon": "<icon>", "label": "<2-3 words>" }}.
-
-2) "split" — two contrasting options joined by a center "decision" circle.
-   Use when the post compares two approaches (A vs B, build vs buy, etc.).
-   left/right: {{ "icon": "<icon>", "label": "<1-2 words>", "sub": "<short phrase>" }}.
-   center: {{ "label": "<1 word verb>", "sub": "<2-3 words>" }}.
-
-3) "cards" — 3 to 5 cards in a row, each with icon and label.
-   Use when the post lists discrete signals, principles, pillars, or categories.
-   Each card: {{ "icon": "<icon>", "label": "<2-3 words>", "highlight": <bool> }}.
-   Mark at most one card "highlight": true (for the most central idea).
-
-ALLOWED ICONS:
-check, person, question, target, clock, book, rocket, gear, chart, cycle, flag, scale, chat
-
-COMMON FIELDS (always include):
-- "header": 2-5 uppercase-ish words, the concept label across the top.
-- "footer_title": A short benefit-oriented title (3-6 words), NOT the post title verbatim.
-- "footer_subtitle": A one-line supporting phrase (<= 10 words).
-
-Also return "alt": a single-sentence alt-text description of the illustration.
-
-Respond with ONLY a JSON object (no prose, no code fences) of the form:
-{{
-  "layout": "timeline" | "split" | "cards",
-  "header": "...",
-  "footer_title": "...",
-  "footer_subtitle": "...",
-  "alt": "...",
-  ...layout-specific fields...
-}}
-"""
+WORK ORDER:
+1. Read the post title, subtitle, and TL;DR.
+2. Identify the post's argument shape (sequence / decision / list of distinct
+   ideas) and pick the layout per SKILL.md §Layout selection.
+3. Draft a header that is specific to THIS post (SKILL.md §Header copy — note
+   the "doesn't fit five other posts" test).
+4. Draft a footer title that names the benefit/action/reframe (SKILL.md
+   §Footer title — do NOT echo the post title verbatim).
+5. Draft a footer subtitle that adds context the title doesn't already give
+   (SKILL.md §Footer subtitle).
+6. Pick icons per SKILL.md §Icon strategy (use the pairing table; honour the
+   variety rule; honour the person-led rule if applicable).
+7. Verify every field against SKILL.md §Hard renderer constraints — count
+   characters carefully, especially split column labels (cap 14 UPPERCASE).
+8. Run SKILL.md §Pre-publish validation checklist mentally. If any item
+   fails, revise before output.
+9. Output ONLY the JSON object per the RENDERER SCHEMA. No prose, no code
+   fences, no commentary.
+""" + HERO_RENDERER_SCHEMA
 
 
 def generate_hero_image(client, post_data, out_dir=Path(".")):
-    prompt = HERO_IMAGE_SPEC_PROMPT.format(
+    skill_text = _load_imagery_skill()
+    user_prompt = HERO_IMAGE_USER_PROMPT.format(
         title=post_data.get("title", ""),
         subtitle=post_data.get("subtitle", ""),
         tldr=post_data.get("tldr", ""),
@@ -472,7 +519,8 @@ def generate_hero_image(client, post_data, out_dir=Path(".")):
         resp = client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=1024,
-            messages=[{"role": "user", "content": prompt}],
+            system=skill_text,
+            messages=[{"role": "user", "content": user_prompt}],
         )
         text = resp.content[0].text
         if "```json" in text:
