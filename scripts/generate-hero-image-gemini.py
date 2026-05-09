@@ -28,9 +28,11 @@ Environment:
     GEMINI_API_KEY     required for stage 2 (image generation)
 """
 import argparse
+import hashlib
 import io
 import json
 import os
+import random
 import sys
 from pathlib import Path
 
@@ -38,6 +40,66 @@ from anthropic import Anthropic
 from google import genai
 from google.genai import types as genai_types
 from PIL import Image
+
+
+# Ethnicity distribution per SKILL.md §Character variety.
+# 85% Caucasian / 15% non-Caucasian, with the 15% spread across categories.
+# Sampled deterministically per-post (seeded by slug) so the same post always
+# gets the same ethnicity on regeneration, AND so the 85/15 ratio holds across
+# the published archive rather than depending on Claude's default tendencies.
+ETHNICITY_DISTRIBUTION = [
+    ("Caucasian",       0.85),
+    ("Black",           0.04),
+    ("East Asian",      0.03),
+    ("South Asian",     0.03),
+    ("Hispanic/Latino", 0.03),
+    ("Middle Eastern",  0.02),
+]
+
+
+def pick_ethnicity_for_slug(slug):
+    """Per-slug sampling — used by the auto-pipeline where only one post is
+    being generated at a time. With small sample sizes there's variance from
+    the 85/15 target; for a fixed batch (e.g., backfill of all 20 posts) use
+    assign_ethnicities_quota() instead, which guarantees the exact ratio."""
+    seed = int(hashlib.sha256(slug.encode()).hexdigest()[:8], 16)
+    rng = random.Random(seed)
+    r = rng.random()
+    cumulative = 0.0
+    for label, weight in ETHNICITY_DISTRIBUTION:
+        cumulative += weight
+        if r < cumulative:
+            return label
+    return ETHNICITY_DISTRIBUTION[0][0]
+
+
+def assign_ethnicities_quota(slugs):
+    """Deterministic quota-based assignment for a known list of slugs.
+    Guarantees the exact 85/15 ratio across the batch (round to nearest).
+    The non-Caucasian slots are distributed across the non-Caucasian
+    categories so no single non-white group dominates the minority share.
+
+    Returns a dict {slug: ethnicity}.
+    """
+    if not slugs:
+        return {}
+    n = len(slugs)
+    n_other = round(n * 0.15)  # rounds to nearest int — for 20 posts: 3
+    n_caucasian = n - n_other
+    # Rank slugs by stable hash to pick which N receive non-Caucasian
+    ranked = sorted(slugs, key=lambda s: hashlib.sha256(s.encode()).hexdigest())
+    other_slugs = set(ranked[:n_other])
+    # Distribute non-Caucasian slugs across the categories
+    non_caucasian_pool = [
+        "Black", "East Asian", "South Asian", "Hispanic/Latino", "Middle Eastern"
+    ]
+    result = {}
+    for i, slug in enumerate(sorted(other_slugs)):
+        result[slug] = non_caucasian_pool[i % len(non_caucasian_pool)]
+    for slug in slugs:
+        if slug not in result:
+            result[slug] = "Caucasian"
+    return result
 
 REPO = Path(__file__).resolve().parent.parent
 SKILL_PATH = REPO / "scripts" / "skills" / "growthmax-imagery" / "SKILL.md"
@@ -90,10 +152,13 @@ Post title:    {title}
 Post subtitle: {subtitle}
 TL;DR:         {tldr}
 
+CHARACTER ETHNICITY FOR THIS POST: {ethnicity}
+The character must be of {ethnicity} ethnicity. This is pre-sampled per SKILL.md §Character variety to maintain the correct distribution across the archive — do NOT override it. Build the rest of the character (gender, age, hair, attire) freely around this constraint.
+
 Output a JSON object with exactly these keys, no others, no surrounding prose, no code fences:
 
 {{
-  "CHARACTER": "<1 sentence — gender, approximate age, ethnicity, hair, attire. Vary across posts; avoid the SaaS-default 'white woman in plaid shirt'>",
+  "CHARACTER": "<1 sentence — gender, approximate age, hair, attire. Use the ethnicity above; do not change it.>",
   "WORKSPACE_TYPE": "<2-4 words — e.g., 'home office', 'cozy corner office', 'shared studio space'>",
   "POSE_DESCRIPTION": "<short phrase — e.g., 'side profile, seated', 'three-quarter angle, leaning slightly forward'>",
   "ACTIVITY_DESCRIPTION": "<short phrase describing what they're doing right now — match the post's argument>",
@@ -136,9 +201,15 @@ class HeroImageGenerator:
     # -----------------------------------------------------------------
     # Stage 1 — Claude writes the per-post variables
     # -----------------------------------------------------------------
-    def claude_fill_variables(self, title, subtitle, tldr):
+    def claude_fill_variables(self, title, subtitle, tldr, slug=None):
+        # Pre-sample (or look up override) the ethnicity per SKILL.md
+        # §Character variety. Override map is set when running a known batch
+        # (sample/backfill) so the 85/15 quota holds exactly; falls back to
+        # per-slug sampling for the single-post auto-pipeline path.
+        overrides = getattr(self, "_ethnicity_overrides", {}) or {}
+        ethnicity = overrides.get(slug) or pick_ethnicity_for_slug(slug or title)
         instruction = CLAUDE_INSTRUCTION.format(
-            title=title, subtitle=subtitle, tldr=tldr
+            title=title, subtitle=subtitle, tldr=tldr, ethnicity=ethnicity
         )
         resp = self.anthropic.messages.create(
             model="claude-sonnet-4-20250514",
@@ -264,8 +335,11 @@ class HeroImageGenerator:
     # -----------------------------------------------------------------
     def render_post(self, title, subtitle, tldr, out_path):
         out_path = Path(out_path)
-        print(f"  [1/3] Claude filling per-post variables...", flush=True)
-        variables = self.claude_fill_variables(title, subtitle, tldr)
+        # Use the output filename (sans extension) as the slug for ethnicity
+        # sampling — guarantees same post → same character on regeneration.
+        slug = out_path.stem.removeprefix("blog-")
+        print(f"  [1/3] Claude filling per-post variables (slug={slug})...", flush=True)
+        variables = self.claude_fill_variables(title, subtitle, tldr, slug=slug)
         prompt = self.assemble_prompt(variables)
 
         print(f"  [2/3] Imagen rendering (this takes ~10-20s)...", flush=True)

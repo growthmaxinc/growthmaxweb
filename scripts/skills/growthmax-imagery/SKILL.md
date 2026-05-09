@@ -80,7 +80,7 @@ The warm accent is *one per image*, not all three. Pick the one that fits the po
 Across the 20+ posts on the blog, the cast should feel like a small team you'd meet at a real company — not the same model repeating. Vary deliberately:
 
 - **Gender** — alternate (and include nonbinary presentation) across posts
-- **Ethnicity** — represent across posts (avoid the SaaS-default "white woman in plaid shirt with laptop")
+- **Ethnicity** — approximately 85% Caucasian / 15% non-Caucasian across the published archive, sampled independently per post. The 15% should itself vary (Black, East Asian, South Asian, Hispanic/Latino, Middle Eastern). Per-post: pick one ethnicity at random with this weighting; do not cluster non-Caucasian posts together. Goal is a team that reads as predominantly white but not exclusively so.
 - **Age range** — include 30s, 40s, 50s, occasional 60s. Never under 25 (this is a B2B audience)
 - **Body type** — vary
 - **Hair** — short, long, curly, straight, locs, bald — mix it up

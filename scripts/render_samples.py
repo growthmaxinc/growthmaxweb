@@ -71,6 +71,16 @@ def main():
     SAMPLES_DIR.mkdir(exist_ok=True)
     gen = gemini_hero.HeroImageGenerator()
 
+    # For multi-post sample renders, force-pin the ethnicity per slug using
+    # quota assignment so the demographic ratio matches SKILL.md exactly
+    # (single-slug sampling has too much variance at small N).
+    if len(slugs) > 1:
+        assignments = gemini_hero.assign_ethnicities_quota(slugs)
+        gen._ethnicity_overrides = assignments
+        print(f"  Ethnicity assignments (quota): {assignments}")
+    else:
+        gen._ethnicity_overrides = {}
+
     failures = []
     for slug in slugs:
         try:
