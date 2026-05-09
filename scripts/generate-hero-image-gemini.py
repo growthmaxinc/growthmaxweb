@@ -1,31 +1,23 @@
 #!/usr/bin/env python3
 """
-Generate a hero image for a GrowthMax blog post using Gemini Imagen 3.
+Generate a hero image for a GrowthMax blog post using Gemini Imagen 4.
 
 Two-stage pipeline:
-  Stage 1: Claude reads the post (title + subtitle + tldr) and writes a JSON
-           object filling in the per-post variables of the imagery skill's
-           prompt template — character, workspace, lighting, mood, etc.
-  Stage 2: We assemble the prompt and call Gemini Imagen 3, then resize the
+  Stage 1: Pre-sample composition type, gender, ethnicity per slug
+           (deterministic via slug hash + quotas). Then Claude fills in the
+           per-post variables for the chosen composition type's template.
+  Stage 2: Gemini Imagen 4 renders the assembled prompt; we resize the
            output to the canonical 1200×630 site dimensions.
 
-Creative direction lives in scripts/skills/growthmax-imagery/SKILL.md and is
-loaded fresh on every call. Edits to the skill take effect on the next run
-without code changes here.
-
-Usage:
-    # CLI — render a single post by passing its content
-    python generate-hero-image-gemini.py \\
-        --title "Why AI Implementations Fail" \\
-        --subtitle "Organizational disorientation, not technology" \\
-        --tldr "Roughly 70% of AI implementations fail..." \\
-        --out blog-why-ai-implementations-fail.jpg
-
-    # Programmatic — import HeroImageGenerator and call .render_post(...)
+Creative direction lives in scripts/skills/growthmax-imagery/SKILL.md.
+The skill defines four composition types (metaphor / tableau / person /
+group); each has its own prompt template and Claude instruction.
 
 Environment:
-    ANTHROPIC_API_KEY  required for stage 1 (per-post variables)
-    GEMINI_API_KEY     required for stage 2 (image generation)
+    ANTHROPIC_API_KEY  required for stage 1
+    GEMINI_API_KEY     required for stage 2
+    IMAGE_MODEL_TIER   "paid" (default for backfill/auto) → Imagen 4
+                       "free" → Nano Banana via generateContent
 """
 import argparse
 import hashlib
@@ -41,12 +33,22 @@ from google import genai
 from google.genai import types as genai_types
 from PIL import Image
 
+REPO = Path(__file__).resolve().parent.parent
+SKILL_PATH = REPO / "scripts" / "skills" / "growthmax-imagery" / "SKILL.md"
+TARGET_W, TARGET_H = 1200, 630
 
-# Ethnicity distribution per SKILL.md §Character variety.
-# 85% Caucasian / 15% non-Caucasian, with the 15% spread across categories.
-# Sampled deterministically per-post (seeded by slug) so the same post always
-# gets the same ethnicity on regeneration, AND so the 85/15 ratio holds across
-# the published archive rather than depending on Claude's default tendencies.
+
+# ---------------------------------------------------------------------
+# Quota distributions — see SKILL.md for rationale
+# ---------------------------------------------------------------------
+
+COMPOSITION_DISTRIBUTION = [
+    ("metaphor", 0.50),  # iceberg, road, bridge, fork — no people
+    ("tableau",  0.15),  # arranged objects, no full figures
+    ("person",   0.25),  # single character, personal-experience posts
+    ("group",    0.10),  # two characters, collaboration posts
+]
+
 ETHNICITY_DISTRIBUTION = [
     ("Caucasian",       0.85),
     ("Black",           0.04),
@@ -56,132 +58,320 @@ ETHNICITY_DISTRIBUTION = [
     ("Middle Eastern",  0.02),
 ]
 
+# Gender split is 50/50 across person + group posts only
+GENDERS = ["man", "woman"]
+
+
+def _seed_for(slug, salt=""):
+    return int(hashlib.sha256((salt + slug).encode()).hexdigest()[:8], 16)
+
 
 def pick_ethnicity_for_slug(slug):
-    """Per-slug sampling — used by the auto-pipeline where only one post is
-    being generated at a time. With small sample sizes there's variance from
-    the 85/15 target; for a fixed batch (e.g., backfill of all 20 posts) use
-    assign_ethnicities_quota() instead, which guarantees the exact ratio."""
-    seed = int(hashlib.sha256(slug.encode()).hexdigest()[:8], 16)
+    seed = _seed_for(slug, "ethnicity:")
     rng = random.Random(seed)
     r = rng.random()
-    cumulative = 0.0
-    for label, weight in ETHNICITY_DISTRIBUTION:
-        cumulative += weight
-        if r < cumulative:
+    cum = 0.0
+    for label, w in ETHNICITY_DISTRIBUTION:
+        cum += w
+        if r < cum:
             return label
-    return ETHNICITY_DISTRIBUTION[0][0]
+    return "Caucasian"
 
 
-def assign_ethnicities_quota(slugs):
-    """Deterministic quota-based assignment for a known list of slugs.
-    Guarantees the exact 85/15 ratio across the batch (round to nearest).
-    The non-Caucasian slots are distributed across the non-Caucasian
-    categories so no single non-white group dominates the minority share.
+def pick_gender_for_slug(slug):
+    seed = _seed_for(slug, "gender:")
+    rng = random.Random(seed)
+    return rng.choice(GENDERS)
 
-    Returns a dict {slug: ethnicity}.
+
+def pick_composition_for_slug(slug):
+    seed = _seed_for(slug, "composition:")
+    rng = random.Random(seed)
+    r = rng.random()
+    cum = 0.0
+    for label, w in COMPOSITION_DISTRIBUTION:
+        cum += w
+        if r < cum:
+            return label
+    return "metaphor"
+
+
+def assign_ethnicities_quota(slugs, compositions=None):
+    """Exact 85/15 ethnicity quota across slugs that will actually display
+    a character (person + group compositions). Slugs that get metaphor or
+    tableau compositions get 'Caucasian' assigned but it's never used.
+
+    If compositions is None, applies the quota to all slugs (legacy behavior).
     """
     if not slugs:
         return {}
-    n = len(slugs)
-    n_other = round(n * 0.15)  # rounds to nearest int — for 20 posts: 3
-    n_caucasian = n - n_other
-    # Rank slugs by stable hash to pick which N receive non-Caucasian
-    ranked = sorted(slugs, key=lambda s: hashlib.sha256(s.encode()).hexdigest())
+    if compositions is None:
+        slugs_for_quota = list(slugs)
+    else:
+        slugs_for_quota = [s for s in slugs if compositions.get(s) in ("person", "group")]
+    n = len(slugs_for_quota)
+    n_other = max(round(n * 0.15), 0)
+    ranked = sorted(slugs_for_quota, key=lambda s: hashlib.sha256(("ethnicity:" + s).encode()).hexdigest())
     other_slugs = set(ranked[:n_other])
-    # Distribute non-Caucasian slugs across the categories
-    non_caucasian_pool = [
-        "Black", "East Asian", "South Asian", "Hispanic/Latino", "Middle Eastern"
-    ]
-    result = {}
+    pool = ["Black", "East Asian", "South Asian", "Hispanic/Latino", "Middle Eastern"]
+    out = {}
     for i, slug in enumerate(sorted(other_slugs)):
-        result[slug] = non_caucasian_pool[i % len(non_caucasian_pool)]
+        out[slug] = pool[i % len(pool)]
     for slug in slugs:
-        if slug not in result:
-            result[slug] = "Caucasian"
-    return result
-
-REPO = Path(__file__).resolve().parent.parent
-SKILL_PATH = REPO / "scripts" / "skills" / "growthmax-imagery" / "SKILL.md"
-
-# Imagen 3 native 16:9 output is 1408x768. We crop+resize to the canonical
-# 1200x630 site dimensions, which match the blog layout's object-cover band.
-TARGET_W, TARGET_H = 1200, 630
-
-# The 13 per-post variables Claude fills in. Keys must match the bracketed
-# placeholders in SKILL.md §Imagen prompt template.
-PROMPT_VARIABLES = [
-    "CHARACTER",
-    "WORKSPACE_TYPE",
-    "POSE_DESCRIPTION",
-    "ACTIVITY_DESCRIPTION",
-    "CONCEPTUAL_ACCENT_DESCRIPTION",
-    "LIGHT_SOURCE",
-    "WARM_ACCENT_COLOR_NAME",
-    "WARM_ACCENT_HEX",
-    "WARM_ACCENT_OBJECT",
-    "LEFT_OR_RIGHT",
-    "OPPOSITE_SIDE_DESCRIPTION",
-    "MOOD_REGISTER",
-    "CHARACTER_EXPRESSION",
-]
+        if slug not in out:
+            out[slug] = "Caucasian"
+    return out
 
 
-PROMPT_TEMPLATE = """A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. {CHARACTER} in a warm, lived-in {WORKSPACE_TYPE}. The character is in {POSE_DESCRIPTION}, {ACTIVITY_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+def assign_compositions_quota(slugs):
+    """Exact composition quota across a known slug list.
+    For 20 posts: 10 metaphor, 3 tableau, 5 person, 2 group."""
+    if not slugs:
+        return {}
+    n = len(slugs)
+    targets = [
+        ("metaphor", round(n * 0.50)),
+        ("tableau",  round(n * 0.15)),
+        ("person",   round(n * 0.25)),
+        ("group",    n - round(n * 0.50) - round(n * 0.15) - round(n * 0.25)),
+    ]
+    # Rank slugs by stable composition-keyed hash
+    ranked = sorted(slugs, key=lambda s: hashlib.sha256(("composition:" + s).encode()).hexdigest())
+    out = {}
+    idx = 0
+    for label, count in targets:
+        for _ in range(count):
+            if idx >= len(ranked):
+                break
+            out[ranked[idx]] = label
+            idx += 1
+    return out
 
-Lighting: soft directional warmth from {LIGHT_SOURCE}, late afternoon golden-hour atmosphere, ambient soft shadows.
+
+def assign_genders_quota(slugs, compositions):
+    """50/50 gender split across the slugs that need a gender (person + group).
+    Pre-sampled deterministically from the slug list."""
+    needing_gender = [s for s in slugs if compositions.get(s) in ("person", "group")]
+    if not needing_gender:
+        return {}
+    ranked = sorted(needing_gender, key=lambda s: hashlib.sha256(("gender:" + s).encode()).hexdigest())
+    half = len(ranked) // 2
+    out = {}
+    for i, slug in enumerate(ranked):
+        out[slug] = "woman" if i < half else "man"
+    return out
+
+
+# ---------------------------------------------------------------------
+# Prompt templates per composition type
+# ---------------------------------------------------------------------
+
+METAPHOR_TEMPLATE = """A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. {METAPHOR_DESCRIPTION}. {SCENE_CONTEXT}.
+
+No people in the image. The composition is symbolic — a single visual metaphor that encodes the post's argument.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. Avoid harsh shadows. The warm-window-spilling-afternoon-light cliché is forbidden.
 
 Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
 
-Composition: character offset to the {LEFT_OR_RIGHT} third of the frame, side profile or three-quarter angle, occupying about 35% of frame width. The opposite side shows {OPPOSITE_SIDE_DESCRIPTION}. Generous breathing room, approximately 15% quiet space.
+Composition: {COMPOSITION_NOTES}. Generous breathing room.
 
-Style references: Tom Haugomat, Owen Davey, Mark Smith — confident shape language, considered, slightly nostalgic editorial illustration. Not photorealistic. Not 3D-rendered. Not cartoon. Not line-art. Vector shapes with soft painterly textures.
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli — confident shape language, considered editorial illustration. Not photorealistic. Not 3D-rendered. Not cartoon. Vector shapes with soft painterly textures.
 
-Mood: {MOOD_REGISTER}. {CHARACTER_EXPRESSION}.
+Mood: {MOOD_REGISTER}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos, or UI elements. No legible signs, no readable book titles, no laptop screens with text, no notebook writing — keep all surfaces blank or abstract. No hands-on-keyboard close-ups. No multiple warm colors. No neon, no glow effects, no sparkles unless explicitly described in the conceptual accent.
+Strictly forbidden: any visible text, words, numbers, letters, logos. No legible signs, no readable book titles. No sparkles unless explicitly described.
 
 Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
 
 
-CLAUDE_INSTRUCTION = """You are art-directing a single hero illustration for a GrowthMax blog post.
+TABLEAU_TEMPLATE = """A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. An overhead or three-quarter view of a {SURFACE_TYPE} arranged with {OBJECT_LIST}. {SCENE_CONTEXT}.
 
-The complete creative direction is in the system prompt above (SKILL.md). Read it carefully — every rule there is binding. Your job is to fill in the per-post variation: the character, the workspace, the activity, the mood, and the conceptual accent that tie this image to THIS post's argument.
+No full human figures — at most a hand or arm at the edge of the frame.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden.
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: {COMPOSITION_NOTES}.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
+
+Mood: {MOOD_REGISTER}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No readable book titles or notebook contents.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
+
+
+PERSON_TEMPLATE = """A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. {CHARACTER} in a {SETTING_TYPE}. The character is in {POSE_DESCRIPTION}, {ACTIVITY_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden — use a different light source for this image.
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: character offset to the {LEFT_OR_RIGHT} third of the frame, side profile or three-quarter angle, occupying about 35% of frame width. The opposite side shows {OPPOSITE_SIDE_DESCRIPTION}. Generous breathing room.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
+
+Mood: {MOOD_REGISTER}. {CHARACTER_EXPRESSION}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No hands-on-keyboard close-ups. No multiple warm colors.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
+
+
+GROUP_TEMPLATE = """A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. Two characters in {SETTING_TYPE}: {CHARACTER_A_DESCRIPTION} and {CHARACTER_B_DESCRIPTION}. They are {INTERACTION_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden.
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: both characters in the lower two-thirds, with breathing space above. {COMPOSITION_NOTES}.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
+
+Mood: {MOOD_REGISTER}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No multiple warm colors.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
+
+
+PROMPT_TEMPLATES = {
+    "metaphor": METAPHOR_TEMPLATE,
+    "tableau":  TABLEAU_TEMPLATE,
+    "person":   PERSON_TEMPLATE,
+    "group":    GROUP_TEMPLATE,
+}
+
+
+# Required JSON keys per composition type — Claude must return exactly these
+TEMPLATE_VARIABLES = {
+    "metaphor": [
+        "METAPHOR_DESCRIPTION", "SCENE_CONTEXT", "LIGHT_DESCRIPTION",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "COMPOSITION_NOTES", "MOOD_REGISTER",
+    ],
+    "tableau": [
+        "SURFACE_TYPE", "OBJECT_LIST", "SCENE_CONTEXT", "LIGHT_DESCRIPTION",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "COMPOSITION_NOTES", "MOOD_REGISTER",
+    ],
+    "person": [
+        "CHARACTER", "SETTING_TYPE", "POSE_DESCRIPTION", "ACTIVITY_DESCRIPTION",
+        "CONCEPTUAL_ACCENT_DESCRIPTION", "LIGHT_DESCRIPTION",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "LEFT_OR_RIGHT", "OPPOSITE_SIDE_DESCRIPTION",
+        "MOOD_REGISTER", "CHARACTER_EXPRESSION",
+    ],
+    "group": [
+        "SETTING_TYPE", "CHARACTER_A_DESCRIPTION", "CHARACTER_B_DESCRIPTION",
+        "INTERACTION_DESCRIPTION", "CONCEPTUAL_ACCENT_DESCRIPTION",
+        "LIGHT_DESCRIPTION",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "COMPOSITION_NOTES", "MOOD_REGISTER",
+    ],
+}
+
+
+# ---------------------------------------------------------------------
+# Claude instruction templates per composition type
+# ---------------------------------------------------------------------
+
+CLAUDE_BASE_INSTRUCTION = """You are art-directing a single hero illustration for a GrowthMax blog post.
+
+The complete creative direction is in the system prompt above (SKILL.md). Read it carefully — every rule is binding.
 
 Post title:    {title}
 Post subtitle: {subtitle}
 TL;DR:         {tldr}
 
-CHARACTER ETHNICITY FOR THIS POST: {ethnicity}
-The character must be of {ethnicity} ethnicity. This is pre-sampled per SKILL.md §Character variety to maintain the correct distribution across the archive — do NOT override it. Build the rest of the character (gender, age, hair, attire) freely around this constraint.
+PRE-ASSIGNED FOR THIS POST:
+- Composition type: {composition}
+- Lighting brief (one of these, vary across posts): NOT a window in late afternoon. Pick from: overcast morning indoor diffuse, single overhead lamp glow, ambient diffuse studio light, blue-hour dusk through skylight, midday outdoor shade, candlelight, screen-glow blue light, warm tungsten interior, cool fluorescent ceiling, side rim from a doorway.{character_constraints}
 
-Output a JSON object with exactly these keys, no others, no surrounding prose, no code fences:
+Output a JSON object with exactly these keys, no others:
 
-{{
-  "CHARACTER": "<1 sentence — gender, approximate age, hair, attire. Use the ethnicity above; do not change it.>",
-  "WORKSPACE_TYPE": "<2-4 words — e.g., 'home office', 'cozy corner office', 'shared studio space'>",
-  "POSE_DESCRIPTION": "<short phrase — e.g., 'side profile, seated', 'three-quarter angle, leaning slightly forward'>",
-  "ACTIVITY_DESCRIPTION": "<short phrase describing what they're doing right now — match the post's argument>",
-  "CONCEPTUAL_ACCENT_DESCRIPTION": "<1 sentence — the one symbolic object on the desk or in the air. Mug-sized. Integrated naturally. See SKILL.md §Per-post variation.>",
-  "LIGHT_SOURCE": "<short phrase — e.g., 'a tall window to the left', 'a peach-shaded desk lamp', 'an overhead pendant'>",
-  "WARM_ACCENT_COLOR_NAME": "<one of: peach, amber, coral>",
-  "WARM_ACCENT_HEX": "<corresponding hex: peach #FB923C, amber #FCD34D, coral #F87171>",
-  "WARM_ACCENT_OBJECT": "<short phrase — what specifically holds the warm color. e.g., 'a peach lamp shade', 'an amber notebook', 'a coral plant pot'>",
-  "LEFT_OR_RIGHT": "<one of: 'left' or 'right' — which third holds the character>",
-  "OPPOSITE_SIDE_DESCRIPTION": "<short phrase — what fills the opposite side. e.g., 'an open window with afternoon light and a small monstera plant', 'a wall with framed prints and a tall bookshelf'>",
-  "MOOD_REGISTER": "<short phrase per SKILL.md §Mood register table — e.g., 'engaged, focused, mid-morning warmth', 'quiet, slightly melancholy, late afternoon'>",
-  "CHARACTER_EXPRESSION": "<short phrase describing facial expression and gaze — e.g., 'looking down at the notebook with thoughtful concentration', 'gazing toward the window, mid-thought'>"
-}}
+{json_schema}
 
 WORK ORDER:
-1. Read the post and identify the emotional weight (diagnostic, tactical, strategic, people, decision per SKILL.md §Mood register).
-2. Pick a character that fits the post — vary deliberately across posts so the cast feels like a real team.
-3. Pick an activity that visually represents the post's argument (writing, reading, conversing, paused-thinking, etc.).
-4. Pick a conceptual accent from SKILL.md §Per-post variation that maps to the post's topic.
-5. Pick the warm accent color that fits the mood (peach for warm tactical, amber for grounded strategic, coral sparingly for people-focused).
-6. Output ONLY the JSON object."""
+1. Read the post and identify its argument shape and emotional weight.
+2. Build the per-post variables to encode that argument visually using the {composition} composition type per SKILL.md.
+3. Make sure every choice ties back to THIS post's specific topic — don't be generic.
+4. The lighting must NOT be "warm window in late afternoon" — pick something different.
+5. Output ONLY the JSON object, no surrounding prose, no code fences.
+"""
 
 
+METAPHOR_SCHEMA = """{
+  "METAPHOR_DESCRIPTION": "<1-2 sentences: the central visual metaphor for this post. Be specific and vivid (not 'a road' but 'a quiet country road forking at a wooden signpost'). See SKILL.md §Type A examples.>",
+  "SCENE_CONTEXT": "<1 sentence: surrounding context for the metaphor — what's around it, what background>",
+  "LIGHT_DESCRIPTION": "<short phrase per the lighting brief above — pick something OTHER than warm afternoon window light>",
+  "WARM_ACCENT_COLOR_NAME": "<one of: peach, amber, coral>",
+  "WARM_ACCENT_HEX": "<peach #FB923C, amber #FCD34D, coral #F87171>",
+  "WARM_ACCENT_OBJECT": "<short phrase — what specifically holds the warm color>",
+  "COMPOSITION_NOTES": "<1 sentence: how the metaphor is positioned in the frame — central, offset, foreground/background>",
+  "MOOD_REGISTER": "<short phrase — quiet & contemplative, urgent & focused, hopeful, melancholy, etc>"
+}"""
+
+
+TABLEAU_SCHEMA = """{
+  "SURFACE_TYPE": "<2-4 words: e.g., 'wooden desk', 'marble countertop', 'paper-strewn drafting table'>",
+  "OBJECT_LIST": "<1-2 sentences listing the specific objects arranged on the surface — they should encode the post's argument>",
+  "SCENE_CONTEXT": "<short phrase: what surrounds the surface (a chair edge, a wall, an open window edge, etc.)>",
+  "LIGHT_DESCRIPTION": "<short phrase per the lighting brief — NOT warm afternoon window light>",
+  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
+  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_OBJECT": "<which object holds the warm color>",
+  "COMPOSITION_NOTES": "<1 sentence: angle (overhead, three-quarter, side), how objects are arranged in the frame>",
+  "MOOD_REGISTER": "<short phrase>"
+}"""
+
+
+PERSON_SCHEMA = """{
+  "CHARACTER": "<1 sentence — gender (use the assigned gender), approximate age, hair, attire. Use the assigned ethnicity. Avoid SaaS-default 'white woman in plaid shirt'>",
+  "SETTING_TYPE": "<2-4 words from SKILL.md §Setting variety — NOT 'home office with window'. Try library, café, train, kitchen counter, conference room, studio, outdoor terrace, etc.>",
+  "POSE_DESCRIPTION": "<short phrase>",
+  "ACTIVITY_DESCRIPTION": "<short phrase tied to the post's argument>",
+  "CONCEPTUAL_ACCENT_DESCRIPTION": "<1 sentence: the symbolic object per SKILL.md §Per-post conceptual accent>",
+  "LIGHT_DESCRIPTION": "<short phrase per lighting brief — NOT warm afternoon window light>",
+  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
+  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_OBJECT": "<short phrase>",
+  "LEFT_OR_RIGHT": "<'left' or 'right'>",
+  "OPPOSITE_SIDE_DESCRIPTION": "<short phrase: what fills the opposite side of the frame>",
+  "MOOD_REGISTER": "<short phrase>",
+  "CHARACTER_EXPRESSION": "<short phrase: face/gaze>"
+}"""
+
+
+GROUP_SCHEMA = """{
+  "SETTING_TYPE": "<2-4 words — NOT 'home office with window'. Where this conversation happens: a café, a low couch in a lounge, an outdoor bench, a conference room corner, etc.>",
+  "CHARACTER_A_DESCRIPTION": "<1 sentence — first character, use the assigned gender for them>",
+  "CHARACTER_B_DESCRIPTION": "<1 sentence — second character, opposite gender from A by default unless the post specifically calls for same-gender>",
+  "INTERACTION_DESCRIPTION": "<short phrase: what they're doing — leaning over a shared document, in conversation across a table, listening side-by-side, etc.>",
+  "CONCEPTUAL_ACCENT_DESCRIPTION": "<1 sentence: symbolic object>",
+  "LIGHT_DESCRIPTION": "<short phrase — NOT warm afternoon window light>",
+  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
+  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_OBJECT": "<short phrase>",
+  "COMPOSITION_NOTES": "<1 sentence>",
+  "MOOD_REGISTER": "<short phrase>"
+}"""
+
+
+CLAUDE_SCHEMAS = {
+    "metaphor": METAPHOR_SCHEMA,
+    "tableau":  TABLEAU_SCHEMA,
+    "person":   PERSON_SCHEMA,
+    "group":    GROUP_SCHEMA,
+}
+
+
+# ---------------------------------------------------------------------
+# HeroImageGenerator
+# ---------------------------------------------------------------------
 class HeroImageGenerator:
     def __init__(self, anthropic_client=None, gemini_api_key=None):
         self.anthropic = anthropic_client or Anthropic(
@@ -192,24 +382,46 @@ class HeroImageGenerator:
         )
         if not SKILL_PATH.exists():
             raise FileNotFoundError(
-                f"Imagery skill not found at {SKILL_PATH}. "
-                "This file is the source of truth for hero image creative "
-                "direction and must be present."
+                f"Imagery skill not found at {SKILL_PATH}."
             )
         self.skill_text = SKILL_PATH.read_text()
+        # Override maps populated by render_samples for batch jobs
+        self._composition_overrides = {}
+        self._gender_overrides = {}
+        self._ethnicity_overrides = {}
+
+    def _resolve_assignments(self, slug):
+        """Pick composition, gender, ethnicity for this slug — overrides win."""
+        composition = self._composition_overrides.get(slug) or pick_composition_for_slug(slug)
+        ethnicity = self._ethnicity_overrides.get(slug) or pick_ethnicity_for_slug(slug)
+        gender = self._gender_overrides.get(slug) or pick_gender_for_slug(slug)
+        return composition, gender, ethnicity
 
     # -----------------------------------------------------------------
     # Stage 1 — Claude writes the per-post variables
     # -----------------------------------------------------------------
-    def claude_fill_variables(self, title, subtitle, tldr, slug=None):
-        # Pre-sample (or look up override) the ethnicity per SKILL.md
-        # §Character variety. Override map is set when running a known batch
-        # (sample/backfill) so the 85/15 quota holds exactly; falls back to
-        # per-slug sampling for the single-post auto-pipeline path.
-        overrides = getattr(self, "_ethnicity_overrides", {}) or {}
-        ethnicity = overrides.get(slug) or pick_ethnicity_for_slug(slug or title)
-        instruction = CLAUDE_INSTRUCTION.format(
-            title=title, subtitle=subtitle, tldr=tldr, ethnicity=ethnicity
+    def claude_fill_variables(self, title, subtitle, tldr, slug):
+        composition, gender, ethnicity = self._resolve_assignments(slug)
+
+        # Build character constraints only for compositions that need them
+        if composition == "person":
+            character_constraints = (
+                f"\n- Character: a {gender} of {ethnicity} ethnicity. "
+                "Use this assignment exactly; the rest of the character is yours to build."
+            )
+        elif composition == "group":
+            character_constraints = (
+                f"\n- One of the two characters: a {gender} of {ethnicity} ethnicity. "
+                "The second character should differ in gender (and may differ in ethnicity)."
+            )
+        else:
+            character_constraints = ""
+
+        instruction = CLAUDE_BASE_INSTRUCTION.format(
+            title=title, subtitle=subtitle, tldr=tldr,
+            composition=composition,
+            character_constraints=character_constraints,
+            json_schema=CLAUDE_SCHEMAS[composition],
         )
         resp = self.anthropic.messages.create(
             model="claude-sonnet-4-20250514",
@@ -223,38 +435,28 @@ class HeroImageGenerator:
         elif "```" in text:
             text = text.split("```")[1].split("```")[0]
         variables = json.loads(text.strip())
-        missing = [v for v in PROMPT_VARIABLES if v not in variables]
+        required = TEMPLATE_VARIABLES[composition]
+        missing = [v for v in required if v not in variables]
         if missing:
             raise ValueError(
-                f"Claude returned variables missing required keys: {missing}. "
-                f"Got: {sorted(variables.keys())}"
+                f"Claude returned variables missing required keys for composition "
+                f"'{composition}': {missing}. Got: {sorted(variables.keys())}"
             )
-        return variables
+        return composition, variables
 
-    def assemble_prompt(self, variables):
-        return PROMPT_TEMPLATE.format(**variables)
+    def assemble_prompt(self, composition, variables):
+        return PROMPT_TEMPLATES[composition].format(**variables)
 
     # -----------------------------------------------------------------
-    # Stage 2 — Gemini renders the image
+    # Stage 2 — Gemini renders
     # -----------------------------------------------------------------
-    # Two paths:
-    #   1. Imagen 4 via generate_images (paid Google AI plan only) — best
-    #      quality, dedicated image model. Used if IMAGE_MODEL_TIER=paid.
-    #   2. Nano Banana via generate_content (gemini-X-flash-image, available
-    #      on free tier) — multimodal model that can output images. Used by
-    #      default to keep the pipeline running on the free tier.
-    # If Nano Banana ever produces visibly worse output than Imagen, switch
-    # the env var or hardcode the tier.
-
     def imagen_generate(self, prompt):
-        """Render the prompt to image bytes via the configured Gemini path."""
         tier = os.environ.get("IMAGE_MODEL_TIER", "free").lower()
         if tier == "paid":
             return self._generate_via_imagen(prompt)
         return self._generate_via_nano_banana(prompt)
 
     def _generate_via_imagen(self, prompt):
-        """Paid path — Imagen 4 dedicated image model."""
         result = self.gemini.models.generate_images(
             model="imagen-4.0-generate-001",
             prompt=prompt,
@@ -268,52 +470,29 @@ class HeroImageGenerator:
         return result.generated_images[0].image.image_bytes
 
     def _generate_via_nano_banana(self, prompt):
-        """Free-tier path — Nano Banana (gemini-X-flash-image) multimodal.
-        Output aspect ratio is not user-controllable on this path; we resize
-        whatever it produces to the canonical 1200x630."""
-        # Nano Banana 2 (gemini-3.1-flash-image-preview) is the newest as of
-        # May 2026 — preview but free. Falls back to 2.5 if 3.1 errors.
-        for model_name in (
-            "gemini-3.1-flash-image-preview",
-            "gemini-2.5-flash-image",
-        ):
+        for model_name in ("gemini-3.1-flash-image-preview", "gemini-2.5-flash-image"):
             try:
                 response = self.gemini.models.generate_content(
                     model=model_name,
                     contents=[prompt],
                 )
-                # Pull the first image part out of the response
                 for cand in response.candidates or []:
                     for part in (cand.content.parts if cand.content else []):
                         inline = getattr(part, "inline_data", None)
                         if inline and getattr(inline, "data", None):
                             return inline.data
-                # No image part — try next model
-                print(
-                    f"  (no image part in {model_name} response — trying fallback)",
-                    flush=True,
-                )
+                print(f"  (no image part in {model_name}, trying fallback)", flush=True)
             except Exception as e:
-                print(f"  ({model_name} errored: {e} — trying fallback)", flush=True)
+                print(f"  ({model_name} errored: {e}, trying fallback)", flush=True)
         raise RuntimeError(
-            "All Nano Banana models failed to return an image. "
-            "Set IMAGE_MODEL_TIER=paid and ensure billing is enabled "
-            "on Google AI Studio to use Imagen 4 instead."
+            "All Nano Banana models failed. Set IMAGE_MODEL_TIER=paid for Imagen 4."
         )
 
-    # -----------------------------------------------------------------
-    # Resize Imagen 16:9 output (1408×768) to canonical 1200×630
-    # -----------------------------------------------------------------
     def resize_to_canonical(self, image_bytes):
-        """Imagen's 16:9 output is ~1408×768 (aspect 1.833). Site target is
-        1200×630 (aspect 1.905). We center-crop a tiny strip from top/bottom
-        before downscaling to keep the character framing intact."""
         im = Image.open(io.BytesIO(image_bytes))
         if im.mode != "RGB":
             im = im.convert("RGB")
-
         src_w, src_h = im.size
-        # Scale to fit width=TARGET_W, then center-crop height
         scale = TARGET_W / src_w
         scaled_h = int(src_h * scale)
         im = im.resize((TARGET_W, scaled_h), Image.LANCZOS)
@@ -321,47 +500,49 @@ class HeroImageGenerator:
             top = (scaled_h - TARGET_H) // 2
             im = im.crop((0, top, TARGET_W, top + TARGET_H))
         elif scaled_h < TARGET_H:
-            # Imagen output was wider than 16:9 — pad rather than crop
             new = Image.new("RGB", (TARGET_W, TARGET_H), (236, 254, 255))
             new.paste(im, (0, (TARGET_H - scaled_h) // 2))
             im = new
-
         buf = io.BytesIO()
         im.save(buf, "JPEG", quality=88, optimize=True)
         return buf.getvalue()
 
     # -----------------------------------------------------------------
-    # Top-level entry — the only public method most callers need
+    # Top-level entry
     # -----------------------------------------------------------------
     def render_post(self, title, subtitle, tldr, out_path):
         out_path = Path(out_path)
-        # Use the output filename (sans extension) as the slug for ethnicity
-        # sampling — guarantees same post → same character on regeneration.
         slug = out_path.stem.removeprefix("blog-")
-        print(f"  [1/3] Claude filling per-post variables (slug={slug})...", flush=True)
-        variables = self.claude_fill_variables(title, subtitle, tldr, slug=slug)
-        prompt = self.assemble_prompt(variables)
 
-        print(f"  [2/3] Imagen rendering (this takes ~10-20s)...", flush=True)
+        composition, _, _ = self._resolve_assignments(slug)
+        print(f"  [1/3] Composition={composition}; Claude filling variables...", flush=True)
+        composition, variables = self.claude_fill_variables(title, subtitle, tldr, slug=slug)
+        prompt = self.assemble_prompt(composition, variables)
+
+        print(f"  [2/3] Imagen rendering (~10-20s)...", flush=True)
         raw_bytes = self.imagen_generate(prompt)
 
         print(f"  [3/3] Resizing to {TARGET_W}x{TARGET_H} and saving...", flush=True)
         canonical_bytes = self.resize_to_canonical(raw_bytes)
         out_path.write_bytes(canonical_bytes)
 
-        # Validate dimensions before returning
         with Image.open(out_path) as check:
             if check.size != (TARGET_W, TARGET_H):
                 raise RuntimeError(
-                    f"Output dimensions {check.size} != expected ({TARGET_W}, {TARGET_H})"
+                    f"Output dimensions {check.size} != ({TARGET_W}, {TARGET_H})"
                 )
 
-        # Build alt text from the variables — concrete and accessible
-        alt = (
-            f"Editorial illustration: {variables['CHARACTER'].lower()} "
-            f"{variables['ACTIVITY_DESCRIPTION'].lower()} in a {variables['WORKSPACE_TYPE']}, "
-            f"with {variables['CONCEPTUAL_ACCENT_DESCRIPTION'].lower()}"
-        )
+        # Build alt text from whatever variables we have
+        if composition == "metaphor":
+            alt = f"Editorial illustration: {variables['METAPHOR_DESCRIPTION'].lower()}"
+        elif composition == "tableau":
+            alt = f"Editorial illustration: arranged objects on a {variables['SURFACE_TYPE']} including {variables['OBJECT_LIST'].lower()}"
+        elif composition == "person":
+            alt = (f"Editorial illustration: {variables['CHARACTER'].lower()} "
+                   f"{variables['ACTIVITY_DESCRIPTION'].lower()} in a {variables['SETTING_TYPE']}")
+        else:  # group
+            alt = (f"Editorial illustration: two people in a {variables['SETTING_TYPE']} "
+                   f"{variables['INTERACTION_DESCRIPTION'].lower()}")
         return out_path, alt, variables
 
 
@@ -373,12 +554,8 @@ def main():
     parser.add_argument("--title", required=True)
     parser.add_argument("--subtitle", default="")
     parser.add_argument("--tldr", default="")
-    parser.add_argument("--out", required=True, help="output JPG path")
-    parser.add_argument(
-        "--print-prompt",
-        action="store_true",
-        help="Also write the assembled Imagen prompt to <out>.prompt.txt",
-    )
+    parser.add_argument("--out", required=True)
+    parser.add_argument("--print-prompt", action="store_true")
     args = parser.parse_args()
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -396,9 +573,10 @@ def main():
     print(f"\n✓ Wrote {out_path}")
     print(f"  Alt: {alt}")
     if args.print_prompt:
-        prompt_file = Path(args.out).with_suffix(".prompt.txt")
-        prompt_file.write_text(gen.assemble_prompt(variables))
-        print(f"  Prompt written to {prompt_file}")
+        composition = pick_composition_for_slug(out_path.stem.removeprefix("blog-"))
+        Path(args.out).with_suffix(".prompt.txt").write_text(
+            gen.assemble_prompt(composition, variables)
+        )
 
 
 if __name__ == "__main__":

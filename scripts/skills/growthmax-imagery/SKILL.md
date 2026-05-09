@@ -1,176 +1,234 @@
 ---
 name: growthmax-imagery
-description: Apply GrowthMax's editorial illustration style to any image rendered for the website — blog hero images, OG/social cards, page heros. Use this skill ANY time a deliverable will be rendered as an image for growthmaxinc.com. Triggers include "blog hero," "header image," "OG image," "social card," "page hero," "regenerate the image," "design an illustration." The skill defines a single locked aesthetic (painterly editorial illustration of a single character at work) and a prompt template that the auto-pipeline feeds to Gemini Imagen on every run. Do NOT use the legacy flat-vector PIL renderer for new heros — it is retained only for fallback.
+description: Apply GrowthMax's editorial illustration style to any image rendered for the website — blog hero images, OG/social cards, page heros. Use this skill ANY time a deliverable will be rendered as an image for growthmaxinc.com. Triggers include "blog hero," "header image," "OG image," "social card," "page hero," "regenerate the image," "design an illustration." The skill defines a single locked illustration aesthetic but allows four composition types (metaphor, tableau, person, group) chosen per post to match its argument shape. Generated via Gemini Imagen 4.
 ---
 
-# GrowthMax Imagery — Creative Direction
+# GrowthMax Imagery — Creative Direction (v3)
 
-This is the single source of truth for any image rendered for **growthmaxinc.com**. The auto-pipeline at `scripts/generate-post.py` reads this file on every run; humans regenerating images by hand follow the same rules. There is one aesthetic, one palette, one composition pattern. Variation lives inside that frame, never outside it.
+This is the single source of truth for any image rendered for **growthmaxinc.com**. The auto-pipeline at `scripts/generate-post.py` reads this file on every run; humans regenerating images by hand follow the same rules.
+
+What's locked: the *style, palette, and rendering quality* — every image is a painterly editorial illustration in the same hand. What varies per post: the *composition* (people vs. metaphor vs. objects), the *setting*, the *protagonist*, and the *symbolic content* — picked from each post's argument shape, not formulaic.
 
 ---
 
 ## The promise
 
-A GrowthMax image looks like an editorial illustration on the cover of a thoughtful business publication — the kind of art you see leading a *Harvard Business Review* feature or an *Atlantic* essay on the future of work. **A single person, captured in a moment of focused thinking, in a warm and human workspace.** The viewer feels: someone like me, doing real work, with care. The image earns the brand promise — Partnership. Not Replacement. — by centering the human, never the technology.
-
-The reference image for this aesthetic is the existing `blog-partnership-not-replacement.jpg`: a woman at a wooden desk, headphones on, side profile, soft cool light from an open window, peach lamp glowing, plant on the desk, hanging pendants, faint sparkles in the air. Calm. Focused. Considered. That image is the north star.
+A GrowthMax image looks like an editorial illustration on the cover of a thoughtful business publication — *Harvard Business Review*, *The Atlantic*, *Stripe Press*. **Some posts are best served by a person mid-thought. Others by a visual metaphor with no people in it. Others by a tabletop of carefully arranged objects.** The image always *illustrates the post's argument*, not just "shows a person at a desk."
 
 ---
 
 ## The single style — locked
 
-Every hero image must have these properties. They are not aesthetic suggestions; they are the brand.
+These five rules are non-negotiable across every composition type:
 
-**1. Subject — one person at a workspace.**
-A single human character (rarely two, only when the post is explicitly about partnership/collaboration) engaged in real work — reading, writing, thinking, listening, drawing, reviewing. The character is offset to one side of the frame, never centered head-on. Side profile or three-quarter angle. Never staring directly at the viewer.
+1. **Style — flat modern editorial illustration, painterly.** Vector-shape construction with soft painterly textures — flat fills with gentle gradients and subtle grain. Not photorealistic. Not 3D-rendered. Not cartoon. Not line-art. Think *Tom Haugomat*, *Owen Davey*, *Mark Smith*, *Olimpia Zagnoli*.
 
-**2. Workspace — warm, lived-in, human.**
-A real desk with real things on it: a laptop, a notebook, a coffee mug, a small plant, papers, a lamp. Wooden surfaces, not glass. A window or natural light source nearby. The space feels like someone's home office or a cozy corner of a creative agency — never sterile, never minimal, never a "tech bro" co-working space with neon.
+2. **Lighting — soft, single source, varied.** Always one directional light source with gentle highlights and ambient shadows. **The light source must vary per post** — overcast morning, overhead lamp, ambient diffuse, blue-hour dusk, midday outdoor shade, candlelight, screen glow, etc. The "warm late-afternoon light spilling through a window" cliché is forbidden as a default — use it only when a specific post genuinely calls for it (no more than ~15% of images).
 
-**3. Style — flat modern editorial illustration, painterly.**
-Vector-shape construction with soft painterly textures — flat fills with gentle gradients and subtle grain. Not photorealistic. Not 3D-rendered. Not cartoon (no big eyes, no exaggerated proportions). Not line-art (shapes have form, not just outlines). Think *Tom Haugomat*, *Owen Davey*, *Mark Smith* — illustration that feels considered and slightly nostalgic, with confident shape language.
+3. **Palette — cyan/sky dominant + one warm accent.** Blues, cyans, sky-blues, cool whites for the dominant tones. **One** warm accent — peach (`#FB923C`), amber (`#FCD34D`), or coral (`#F87171`) — sparingly, never the largest element.
 
-**4. Lighting — soft directional warmth.**
-Light comes from one source — a window, a lamp, an overhead pendant — and the character is illuminated from that one direction with gentle highlights and ambient shadows. The room has atmosphere; it isn't flat. Time of day reads as late afternoon or early evening — golden hour, not midday harshness, not nighttime gloom.
+4. **Mood — considered, calm, intentional.** No frenetic energy. No theatrical drama. No literal "AI = brain + circuit" clichés.
 
-**5. Palette — cyan/sky dominant with one warm accent.**
-The dominant tones are blues, cyans, sky-blues, and cool whites. **One** warm accent color appears per image — a peach lamp, an amber coffee, a coral plant pot, a yellow notebook. The warm accent is never the largest element; it's a punctuation mark that gives the cool palette life.
-
-**6. Mood — contemplative, calm, grounded.**
-The character is mid-thought, mid-task, mid-pause. They are present and considered, never frantic, never bored, never theatrical. Their face shows thought, not emotion-as-performance. The whole image breathes.
+5. **No text, no UI.** Imagen sometimes hallucinates garbled letters on screens, signs, books. The prompt must explicitly forbid all visible text.
 
 ---
 
-## Palette spec
+## Composition types — pick one per post
 
-These are the colors Imagen prompts should reach for. Do not invent new ones.
+The composition type is chosen from the post's argument shape. Most posts (~50%) are best served *without* a person.
 
-| Role | Hex | Use |
-|---|---|---|
-| Sky / cool dominant | `#38BDF8` | Walls, sky behind window, large background fields |
-| Cyan / mid-tone | `#0EA5E9` | Mid-shadow on cool surfaces |
-| Deep cyan | `#0E7490` | Dark accents, character clothing, lamp shadow |
-| Cool off-white | `#ECFEFF` | Highlights, paper, light spill |
-| Cyan-200 / soft fill | `#A5F3FC` | Soft mid-tones on light surfaces |
-| **Warm accent — peach** | `#FB923C` | Lamp glow, coffee, sunset light |
-| **Warm accent — amber** | `#FCD34D` | Notebook, sticky notes, plant pot |
-| **Warm accent — coral** | `#F87171` | Sparingly — flower, pillow, accent textile |
-| Skin tones | natural range | Diverse — vary across posts (see §Character variety) |
+### Type A — Metaphor-led (no people)
 
-The warm accent is *one per image*, not all three. Pick the one that fits the post's mood.
+A single visual metaphor that encodes the post's argument. No human figures.
 
----
+**Use when** the post is a diagnosis, a framework, a process, a decision, or a phenomenon. The metaphor *is* the argument compressed into a single image.
 
-## Composition rules
+**Examples:**
+- *Hidden costs* → an iceberg, with the visible peak labelled "Technology" and the deeper mass implying the unseen
+- *90-day timeline* → a winding road with three milestone markers receding into golden-hour distance
+- *Build vs. buy* → a fork in a country road, two paths diverging, signposts at the split
+- *Why implementations fail* → a half-built bridge stopping mid-span over a chasm, scaffolding still up
+- *Stalled project* → a stopped gear in machinery, dust motes catching afternoon light
+- *Scaling adoption* → a sapling and a mature tree side-by-side, same species, time elapsed
+- *Training vs. implementation* → two stone pillars with a delicate arch connecting them above
 
-**Aspect ratio: 1200×630 landscape.** Always. The site's blog index and post layouts use `object-cover` to fit images into a fixed-height band; portrait images get cropped to a sliver. 1200×630 is also the OG/Twitter card standard, so social shares work without a second asset.
+### Type B — Tableau (objects, no people)
 
-**Character placement: offset, not centered.** The character occupies roughly 30–40% of the frame width, positioned in the left or right third. The opposite side holds the workspace context — a window, a wall with a plant, a desk with papers — or a subtle conceptual element (a softly drawn chart, a stack of books, a pendant lamp). Centered head-on shots feel like portraits, not editorial illustration.
+An overhead or three-quarter view of a desk surface with arranged objects that tell the story. Hands may appear at the edge of the frame, but no full figures.
 
-**Breathing room.** ~15% of the frame is "quiet space" — the character does not crowd the edge, the workspace doesn't pack every pixel. The image rewards a long look.
+**Use when** the post is about tools, methods, or evidence — when the *materials* are the story.
 
-**No text, no UI.** Imagen sometimes hallucinates garbled text on laptop screens or signs. The prompt must explicitly forbid this. The character's screen, books, and notebook should be blank or show only abstract shapes.
+**Examples:**
+- *Measure ROI* → a notebook open to a hand-sketched chart, a ruler beside it, a peach mug, a fountain pen, papers with annotations
+- *Signs your team is ready* → 5 small distinct objects (a sprouting seedling, a key, a compass, a candle, a clock) arranged like a still life
+- *Your first AI agent* → a single small sapling in a peach pot, surrounded by empty space — the rest of the desk implied
 
-**No hands on the laptop trackpad close-up.** Avoid the cliché "hands on keyboard" stock-photo crop. The character is a whole person, not a body part.
+### Type C — Person-led (single character)
 
----
+A single human character in their environment. Use the rich character variety described below — gender, ethnicity, age, setting all vary per post.
 
-## Character variety
+**Use when** the post is *about a personal experience* — anxiety, identity, individual learning, a moment of decision. The character is the argument.
 
-Across the 20+ posts on the blog, the cast should feel like a small team you'd meet at a real company — not the same model repeating. Vary deliberately:
+**Examples:**
+- *Where do I fit?* → a person sitting at a window, hands not on the keyboard, looking out — the question mid-air
+- *People-first AI strategy* → a person leading a small workshop, mid-gesture (could become a group composition)
 
-- **Gender** — alternate (and include nonbinary presentation) across posts
-- **Ethnicity** — approximately 85% Caucasian / 15% non-Caucasian across the published archive, sampled independently per post. The 15% should itself vary (Black, East Asian, South Asian, Hispanic/Latino, Middle Eastern). Per-post: pick one ethnicity at random with this weighting; do not cluster non-Caucasian posts together. Goal is a team that reads as predominantly white but not exclusively so.
-- **Age range** — include 30s, 40s, 50s, occasional 60s. Never under 25 (this is a B2B audience)
-- **Body type** — vary
-- **Hair** — short, long, curly, straight, locs, bald — mix it up
-- **Attire** — casual professional. Sweaters, button-downs, t-shirts under blazers, sometimes a scarf. Never "corporate suit." Never "techbro hoodie."
+### Type D — Group / pair (two characters)
 
-The same character may appear in two posts only when the posts are explicitly part of a series (e.g., "Building Trust pt. 1" and "Building Trust pt. 2" — we don't have these, but if we did, consistency would be a feature).
+Two characters in a contained interaction — across a table, side by side at a screen, or in conversation.
 
----
+**Use when** the post is about *collaboration, alignment, conflict, or interpersonal change*.
 
-## Per-post variation — what changes
+**Examples:**
+- *Executive buy-in* → an executive across a table from a project lead, both leaning in over a shared document
+- *Change management playbook* → two people on a low couch, one explaining, the other listening
+- *Building trust* → two people side by side at a window, looking out together — quiet shared moment
 
-While the style and palette are locked, **two things change per post**:
+### Composition assignment (the 20 published posts)
 
-**1. The character + activity.** Picked to fit the post's argument:
-- A post about *executive buy-in* → a senior leader at a desk, mid-conversation pose, looking at a notebook
-- A post about *training* → a person reading, leaning into an open laptop, clearly in learning mode
-- A post about *measuring ROI* → a person with a notebook open to handwritten figures, contemplating
-- A post about *scaling adoption* → two people in light conversation across a shared desk
-- A post about *anxiety / "where do I fit?"* → a person paused at the desk, hands not on the keyboard, looking out the window
-- A post about *partnership / augmentation* → person at the desk with a faint sparkle/shape in the air beside them representing the AI presence (subtle, not dominant)
-
-**2. The conceptual accent.** One small symbolic element appears in the workspace — never literally, always integrated:
-- AI presence → faint sparkles in the air (max 3–5, very subtle)
-- Time / phasing → an hourglass, a wall calendar, a clock on the desk
-- Growth / measurement → a small notebook chart, a hand-sketched line graph
-- Decision / weighing → a balance, two open books
-- Conversation / culture → a half-empty second coffee cup (someone just left), a phone face-up
-- Beginning → a sealed envelope, a kit, an unopened notebook
-- Iteration → marked-up paper, sticky notes, drafts pinned to a wall
-
-This accent is *on the desk or in the air*, the size of a coffee mug. Never the focus.
+Pre-assigned per post by the generator using the post slug. The full mapping is in `assign_composition_for_slug()` in `scripts/generate-hero-image-gemini.py`. Distribution target across 20 posts:
+- ~50% metaphor (10 posts)
+- ~15% tableau (3 posts)
+- ~25% person (5 posts)
+- ~10% group (2 posts)
 
 ---
 
-## Mood register per post type
+## Setting variety (when people appear)
 
-The post's emotional weight tunes the mood:
+For Type C and Type D posts, the setting must vary. **No two consecutive person-led posts may share the same setting.** Pick from:
 
-| Post type | Mood register | Example posts |
-|---|---|---|
-| Diagnostic ("what's wrong with...") | Quiet, slightly melancholy, late-afternoon | "Why AI Implementations Fail," "Where Do I Fit?" |
-| Practical / tactical | Engaged, focused, mid-morning warmth | "How to Measure ROI," "Your First AI Agent" |
-| Strategic / framework | Considered, broader light, more workspace visible | "90-Day Adoption Timeline," "Partnership Model" |
-| People & culture | Warmer, slightly more ambient color, two figures OK | "Change Management," "Building Trust" |
-| Decision / tradeoff | Tense but not anxious, single character with two objects in frame | "Build vs. Buy," "Consultant vs. In-House" |
+- Home office (warm, lived-in)
+- Library / reading nook
+- Café table (window seat or terrace)
+- Co-working space corner
+- Conference room (modern, plants, daylight)
+- Studio / workshop with paper everywhere
+- Kitchen counter (laptop on the counter, morning light)
+- Outdoor — park bench, terrace, balcony
+- Train carriage (window seat, countryside passing)
+- Hotel lobby (soft chair, low table)
 
-The character's *expression* and the *light direction* do most of the mood work. Don't try to telegraph mood with palette deviation — the palette is locked.
+Avoid the SaaS-default "white desk, plant, laptop, window with city skyline" repeated everywhere. Mix it up.
 
 ---
 
-## Imagen prompt template
+## Character variety (when people appear)
 
-This is the literal structure the auto-pipeline assembles. The brand DNA is constant. The per-post fields are filled in by Claude based on the post's title/subtitle/tldr and the variation rules above.
+**Gender** — quota-balanced 50/50 across the person-led + group posts. Pre-sampled per slug to maintain the ratio.
 
+**Ethnicity** — 85% Caucasian / 15% non-Caucasian across the published archive. The 15% is spread across Black, East Asian, South Asian, Hispanic/Latino, and Middle Eastern (rotating) so no single non-Caucasian group dominates the minority share. Pre-sampled per slug deterministically.
+
+**Age range** — 30s, 40s, 50s, occasional 60s. Never under 25 (B2B audience).
+
+**Body type / hair / attire** — vary widely. Not all "white shirt and laptop." Sweaters, button-downs, t-shirts under blazers, sometimes a scarf or hat. Glasses sometimes, not always.
+
+The same character may appear in two posts only when the posts are explicitly part of a series.
+
+---
+
+## Per-post conceptual accent (always include)
+
+Every image — regardless of composition type — has one symbolic element that ties the visual to the post's specific topic. Mug-sized. Integrated naturally:
+
+| Topic | Accent |
+|---|---|
+| AI presence / partnership | Faint sparkles in the air (max 3-5, very subtle) — *only when AI itself is the topic* |
+| Time / phasing | Hourglass, wall calendar, clock, sundial |
+| Growth / measurement | Hand-sketched line graph, balance scale, a sprouting plant |
+| Decision / weighing | Old-fashioned balance, two open books, a coin mid-flip |
+| Conversation / culture | A second mug, a phone face-up, two chairs |
+| Beginning / kickoff | A sealed envelope, a kit, an unopened notebook, a key |
+| Iteration | Marked-up paper, sticky notes, drafts pinned to a board |
+| Hidden / unseen | Water surface, an iceberg, a closed door slightly ajar |
+| Path / journey | A road, footsteps, a map, a compass |
+| Loss / failure | A toppled object, a snuffed candle, an empty chair |
+
+---
+
+## Imagen prompt templates
+
+The auto-pipeline picks one of four templates based on the assigned composition type. Each template fills in per-post variables.
+
+### Metaphor template
 ```
-A flat modern editorial illustration, painterly style with soft 
-gradients and subtle grain texture. {CHARACTER} in a warm, lived-in
-{WORKSPACE_TYPE}. The character is in {POSE_DESCRIPTION},
-{ACTIVITY_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. {METAPHOR_DESCRIPTION}. {SCENE_CONTEXT}.
 
-Lighting: soft directional warmth from {LIGHT_SOURCE}, late afternoon
-golden-hour atmosphere, ambient soft shadows.
+No people in the image. The composition is symbolic — a single visual metaphor that encodes the post's argument.
 
-Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, 
-#ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME}
-({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. Avoid harsh shadows. The warm-window-spilling-afternoon-light cliché is forbidden — vary the lighting per post (overcast morning, single overhead lamp, ambient indoor diffuse, blue-hour dusk, midday outdoor shade, candlelight, etc.).
 
-Composition: character offset to the {LEFT_OR_RIGHT} third of the frame,
-side profile or three-quarter angle, occupying about 35% of frame width.
-The opposite side shows {OPPOSITE_SIDE_DESCRIPTION}. Generous breathing
-room, ~15% quiet space.
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
 
-Style references: Tom Haugomat, Owen Davey, Mark Smith — confident shape
-language, considered, slightly nostalgic editorial illustration. Not
-photorealistic. Not 3D-rendered. Not cartoon. Not line-art. Vector
-shapes with soft painterly textures.
+Composition: {COMPOSITION_NOTES}. Generous breathing room, ~15% quiet space.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli — confident shape language, considered, slightly nostalgic editorial illustration. Not photorealistic. Not 3D-rendered. Not cartoon. Vector shapes with soft painterly textures.
+
+Mood: {MOOD_REGISTER}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No legible signs, no readable book titles. No sparkles unless explicitly described.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner.
+```
+
+### Tableau template
+```
+A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. An overhead or three-quarter view of a {SURFACE_TYPE} arranged with {OBJECT_LIST}. {SCENE_CONTEXT}.
+
+No full human figures — at most a hand or arm at the edge of the frame.
+
+Lighting: soft directional warmth from {LIGHT_SOURCE}, late afternoon golden-hour atmosphere, ambient soft shadows on the surface.
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: {COMPOSITION_NOTES}.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
+
+Mood: {MOOD_REGISTER}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No readable book titles or notebook contents.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner.
+```
+
+### Person template
+```
+A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. {CHARACTER} in a {SETTING_TYPE}. The character is in {POSE_DESCRIPTION}, {ACTIVITY_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. Avoid harsh shadows. The warm-window-spilling-afternoon-light cliché is forbidden — vary the lighting per post (overcast morning, single overhead lamp, ambient indoor diffuse, blue-hour dusk, midday outdoor shade, candlelight, etc.).
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: character offset to the {LEFT_OR_RIGHT} third of the frame, side profile or three-quarter angle, occupying about 35% of frame width. The opposite side shows {OPPOSITE_SIDE_DESCRIPTION}. Generous breathing room.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
 
 Mood: {MOOD_REGISTER}. {CHARACTER_EXPRESSION}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos,
-or UI elements. No legible signs, no readable book titles, no laptop
-screens with text, no notebook writing — keep all surfaces blank or
-abstract. No hands-on-keyboard close-ups. No multiple warm colors.
-No neon, no glow effects, no sparkles unless the post is specifically
-about AI partnership (then maximum 3-5 small sparkles, very subtle).
+Strictly forbidden: any visible text, words, numbers, letters, logos. No hands-on-keyboard close-ups. No multiple warm colors.
 
-Aspect ratio: 16:9 landscape, designed for a 1200×630 hero banner.
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner.
 ```
 
-The auto-pipeline pre-pends this prompt with the post title and tldr in a system prompt to Claude, asks Claude to fill in the bracketed fields, then sends the assembled prompt to Imagen.
+### Group template
+```
+A flat modern editorial illustration, painterly style with soft gradients and subtle grain texture. Two characters in {SETTING_TYPE}: {CHARACTER_A_DESCRIPTION} and {CHARACTER_B_DESCRIPTION}. They are {INTERACTION_DESCRIPTION}. {CONCEPTUAL_ACCENT_DESCRIPTION}.
+
+Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. Avoid harsh shadows. The warm-window-spilling-afternoon-light cliché is forbidden — vary the lighting per post (overcast morning, single overhead lamp, ambient indoor diffuse, blue-hour dusk, midday outdoor shade, candlelight, etc.).
+
+Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+
+Composition: both characters in the lower two-thirds, with breathing space above. {COMPOSITION_NOTES}.
+
+Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
+
+Mood: {MOOD_REGISTER}.
+
+Strictly forbidden: any visible text, words, numbers, letters, logos. No multiple warm colors.
+
+Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner.
+```
 
 ---
 
@@ -183,8 +241,7 @@ The auto-pipeline pre-pends this prompt with the post title and tldr in a system
 | Format | JPG, quality 88, optimized |
 | File size | ≤ 200 KB |
 | File naming | `blog-{slug}.jpg` at repo root |
-| Color space | sRGB |
-| Generator | Gemini Imagen 3 via `scripts/generate-hero-image-gemini.py` |
+| Generator | Gemini Imagen 4 via `scripts/generate-hero-image-gemini.py` |
 
 ---
 
@@ -193,38 +250,27 @@ The auto-pipeline pre-pends this prompt with the post title and tldr in a system
 Before any image goes live, all 10 must pass:
 
 1. **Style** — flat modern editorial illustration. Not photorealistic, not 3D, not cartoon.
-2. **Subject** — exactly one person at a workspace (or two, if the post is about partnership). Side profile or 3/4 angle.
-3. **Palette** — cyan/sky dominant; exactly one warm accent. No second warm color, no off-palette colors.
-4. **Lighting** — single soft directional source, late-afternoon warmth.
-5. **Composition** — character in left or right third (not centered head-on), ~35% width, with breathing room.
-6. **Workspace** — warm, human, lived-in (wood, plant, mug, lamp, books). Not sterile, not minimalist white.
-7. **Text-free** — no legible words, letters, numbers, or UI on screens, books, notebooks, or signs.
-8. **Mood match** — character's expression and light tone fit the post's emotional weight.
-9. **Conceptual accent** — one symbolic object on the desk or in the air, mug-sized, integrated naturally.
+2. **Composition match** — the chosen composition type fits the post's argument shape (don't put a person on a hidden-costs post; don't put an iceberg on a "where do I fit?" post).
+3. **Palette** — cyan/sky dominant; exactly one warm accent. No second warm color.
+4. **Lighting** — single soft directional source.
+5. **Setting variety** — for person-led posts, the setting differs from neighboring person-led posts in the archive.
+6. **Conceptual accent** — present and tied to the post's specific topic.
+7. **Text-free** — no legible words, letters, numbers anywhere.
+8. **Mood match** — image reads at the post's emotional weight.
+9. **Composition** — has breathing room, not crowded edge-to-edge.
 10. **Dimensions** — exactly 1200 × 630 JPG.
-
-Any "no" → regenerate with a tightened prompt before shipping.
 
 ---
 
 ## How this skill is applied
 
-**Auto-pipeline (`scripts/generate-post.py`):** the hero generation step (`generate_hero_image`) loads this file as the system prompt, asks Claude to fill in the per-post variables, and passes the assembled prompt to Gemini Imagen. The result is validated against the checklist before the post commits.
+**Auto-pipeline:** `scripts/generate-post.py` reads this file on every Mon/Wed/Fri run. The generator pre-samples composition type, gender, ethnicity per slug; Claude fills the variables for the chosen template; Imagen renders. Result is validated and committed.
 
-**Manual regeneration (Cowork, by hand):** open this file, hand-write the per-post variables (or have Claude write them), call `scripts/generate-hero-image-gemini.py`, run the §Pre-publish validation checklist before committing.
-
-**OG / social cards / page heros:** the same skill applies. 1200×630 is already OG-standard, so the blog hero doubles as the social card.
+**Manual regeneration:** open this file, hand-write per-post variables, call `scripts/generate-hero-image-gemini.py`, validate, commit.
 
 ---
 
-## Out of scope for this skill
+## Out of scope
 
-- Logo placement, favicon design — owned by the site shell.
-- Charts and data-viz inside post body content (Plotly, Recharts) — those follow Tailwind cyan/sky but aren't governed here.
-- Team avatars (`*_gemini_cartoon.png`) — generated once, separately, not under this skill's prompt template.
-
----
-
-## Why this differs from v1 of this skill
-
-v1 (commits 76cf916 → b13707d) locked all imagery into the flat-vector PIL renderer. After backfilling 12 posts under that direction and reviewing, the diagrams felt generic — closer to a SaaS dashboard than editorial illustration. The blog needs *images*, not info-graphics. v2 (this version) is a complete reset: a single locked illustration aesthetic, generated by Gemini Imagen, with the character at the center of every frame. The PIL renderer is retained at `scripts/generate-hero-image.py` only as a fallback if Imagen ever fails — it does not produce the canonical look.
+- Logo, favicon, team avatars (`*_gemini_cartoon.png`).
+- Charts and data-viz inside post body content (Plotly, Recharts).
