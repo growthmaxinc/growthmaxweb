@@ -124,27 +124,16 @@ def assign_ethnicities_quota(slugs, compositions=None):
 
 
 def assign_compositions_quota(slugs):
-    """Exact composition quota across a known slug list.
-    For 20 posts: 10 metaphor, 3 tableau, 5 person, 2 group."""
-    if not slugs:
-        return {}
-    n = len(slugs)
-    targets = [
-        ("metaphor", round(n * 0.50)),
-        ("tableau",  round(n * 0.15)),
-        ("person",   round(n * 0.25)),
-        ("group",    n - round(n * 0.50) - round(n * 0.15) - round(n * 0.25)),
-    ]
-    # Rank slugs by stable composition-keyed hash
-    ranked = sorted(slugs, key=lambda s: hashlib.sha256(("composition:" + s).encode()).hexdigest())
+    """Composition assignment per slug. For known posts uses the
+    hand-curated KNOWN_COMPOSITIONS map (picked from each post's actual
+    argument shape). For unknown posts falls back to hash-based pick
+    weighted by COMPOSITION_DISTRIBUTION."""
     out = {}
-    idx = 0
-    for label, count in targets:
-        for _ in range(count):
-            if idx >= len(ranked):
-                break
-            out[ranked[idx]] = label
-            idx += 1
+    for slug in slugs:
+        if slug in KNOWN_COMPOSITIONS:
+            out[slug] = KNOWN_COMPOSITIONS[slug]
+        else:
+            out[slug] = pick_composition_for_slug(slug)
     return out
 
 
@@ -172,7 +161,7 @@ No people in the image. The composition is symbolic — a single visual metaphor
 
 Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. Avoid harsh shadows. The warm-window-spilling-afternoon-light cliché is forbidden.
 
-Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+Color palette: cool tones dominate — deep cyan, soft sky-blue, ice-blue, cool whites. Exactly ONE warm accent of muted {WARM_ACCENT_COLOR_NAME} appears on {WARM_ACCENT_OBJECT} only. No other warm colors anywhere in the image.
 
 Composition: {COMPOSITION_NOTES}. Generous breathing room.
 
@@ -180,7 +169,7 @@ Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli — confident shape 
 
 Mood: {MOOD_REGISTER}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos. No legible signs, no readable book titles. No sparkles unless explicitly described.
+CRITICAL — NO TEXT WHATSOEVER: the image must contain ZERO letters, numbers, words, labels, captions, hex codes, color codes, signs, logos, brand marks, book titles, notebook writing, sticky-note text, screen text, watermarks, or any character glyphs of any kind. Every surface (book covers, paper, notebooks, signs, screens, posters) must be blank or filled with abstract shapes only. If you would normally letter or label anything, leave it blank. This rule is absolute and overrides any other instruction.
 
 Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
 
@@ -191,7 +180,7 @@ No full human figures — at most a hand or arm at the edge of the frame.
 
 Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden.
 
-Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+Color palette: cool tones dominate — deep cyan, soft sky-blue, ice-blue, cool whites. Exactly ONE warm accent of muted {WARM_ACCENT_COLOR_NAME} appears on {WARM_ACCENT_OBJECT} only. No other warm colors anywhere in the image.
 
 Composition: {COMPOSITION_NOTES}.
 
@@ -199,7 +188,7 @@ Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
 
 Mood: {MOOD_REGISTER}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos. No readable book titles or notebook contents.
+CRITICAL — NO TEXT WHATSOEVER: the image must contain ZERO letters, numbers, words, labels, captions, hex codes, color codes, signs, logos, brand marks, book titles, notebook writing, sticky-note text, screen text, watermarks, or any character glyphs of any kind. Every surface must be blank or filled with abstract shapes only. This rule is absolute and overrides any other instruction.
 
 Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
 
@@ -208,7 +197,7 @@ PERSON_TEMPLATE = """A flat modern editorial illustration, painterly style with 
 
 Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden — use a different light source for this image.
 
-Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+Color palette: cool tones dominate — deep cyan, soft sky-blue, ice-blue, cool whites. Exactly ONE warm accent of muted {WARM_ACCENT_COLOR_NAME} appears on {WARM_ACCENT_OBJECT} only. No other warm colors anywhere in the image.
 
 Composition: character offset to the {LEFT_OR_RIGHT} third of the frame, side profile or three-quarter angle, occupying about 35% of frame width. The opposite side shows {OPPOSITE_SIDE_DESCRIPTION}. Generous breathing room.
 
@@ -216,7 +205,7 @@ Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
 
 Mood: {MOOD_REGISTER}. {CHARACTER_EXPRESSION}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos. No hands-on-keyboard close-ups. No multiple warm colors.
+CRITICAL — NO TEXT WHATSOEVER: the image must contain ZERO letters, numbers, words, labels, captions, hex codes, color codes, signs, logos, brand marks, book titles, notebook writing, sticky-note text, screen text, watermarks, or any character glyphs of any kind. Every surface (books, paper, notebooks, signs, screens, posters, wall art) must be blank or filled with abstract shapes only. This rule is absolute and overrides any other instruction. Also forbidden: hands-on-keyboard close-ups, multiple warm colors.
 
 Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
 
@@ -225,7 +214,7 @@ GROUP_TEMPLATE = """A flat modern editorial illustration, painterly style with s
 
 Lighting: {LIGHT_DESCRIPTION}. Soft, considered, single source. The warm-window-spilling-afternoon-light cliché is forbidden.
 
-Color palette: cyan and sky-blue dominant (#38BDF8, #0EA5E9, #0E7490, #ECFEFF, #A5F3FC), with one warm accent of {WARM_ACCENT_COLOR_NAME} ({WARM_ACCENT_HEX}) on {WARM_ACCENT_OBJECT}. No other warm colors.
+Color palette: cool tones dominate — deep cyan, soft sky-blue, ice-blue, cool whites. Exactly ONE warm accent of muted {WARM_ACCENT_COLOR_NAME} appears on {WARM_ACCENT_OBJECT} only. No other warm colors anywhere in the image.
 
 Composition: both characters in the lower two-thirds, with breathing space above. {COMPOSITION_NOTES}.
 
@@ -233,7 +222,7 @@ Style references: Tom Haugomat, Owen Davey, Olimpia Zagnoli.
 
 Mood: {MOOD_REGISTER}.
 
-Strictly forbidden: any visible text, words, numbers, letters, logos. No multiple warm colors.
+CRITICAL — NO TEXT WHATSOEVER: the image must contain ZERO letters, numbers, words, labels, captions, hex codes, color codes, signs, logos, brand marks, book titles, notebook writing, sticky-note text, screen text, watermarks, or any character glyphs of any kind. Every surface must be blank or filled with abstract shapes only. This rule is absolute and overrides any other instruction. Also forbidden: multiple warm colors.
 
 Aspect ratio: 16:9 landscape, designed for a 1200x630 hero banner."""
 
@@ -250,18 +239,18 @@ PROMPT_TEMPLATES = {
 TEMPLATE_VARIABLES = {
     "metaphor": [
         "METAPHOR_DESCRIPTION", "SCENE_CONTEXT", "LIGHT_DESCRIPTION",
-        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_OBJECT",
         "COMPOSITION_NOTES", "MOOD_REGISTER",
     ],
     "tableau": [
         "SURFACE_TYPE", "OBJECT_LIST", "SCENE_CONTEXT", "LIGHT_DESCRIPTION",
-        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_OBJECT",
         "COMPOSITION_NOTES", "MOOD_REGISTER",
     ],
     "person": [
         "CHARACTER", "SETTING_TYPE", "POSE_DESCRIPTION", "ACTIVITY_DESCRIPTION",
         "CONCEPTUAL_ACCENT_DESCRIPTION", "LIGHT_DESCRIPTION",
-        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_OBJECT",
         "LEFT_OR_RIGHT", "OPPOSITE_SIDE_DESCRIPTION",
         "MOOD_REGISTER", "CHARACTER_EXPRESSION",
     ],
@@ -269,9 +258,36 @@ TEMPLATE_VARIABLES = {
         "SETTING_TYPE", "CHARACTER_A_DESCRIPTION", "CHARACTER_B_DESCRIPTION",
         "INTERACTION_DESCRIPTION", "CONCEPTUAL_ACCENT_DESCRIPTION",
         "LIGHT_DESCRIPTION",
-        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_HEX", "WARM_ACCENT_OBJECT",
+        "WARM_ACCENT_COLOR_NAME", "WARM_ACCENT_OBJECT",
         "COMPOSITION_NOTES", "MOOD_REGISTER",
     ],
+}
+
+
+# Hand-curated composition assignments for the 20 published posts.
+# Picked from each post's actual argument shape, not random hash.
+# For new (unknown) posts the auto-pipeline falls back to hash-based pick.
+KNOWN_COMPOSITIONS = {
+    "partnership-not-replacement": "metaphor",         # two hands reaching for the same task
+    "where-do-i-fit-crisis": "person",                  # personal/emotional
+    "why-ai-implementations-fail": "metaphor",          # broken bridge / scattered pieces
+    "your-first-ai-agent": "metaphor",                  # single sapling / focused beam
+    "measure-roi-first-ai-agent": "tableau",            # notebook + chart + ruler
+    "custom-ai-agents-vs-off-shelf": "metaphor",        # fork in road, two paths
+    "people-first-ai-strategy": "group",                # collaboration
+    "90-day-ai-adoption-timeline": "metaphor",          # winding road / path with milestones
+    "hidden-costs-ai-implementation": "metaphor",       # iceberg
+    "change-management-playbook": "group",              # leading people through change
+    "stalled-ai-project": "metaphor",                   # stopped gear / blocked road
+    "ai-training-vs-implementation": "metaphor",        # two pillars with bridge
+    "signs-team-ready-ai": "tableau",                   # 5 small symbolic objects
+    "post-launch-ai-agent-management": "metaphor",      # tending a young plant
+    "when-to-hire-ai-consultant-vs-building-in-house": "metaphor",  # fork
+    "how-to-scale-ai-adoption-after-first-success": "metaphor",     # sapling to tree
+    "why-your-second-ai-project-matters-more-than-your-first": "metaphor",  # second seed
+    "executive-buy-in-ai-projects-leadership-alignment": "group",   # exec + lead at table
+    "how-to-train-team-ai-without-overwhelm": "person",             # learner reading
+    "building-trust-ai-address-team-resistance": "group",           # two people in conversation
 }
 
 
@@ -308,8 +324,7 @@ METAPHOR_SCHEMA = """{
   "METAPHOR_DESCRIPTION": "<1-2 sentences: the central visual metaphor for this post. Be specific and vivid (not 'a road' but 'a quiet country road forking at a wooden signpost'). See SKILL.md §Type A examples.>",
   "SCENE_CONTEXT": "<1 sentence: surrounding context for the metaphor — what's around it, what background>",
   "LIGHT_DESCRIPTION": "<short phrase per the lighting brief above — pick something OTHER than warm afternoon window light>",
-  "WARM_ACCENT_COLOR_NAME": "<one of: peach, amber, coral>",
-  "WARM_ACCENT_HEX": "<peach #FB923C, amber #FCD34D, coral #F87171>",
+  "WARM_ACCENT_COLOR_NAME": "<one of: muted peach, soft amber, dusty coral>",
   "WARM_ACCENT_OBJECT": "<short phrase — what specifically holds the warm color>",
   "COMPOSITION_NOTES": "<1 sentence: how the metaphor is positioned in the frame — central, offset, foreground/background>",
   "MOOD_REGISTER": "<short phrase — quiet & contemplative, urgent & focused, hopeful, melancholy, etc>"
@@ -321,8 +336,7 @@ TABLEAU_SCHEMA = """{
   "OBJECT_LIST": "<1-2 sentences listing the specific objects arranged on the surface — they should encode the post's argument>",
   "SCENE_CONTEXT": "<short phrase: what surrounds the surface (a chair edge, a wall, an open window edge, etc.)>",
   "LIGHT_DESCRIPTION": "<short phrase per the lighting brief — NOT warm afternoon window light>",
-  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
-  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_COLOR_NAME": "<one of: muted peach, soft amber, dusty coral>",
   "WARM_ACCENT_OBJECT": "<which object holds the warm color>",
   "COMPOSITION_NOTES": "<1 sentence: angle (overhead, three-quarter, side), how objects are arranged in the frame>",
   "MOOD_REGISTER": "<short phrase>"
@@ -336,8 +350,7 @@ PERSON_SCHEMA = """{
   "ACTIVITY_DESCRIPTION": "<short phrase tied to the post's argument>",
   "CONCEPTUAL_ACCENT_DESCRIPTION": "<1 sentence: the symbolic object per SKILL.md §Per-post conceptual accent>",
   "LIGHT_DESCRIPTION": "<short phrase per lighting brief — NOT warm afternoon window light>",
-  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
-  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_COLOR_NAME": "<one of: muted peach, soft amber, dusty coral>",
   "WARM_ACCENT_OBJECT": "<short phrase>",
   "LEFT_OR_RIGHT": "<'left' or 'right'>",
   "OPPOSITE_SIDE_DESCRIPTION": "<short phrase: what fills the opposite side of the frame>",
@@ -353,8 +366,7 @@ GROUP_SCHEMA = """{
   "INTERACTION_DESCRIPTION": "<short phrase: what they're doing — leaning over a shared document, in conversation across a table, listening side-by-side, etc.>",
   "CONCEPTUAL_ACCENT_DESCRIPTION": "<1 sentence: symbolic object>",
   "LIGHT_DESCRIPTION": "<short phrase — NOT warm afternoon window light>",
-  "WARM_ACCENT_COLOR_NAME": "<peach, amber, or coral>",
-  "WARM_ACCENT_HEX": "<corresponding hex>",
+  "WARM_ACCENT_COLOR_NAME": "<one of: muted peach, soft amber, dusty coral>",
   "WARM_ACCENT_OBJECT": "<short phrase>",
   "COMPOSITION_NOTES": "<1 sentence>",
   "MOOD_REGISTER": "<short phrase>"
