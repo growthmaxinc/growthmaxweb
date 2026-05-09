@@ -5,7 +5,9 @@ description: Apply GrowthMax's visual identity to any image produced for the web
 
 # GrowthMax Imagery — Creative Direction
 
-This is the single source of truth for any image rendered for **growthmaxinc.com**. The auto-pipeline at `scripts/generate-post.py` reads this file on every run; humans regenerating images by hand follow the same rules. There is no second style, no fallback look, no "just for this one post" exception.
+> **STATUS: Under revision (2026-05-09).** The original version of this file locked all site imagery to the flat-vector PIL renderer. After backfilling and reviewing, that direction proved too cold — the diagrams felt like generic SaaS infographics, not editorial illustrations with point of view. Direction is being reset toward branded illustrations (likely AI-generated via Gemini ImageFX or similar, with a tightly specified style and palette). The §Brand principles, §Style spec (palette + dimensions), and §Copy craft sections below remain valid and will carry forward; the §Two non-negotiables and §Layout selection rules are paused. Do NOT enforce "PIL only" while this revision is in progress. See conversation context or commit history for the new direction once it lands.
+
+This is the single source of truth for any image rendered for **growthmaxinc.com**. The auto-pipeline at `scripts/generate-post.py` reads this file on every run; humans regenerating images by hand follow the same rules.
 
 ---
 

@@ -23,16 +23,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install pyyaml Pillow
+        run: pip install pyyaml
 
       - name: Run SEO/AEO audit
         run: python scripts/seo_aeo_audit.py
-
-      - name: Validate hero images are on-brand
-        # Off-brand drift in the past has come from manually committing
-        # raster illustrations from external image generators (Gemini ImageFX,
-        # Midjourney, etc.) — those are usually portrait orientation, not
-        # 1200x630. This step catches any blog-*.jpg that wasn't produced
-        # by the canonical renderer (scripts/generate-hero-image.py).
-        # See scripts/skills/growthmax-imagery/SKILL.md for the full policy.
-        run: python scripts/validate_hero_images.py
