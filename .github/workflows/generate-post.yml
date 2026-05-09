@@ -41,6 +41,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IMAGE_MODEL_TIER: paid
           TOPIC_INPUT: ${{ github.event.inputs.topic }}
         run: python scripts/generate-post.py
 
