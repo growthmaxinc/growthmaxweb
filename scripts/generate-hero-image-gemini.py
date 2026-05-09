@@ -164,24 +164,71 @@ class HeroImageGenerator:
         return PROMPT_TEMPLATE.format(**variables)
 
     # -----------------------------------------------------------------
-    # Stage 2 — Imagen 3 renders the image
+    # Stage 2 — Gemini renders the image
     # -----------------------------------------------------------------
+    # Two paths:
+    #   1. Imagen 4 via generate_images (paid Google AI plan only) — best
+    #      quality, dedicated image model. Used if IMAGE_MODEL_TIER=paid.
+    #   2. Nano Banana via generate_content (gemini-X-flash-image, available
+    #      on free tier) — multimodal model that can output images. Used by
+    #      default to keep the pipeline running on the free tier.
+    # If Nano Banana ever produces visibly worse output than Imagen, switch
+    # the env var or hardcode the tier.
+
     def imagen_generate(self, prompt):
-        """Call Imagen 3 with the assembled prompt. Returns raw image bytes."""
-        # Imagen 4 is the GA model as of May 2026. If this 404s in the future,
-        # run .github/workflows/list-imagen-models.yml to see what's available.
+        """Render the prompt to image bytes via the configured Gemini path."""
+        tier = os.environ.get("IMAGE_MODEL_TIER", "free").lower()
+        if tier == "paid":
+            return self._generate_via_imagen(prompt)
+        return self._generate_via_nano_banana(prompt)
+
+    def _generate_via_imagen(self, prompt):
+        """Paid path — Imagen 4 dedicated image model."""
         result = self.gemini.models.generate_images(
             model="imagen-4.0-generate-001",
             prompt=prompt,
             config=genai_types.GenerateImagesConfig(
                 number_of_images=1,
                 aspect_ratio="16:9",
-                # safety_filter_level / person_generation defaults are fine
             ),
         )
         if not result.generated_images:
             raise RuntimeError("Imagen returned no images")
         return result.generated_images[0].image.image_bytes
+
+    def _generate_via_nano_banana(self, prompt):
+        """Free-tier path — Nano Banana (gemini-X-flash-image) multimodal.
+        Output aspect ratio is not user-controllable on this path; we resize
+        whatever it produces to the canonical 1200x630."""
+        # Nano Banana 2 (gemini-3.1-flash-image-preview) is the newest as of
+        # May 2026 — preview but free. Falls back to 2.5 if 3.1 errors.
+        for model_name in (
+            "gemini-3.1-flash-image-preview",
+            "gemini-2.5-flash-image",
+        ):
+            try:
+                response = self.gemini.models.generate_content(
+                    model=model_name,
+                    contents=[prompt],
+                )
+                # Pull the first image part out of the response
+                for cand in response.candidates or []:
+                    for part in (cand.content.parts if cand.content else []):
+                        inline = getattr(part, "inline_data", None)
+                        if inline and getattr(inline, "data", None):
+                            return inline.data
+                # No image part — try next model
+                print(
+                    f"  (no image part in {model_name} response — trying fallback)",
+                    flush=True,
+                )
+            except Exception as e:
+                print(f"  ({model_name} errored: {e} — trying fallback)", flush=True)
+        raise RuntimeError(
+            "All Nano Banana models failed to return an image. "
+            "Set IMAGE_MODEL_TIER=paid and ensure billing is enabled "
+            "on Google AI Studio to use Imagen 4 instead."
+        )
 
     # -----------------------------------------------------------------
     # Resize Imagen 16:9 output (1408×768) to canonical 1200×630
