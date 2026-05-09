@@ -37,6 +37,9 @@ jobs:
           SLUGS: partnership-not-replacement,where-do-i-fit-crisis,why-ai-implementations-fail,your-first-ai-agent,measure-roi-first-ai-agent,custom-ai-agents-vs-off-shelf,people-first-ai-strategy,90-day-ai-adoption-timeline,hidden-costs-ai-implementation,change-management-playbook,stalled-ai-project,ai-training-vs-implementation,signs-team-ready-ai,post-launch-ai-agent-management,when-to-hire-ai-consultant-vs-building-in-house,how-to-scale-ai-adoption-after-first-success,why-your-second-ai-project-matters-more-than-your-first,executive-buy-in-ai-projects-leadership-alignment,how-to-train-team-ai-without-overwhelm,building-trust-ai-address-team-resistance
           # Render to repo root, not /samples/
           OUTPUT_DIR: '.'
+        # Don't fail the whole job if a few renders fail — commit what we got
+        # and re-run for the failures.
+        continue-on-error: true
         run: python scripts/render_samples.py
 
       - name: Cleanup scratch folders

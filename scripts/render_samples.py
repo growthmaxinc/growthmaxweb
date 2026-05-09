@@ -40,13 +40,43 @@ if not SAMPLES_DIR.is_absolute():
     SAMPLES_DIR = REPO / SAMPLES_DIR
 
 
+_IMAGE_TO_POST_CACHE = None
+
+
+def _build_image_to_post_index():
+    """Scan every _posts/*.md, read its `image:` frontmatter, and build
+    {image-slug → post-file} so we can look up the post for any image slug
+    no matter how the post-slug and image-slug naming diverge."""
+    index = {}
+    for f in POSTS_DIR.glob("*.md"):
+        text = f.read_text()
+        m = re.search(r"^image:\s*[\"']?(.+?)[\"']?\s*$", text, re.MULTILINE)
+        if not m:
+            continue
+        image_path = m.group(1).strip()
+        # Extract slug from /blog-{slug}.jpg
+        m2 = re.match(r"^/?blog-(.+)\.(?:jpg|jpeg|png)$", image_path)
+        if m2:
+            index[m2.group(1)] = f
+    return index
+
+
 def find_post_file(slug):
-    """Find the _posts/*.md file whose filename ends with {slug}.md."""
+    """Find the _posts/*.md file whose `image:` frontmatter resolves to
+    blog-{slug}.jpg. Handles the case where post-slug and image-slug differ."""
+    global _IMAGE_TO_POST_CACHE
+    if _IMAGE_TO_POST_CACHE is None:
+        _IMAGE_TO_POST_CACHE = _build_image_to_post_index()
+    if slug in _IMAGE_TO_POST_CACHE:
+        return _IMAGE_TO_POST_CACHE[slug]
+    # Fallback: try exact tail match (in case image isn't in frontmatter yet)
     for f in POSTS_DIR.glob(f"*-{slug}.md"):
         return f
     raise FileNotFoundError(
-        f"No _posts file found for slug {slug!r}. "
-        f"Looked for *-{slug}.md in {POSTS_DIR}"
+        f"No _posts file found for image slug {slug!r}. "
+        f"Checked the image: frontmatter on every post in {POSTS_DIR} "
+        "and no post references blog-{slug}.jpg. Either the slug is wrong "
+        "or the post's image: field needs updating."
     )
 
 
