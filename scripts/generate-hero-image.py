@@ -153,7 +153,7 @@ def icon_clock(d, cx, cy, r, fg=TEAL):
     d.line([(cx, cy), (cx + r * 0.45, cy + r * 0.1)], fill=fg, width=max(3, int(r * 0.1)))
     _circle(d, cx, cy, r * 0.08, fg)
 
-def icon_book(d, cx, cy, r, fg=WHITE):
+def icon_book(d, cx, cy, r, fg=TEAL):
     # open book on teal card: two pages
     w = r * 1.3
     h = r * 0.9
@@ -166,7 +166,7 @@ def icon_book(d, cx, cy, r, fg=WHITE):
         d.line([(cx - w * 0.85, yy), (cx - w * 0.15, yy)], fill=bg, width=2)
         d.line([(cx + w * 0.15, yy), (cx + w * 0.85, yy)], fill=bg, width=2)
 
-def icon_rocket(d, cx, cy, r, fg=WHITE):
+def icon_rocket(d, cx, cy, r, fg=TEAL):
     # simple rocket: triangle body + fins + flame
     body_top = (cx, cy - r * 0.8)
     body_bl = (cx - r * 0.35, cy + r * 0.3)
@@ -183,7 +183,7 @@ def icon_rocket(d, cx, cy, r, fg=WHITE):
     # porthole
     _circle(d, cx, cy - r * 0.15, r * 0.12, TEAL)
 
-def icon_gear(d, cx, cy, r, fg=WHITE):
+def icon_gear(d, cx, cy, r, fg=TEAL):
     import math
     teeth = 8
     inner = r * 0.62
@@ -196,7 +196,7 @@ def icon_gear(d, cx, cy, r, fg=WHITE):
     d.polygon(pts, fill=fg)
     _circle(d, cx, cy, r * 0.3, TEAL)
 
-def icon_chart(d, cx, cy, r, fg=WHITE):
+def icon_chart(d, cx, cy, r, fg=TEAL):
     # bars of increasing height
     bar_w = r * 0.25
     gap = r * 0.1
@@ -215,7 +215,7 @@ def icon_chart(d, cx, cy, r, fg=WHITE):
         fill=BLUE_DEEP,
     )
 
-def icon_cycle(d, cx, cy, r, fg=WHITE):
+def icon_cycle(d, cx, cy, r, fg=TEAL):
     # two circular arrows
     d.arc([(cx - r * 0.85, cy - r * 0.85), (cx + r * 0.85, cy + r * 0.85)],
           start=220, end=80, fill=fg, width=max(4, int(r * 0.14)))
@@ -227,7 +227,7 @@ def icon_cycle(d, cx, cy, r, fg=WHITE):
     d.polygon([(cx - r * 0.72, cy + r * 0.25), (cx - r * 0.45, cy + r * 0.55),
                (cx - r * 0.95, cy + r * 0.55)], fill=fg)
 
-def icon_flag(d, cx, cy, r, fg=WHITE):
+def icon_flag(d, cx, cy, r, fg=TEAL):
     # pole
     d.line([(cx - r * 0.5, cy - r * 0.75), (cx - r * 0.5, cy + r * 0.85)], fill=fg, width=max(3, int(r * 0.1)))
     # flag triangle
@@ -237,7 +237,7 @@ def icon_flag(d, cx, cy, r, fg=WHITE):
         (cx - r * 0.5, cy + r * 0.05),
     ], fill=fg)
 
-def icon_scale(d, cx, cy, r, fg=WHITE):
+def icon_scale(d, cx, cy, r, fg=TEAL):
     # central pillar
     d.line([(cx, cy - r * 0.8), (cx, cy + r * 0.6)], fill=fg, width=max(3, int(r * 0.1)))
     # top beam
@@ -253,7 +253,7 @@ def icon_scale(d, cx, cy, r, fg=WHITE):
     d.line([(cx + r * 0.55, cy - r * 0.75), (cx + r * 0.2, cy - r * 0.55)], fill=fg, width=2)
     d.line([(cx + r * 0.55, cy - r * 0.75), (cx + r * 0.9, cy - r * 0.55)], fill=fg, width=2)
 
-def icon_chat(d, cx, cy, r, fg=WHITE):
+def icon_chat(d, cx, cy, r, fg=TEAL):
     d.rounded_rectangle(
         [(cx - r * 0.85, cy - r * 0.7), (cx + r * 0.85, cy + r * 0.3)],
         radius=int(r * 0.2),
