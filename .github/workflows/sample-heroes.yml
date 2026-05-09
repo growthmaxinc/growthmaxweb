@@ -1,0 +1,52 @@
+name: Sample Hero Image Render
+
+# Renders 3 representative hero images using the new growthmax-imagery skill
+# and commits them to /samples/ for visual review before the full backfill.
+# Triggered manually via workflow_dispatch — safe to run repeatedly while
+# tuning the aesthetic; each run overwrites the previous samples.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: 'Comma-separated post slugs to sample (default: 3 representative posts)'
+        required: false
+        default: 'where-do-i-fit-crisis,measure-roi-first-ai-agent,partnership-not-replacement'
+
+permissions:
+  contents: write
+
+jobs:
+  render-samples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic google-genai Pillow pyyaml
+
+      - name: Render samples
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SLUGS: ${{ github.event.inputs.slugs }}
+        run: |
+          python scripts/render_samples.py
+
+      - name: Commit samples
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add samples/
+          if git diff --staged --quiet; then
+            echo "No samples produced — render must have failed silently"
+            exit 1
+          fi
+          git commit -m "Render hero image samples ($(date +%Y-%m-%d %H:%M))"
+          git push

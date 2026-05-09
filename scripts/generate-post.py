@@ -17,14 +17,16 @@ from pathlib import Path
 from anthropic import Anthropic
 from openpyxl import load_workbook
 
-# Local module — programmatic flat-vector hero image renderer.
+# Local module — Gemini Imagen-based hero image generator (canonical path).
+# The legacy flat-vector PIL renderer at generate-hero-image.py is retained
+# as a non-canonical fallback (see scripts/skills/growthmax-imagery/SKILL.md).
 sys.path.insert(0, str(Path(__file__).parent))
 import importlib.util
-_spec = importlib.util.spec_from_file_location(
-    "hero_image", str(Path(__file__).parent / "generate-hero-image.py")
+_gemini_spec = importlib.util.spec_from_file_location(
+    "gemini_hero", str(Path(__file__).parent / "generate-hero-image-gemini.py")
 )
-hero_image = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(hero_image)
+gemini_hero = importlib.util.module_from_spec(_gemini_spec)
+_gemini_spec.loader.exec_module(gemini_hero)
 
 # AEO self-validation: imported from the same audit module that CI uses,
 # so the pipeline enforces the exact same standard as humans + CI.
@@ -415,127 +417,42 @@ def generate_post_with_validation(client, plan_row, aeo_qs, siblings):
     )
 
 
-# Path to the imagery skill — single source of truth for hero image creative
-# direction. Loaded fresh on every run so edits to the skill take effect on the
-# next pipeline tick without a code change here.
-IMAGERY_SKILL_PATH = Path(__file__).parent / "skills" / "growthmax-imagery" / "SKILL.md"
-
-# Minimal machine-readable spec the LLM still needs to know — the JSON shape
-# the renderer expects. The CREATIVE DIRECTION (layout selection, copy craft,
-# character caps, icon strategy, validation) lives in IMAGERY_SKILL_PATH.
-HERO_RENDERER_SCHEMA = """
-RENDERER SCHEMA (output this JSON, nothing else, no code fences):
-
-Common fields, always required:
-  "layout": "timeline" | "split" | "cards"
-  "header": string  (the top label — see SKILL.md §Header copy)
-  "footer_title": string  (the editorial line — see SKILL.md §Footer title)
-  "footer_subtitle": string  (the supporting line — see SKILL.md §Footer subtitle)
-  "alt": string  (one sentence, screen-reader description of the illustration)
-
-Layout-specific fields:
-
-  layout = "timeline":
-    "steps": [{ "icon": <icon>, "label": <string> }, ...]   (3 to 5 entries)
-
-  layout = "split":
-    "left":   { "icon": <icon>, "label": <string>, "sub": <string> }
-    "center": { "label": <string>, "sub": <string> }
-    "right":  { "icon": <icon>, "label": <string>, "sub": <string> }
-
-  layout = "cards":
-    "cards": [{ "icon": <icon>, "label": <string>, "highlight": <bool> }, ...]
-    (3 to 5 entries, AT MOST one with highlight=true)
-
-Allowed icons:
-  check, person, question, target, clock, book, rocket, gear, chart, cycle,
-  flag, scale, chat
-
-CHARACTER CAPS (hard — see SKILL.md §Hard renderer constraints for derivation):
-  header              ≤ 24 chars
-  footer_title        ≤ 40 chars
-  footer_subtitle     ≤ 65 chars
-  card label          ≤ 26 chars
-  timeline step label ≤ 26 chars
-  split column label  ≤ 14 chars  (UPPERCASE in render — count carefully)
-  split column sub    ≤ 60 chars
-  split center label  ≤ 7 chars   (UPPERCASE)
-  split center sub    ≤ 18 chars
-"""
-
-
-def _load_imagery_skill():
-    """Read the canonical creative-direction skill. If missing, fail hard —
-    we do not generate hero images without the skill loaded, because that's
-    how off-brand drift happens."""
-    if not IMAGERY_SKILL_PATH.exists():
-        raise FileNotFoundError(
-            f"Imagery skill not found at {IMAGERY_SKILL_PATH}. "
-            "This file is the source of truth for hero image creative direction "
-            "and must be present for the pipeline to run. See "
-            "scripts/skills/growthmax-imagery/SKILL.md."
-        )
-    return IMAGERY_SKILL_PATH.read_text()
-
-
-HERO_IMAGE_USER_PROMPT = """
-You are designing the hero image for a new GrowthMax blog post. Apply the
-creative direction in the skill above (treat every rule there as binding) and
-output a JSON spec that the renderer can consume.
-
-Post title:    {title}
-Post subtitle: {subtitle}
-TL;DR:         {tldr}
-
-WORK ORDER:
-1. Read the post title, subtitle, and TL;DR.
-2. Identify the post's argument shape (sequence / decision / list of distinct
-   ideas) and pick the layout per SKILL.md §Layout selection.
-3. Draft a header that is specific to THIS post (SKILL.md §Header copy — note
-   the "doesn't fit five other posts" test).
-4. Draft a footer title that names the benefit/action/reframe (SKILL.md
-   §Footer title — do NOT echo the post title verbatim).
-5. Draft a footer subtitle that adds context the title doesn't already give
-   (SKILL.md §Footer subtitle).
-6. Pick icons per SKILL.md §Icon strategy (use the pairing table; honour the
-   variety rule; honour the person-led rule if applicable).
-7. Verify every field against SKILL.md §Hard renderer constraints — count
-   characters carefully, especially split column labels (cap 14 UPPERCASE).
-8. Run SKILL.md §Pre-publish validation checklist mentally. If any item
-   fails, revise before output.
-9. Output ONLY the JSON object per the RENDERER SCHEMA. No prose, no code
-   fences, no commentary.
-""" + HERO_RENDERER_SCHEMA
-
+# Hero image generation — Gemini Imagen via the HeroImageGenerator class
+# in generate-hero-image-gemini.py. Creative direction lives in
+# scripts/skills/growthmax-imagery/SKILL.md and is loaded by the generator
+# on construction.
+#
+# If GEMINI_API_KEY is not set, the auto-pipeline still runs and saves the
+# post — the post just ships with the default placeholder image until the
+# secret is configured. This keeps the text-generation path robust against
+# image-API outages.
 
 def generate_hero_image(client, post_data, out_dir=Path(".")):
-    skill_text = _load_imagery_skill()
-    user_prompt = HERO_IMAGE_USER_PROMPT.format(
-        title=post_data.get("title", ""),
-        subtitle=post_data.get("subtitle", ""),
-        tldr=post_data.get("tldr", ""),
-    )
-    try:
-        resp = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=1024,
-            system=skill_text,
-            messages=[{"role": "user", "content": user_prompt}],
+    if not os.environ.get("GEMINI_API_KEY"):
+        print(
+            "GEMINI_API_KEY not set — skipping hero image generation. "
+            "Post will ship with the default placeholder.",
+            file=sys.stderr,
         )
-        text = resp.content[0].text
-        if "```json" in text:
-            text = text.split("```json")[1].split("```")[0]
-        elif "```" in text:
-            text = text.split("```")[1].split("```")[0]
-        cfg = json.loads(text.strip())
-        alt = cfg.pop("alt", "Flat vector hero illustration for the blog post")
-        slug = post_data["slug"]
-        out_path = out_dir / f"blog-{slug}.jpg"
-        hero_image.render(cfg, str(out_path))
-        print(f"Generated hero image: {out_path}")
-        return out_path, alt
+        return None, None
+
+    slug = post_data["slug"]
+    out_path = out_dir / f"blog-{slug}.jpg"
+    try:
+        gen = gemini_hero.HeroImageGenerator(anthropic_client=client)
+        path, alt, _vars = gen.render_post(
+            title=post_data.get("title", ""),
+            subtitle=post_data.get("subtitle", ""),
+            tldr=post_data.get("tldr", ""),
+            out_path=out_path,
+        )
+        print(f"Generated hero image: {path}")
+        return path, alt
     except Exception as e:
-        print(f"Hero image generation failed, falling back to default: {e}", file=sys.stderr)
+        print(
+            f"Hero image generation failed, falling back to default placeholder: {e}",
+            file=sys.stderr,
+        )
         return None, None
 
 
