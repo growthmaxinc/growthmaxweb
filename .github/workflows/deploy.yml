@@ -4,6 +4,14 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  # Also fire when the auto-pipeline or backfill workflows complete on main.
+  # Those workflows commit via GITHUB_TOKEN, which by design does NOT
+  # auto-trigger other workflows (anti-loop safeguard) — so without this
+  # entry, a new auto-generated post lands on main but never deploys.
+  workflow_run:
+    workflows: ["Generate Blog Post", "Backfill All Hero Images"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -17,6 +25,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Only deploy when the triggering workflow_run actually succeeded
+    # (skip if the upstream workflow failed). For push and workflow_dispatch
+    # events, this is always true.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
