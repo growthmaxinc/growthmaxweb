@@ -121,12 +121,14 @@ def find_next_calendar_row(calendar_sheet):
         A Week | B Publish date | C Pillar | D Type | E Working title
         F Primary keyword | G Owner | H Status
 
-    Header rows live above row 3; data starts at row 3.
-    Returns (row_number, row_dict) or (None, None) if none available.
+    Rows 1-3 are title/blurb/blank; row 4 is the column header;
+    actual data starts at row 5. Returns (row_number, row_dict) or
+    (None, None) if no candidates.
     """
     today = date.today()
     candidates = []
-    for row_idx in range(3, calendar_sheet.max_row + 1):
+    # Data starts at row 5 (rows 1-3 = title/blurb/blank, row 4 = column headers).
+    for row_idx in range(5, calendar_sheet.max_row + 1):
         status = calendar_sheet.cell(row=row_idx, column=8).value
         if status and str(status).strip().lower() == "published":
             continue
@@ -135,9 +137,18 @@ def find_next_calendar_row(calendar_sheet):
         if not title or not keyword:
             continue
         publish_date = calendar_sheet.cell(row=row_idx, column=2).value
-        # Convert datetime to date if needed
+        # Coerce datetime -> date; defensively reject anything else.
+        # A stray header row or hand-typed string would otherwise slip into
+        # the sort comparator below as a `str` and blow up with TypeError.
         if hasattr(publish_date, "date"):
             publish_date = publish_date.date()
+        elif publish_date is not None and not isinstance(publish_date, date):
+            print(
+                f"  warning: Calendar row {row_idx} has non-date publish_date "
+                f"({publish_date!r}) - skipping",
+                file=sys.stderr,
+            )
+            continue
         candidates.append((row_idx, publish_date, {
             "week": calendar_sheet.cell(row=row_idx, column=1).value,
             "publish_date": publish_date,
@@ -173,7 +184,7 @@ def aeo_questions_for_pillar(aeo_sheet, pillar_key):
     AEO columns: A Pillar | B Question | C Answer angle | D Target page | E Schema type
     """
     out = []
-    for row_idx in range(3, aeo_sheet.max_row + 1):
+    for row_idx in range(5, aeo_sheet.max_row + 1):
         if _pillar_key(aeo_sheet.cell(row=row_idx, column=1).value) != pillar_key:
             continue
         q = aeo_sheet.cell(row=row_idx, column=2).value
@@ -187,7 +198,7 @@ def sibling_spokes(master_sheet, pillar_key, exclude_keyword=None, limit=3):
     """Return up to `limit` published siblings in the same pillar, as
     [{"title": str, "url": str, "keyword": str}, ...]."""
     siblings = []
-    for row_idx in range(3, master_sheet.max_row + 1):
+    for row_idx in range(5, master_sheet.max_row + 1):
         if _pillar_key(master_sheet.cell(row=row_idx, column=2).value) != pillar_key:
             continue
         keyword = master_sheet.cell(row=row_idx, column=3).value
@@ -221,7 +232,7 @@ def writeback_publish(wb, sheets, calendar_row_idx, primary_keyword, post_url):
     master = sheets["master"]
     matched = False
     target = primary_keyword.strip().lower()
-    for row_idx in range(3, master.max_row + 1):
+    for row_idx in range(5, master.max_row + 1):
         kw = master.cell(row=row_idx, column=3).value
         if kw and str(kw).strip().lower() == target:
             master.cell(row=row_idx, column=13).value = "Published"
@@ -232,7 +243,7 @@ def writeback_publish(wb, sheets, calendar_row_idx, primary_keyword, post_url):
     if not matched:
         new_row = master.max_row + 1
         last_id = "K000"
-        for row_idx in range(3, master.max_row + 1):
+        for row_idx in range(5, master.max_row + 1):
             v = master.cell(row=row_idx, column=1).value
             if v and isinstance(v, str) and v.startswith("K"):
                 last_id = v
@@ -528,7 +539,8 @@ def main():
     calendar_row_idx = None
     if topic_override:
         # Try to find a Calendar row whose keyword OR title contains the override.
-        for row_idx in range(3, sheets["calendar"].max_row + 1):
+        # Calendar data starts at row 5 (rows 1-4 = title/blurb/blank/header).
+        for row_idx in range(5, sheets["calendar"].max_row + 1):
             kw = sheets["calendar"].cell(row=row_idx, column=6).value or ""
             title = sheets["calendar"].cell(row=row_idx, column=5).value or ""
             if topic_override.lower() in str(kw).lower() or topic_override.lower() in str(title).lower():
