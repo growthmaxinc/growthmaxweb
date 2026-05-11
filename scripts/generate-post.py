@@ -132,6 +132,12 @@ def find_next_calendar_row(calendar_sheet):
         status = calendar_sheet.cell(row=row_idx, column=8).value
         if status and str(status).strip().lower() == "published":
             continue
+        # Only auto-generate Spoke posts. Pillar-update and New-pillar rows
+        # are page-expansion work that needs human authoring; the runner
+        # should skip past them and pick the next eligible Spoke instead.
+        row_type = calendar_sheet.cell(row=row_idx, column=4).value
+        if row_type and "spoke" not in str(row_type).strip().lower():
+            continue
         title = calendar_sheet.cell(row=row_idx, column=5).value
         keyword = calendar_sheet.cell(row=row_idx, column=6).value
         if not title or not keyword:
@@ -390,7 +396,7 @@ Respond in this exact JSON format (no prose around it):
 def generate_post(client, plan_row, aeo_qs, siblings, prior_errors=None):
     prompt = build_prompt(plan_row, aeo_qs, siblings, prior_errors=prior_errors)
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",  # was claude-sonnet-4-20250514 (deprecated 2026-06-15); 4.6 follows AEO word counts more reliably
         max_tokens=4096,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -543,6 +549,9 @@ def main():
         for row_idx in range(5, sheets["calendar"].max_row + 1):
             kw = sheets["calendar"].cell(row=row_idx, column=6).value or ""
             title = sheets["calendar"].cell(row=row_idx, column=5).value or ""
+            row_type = sheets["calendar"].cell(row=row_idx, column=4).value or ""
+            if "spoke" not in str(row_type).strip().lower():
+                continue
             if topic_override.lower() in str(kw).lower() or topic_override.lower() in str(title).lower():
                 calendar_row_idx = row_idx
                 plan_row = {
