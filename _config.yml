@@ -4,11 +4,6 @@ description: Custom AI agents and training for organizations ready to scale with
 url: https://growthmaxinc.com
 email: hi@growthmaxinc.com
 logo: /growthMAX.PNG
-# Site-wide default for og:image / link previews. Any page without its own
-# `image:` in front-matter (homepage, blog index, FAQ, etc.) falls back to
-# this on LinkedIn, Slack, iMessage, WhatsApp, and other Open Graph consumers.
-# Blog posts override this with their per-post hero illustration.
-image: /growthMAX.PNG
 
 # Build
 permalink: /blog/:slug/
@@ -44,10 +39,18 @@ defaults:
     values:
       layout: post
       author: GrowthMax Inc
+      # Per-post hero images override this via the `image:` front-matter
+      # written by scripts/generate-post.py.
+      image: /growthMAX.PNG
   - scope:
       path: ""
     values:
       layout: null
+      # Site-wide og:image default. jekyll-seo-tag reads page.image (not
+      # site.image), so the `defaults` block is the right place for this.
+      # Any page that wants its own social-share image just sets `image:`
+      # in its front-matter and overrides this.
+      image: /growthMAX.PNG
 
 # Exclude from build
 exclude:
