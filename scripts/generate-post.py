@@ -130,7 +130,11 @@ def find_next_calendar_row(calendar_sheet):
     # Data starts at row 5 (rows 1-3 = title/blurb/blank, row 4 = column headers).
     for row_idx in range(5, calendar_sheet.max_row + 1):
         status = calendar_sheet.cell(row=row_idx, column=8).value
-        if status and str(status).strip().lower() == "published":
+        # Only "Not started" rows are eligible. Anything else — "Published",
+        # "Skipped (duplicate slug)", "In progress", whatever — is intentionally
+        # off-limits. Previously this only filtered out "published", which let
+        # any non-standard status get re-selected on the next scheduled run.
+        if not status or str(status).strip().lower() != "not started":
             continue
         # Only auto-generate Spoke posts. Pillar-update and New-pillar rows
         # are page-expansion work that needs human authoring; the runner
@@ -277,6 +281,30 @@ def get_existing_posts():
             if match:
                 posts.append(match.group(1))
     return posts
+
+
+def _slugify(text):
+    """Slugify a title the way the LLM tends to. Lowercase, ASCII, hyphens.
+    Used by the early slug-collision guard so we can abort BEFORE the LLM
+    call when the working title would obviously collide with an existing post."""
+    if not text:
+        return ""
+    s = str(text).lower()
+    s = re.sub(r"[^\w\s-]", "", s)        # strip punctuation
+    s = re.sub(r"[\s_]+", "-", s.strip())  # whitespace/underscores -> hyphens
+    return s.strip("-")
+
+
+def slug_already_published(slug):
+    """A post file ending in -{slug}.md means /blog/{slug}/ is already taken.
+    Jekyll's `permalink: /blog/:slug/` collapses any second post with the same
+    slug onto the same canonical URL, which silently overwrites the prior post
+    and produces duplicate cards on the homepage and blog index.
+    See daily-improvement-2026-05-18.md for the incident this guards against."""
+    if not slug:
+        return False
+    needle = f"-{slug}.md"
+    return any(p.name.endswith(needle) for p in POSTS_DIR.glob("*.md"))
 
 
 def build_prompt(plan_row, aeo_qs, siblings, prior_errors=None):
@@ -585,6 +613,27 @@ def main():
 
     print(f"Selected: {plan_row['title']} (pillar {plan_row['pillar']}, kw '{plan_row['keyword']}')")
 
+    # Early slug-collision guard: if the working title would obviously produce
+    # a slug that's already published, abort BEFORE burning an LLM + Imagen
+    # call. Mark the Calendar row Skipped so the next scheduled run picks a
+    # different topic instead of looping on this one.
+    candidate_slug = _slugify(plan_row["title"])
+    if candidate_slug and slug_already_published(candidate_slug):
+        print(
+            f"ABORT (early guard): working title '{plan_row['title']}' would "
+            f"produce slug '{candidate_slug}', which is already published at "
+            f"/blog/{candidate_slug}/. Likely cause: duplicate row in the "
+            f"Calendar tab of GrowthMax-Keyword-Program.xlsx. Marking this "
+            f"row Skipped and exiting clean — please dedupe Calendar topics.",
+            file=sys.stderr,
+        )
+        if calendar_row_idx is not None:
+            sheets["calendar"].cell(row=calendar_row_idx, column=8).value = (
+                f"Skipped (duplicate slug) {date.today().isoformat()}"
+            )
+            wb.save(WORKBOOK_PATH)
+        sys.exit(0)  # exit 0 so CI marks the run green; no commit happens
+
     aeo_qs = aeo_questions_for_pillar(sheets["aeo"], plan_row["pillar"])
     siblings = sibling_spokes(sheets["master"], plan_row["pillar"], exclude_keyword=plan_row["keyword"])
     print(f"Found {len(aeo_qs)} AEO questions, {len(siblings)} published siblings for pillar {plan_row['pillar']}")
@@ -594,6 +643,25 @@ def main():
     except RuntimeError as e:
         print(f"FATAL: {e}", file=sys.stderr)
         sys.exit(1)
+
+    # Late slug-collision guard: the LLM can sometimes invent a slug different
+    # from what the working title implied. Recheck against the actual slug it
+    # produced, BEFORE we generate the (expensive) hero image and write the
+    # post file to disk.
+    if slug_already_published(post_data["slug"]):
+        print(
+            f"ABORT (late guard): LLM produced slug '{post_data['slug']}', "
+            f"which is already published at /blog/{post_data['slug']}/. "
+            f"Marking Calendar row Skipped and exiting clean — please dedupe "
+            f"Calendar topics in GrowthMax-Keyword-Program.xlsx.",
+            file=sys.stderr,
+        )
+        if calendar_row_idx is not None:
+            sheets["calendar"].cell(row=calendar_row_idx, column=8).value = (
+                f"Skipped (LLM produced duplicate slug) {date.today().isoformat()}"
+            )
+            wb.save(WORKBOOK_PATH)
+        sys.exit(0)
 
     image_path, image_alt = generate_hero_image(client, post_data, out_dir=Path("."))
     _, public_url = save_post(post_data, image_path=image_path, image_alt=image_alt)

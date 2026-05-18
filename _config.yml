@@ -4,6 +4,11 @@ description: Custom AI agents and training for organizations ready to scale with
 url: https://growthmaxinc.com
 email: hi@growthmaxinc.com
 logo: /growthMAX.PNG
+# Site-wide default for og:image / link previews. Any page without its own
+# `image:` in front-matter (homepage, blog index, FAQ, etc.) falls back to
+# this on LinkedIn, Slack, iMessage, WhatsApp, and other Open Graph consumers.
+# Blog posts override this with their per-post hero illustration.
+image: /growthMAX.PNG
 
 # Build
 permalink: /blog/:slug/
@@ -17,8 +22,11 @@ plugins:
 
 # SEO tag defaults
 author: GrowthMax Inc
-twitter:
-  card: summary_large_image
+# NOTE: no `twitter:` block. GrowthMax has no X/Twitter account (only LinkedIn).
+# Without a `twitter.username`, jekyll-seo-tag emits `<meta name="twitter:site"
+# content="@">` which is invalid. Better to emit no Twitter tags at all than
+# emit broken ones. Add `twitter: { username: <handle> }` here if/when an
+# account exists.
 social:
   name: GrowthMax Inc
   links:
