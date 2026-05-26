@@ -30,7 +30,11 @@ _gemini_spec.loader.exec_module(gemini_hero)
 
 # AEO self-validation: imported from the same audit module that CI uses,
 # so the pipeline enforces the exact same standard as humans + CI.
-from seo_aeo_audit import validate_post_data, AEO_MIN, AEO_MAX, META_DESC_MAX
+from seo_aeo_audit import (
+    validate_post_data,
+    AEO_MIN, AEO_MAX, META_DESC_MAX,
+    _strip_md, _is_cta_h2,
+)
 
 # Maximum number of regeneration attempts when AEO validation fails.
 MAX_GENERATION_RETRIES = 3
@@ -436,17 +440,110 @@ def generate_post(client, plan_row, aeo_qs, siblings, prior_errors=None):
     return json.loads(text.strip())
 
 
+def _trim_aeo_answers(post_data, max_trim_words=70):
+    """Auto-trim AEO question H2 answers that are slightly over the word
+    cap so we don't burn a retry on a fixable problem.
+
+    Behavior: for each non-CTA `## Question?` H2 in `post_data["content"]`,
+    if its answer paragraph has between AEO_MAX+1 and max_trim_words words,
+    drop trailing sentences one at a time until it lands in [AEO_MIN, AEO_MAX].
+    Paragraphs above max_trim_words (e.g., 80+) are left alone so the retry
+    loop gets a chance to regenerate them more concisely.
+
+    Mutates post_data["content"] in place. Returns the number of answers trimmed.
+
+    Why this exists: Claude Sonnet 4.6 routinely produces 64-65 word answers
+    on definitional H2s ("What is X?", "How is X different from Y?") even
+    when the prompt says 40-60. Three Mon/Wed/Fri runs in a row failed for
+    exactly this reason (run #25-27, May 18/20/22). One trailing sentence
+    drop typically fixes it without changing the answer's substance.
+    """
+    content = post_data.get("content", "")
+    if not content:
+        return 0
+
+    trimmed_count = 0
+    # Process matches from the END so earlier offsets stay valid as we mutate.
+    matches = list(re.finditer(r"^## (.+\?)\s*$", content, re.MULTILINE))
+    for m in reversed(matches):
+        question = m.group(1)
+        if _is_cta_h2(question):
+            continue
+
+        # Find the first paragraph following this H2. Mirror the validator's
+        # _first_para_after() logic so word counts agree exactly.
+        after = content[m.end():]
+        rest_stripped = after.lstrip("\n")
+        leading = len(after) - len(rest_stripped)
+        para_end_match = re.search(r"\n\s*\n|\n## |\n### |\Z", rest_stripped)
+        para_end = para_end_match.start() if para_end_match else len(rest_stripped)
+        para = rest_stripped[:para_end]
+
+        wc = len(_strip_md(para).split())
+        if wc <= AEO_MAX or wc > max_trim_words:
+            continue
+
+        sentences = re.split(r"(?<=[.!?])\s+", para.strip())
+        while len(sentences) > 1:
+            sentences.pop()
+            candidate = " ".join(sentences)
+            cwc = len(_strip_md(candidate).split())
+            if AEO_MIN <= cwc <= AEO_MAX:
+                abs_start = m.end() + leading
+                abs_end = abs_start + para_end
+                content = content[:abs_start] + candidate + content[abs_end:]
+                trimmed_count += 1
+                break
+
+    if trimmed_count:
+        post_data["content"] = content
+    return trimmed_count
+
+
 def generate_post_with_validation(client, plan_row, aeo_qs, siblings):
     """Generate a post and validate it against AEO rules. Retry up to
     MAX_GENERATION_RETRIES times with feedback if validation fails.
 
     Returns the validated post_data dict, or raises RuntimeError if all
     attempts fail (workflow exits non-zero, calendar row stays Not started).
+
+    Robustness fixes (added 2026-05-25 after runs #25-27 failed):
+    - JSONDecodeError from the LLM response is now caught inside the retry
+      loop and treated as a validation failure. Previously it bubbled up
+      uncaught and crashed the whole script on attempt 2/3, losing any
+      good output already produced.
+    - _trim_aeo_answers() is called between generation and validation to
+      auto-fix 61-70 word answers (Claude's most common over-shoot) without
+      burning a retry.
     """
     prior_errors = None
     for attempt in range(1, MAX_GENERATION_RETRIES + 1):
         print(f"\n=== Generation attempt {attempt}/{MAX_GENERATION_RETRIES} ===")
-        candidate = generate_post(client, plan_row, aeo_qs, siblings, prior_errors=prior_errors)
+        try:
+            candidate = generate_post(
+                client, plan_row, aeo_qs, siblings, prior_errors=prior_errors
+            )
+        except json.JSONDecodeError as e:
+            # The LLM occasionally returns malformed JSON (unescaped quotes,
+            # trailing commas, truncation). Treat as a retry-able failure
+            # instead of crashing.
+            print(f"  ✗ JSON parse failed on attempt {attempt}: {e}")
+            prior_errors = [
+                f"Previous attempt returned malformed JSON ({e.msg} at line "
+                f"{e.lineno} col {e.colno}). Respond with VALID JSON only — "
+                f"no trailing commas, escape every internal double-quote with "
+                f"a backslash, no // or # comments, no markdown fences around "
+                f"the JSON other than the optional ```json fence."
+            ]
+            continue
+
+        trimmed = _trim_aeo_answers(candidate)
+        if trimmed:
+            print(
+                f"  ↻ Auto-trimmed {trimmed} AEO answer(s) to fit the "
+                f"{AEO_MIN}-{AEO_MAX} word band"
+            )
+
         passed, errors = validate_post_data(candidate)
         if passed:
             print(f"  ✓ AEO validation passed on attempt {attempt}")

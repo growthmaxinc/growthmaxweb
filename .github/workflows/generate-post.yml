@@ -15,6 +15,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: "pages"
@@ -76,6 +77,67 @@ jobs:
             git push
             echo "has_new_post=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Notify on stale pipeline
+        # Scheduled run produced no commit (either a silent script failure,
+        # the slug-collision guard firing, or no eligible Calendar row).
+        # Open a tracking issue so this doesn't go undetected — same
+        # signal a human would otherwise notice by spotting that no
+        # auto-generate commit landed on a Mon/Wed/Fri.
+        if: github.event_name == 'schedule' && steps.commit.outputs.has_new_post != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Auto-pipeline produced no post";
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `Scheduled run \`${context.runId}\` finished without producing a new post.`,
+              ``,
+              `Likely causes — diagnose in order:`,
+              `1. **AEO retry exhaustion** — open the run, look at the "Generate blog post" step for "Generation failed AEO validation after 3 attempts. Last errors: ..."`,
+              `2. **JSON parse retry exhaustion** — same step, look for "JSON parse failed on attempt 3"`,
+              `3. **Slug-collision guard fired cleanly** — look for "ABORT (early guard)" or "ABORT (late guard)"; means the Calendar row's slug already exists in \`_posts/\`. Dedupe the Calendar tab.`,
+              `4. **No eligible Calendar rows** — look for "No 'Not started' rows in Calendar"; means the keyword program is exhausted.`,
+              `5. **Secret expired** — look for an Anthropic or Gemini API auth error.`,
+              ``,
+              `Run: ${runUrl}`
+            ].join("\n");
+
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "auto-pipeline-stale",
+            });
+
+            if (existing.length === 0) {
+              // Ensure the label exists before we try to apply it.
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: "auto-pipeline-stale",
+                  color: "d73a4a",
+                  description: "Scheduled blog auto-pipeline run produced no commit",
+                });
+              } catch (e) {
+                if (e.status !== 422) throw e; // 422 = already exists
+              }
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ["auto-pipeline-stale"],
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing[0].number,
+                body,
+              });
+            }
 
   build:
     runs-on: ubuntu-latest
