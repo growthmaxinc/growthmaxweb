@@ -28,10 +28,10 @@ jobs:
       has_new_post: ${{ steps.commit.outputs.has_new_post }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -85,7 +85,7 @@ jobs:
         # signal a human would otherwise notice by spotting that no
         # auto-generate commit landed on a Mon/Wed/Fri.
         if: github.event_name == 'schedule' && steps.commit.outputs.has_new_post != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const title = "Auto-pipeline produced no post";
@@ -145,12 +145,12 @@ jobs:
     if: needs.generate.outputs.has_new_post == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
