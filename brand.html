@@ -214,42 +214,6 @@ image: /growthMAX.PNG
 		</div>
 	</section>
 
-	<!-- Voice -->
-	<section id="voice" class="py-12 md:py-20 px-6 bg-gradient-to-br from-sky-50 to-cyan-50">
-		<div class="max-w-6xl mx-auto">
-			<h2 class="text-3xl md:text-5xl font-light tracking-tight text-cyan-900 mb-4">Voice &amp; messaging</h2>
-			<p class="text-base md:text-lg text-cyan-800 font-light max-w-2xl mb-12">
-				Warm, confident, direct &mdash; a knowledgeable colleague, not a sales brochure.
-			</p>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-				{% assign pillars = "Partnership, not replacement|AI augments human expertise; it doesn't replace people.~Clarity over hype|Speak plainly about what AI can and can't do. No buzzword overload.~Outcomes-focused|Emphasize real results, not technology for its own sake.~Empathy for the human side|Adoption creates anxiety. Meet people where they are." | split: "~" %}
-				{% for p in pillars %}
-					{% assign pp = p | split: "|" %}
-					<div class="bg-white rounded-2xl border border-cyan-200 shadow-md p-6">
-						<p class="text-cyan-900 font-medium mb-2">{{ pp[0] }}</p>
-						<p class="text-sm text-cyan-800 font-light leading-relaxed">{{ pp[1] }}</p>
-					</div>
-				{% endfor %}
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-				<div class="bg-white rounded-2xl border border-cyan-200 shadow-md p-6">
-					<p class="text-sm font-semibold text-cyan-900 uppercase tracking-wide mb-4">Use these words</p>
-					<div class="flex flex-wrap gap-2">
-						{% assign good = "augment,amplify,partner,judgment,expertise,outcomes,coherence" | split: "," %}
-						{% for w in good %}<span class="px-3 py-1 rounded-full text-sm bg-cyan-50 text-cyan-800 border border-cyan-200">{{ w }}</span>{% endfor %}
-					</div>
-				</div>
-				<div class="bg-white rounded-2xl border border-cyan-200 shadow-md p-6">
-					<p class="text-sm font-semibold text-cyan-900 uppercase tracking-wide mb-4">Avoid these</p>
-					<div class="flex flex-wrap gap-2">
-						{% assign bad = "revolutionize,disrupt,game-changer,fear-mongering,over-promising" | split: "," %}
-						{% for w in bad %}<span class="px-3 py-1 rounded-full text-sm bg-red-50 text-red-500 border border-red-200 line-through">{{ w }}</span>{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- Imagery -->
 	<section id="imagery" class="py-12 md:py-20 px-6">
 		<div class="max-w-6xl mx-auto">
