@@ -1,0 +1,32 @@
+# GrowthMax Inc
+
+> AI consultancy that builds custom AI agents and runs AI-adoption training and bootcamps. Core thesis: **Partnership, Not Replacement** — AI augments human expertise and judgment rather than replacing people. We help organizations adopt agentic AI in a way that is outcomes-focused, people-first, and honest about what AI can and can't do.
+
+Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
+
+## Core
+- [Partnership, Not Replacement](https://growthmaxinc.com/partnership.html): Our central thesis — why AI should augment people, not replace them.
+- [AI Agents for Business](https://growthmaxinc.com/ai-agents-for-business.html): What custom AI agents are and how we build them.
+- [FAQ](https://growthmaxinc.com/resources/faq.html): Common questions about AI adoption, agents, training, and working with GrowthMax.
+- [AI Adoption Playbook](https://growthmaxinc.com/resources/ai-adoption-playbook.html): Practical, step-by-step guidance for adopting AI.
+
+## Solutions
+- [Agent Development](https://growthmaxinc.com/solutions/agent-development.html): Custom AI agents built around your workflows.
+- [Bootcamp](https://growthmaxinc.com/solutions/bootcamp.html): Hands-on AI training to upskill your team.
+- [Foundations](https://growthmaxinc.com/solutions/foundations.html): Getting started with AI on solid footing.
+
+## Key Writing
+- [Why AI Implementations Fail](https://growthmaxinc.com/blog/why-ai-implementations-fail/): The most common failure modes and how to avoid them.
+- [Your First AI Agent](https://growthmaxinc.com/blog/your-first-ai-agent/): Why starting small is the smartest move.
+- [How to Measure ROI on Your First AI Agent](https://growthmaxinc.com/blog/measure-roi-first-ai-agent/): A practical framework for proving value.
+- [Custom AI Agents vs Off-the-Shelf Tools](https://growthmaxinc.com/blog/custom-ai-agents-vs-off-shelf-tools-when-to-build/): When to build your own.
+- [AI Agent vs. AI Assistant vs. Chatbot](https://growthmaxinc.com/blog/ai-agent-vs-ai-assistant-vs-chatbot/): What's actually different.
+- [Augmentation vs. Automation](https://growthmaxinc.com/blog/augmentation-vs-automation-why-the-distinction-matters/): Why the distinction matters.
+- [The 90-Day AI Adoption Timeline](https://growthmaxinc.com/blog/90-day-ai-adoption-timeline/): A realistic rollout schedule.
+- [Why Your AI Strategy Needs a People Strategy First](https://growthmaxinc.com/blog/people-first-ai-strategy/): Putting people ahead of the tech.
+- [When to Hire an AI Consultant vs. Building In-House](https://growthmaxinc.com/blog/when-to-hire-ai-consultant-vs-building-in-house/): Making the build-vs-buy call.
+- [AI Adoption Metrics That Actually Matter](https://growthmaxinc.com/blog/ai-adoption-metrics-that-actually-matter/): What to measure, and what to ignore.
+
+## More
+- [Blog (all posts)](https://growthmaxinc.com/resources/blog.html): Essays on AI adoption, change management, ROI, and people-first strategy.
+- [Sitemap](https://growthmaxinc.com/sitemap.xml)
