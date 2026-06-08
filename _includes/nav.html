@@ -1,7 +1,12 @@
 <nav class="fixed top-0 w-full bg-cyan-100/80 backdrop-blur-md border-b border-cyan-200 z-50">
 	<div class="max-w-6xl mx-auto px-6">
 		<div class="flex justify-between items-center h-16">
-			<a href="/" class="text-xl font-semibold text-cyan-900 hover:text-cyan-700 transition-colors">GrowthMax</a>
+			<div class="flex items-center gap-3">
+				<a href="/" class="text-xl font-semibold text-cyan-900 hover:text-cyan-700 transition-colors">GrowthMax</a>
+				<a href="/about/claude-partnership/" data-badge class="hidden sm:inline-flex items-center pl-3 border-l border-cyan-300" aria-label="Member of the Claude Partner Network">
+					<img src="/assets/claude-partner-network-badge.png" alt="Claude Partner Network member" onerror="this.closest('[data-badge]').style.display='none'" class="h-8 w-auto">
+				</a>
+			</div>
 			<!-- Desktop Nav -->
 			<div class="hidden md:flex space-x-8 items-center">
 				<a href="/" class="text-cyan-700 hover:text-cyan-900 transition-colors text-sm">Home</a>
