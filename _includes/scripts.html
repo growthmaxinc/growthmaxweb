@@ -6,6 +6,7 @@
 	}
 	document.addEventListener('click', function(e) {
 		var dropdowns = [
+			{ wrapper: 'about-dropdown', menu: 'about-menu' },
 			{ wrapper: 'solutions-dropdown', menu: 'solutions-menu' },
 			{ wrapper: 'resources-dropdown', menu: 'resources-menu' }
 		];
@@ -17,7 +18,7 @@
 			}
 		});
 	});
-	['solutions-menu', 'resources-menu'].forEach(function(menuId) {
+	['about-menu', 'solutions-menu', 'resources-menu'].forEach(function(menuId) {
 		document.querySelectorAll('#' + menuId + ' a').forEach(function(link) {
 			link.addEventListener('click', function() {
 				document.getElementById(menuId).classList.add('hidden');
