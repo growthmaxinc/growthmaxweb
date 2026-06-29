@@ -43,6 +43,7 @@ PAGES = [
     REPO_ROOT / "solutions" / "agent-development.html",
     REPO_ROOT / "solutions" / "foundations.html",
     REPO_ROOT / "solutions" / "bootcamp.html",
+    REPO_ROOT / "about" / "claude-partnership.html",
 ]
 
 # Required post front-matter fields (per SEO-STANDARDS.md §5).

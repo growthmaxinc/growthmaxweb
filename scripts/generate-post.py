@@ -606,6 +606,11 @@ def save_post(post_data, image_path=None, image_alt=None):
 
     # Build front matter manually so we control quoting/order — yaml.dump
     # would mangle nested faq objects on some configs.
+    # Always emit image_alt — the SEO audit requires it on every post.
+    # If the hero generator didn't produce one (e.g. GEMINI_API_KEY not set),
+    # fall back to a clean descriptive string derived from the post title.
+    resolved_image_alt = image_alt or f"{post_data['title']} — GrowthMax Inc"
+
     fm_lines = [
         f'title: "{post_data["title"]}"',
         f'subtitle: "{post_data["subtitle"]}"',
@@ -615,10 +620,9 @@ def save_post(post_data, image_path=None, image_alt=None):
         f'tags: [{", ".join(post_data["tags"])}]',
         f'keywords: "{post_data["keywords"]}"',
         f'image: "/{image_path.name if image_path else "growthMAX.PNG"}"',
+        f'image_alt: "{resolved_image_alt}"',
         f'slug: {slug}',
     ]
-    if image_alt:
-        fm_lines.append(f'image_alt: "{image_alt}"')
     if post_data.get("tldr"):
         fm_lines.append(f'tldr: "{post_data["tldr"]}"')
     if post_data.get("pillar"):
