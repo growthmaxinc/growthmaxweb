@@ -1,7 +1,7 @@
 ---
 title: "Partnership, Not Replacement"
 subtitle: "How reframing AI as partnership instead of replacement transforms adoption"
-description: "The partnership model for enterprise AI — why framing AI as augmentation rather than replacement determines whether adoption succeeds or stalls."
+description: "The partnership model for enterprise AI, why framing AI as augmentation rather than replacement determines whether adoption succeeds or stalls."
 category: "Partnership Model"
 read_time: 8
 tags: [ai-strategy, partnership, adoption]
@@ -18,11 +18,11 @@ faq:
   - q: "What is the AI partnership model?"
     a: "The partnership model treats AI as a collaborator that amplifies human judgment, not a replacement for it. Humans bring context, strategy, and accountability; AI brings scale, pattern recognition, and tireless execution. Together they achieve outcomes neither could reach alone. It is the operating principle that determines whether AI adoption succeeds."
   - q: "What is the difference between AI augmentation and automation?"
-    a: "Automation removes the human from the loop — the task runs without you. Augmentation keeps the human as the decision-maker and amplifies their work. Most 'AI' initiatives mislabel augmentation as automation, which causes resistance and weak results. Knowing which mode applies to which task is a core strategy decision."
+    a: "Automation removes the human from the loop, the task runs without you. Augmentation keeps the human as the decision-maker and amplifies their work. Most 'AI' initiatives mislabel augmentation as automation, which causes resistance and weak results. Knowing which mode applies to which task is a core strategy decision."
   - q: "Why does the partnership framing matter for AI adoption?"
-    a: "When people hear 'AI adoption,' their brain hears 'replacement' — and that triggers defensive behaviors that kill adoption: avoidance, skepticism, quiet resistance. When they hear 'partnership,' it triggers curiosity and experimentation instead. The frame determines whether you get forced compliance or enthusiastic pull."
+    a: "When people hear 'AI adoption,' their brain hears 'replacement', and that triggers defensive behaviors that kill adoption: avoidance, skepticism, quiet resistance. When they hear 'partnership,' it triggers curiosity and experimentation instead. The frame determines whether you get forced compliance or enthusiastic pull."
   - q: "What does human-AI partnership actually look like in practice?"
-    a: "A custom AI agent handles the repetitive, judgment-light parts of a role — data gathering, formatting, first drafts, routine triage. The human handles judgment calls, relationships, strategy, and accountability. The person ends up doing more of the work they were hired for, with better consistency on the parts they were not."
+    a: "A custom AI agent handles the repetitive, judgment-light parts of a role, data gathering, formatting, first drafts, routine triage. The human handles judgment calls, relationships, strategy, and accountability. The person ends up doing more of the work they were hired for, with better consistency on the parts they were not."
   - q: "Is 'AI partnership' just marketing language?"
     a: "It is not. It is a structural decision that shapes how agents are scoped, how roles are redesigned, how adoption is measured, and how employees are retrained. Organizations that embed partnership thinking in their AI strategy see measurably faster adoption and fewer stalled pilots than those that treat it as a tagline."
 ---
@@ -68,4 +68,4 @@ Without this frame, employees face a [quiet identity crisis](/blog/where-do-i-fi
 - [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
 - [Your First AI Agent: Why Starting Small Is Your Smartest Move](/blog/your-first-ai-agent/)
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*

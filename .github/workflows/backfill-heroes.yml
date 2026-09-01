@@ -1,7 +1,6 @@
 name: Backfill All Hero Images
 
-# One-shot workflow that regenerates hero images for ALL 20 published blog
-# posts using the canonical Imagen pipeline + the growthmax-imagery skill.
+# Regenerates hero images for the posts listed in SLUGS below, using the canonical Imagen pipeline + the growthmax-imagery skill.
 # Triggered manually via workflow_dispatch. Commits the new heroes directly
 # to the repo root (overwriting existing blog-*.jpg files), and cleans up
 # the /samples/ and /poc-samples/ scratch folders in the same commit.
@@ -28,13 +27,17 @@ jobs:
       - name: Install dependencies
         run: pip install anthropic google-genai Pillow pyyaml
 
-      - name: Render all 20 hero images
+      - name: Render missing hero images
         env:
           ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           IMAGE_MODEL_TIER: paid
-          # All 20 published slugs, ordered same as _posts/ filenames
-          SLUGS: partnership-not-replacement,where-do-i-fit-crisis,why-ai-implementations-fail,your-first-ai-agent,measure-roi-first-ai-agent,custom-ai-agents-vs-off-shelf,people-first-ai-strategy,90-day-ai-adoption-timeline,hidden-costs-ai-implementation,change-management-playbook,stalled-ai-project,ai-training-vs-implementation,signs-team-ready-ai,post-launch-ai-agent-management,when-to-hire-ai-consultant-vs-building-in-house,how-to-scale-ai-adoption-after-first-success,why-your-second-ai-project-matters-more-than-your-first,executive-buy-in-ai-projects-leadership-alignment,how-to-train-team-ai-without-overwhelm,building-trust-ai-address-team-resistance
+          # The 19 posts still on the /growthMAX.PNG placeholder (2026-07-01
+          # onward), left behind when hero rendering silently failed on a
+          # deprecated model string. Regenerate SLUGS with:
+          #   for f in _posts/*.md; do s=$(basename $f .md|sed 's/^[0-9-]\{11\}//'); \
+          #     [ -f "blog-$s.jpg" ] || echo -n "$s,"; done
+          SLUGS: 12-month-ai-transformation-roadmap,what-a-custom-ai-agent-costs-and-why,ai-agents-for-operations-teams,ai-readiness-assessment,guide-to-ai-training-for-executives,will-ai-replace-my-job,enterprise-ai-agent-security-buyers-checklist,ai-agents-for-finance-teams,how-to-evaluate-ai-vendors-scorecard,human-in-the-loop-ai-enterprise,ai-governance-framework-enterprise,ai-pilot-to-production-what-goes-wrong,ai-business-case-template,what-belongs-in-an-ai-literacy-curriculum,how-to-upskill-your-workforce-on-ai,growthmax-ai-adoption-framework,ai-center-of-excellence-playbook,ai-rollout-plan-your-team-will-actually-follow,measuring-roi-on-enterprise-ai-training
           # Render to repo root, not /samples/
           OUTPUT_DIR: '.'
         # Don't fail the whole job if a few renders fail — commit what we got

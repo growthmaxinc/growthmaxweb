@@ -1,16 +1,16 @@
 ---
 category: Implementation
-description: "A realistic 90-day AI adoption timeline with week-by-week milestones — foundation, pilot, scaling. The framework to move from budget to results."
+description: "A realistic 90-day AI adoption timeline with week-by-week milestones, foundation, pilot, scaling. The framework to move from budget to results."
 date_modified: 2026-04-14
 faq:
   - q: "What is a 90-day AI adoption plan?"
-    a: "Four phases inside a structured 90-day window. Days 1–30: foundation building — stakeholder alignment, use-case selection, success metrics. Days 31–60: pilot implementation — build the first agent, run a 30-day pilot with one team. Days 61–90: scaling prep — analyze results, document the pattern, plan the next role. The discipline is not to skip pilot to production."
+    a: "Four phases inside a structured 90-day window. Days 1 to 30: foundation building, stakeholder alignment, use-case selection, success metrics. Days 31 to 60: pilot implementation, build the first agent, run a 30-day pilot with one team. Days 61 to 90: scaling prep, analyze results, document the pattern, plan the next role. The discipline is not to skip pilot to production."
   - q: "How long does successful AI adoption typically take?"
-    a: "A structured 90-day window gets most organizations from approved budget to pilot results, with scaling starting in month four. Enterprise-wide maturity takes 12–24 months, but trying to compress that into the first 90 days is the most common reason AI projects stall."
+    a: "A structured 90-day window gets most organizations from approved budget to pilot results, with scaling starting in month four. Enterprise-wide maturity takes 12 to 24 months, but trying to compress that into the first 90 days is the most common reason AI projects stall."
   - q: "What's the most important phase in AI adoption?"
     a: "The first 30 days of foundation building. This is where you align stakeholders on success metrics, address job-displacement anxiety honestly, and pick a use case you can actually win on. Organizations that rush past this phase spend month two and three backtracking to fix problems that were obvious in week one."
   - q: "Can you implement AI faster than 90 days?"
-    a: "Technically yes, but rarely well. Rushing the foundation phase tends to produce pilots that work in the demo and fail in production — usually because the human and process questions were skipped. If you need speed, compress the scale phase, not the foundation phase."
+    a: "Technically yes, but rarely well. Rushing the foundation phase tends to produce pilots that work in the demo and fail in production, usually because the human and process questions were skipped. If you need speed, compress the scale phase, not the foundation phase."
   - q: "How do you measure AI adoption at day 90?"
     a: "Look at four things: a working agent being used regularly by the pilot group, documented results showing measurable improvement, user feedback indicating positive adoption, and a clear plan for the next role. Vanity metrics like license count or tokens processed do not tell you whether adoption is real."
 image: /blog-90-day-ai-adoption-timeline.jpg
@@ -30,7 +30,7 @@ tags:
 - change-management
 - adoption
 title: The 90-Day AI Adoption Timeline That Actually Works
-tldr: "Successful 90-day AI adoption follows three phases: foundation (days 1–30), pilot (days 31–60), and scaling prep (days 61–90). Rushing the foundation phase is the most common reason pilots fail."
+tldr: "Successful 90-day AI adoption follows three phases: foundation (days 1 to 30), pilot (days 31 to 60), and scaling prep (days 61 to 90). Rushing the foundation phase is the most common reason pilots fail."
 ---
 
 <script type="application/ld+json">
@@ -44,19 +44,19 @@ tldr: "Successful 90-day AI adoption follows three phases: foundation (days 1–
     {
       "@type": "HowToStep",
       "position": 1,
-      "name": "Foundation building (days 1–30)",
-      "text": "Align stakeholders on success metrics, address job-displacement anxiety openly, and select 2–3 candidate use cases. End month one with a project charter: defined use cases, success metrics, timeline, and team roles."
+      "name": "Foundation building (days 1 to 30)",
+      "text": "Align stakeholders on success metrics, address job-displacement anxiety openly, and select 2 to 3 candidate use cases. End month one with a project charter: defined use cases, success metrics, timeline, and team roles."
     },
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Pilot implementation (days 31–60)",
-      "text": "Decide on custom agent vs. existing tool, build the first simple version, and run a pilot with 3–5 enthusiastic early adopters. Gather qualitative feedback, iterate minor issues, and document lessons learned."
+      "name": "Pilot implementation (days 31 to 60)",
+      "text": "Decide on custom agent vs. existing tool, build the first simple version, and run a pilot with 3 to 5 enthusiastic early adopters. Gather qualitative feedback, iterate minor issues, and document lessons learned."
     },
     {
       "@type": "HowToStep",
       "position": 3,
-      "name": "Scaling preparation (days 61–90)",
+      "name": "Scaling preparation (days 61 to 90)",
       "text": "Analyze pilot data, make final agent refinements, create a scaling playbook, and develop training materials based on real pilot experiences. Plan the rollout strategy for the next user groups."
     }
   ]
@@ -67,13 +67,13 @@ Most AI adoption timelines are either unrealistically aggressive ("implement AI 
 
 ## What is a 90-day AI adoption plan?
 
-A structured 90-day framework divides adoption into three phases. Days 1–30: Foundation building — align stakeholders, define success metrics, address job displacement anxiety, select 1–2 manageable use cases. Days 31–60: Pilot implementation — choose custom or off-the-shelf, build simple version, run pilot with 3–5 early adopters, gather qualitative feedback.
+A structured 90-day framework divides adoption into three phases. Days 1 to 30: Foundation building, align stakeholders, define success metrics, address job displacement anxiety, select 1 to 2 manageable use cases. Days 31 to 60: Pilot implementation, choose custom or off-the-shelf, build simple version, run pilot with 3 to 5 early adopters, gather qualitative feedback.
 
 This timeline is at the heart of any effective [AI adoption playbook](/resources/ai-adoption-playbook/). It balances the urgency most leaders feel with the careful planning that ensures lasting success, designed around three focused phases that build on each other, with clear milestones and deliverables at each stage.
 
 ## Days 1-30: Building Your Foundation
 
-The first month isn't about technology --- it's about people and processes. This foundation phase determines whether your AI implementation will thrive or struggle. Before you even start the clock, it's worth checking the [5 signs your team is ready for AI implementation](/blog/signs-team-ready-ai-implementation/) — running the timeline without those fundamentals in place is the most common reason week one feels like chaos.
+The first month isn't about technology --- it's about people and processes. This foundation phase determines whether your AI implementation will thrive or struggle. Before you even start the clock, it's worth checking the [5 signs your team is ready for AI implementation](/blog/signs-team-ready-ai-implementation/), running the timeline without those fundamentals in place is the most common reason week one feels like chaos.
 
 **Week 1-2: Stakeholder Alignment**
 
@@ -97,7 +97,7 @@ End month one with a clear project charter: defined use cases, success metrics, 
 
 ## What happens in each 30-day phase of AI adoption?
 
-Month one focuses on foundation: form your adoption team, align stakeholders on specific success metrics, address job-displacement fears directly and honestly, select 1–2 winnable use cases where you can demonstrate quick results. End with a detailed project charter documenting scope, metrics, timeline, and roles.
+Month one focuses on foundation: form your adoption team, align stakeholders on specific success metrics, address job-displacement fears directly and honestly, select 1 to 2 winnable use cases where you can demonstrate quick results. End with a detailed project charter documenting scope, metrics, timeline, and roles.
 
 Month two is where you move from planning to action. This phase focuses on building and testing your first AI solution.
 
@@ -145,7 +145,7 @@ Address any remaining resistance by sharing concrete pilot results and testimoni
 
 ## How long does AI adoption realistically take?
 
-A structured 90-day window moves from approval to working pilot results. Foundation requires 30 days minimum—skipping causes backtracking. Enterprise-wide maturity takes 12–24 months, not 90 days. Rushing foundation produces demos that fail in production. Discipline around 90-day pilots prevents the common stall and enables orderly scaling thereafter.
+A structured 90-day window moves from approval to working pilot results. Foundation requires 30 days minimum, skipping causes backtracking. Enterprise-wide maturity takes 12 to 24 months, not 90 days. Rushing foundation produces demos that fail in production. Discipline around 90-day pilots prevents the common stall and enables orderly scaling thereafter.
 
 After 90 days, you should have:
 
@@ -180,4 +180,4 @@ Remember: the goal isn't to have AI everywhere in 90 days. It's to have AI worki
 - [People-First AI Strategy](/blog/people-first-ai-strategy/)
 - [Signs Your Team Is Ready for AI Implementation](/blog/signs-team-ready-ai-implementation/)
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*

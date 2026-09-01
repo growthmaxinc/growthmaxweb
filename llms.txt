@@ -1,11 +1,11 @@
 # GrowthMax Inc
 
-> AI consultancy that builds custom AI agents and runs AI-adoption training and bootcamps. Core thesis: **Partnership, Not Replacement** — AI augments human expertise and judgment rather than replacing people. We help organizations adopt agentic AI in a way that is outcomes-focused, people-first, and honest about what AI can and can't do.
+> AI consultancy that builds custom AI agents and runs AI-adoption training and bootcamps. Core thesis: **Partnership, Not Replacement**, meaning AI augments human expertise and judgment rather than replacing people. We help organizations adopt agentic AI in a way that is outcomes-focused, people-first, and honest about what AI can and can't do.
 
 Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 
 ## Core
-- [Partnership, Not Replacement](https://growthmaxinc.com/partnership.html): Our central thesis — why AI should augment people, not replace them.
+- [Partnership, Not Replacement](https://growthmaxinc.com/partnership.html): Our central thesis, why AI should augment people rather than replace them.
 - [AI Agents for Business](https://growthmaxinc.com/ai-agents-for-business.html): What custom AI agents are and how we build them.
 - [FAQ](https://growthmaxinc.com/resources/faq.html): Common questions about AI adoption, agents, training, and working with GrowthMax.
 - [AI Adoption Playbook](https://growthmaxinc.com/resources/ai-adoption-playbook.html): Practical, step-by-step guidance for adopting AI.
@@ -16,16 +16,36 @@ Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 - [Foundations](https://growthmaxinc.com/solutions/foundations.html): Getting started with AI on solid footing.
 
 ## Key Writing
-- [Why AI Implementations Fail](https://growthmaxinc.com/blog/why-ai-implementations-fail/): The most common failure modes and how to avoid them.
-- [Your First AI Agent](https://growthmaxinc.com/blog/your-first-ai-agent/): Why starting small is the smartest move.
-- [How to Measure ROI on Your First AI Agent](https://growthmaxinc.com/blog/measure-roi-first-ai-agent/): A practical framework for proving value.
-- [Custom AI Agents vs Off-the-Shelf Tools](https://growthmaxinc.com/blog/custom-ai-agents-vs-off-shelf-tools-when-to-build/): When to build your own.
-- [AI Agent vs. AI Assistant vs. Chatbot](https://growthmaxinc.com/blog/ai-agent-vs-ai-assistant-vs-chatbot/): What's actually different.
-- [Augmentation vs. Automation](https://growthmaxinc.com/blog/augmentation-vs-automation-why-the-distinction-matters/): Why the distinction matters.
-- [The 90-Day AI Adoption Timeline](https://growthmaxinc.com/blog/90-day-ai-adoption-timeline/): A realistic rollout schedule.
-- [Why Your AI Strategy Needs a People Strategy First](https://growthmaxinc.com/blog/people-first-ai-strategy/): Putting people ahead of the tech.
-- [When to Hire an AI Consultant vs. Building In-House](https://growthmaxinc.com/blog/when-to-hire-ai-consultant-vs-building-in-house/): Making the build-vs-buy call.
-- [AI Adoption Metrics That Actually Matter](https://growthmaxinc.com/blog/ai-adoption-metrics-that-actually-matter/): What to measure, and what to ignore.
+- [Measuring ROI on Enterprise AI Training](https://growthmaxinc.com/blog/measuring-roi-on-enterprise-ai-training/): The metrics that actually tell you whether your AI investment is working
+- [An AI Rollout Plan Your Team Will Actually Follow](https://growthmaxinc.com/blog/ai-rollout-plan-your-team-will-actually-follow/): The difference between AI that sticks and AI that stalls is almost never the technology.
+- [The AI Center of Excellence Playbook](https://growthmaxinc.com/blog/ai-center-of-excellence-playbook/): How to build the internal team that makes enterprise AI actually work
+- [The GrowthMax AI Adoption Framework](https://growthmaxinc.com/blog/growthmax-ai-adoption-framework/): A clear, phase-by-phase approach to AI adoption that actually sticks
+- [How to Upskill Your Workforce on AI](https://growthmaxinc.com/blog/how-to-upskill-your-workforce-on-ai/): A practical guide to AI upskilling for enterprise teams, without the hype
+- [What Belongs in an AI Literacy Curriculum](https://growthmaxinc.com/blog/what-belongs-in-an-ai-literacy-curriculum/): The skills your team actually needs, and the ones that won't transfer from a generic course
+- [Building the AI Business Case: A Practical Template for Enterprise Teams](https://growthmaxinc.com/blog/ai-business-case-template/): Stop pitching AI. Start showing what changes, and why it matters.
+- [From AI Pilot to Production: What Goes Wrong](https://growthmaxinc.com/blog/ai-pilot-to-production-what-goes-wrong/): Most AI pilots succeed. Most AI deployments don't. Here's the gap no one talks about.
+- [AI Governance for Enterprise: A Framework That Actually Works](https://growthmaxinc.com/blog/ai-governance-framework-enterprise/): Before you scale AI across your organization, you need the guardrails to do it well.
+- [Human-in-the-Loop AI for Enterprise: How to Keep Judgment Where It Belongs](https://growthmaxinc.com/blog/human-in-the-loop-ai-enterprise/): AI should propose. Your people should decide. Here's how to build that into your enterprise systems.
+- [How to Evaluate AI Vendors (Scorecard Included)](https://growthmaxinc.com/blog/how-to-evaluate-ai-vendors-scorecard/): The AI vendor selection criteria that separate durable partnerships from expensive disappointments
+- [AI Agents for Finance Teams: What They Do, What They Cost, and Where to Start](https://growthmaxinc.com/blog/ai-agents-for-finance-teams/): Your finance team already has the expertise. AI agents give them the bandwidth to use it.
+- [Enterprise AI Agent Security: A Buyer's Checklist](https://growthmaxinc.com/blog/enterprise-ai-agent-security-buyers-checklist/): Before you deploy, know exactly what to ask, and what to demand.
+- [Will AI Replace Your Job? An Honest Answer](https://growthmaxinc.com/blog/will-ai-replace-my-job/): The question isn't whether AI changes your work, it's whether you shape that change or have it shaped for you.
+- [A Guide to Executive AI Training: What Leaders Need to Know (and Do)](https://growthmaxinc.com/blog/guide-to-ai-training-for-executives/): AI literacy at the top changes everything below it.
+- [Is Your Organization AI-Ready? A Self-Assessment](https://growthmaxinc.com/blog/ai-readiness-assessment/): Before you build, buy, or pilot anything, find out where you actually stand.
+- [AI Agents for Operations Teams: What They Do and How to Start](https://growthmaxinc.com/blog/ai-agents-for-operations-teams/): A practical guide to deploying your first AI agent where the work actually happens.
+- [What a Custom AI Agent Costs (and Why)](https://growthmaxinc.com/blog/what-a-custom-ai-agent-costs-and-why/): A plain-English breakdown of AI agent cost, so you can budget, scope, and decide with confidence.
+- [The 12-Month AI Transformation Roadmap](https://growthmaxinc.com/blog/12-month-ai-transformation-roadmap/): A practical, phase-by-phase guide to building enterprise AI that actually sticks
+- [AI Agent Architecture Explained (for Non-Engineers)](https://growthmaxinc.com/blog/ai-agent-architecture-explained-non-engineers/): You don't need to write code to understand how AI agents actually work, or decide if one is right for your team.
+- [AI Adoption Metrics That Actually Matter](https://growthmaxinc.com/blog/ai-adoption-metrics-that-actually-matter/): Stop counting licenses. Start measuring outcomes.
+- [AI Agent vs. AI Assistant vs. Chatbot: What's Actually Different?](https://growthmaxinc.com/blog/ai-agent-vs-ai-assistant-vs-chatbot/): Three terms. Three very different capabilities. Here's how to tell them apart before you invest in any of them.
+- [Augmentation vs. Automation: Why the Distinction Matters](https://growthmaxinc.com/blog/augmentation-vs-automation-why-the-distinction-matters/): The difference isn't just semantic, it determines whether AI works for you or instead of you.
+- [Building Trust in AI: How to Address Team Resistance Before It Starts](https://growthmaxinc.com/blog/building-trust-ai-address-team-resistance/): Turn skeptics into advocates with proactive communication and clear expectations
+- [How to Train Your Team on AI Without the Overwhelm](https://growthmaxinc.com/blog/how-to-train-team-ai-without-overwhelm/): A practical approach to AI education that builds confidence, not fear
+- [Why AI Projects Fail Without Executive Buy-In (And How to Get It)](https://growthmaxinc.com/blog/executive-buy-in-ai-projects-leadership-alignment/): The leadership alignment strategies that turn AI skeptics into champions
+- [Why Your Second AI Project Matters More Than Your First](https://growthmaxinc.com/blog/why-your-second-ai-project-matters-more-than-your-first/): The critical decisions that determine whether AI adoption spreads or stalls in your organization
+- [How to Scale AI Adoption After Your First Success](https://growthmaxinc.com/blog/how-to-scale-ai-adoption-after-first-success/): From pilot project to organization-wide transformation without losing momentum
+- [When to Hire an AI Consultant vs. Building AI In-House](https://growthmaxinc.com/blog/when-to-hire-ai-consultant-vs-building-in-house/): The decision framework that saves you time, money, and implementation headaches
+- [What Happens After Your AI Agent Goes Live: The Post-Launch Success Framework](https://growthmaxinc.com/blog/post-launch-ai-agent-management-success-framework/): Why day one of your AI deployment is actually day zero of real success
 
 ## More
 - [Blog (all posts)](https://growthmaxinc.com/resources/blog.html): Essays on AI adoption, change management, ROI, and people-first strategy.

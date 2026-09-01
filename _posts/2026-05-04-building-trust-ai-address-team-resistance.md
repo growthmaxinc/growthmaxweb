@@ -91,7 +91,7 @@ This hands-on experience builds familiarity and reduces the mystery factor that 
 
 ## How do you address team resistance to AI?
 
-Proactive trust-building prevents resistance from hardening into organizational skepticism. Address job displacement fears directly and honestly through conversations about real role evolution—routine tasks shift to AI while human expertise becomes increasingly valuable for judgment and strategy. Show concrete examples of how people's roles are enhanced, not diminished.
+Proactive trust-building prevents resistance from hardening into organizational skepticism. Address job displacement fears directly and honestly through conversations about real role evolution, routine tasks shift to AI while human expertise becomes increasingly valuable for judgment and strategy. Show concrete examples of how people's roles are enhanced, not diminished.
 
 Be honest about how roles will evolve. Some tasks will shift to AI, but human expertise becomes more valuable, not less. People move from executing routine work to making strategic decisions with better information.
 
@@ -107,7 +107,7 @@ Share examples from other companies where AI adoption led to role enhancement ra
 
 ## Why does team resistance to AI matter more than the technology itself?
 
-Resistance signals deeper organizational issues — lack of trust, poor change management, or misaligned incentives. Technology only succeeds when people adopt it, and people resist change they don't understand or believe in. Unaddressed resistance creates passive sabotage: minimal usage, poor inputs, negative sentiment that spreads. The cause sits upstream of the tool itself.
+Resistance signals deeper organizational issues, lack of trust, poor change management, or misaligned incentives. Technology only succeeds when people adopt it, and people resist change they don't understand or believe in. Unaddressed resistance creates passive sabotage: minimal usage, poor inputs, negative sentiment that spreads. The cause sits upstream of the tool itself.
 
 **Transparency about limitations** builds more trust than overselling capabilities. Acknowledge what AI can't do and how the organization will handle those gaps.
 

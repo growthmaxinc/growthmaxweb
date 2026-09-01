@@ -31,7 +31,7 @@ tags:
 - organizational-change
 - leadership
 title: The Change Management Playbook for AI Adoption That Actually Works
-tldr: Successful AI adoption is 80% change management and 20% technology — focus on
+tldr: Successful AI adoption is 80% change management and 20% technology, focus on
   people first, address concerns directly, and create early wins to build momentum.
 ---
 
@@ -45,7 +45,7 @@ Successful AI adoption happens when you treat it as an organizational transforma
 
 ## What does an AI change management playbook include?
 
-A comprehensive playbook addresses four core pillars: psychological safety for honest conversations, active champion development from diverse groups, gradual exposure to build competence, and continuous sentiment measurement to catch concerns early. Foundation phase (days 1–30) focuses on manager alignment around partnership messaging, organization-wide AI literacy education, and strategic champion selection.
+A comprehensive playbook addresses four core pillars: psychological safety for honest conversations, active champion development from diverse groups, gradual exposure to build competence, and continuous sentiment measurement to catch concerns early. Foundation phase (days 1 to 30) focuses on manager alignment around partnership messaging, organization-wide AI literacy education, and strategic champion selection.
 
 **AI triggers existential questions** that typical change management doesn't address. Will I still be needed? What happens to my expertise? How do I stay relevant? This is the ["Where do I fit?" crisis](/blog/where-do-i-fit-crisis/) that derails even the best-planned implementations.
 
@@ -143,11 +143,11 @@ Pair overwhelmed employees with champions for peer support. **Learning from coll
 
 Successful change management doesn't end when the AI tools are deployed. **Sustaining adoption** requires ongoing attention to the human elements.
 
-Regular check-ins with early adopters prevent backsliding. Celebrate success stories publicly. Continue addressing new concerns as people's AI experience deepens. If momentum does start to fade, act quickly — our guide on [reviving stalled AI projects](/blog/why-ai-agent-project-stalled-how-get-back-on-track/) covers the diagnostic and recovery steps.
+Regular check-ins with early adopters prevent backsliding. Celebrate success stories publicly. Continue addressing new concerns as people's AI experience deepens. If momentum does start to fade, act quickly, our guide on [reviving stalled AI projects](/blog/why-ai-agent-project-stalled-how-get-back-on-track/) covers the diagnostic and recovery steps.
 
-Create advancement opportunities tied to AI collaboration skills. When people see career benefits from AI partnership, adoption becomes self-reinforcing — and pair this with a steady drumbeat of [training alongside implementation](/blog/ai-training-vs-implementation-why-you-need-both/) rather than treating them as separate workstreams.
+Create advancement opportunities tied to AI collaboration skills. When people see career benefits from AI partnership, adoption becomes self-reinforcing, and pair this with a steady drumbeat of [training alongside implementation](/blog/ai-training-vs-implementation-why-you-need-both/) rather than treating them as separate workstreams.
 
-Most importantly, maintain the **partnership narrative**. Every communication, every training session, every success story should reinforce that AI amplifies human expertise rather than replacing it. And be realistic about [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/) — change management is an investment, not an expense.
+Most importantly, maintain the **partnership narrative**. Every communication, every training session, every success story should reinforce that AI amplifies human expertise rather than replacing it. And be realistic about [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/), change management is an investment, not an expense.
 
 The organizations that master AI change management don't just successfully deploy technology --- they create cultures where humans and AI partnership becomes a competitive advantage. The playbook isn't complicated, but it requires commitment to putting people first in your AI transformation.
 
@@ -158,4 +158,4 @@ The organizations that master AI change management don't just successfully deplo
 - [People-First AI Strategy](/blog/people-first-ai-strategy/)
 - [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*

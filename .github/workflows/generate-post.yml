@@ -46,6 +46,20 @@ jobs:
           TOPIC_INPUT: ${{ github.event.inputs.topic }}
         run: python scripts/generate-post.py
 
+      - name: Normalize punctuation (no em or en dashes)
+        # CLAUDE.md forbids em and en dashes in site copy. BRAND_VOICE used to
+        # ask the model for them outright, so all 43 posts and 10 static pages
+        # shipped in violation. The prompt is fixed, and this is the net that
+        # catches anything the model still slips through.
+        run: python scripts/normalize_dashes.py
+
+      - name: Regenerate llms.txt from _posts
+        # llms.txt is the machine-readable map answer engines read first, so
+        # it is core AEO surface. It used to be hand-maintained and drifted to
+        # 10 of 43 posts by 2026-08-31. It is now a build artifact, derived
+        # from post front matter on every run so it cannot drift again.
+        run: python scripts/generate_llms_txt.py
+
       - name: Audit generated post (defense in depth)
         # generate-post.py self-validates before saving, but we run the full
         # audit here as a belt-and-suspenders check before commit.
@@ -68,7 +82,7 @@ jobs:
           # status and Master Keywords stay in sync with what's actually live).
           # The 'blog-*.jpg' pattern matches the naming convention used by
           # scripts/generate-post.py's generate_hero_image() helper.
-          git add _posts/ 'blog-*.jpg' GrowthMax-Keyword-Program.xlsx
+          git add _posts/ 'blog-*.jpg' GrowthMax-Keyword-Program.xlsx llms.txt
           if git diff --staged --quiet; then
             echo "No new posts to commit"
             echo "has_new_post=false" >> $GITHUB_OUTPUT
@@ -79,11 +93,15 @@ jobs:
           fi
 
       - name: Notify on stale pipeline
-        # Scheduled run produced no commit (either a silent script failure,
-        # the slug-collision guard firing, or no eligible Calendar row).
-        # Open a tracking issue so this doesn't go undetected — same
-        # signal a human would otherwise notice by spotting that no
-        # auto-generate commit landed on a Mon/Wed/Fri.
+        # A scheduled run that produces no commit is the pipeline's most
+        # expensive failure mode and its quietest one. This step used to only
+        # open a tracking issue, but issue creation is restricted on this
+        # repo, so the notification silently failed and the pipeline sat dead
+        # from 2026-08-19 to 2026-08-31 with every run showing green.
+        #
+        # The job now FAILS on a no-op scheduled run. A red run in the Actions
+        # tab triggers GitHub's built-in workflow-failure email, which needs
+        # no repo permission to work. The issue is best-effort on top of that.
         if: github.event_name == 'schedule' && steps.commit.outputs.has_new_post != 'true'
         uses: actions/github-script@v8
         with:
@@ -93,51 +111,69 @@ jobs:
             const body = [
               `Scheduled run \`${context.runId}\` finished without producing a new post.`,
               ``,
-              `Likely causes — diagnose in order:`,
-              `1. **AEO retry exhaustion** — open the run, look at the "Generate blog post" step for "Generation failed AEO validation after 3 attempts. Last errors: ..."`,
-              `2. **JSON parse retry exhaustion** — same step, look for "JSON parse failed on attempt 3"`,
-              `3. **Slug-collision guard fired cleanly** — look for "ABORT (early guard)" or "ABORT (late guard)"; means the Calendar row's slug already exists in \`_posts/\`. Dedupe the Calendar tab.`,
-              `4. **No eligible Calendar rows** — look for "No 'Not started' rows in Calendar"; means the keyword program is exhausted.`,
-              `5. **Secret expired** — look for an Anthropic or Gemini API auth error.`,
+              `Likely causes, diagnose in order:`,
+              `1. **Calendar out of Spoke rows** (most common) - look for "No eligible Spoke rows" or "RUNWAY" in the "Generate blog post" step. Fix: \`python scripts/refill_calendar.py\`, then commit the workbook.`,
+              `2. **AEO retry exhaustion** - look for "Generation failed AEO validation after 3 attempts. Last errors: ..."`,
+              `3. **JSON parse retry exhaustion** - look for "JSON parse failed on attempt 3"`,
+              `4. **Slug-collision guard fired cleanly** - look for "ABORT (early guard)" or "ABORT (late guard)"; the Calendar row's slug already exists in \`_posts/\`. Dedupe the Calendar tab.`,
+              `5. **Secret expired** - look for an Anthropic or Gemini API auth error.`,
               ``,
               `Run: ${runUrl}`
             ].join("\n");
 
-            const { data: existing } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: "open",
-              labels: "auto-pipeline-stale",
-            });
+            // Best-effort issue. Issue creation is restricted on this repo, so
+            // every call here is wrapped: a permissions failure must not mask
+            // the core signal, which is the job failing below.
+            try {
+              const { data: existing } = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: "open",
+                labels: "auto-pipeline-stale",
+              });
 
-            if (existing.length === 0) {
-              // Ensure the label exists before we try to apply it.
-              try {
-                await github.rest.issues.createLabel({
+              if (existing.length === 0) {
+                try {
+                  await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: "auto-pipeline-stale",
+                    color: "d73a4a",
+                    description: "Scheduled blog auto-pipeline run produced no commit",
+                  });
+                } catch (e) {
+                  if (e.status !== 422) throw e; // 422 = already exists
+                }
+                await github.rest.issues.create({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  name: "auto-pipeline-stale",
-                  color: "d73a4a",
-                  description: "Scheduled blog auto-pipeline run produced no commit",
+                  title,
+                  body,
+                  labels: ["auto-pipeline-stale"],
                 });
-              } catch (e) {
-                if (e.status !== 422) throw e; // 422 = already exists
+                core.info("Opened tracking issue.");
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing[0].number,
+                  body,
+                });
+                core.info(`Commented on existing issue #${existing[0].number}.`);
               }
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ["auto-pipeline-stale"],
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing[0].number,
-                body,
-              });
+            } catch (e) {
+              core.warning(
+                `Could not file a tracking issue (${e.status || "unknown"}: ${e.message}). ` +
+                `Issue creation is restricted on this repo. Falling back to job failure.`
+              );
             }
+
+            // This is the notification that always works. Do not remove it in
+            // favour of the issue above: the issue depends on a repo setting
+            // this workflow cannot verify, and that is precisely how the
+            // 2026-08 outage stayed invisible.
+            core.summary.addHeading("Blog pipeline produced no post").addRaw(body).write();
+            core.setFailed(body);
 
   build:
     runs-on: ubuntu-latest

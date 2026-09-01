@@ -30,7 +30,7 @@ tags:
 - getting-started
 - partnership
 title: Why AI Projects Fail Without Executive Buy-In (And How to Get It)
-tldr: Executive buy-in for AI isn't about selling technology—it's about aligning AI
+tldr: Executive buy-in for AI isn't about selling technology, it's about aligning AI
   capabilities with business outcomes that leadership already cares about.
 ---
 
@@ -96,7 +96,7 @@ Most importantly, explain how you'll measure progress and make adjustments. Exec
 
 ## What do executives actually need to hear about AI?
 
-Three things: a clear link to existing business strategy and competitive advantage (not vague technology promises), an honest assessment of downside risk and implementation challenges, and a specific picture of their ongoing role in making it work. Use business-impact language — customer satisfaction, decision velocity — not technical progress metrics.
+Three things: a clear link to existing business strategy and competitive advantage (not vague technology promises), an honest assessment of downside risk and implementation challenges, and a specific picture of their ongoing role in making it work. Use business-impact language, customer satisfaction, decision velocity, not technical progress metrics.
 
 "What happens if we don't do this?" is often more compelling than "What happens if we do?" Help leadership understand the competitive implications of AI adoption --- and AI inaction.
 

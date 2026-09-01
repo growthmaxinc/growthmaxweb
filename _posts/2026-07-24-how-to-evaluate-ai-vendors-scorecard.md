@@ -7,7 +7,7 @@ read_time: 7
 tags: [ai-strategy, implementation, leadership, getting-started, agents, adoption, change-management]
 keywords: "AI vendor selection criteria, how to evaluate AI vendors, AI vendor scorecard, enterprise AI vendor assessment, choosing an AI partner, AI vendor due diligence"
 image: "/growthMAX.PNG"
-image_alt: "How to Evaluate AI Vendors (Scorecard Included) — GrowthMax Inc"
+image_alt: "How to Evaluate AI Vendors (Scorecard Included), GrowthMax Inc"
 slug: how-to-evaluate-ai-vendors-scorecard
 tldr: "Choosing the right AI vendor comes down to one discipline: evaluating against your specific business outcomes, not a vendor's feature list."
 pillar: "1.0"
@@ -15,9 +15,9 @@ pillar_page: "/ai-agents-for-business/"
 primary_keyword: "AI vendor selection criteria"
 faq:
   - q: "Should we build or buy AI agents?"
-    a: "Build when the agent touches your differentiated judgment — proprietary workflows, specialized expertise, or competitive advantage. Buy when the task is generic and commoditized, like scheduling, transcription, or basic summarization."
+    a: "Build when the agent touches your differentiated judgment, proprietary workflows, specialized expertise, or competitive advantage. Buy when the task is generic and commoditized, like scheduling, transcription, or basic summarization."
   - q: "What should I ask an AI vendor before signing a contract?"
-    a: "Ask for a reference customer in your industry, a clear explanation of how the model handles your data, and a realistic timeline to first measurable outcome — not a demo, an outcome."
+    a: "Ask for a reference customer in your industry, a clear explanation of how the model handles your data, and a realistic timeline to first measurable outcome, not a demo, an outcome."
   - q: "How do we assess AI readiness before selecting a vendor?"
     a: "Check four dimensions: data accessibility, executive sponsorship, process documentation, and your team's tolerance for iteration. Gaps in any of these will limit what even the best vendor can deliver."
 ---
@@ -78,7 +78,7 @@ A strong AI business case comes down to three things: the **human decision being
 
 The human decision piece is often skipped, and it's the most important. AI doesn't replace decisions; it improves the quality and speed of the humans making them. Your business case should name exactly which decision that is: a procurement call, a customer escalation, a content approval, a risk assessment. Name it specifically.
 
-For adoption curve, be honest. Most organizations see meaningful usage from 20–30% of intended users in the first 90 days, and that's normal. A vendor who promises 80% adoption in month one has either never deployed at scale or is telling you what you want to hear.
+For adoption curve, be honest. Most organizations see meaningful usage from 20 to 30% of intended users in the first 90 days, and that's normal. A vendor who promises 80% adoption in month one has either never deployed at scale or is telling you what you want to hear.
 
 If you're mapping out the broader sequencing of your AI investments, our [12-month AI transformation roadmap](https://growthmaxinc.com/blog/12-month-ai-transformation-roadmap/) gives a practical structure for thinking about which use cases to pilot first and how to build organizational momentum across the year.
 

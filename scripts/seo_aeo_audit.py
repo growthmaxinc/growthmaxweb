@@ -162,9 +162,30 @@ def _parse_page(path: Path):
     return fm, m.group(2)
 
 
+DASH_RE = re.compile(r"[\u2014\u2013]|&mdash;|&ndash;|&#8212;|&#8211;")
+
+
+def check_no_long_dashes(path, text, findings):
+    """CLAUDE.md: no em dashes, no en dashes, anywhere in site copy.
+
+    Enforced as an ERROR. BRAND_VOICE previously instructed the model to use
+    em dashes, so all 43 posts and 10 static pages shipped in violation and
+    nothing caught it. Fix the backlog or a new post with:
+        python scripts/normalize_dashes.py
+    """
+    hits = DASH_RE.findall(text)
+    if hits:
+        findings.error(
+            path,
+            "%d em/en dash(es) found; CLAUDE.md forbids them in site copy. "
+            "Fix with: python scripts/normalize_dashes.py" % len(hits),
+        )
+
+
 # --- Per-post checks ---
 
 def check_post(path: Path, findings: Findings):
+    check_no_long_dashes(path, path.read_text(), findings)
     fm, body = _parse_post(path)
     name = path.relative_to(REPO_ROOT)
 
@@ -243,6 +264,7 @@ def _collect_internal_links(body, name):
 # --- Per-page (HTML) checks ---
 
 def check_page(path: Path, findings: Findings):
+    check_no_long_dashes(path, path.read_text(), findings)
     if not path.exists():
         findings.warn(path.relative_to(REPO_ROOT) if path.is_relative_to(REPO_ROOT) else path,
                       "expected page file not found (skipped)")

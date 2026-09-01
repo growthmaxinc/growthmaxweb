@@ -12,10 +12,10 @@ slug: where-do-i-fit-crisis
 pillar: "5.0"
 pillar_page: "/partnership/"
 primary_keyword: "AI employee resistance"
-tldr: "Employee resistance to AI isn't fear of the technology — it's the unanswered question of where each person fits in an AI-powered organization. Custom agents resolve it by making the role tangible."
+tldr: "Employee resistance to AI isn't fear of the technology, it's the unanswered question of where each person fits in an AI-powered organization. Custom agents resolve it by making the role tangible."
 faq:
   - q: "How do we handle employee resistance to AI?"
-    a: "Address the 'where do I fit?' question directly. Show how the agent amplifies each person's judgment rather than replaces it — and make the new role concrete with a real agent built for that person's actual work."
+    a: "Address the 'where do I fit?' question directly. Show how the agent amplifies each person's judgment rather than replaces it, and make the new role concrete with a real agent built for that person's actual work."
   - q: "Why do employees feel anxious during AI adoption?"
     a: "Because the messaging is abstract. 'AI is changing how we work' tells someone their job will change without telling them how. Anxiety lives in the gap between announcement and clarity about each person's specific role."
   - q: "How do custom AI agents resolve the 'where do I fit?' question?"
@@ -52,7 +52,7 @@ Custom agents show tangibly what partnership looks like: agents handle repetitiv
 
 The path from "Where do I fit?" to "This makes me better at what I do" isn't through generic tools. It's through clarity about your specific role. It's through partnership that's designed for you.
 
-This anxiety is one of the top reasons [AI implementations fail](/blog/why-ai-implementations-fail/). The good news: it's solvable — and it starts with [one focused agent for one person](/blog/your-first-ai-agent/).
+This anxiety is one of the top reasons [AI implementations fail](/blog/why-ai-implementations-fail/). The good news: it's solvable, and it starts with [one focused agent for one person](/blog/your-first-ai-agent/).
 
 ---
 
@@ -61,4 +61,4 @@ This anxiety is one of the top reasons [AI implementations fail](/blog/why-ai-im
 - [Partnership, Not Replacement](/blog/partnership-not-replacement/)
 - [Why AI Implementations Fail](/blog/why-ai-implementations-fail/)
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*

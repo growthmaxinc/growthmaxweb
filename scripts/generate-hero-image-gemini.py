@@ -33,6 +33,8 @@ from google import genai
 from google.genai import types as genai_types
 from PIL import Image
 
+from model_config import TEXT_MODEL
+
 REPO = Path(__file__).resolve().parent.parent
 SKILL_PATH = REPO / "scripts" / "skills" / "growthmax-imagery" / "SKILL.md"
 TARGET_W, TARGET_H = 1200, 630
@@ -436,7 +438,7 @@ class HeroImageGenerator:
             json_schema=CLAUDE_SCHEMAS[composition],
         )
         resp = self.anthropic.messages.create(
-            model="claude-sonnet-4-20250514",
+            model=TEXT_MODEL,
             max_tokens=1024,
             system=self.skill_text,
             messages=[{"role": "user", "content": instruction}],

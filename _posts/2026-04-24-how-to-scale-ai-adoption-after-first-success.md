@@ -37,7 +37,7 @@ Your AI pilot just delivered impressive results. Customer service response times
 
 ## How do you scale AI adoption after a first success?
 
-Wait 30-60 days of consistent pilot results before scaling. Choose next teams based on shared characteristics with the successful pilot — clear processes, change-ready culture, strong leadership — not just potential impact. Document everything that worked in a scaling playbook: timeline, objections, metrics, technical requirements.
+Wait 30-60 days of consistent pilot results before scaling. Choose next teams based on shared characteristics with the successful pilot, clear processes, change-ready culture, strong leadership, not just potential impact. Document everything that worked in a scaling playbook: timeline, objections, metrics, technical requirements.
 
 The path from **successful AI pilot to organization-wide adoption** requires strategic planning, careful team selection, and a deep understanding of how different departments work. This is where your [AI adoption playbook](/resources/ai-adoption-playbook/) comes into play. Rushing this phase is where most companies stumble, turning early wins into costly mistakes.
 
@@ -121,7 +121,7 @@ Maybe you discover that remote teams need different training approaches, or that
 
 ## How do you turn one AI win into organizational momentum?
 
-Document what worked in a reusable playbook. Pick the next teams whose work resembles the pilot, establish governance before scaling, and address "am I next?" anxiety directly with real success stories. Build department-specific champions through firsthand pilot exposure, and treat each rollout as capability-building — not just technology distribution.
+Document what worked in a reusable playbook. Pick the next teams whose work resembles the pilot, establish governance before scaling, and address "am I next?" anxiety directly with real success stories. Build department-specific champions through firsthand pilot exposure, and treat each rollout as capability-building, not just technology distribution.
 
 Successful AI scaling isn't about reaching some finish line where every process is automated. It's about building an organization that can continuously identify opportunities to **amplify human expertise with AI** and implement those solutions effectively.
 

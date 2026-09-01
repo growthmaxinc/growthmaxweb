@@ -23,7 +23,7 @@ faq:
   - q: "How do you measure ROI on your first AI agent?"
     a: "Track three things: hours saved per active user per week, decision-quality changes (errors avoided, faster cycle times), and weekly active-use rate. Sum the hours-saved over the team, multiply by loaded labor cost, and compare to the build-plus-run cost."
   - q: "What metrics actually prove an AI agent is working?"
-    a: "Active users per week, task-completion rate, self-reported time saved, and downstream decision quality. License count, total messages, and 'AI engagement' are vanity metrics — they measure activity, not value created."
+    a: "Active users per week, task-completion rate, self-reported time saved, and downstream decision quality. License count, total messages, and 'AI engagement' are vanity metrics, they measure activity, not value created."
   - q: "How long until an AI agent shows real ROI?"
     a: "Expect a meaningful adoption signal in 6 to 8 weeks of active use, and a defensible ROI calculation by month three. The first month is mostly trust-building; the second is workflow integration; the third is when the time savings compound."
 ---
@@ -32,7 +32,7 @@ You've deployed your first [custom AI agent](/solutions/agent-development/). It'
 
 ## How do you measure ROI on your first AI agent?
 
-Start with business outcomes, not technology metrics. If your goal was reducing response times, measure actual customer response time — not AI responses generated. Use a three-layer framework: efficiency gains (time saved, cost reduced), quality improvements (error rates, consistency), and strategic enablement (new initiatives now possible).
+Start with business outcomes, not technology metrics. If your goal was reducing response times, measure actual customer response time, not AI responses generated. Use a three-layer framework: efficiency gains (time saved, cost reduced), quality improvements (error rates, consistency), and strategic enablement (new initiatives now possible).
 
 Most organizations jump into AI implementation without establishing clear measurement frameworks. They end up with impressive-sounding but ultimately meaningless metrics like "AI interactions per day" or "time spent using AI tools."
 
@@ -70,7 +70,7 @@ Track both, but use leading indicators to guide day-to-day optimization efforts.
 
 ## How long until an AI agent shows real ROI?
 
-Efficiency gains appear within 4–6 weeks of active use; full business impact materializes within 90 days. ROI calculation requires accounting for both obvious costs (software, training) and hidden costs (maintenance, data quality). Hidden benefits often exceed obvious ones: improved satisfaction, reduced turnover, better decisions. True ROI emerges through partnership quality, not pure technology efficiency.
+Efficiency gains appear within 4 to 6 weeks of active use; full business impact materializes within 90 days. ROI calculation requires accounting for both obvious costs (software, training) and hidden costs (maintenance, data quality). Hidden benefits often exceed obvious ones: improved satisfaction, reduced turnover, better decisions. True ROI emerges through partnership quality, not pure technology efficiency.
 
 Most ROI calculations focus on obvious costs (software, implementation, training) and obvious benefits (time saved, errors reduced). But the hidden elements often determine true ROI.
 
@@ -107,6 +107,6 @@ Measuring AI ROI isn't about proving your technology works --- it's about provin
 - [Your First AI Agent: Why Starting Small Is Your Smartest Move](/blog/your-first-ai-agent/)
 - [The Hidden Costs of AI Implementation](/blog/hidden-costs-ai-implementation-beyond-technology-budget/)
 
-Not sure where to start? Read our guide on [picking your first AI agent](/blog/your-first-ai-agent/) — the right first use case makes measurement much easier.
+Not sure where to start? Read our guide on [picking your first AI agent](/blog/your-first-ai-agent/), the right first use case makes measurement much easier.
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*

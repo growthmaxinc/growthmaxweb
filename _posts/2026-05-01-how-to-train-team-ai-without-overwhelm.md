@@ -39,7 +39,7 @@ Your team needs AI training, but the last thing you want is to create more anxie
 
 ## How do you train your team on AI without overwhelming them?
 
-Start by addressing job security and role evolution concerns before teaching capabilities — people can't focus on learning while worried. Use real work scenarios, not theoretical examples, showing how AI handles specific daily tasks. Structure training around four weeks with simple tasks week one, workflow integration week two, complex scenarios week three, independent practice week four.
+Start by addressing job security and role evolution concerns before teaching capabilities, people can't focus on learning while worried. Use real work scenarios, not theoretical examples, showing how AI handles specific daily tasks. Structure training around four weeks with simple tasks week one, workflow integration week two, complex scenarios week three, independent practice week four.
 
 **Effective AI training builds confidence through hands-on practice with real work scenarios.** It starts with addressing concerns, focuses on augmenting existing skills, and gives people control over their learning pace. Done right, training becomes the foundation for sustained AI adoption across your organization. This is core to our [AI Literacy & Training program](/solutions/foundations/).
 
@@ -57,7 +57,7 @@ The most successful AI training programs we've seen start with empathy, not algo
 
 ## What's the right pace for AI training?
 
-The most effective AI training programs run 2–4 weeks with short, focused daily sessions that allow people time to practice what they learned between lessons. Programs that stretch longer lose momentum, bore participants, and create fatigue that undermines actual learning. Intensity and spacing matter more than total duration.
+The most effective AI training programs run 2 to 4 weeks with short, focused daily sessions that allow people time to practice what they learned between lessons. Programs that stretch longer lose momentum, bore participants, and create fatigue that undermines actual learning. Intensity and spacing matter more than total duration.
 
 Before diving into what AI can do, address what your team is worried about.
 
@@ -158,7 +158,7 @@ These scenario-based assessments reveal genuine understanding and build confiden
 
 ## What should AI training cover for non-technical teams?
 
-Start with role-specific context, not technical theory. Teach practical skills: how to evaluate AI outputs, recognize when AI is wrong, write effective inputs, and maintain professional standards. Anchor on the team's actual daily tasks, not abstract concepts. Cover limitations alongside capabilities. Structure by experience level — senior staff need strategic context, junior staff need tactical hands-on practice.
+Start with role-specific context, not technical theory. Teach practical skills: how to evaluate AI outputs, recognize when AI is wrong, write effective inputs, and maintain professional standards. Anchor on the team's actual daily tasks, not abstract concepts. Cover limitations alongside capabilities. Structure by experience level, senior staff need strategic context, junior staff need tactical hands-on practice.
 
 Training doesn't end when the formal program finishes.
 

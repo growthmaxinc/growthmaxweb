@@ -44,7 +44,14 @@ MAX_GENERATION_RETRIES = 3
 POSTS_DIR = Path("_posts")
 WORKBOOK_PATH = Path("GrowthMax-Keyword-Program.xlsx")
 SITE_BASE_URL = "https://growthmaxinc.com"
+from model_config import TEXT_MODEL
+
 POST_URL_TEMPLATE = "/blog/{slug}/"  # matches _config.yml permalink
+
+# Warn once the Calendar has fewer than this many eligible Spoke rows.
+# Two posts/week means 4 rows is about two weeks of notice, enough
+# lead time to refill before the pipeline goes quiet.
+RUNWAY_WARN_THRESHOLD = 4
 
 # Pillar metadata: anchor URL, label, and the sibling spokes that already live.
 # This drives the "must include a link to the pillar page" and
@@ -82,18 +89,21 @@ You are writing for GrowthMax Inc, an AI consultancy that builds custom AI agent
 and offers AI training bootcamps. The core brand message is "Partnership. Not Replacement."
 
 Writing style:
-- Warm, confident, direct — like a knowledgeable colleague, not a sales brochure
+- Warm, confident, direct, like a knowledgeable colleague, not a sales brochure
 - Short paragraphs, clear structure
 - Avoid: jargon soup, fear-mongering, over-promising, "revolutionize," "disrupt," "game-changer"
 - Preferred vocabulary: augment, amplify, partner, judgment, expertise, outcomes, coherence
-- Use em dashes (---) sparingly for emphasis
+- NEVER use em dashes or en dashes. This rule is absolute and applies to every
+  field you produce, including title, subtitle, description, tldr, and all FAQ
+  answers. Use a comma in their place, or restructure the sentence. Write
+  numeric ranges as "60 to 80 percent", never with a dash.
 - Always frame AI as augmenting human expertise, never replacing it
 
 Core messaging pillars:
-1. Partnership, not replacement — AI augments human expertise
-2. Clarity over hype — speak plainly about what AI can and can't do
-3. Outcomes-focused — emphasize real results
-4. Empathy for the human side — acknowledge AI adoption anxiety
+1. Partnership, not replacement. AI augments human expertise
+2. Clarity over hype. Speak plainly about what AI can and can't do
+3. Outcomes-focused. Emphasize real results
+4. Empathy for the human side. Acknowledge AI adoption anxiety
 """
 
 
@@ -173,6 +183,28 @@ def find_next_calendar_row(calendar_sheet):
             "owner": calendar_sheet.cell(row=row_idx, column=7).value,
             "status": status,
         }))
+
+    # Runway telemetry. The calendar emptying is the pipeline's most common
+    # silent failure: the runner finds no eligible Spoke row, exits clean, and
+    # commits nothing, so CI stays green while publishing has stopped. Surface
+    # the remaining depth on every run so the gap is visible BEFORE it bites.
+    remaining = len(candidates)
+    if remaining == 0:
+        print(
+            "RUNWAY: 0 eligible Spoke rows. No eligible Spoke rows in Calendar "
+            "- the keyword program is exhausted. Fix with: "
+            "python scripts/refill_calendar.py",
+            file=sys.stderr,
+        )
+    elif remaining <= RUNWAY_WARN_THRESHOLD:
+        print(
+            f"RUNWAY: only {remaining} eligible Spoke row(s) left in the Calendar "
+            f"(warning below {RUNWAY_WARN_THRESHOLD}). Top it up soon with: "
+            f"python scripts/refill_calendar.py",
+            file=sys.stderr,
+        )
+    else:
+        print(f"RUNWAY: {remaining} eligible Spoke rows remaining in Calendar.")
 
     if not candidates:
         return None, None
@@ -365,11 +397,11 @@ At least 3 of your H2 headings MUST be exact-question phrasings drawn from this
 list (use the answer angle as your guide for what to write directly under each):
 {aeo_block}
 
-Place a 40–60 word direct answer in the FIRST PARAGRAPH under each question H2.
+Place a 40 to 60 word direct answer in the FIRST PARAGRAPH under each question H2.
 That paragraph is what answer engines will quote.
 
 WORD COUNT IS CHECKED BY AN AUTOMATED AUDIT BEFORE THIS POST IS SAVED.
-Any first-paragraph answer outside 40–60 words will reject this generation
+Any first-paragraph answer outside 40 to 60 words will reject this generation
 and trigger a retry. Count words as you write each one. Aim for 50 words
 (middle of range = safety margin). Don't pad with filler; if a topic genuinely
 needs more words, put the elaboration in the SECOND paragraph of that section.
@@ -378,19 +410,19 @@ EXISTING POSTS (do not duplicate these topics):
 {existing_list}
 
 CONTENT STRUCTURE:
-1. 1100–1500 words.
-2. 4–6 H2 sections (## headers in markdown). At least 3 must be question-format
+1. 1100 to 1500 words.
+2. 4 to 6 H2 sections (## headers in markdown). At least 3 must be question-format
    from the AEO list above.
 3. Use H3 subheadings (###) within sections where it adds clarity.
 4. Open with a compelling hook paragraph (no heading) that includes the primary
    keyword and directly answers the working-title question.
-5. Short paragraphs (2–4 sentences max).
+5. Short paragraphs (2 to 4 sentences max).
 6. Bold key concepts as **phrase**.
 7. End with a forward-looking conclusion paragraph.
 
 SCHEMA + AEO REQUIREMENTS:
 8. Category: "{pillar_category}"
-9. Generate 3–5 relevant tags from: ai-strategy, implementation, organizational-change,
+9. Generate 3 to 5 relevant tags from: ai-strategy, implementation, organizational-change,
    people-culture, adoption, employee-experience, partnership, getting-started, leadership,
    training, agents, productivity, change-management
 10. Meta description under 160 chars, include primary keyword, include a clear value prop.
@@ -398,7 +430,7 @@ SCHEMA + AEO REQUIREMENTS:
 12. URL slug (lowercase, hyphens, no special chars, include primary keyword).
 13. One-sentence "tldr" — single most important takeaway, used in the highlighted
     callout box at the top of the article.
-14. 3 FAQ items (q + a) — answers 1–2 sentences. These become FAQPage schema.
+14. 3 FAQ items (q + a) — answers 1 to 2 sentences. These become FAQPage schema.
     At least 1 of the 3 should be one of the AEO questions listed above.
 
 Respond in this exact JSON format (no prose around it):
@@ -428,7 +460,7 @@ Respond in this exact JSON format (no prose around it):
 def generate_post(client, plan_row, aeo_qs, siblings, prior_errors=None):
     prompt = build_prompt(plan_row, aeo_qs, siblings, prior_errors=prior_errors)
     response = client.messages.create(
-        model="claude-sonnet-4-6",  # was claude-sonnet-4-20250514 (deprecated 2026-06-15); 4.6 follows AEO word counts more reliably
+        model=TEXT_MODEL,  # see scripts/model_config.py; 4.6 follows AEO word counts more reliably
         max_tokens=4096,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -609,7 +641,7 @@ def save_post(post_data, image_path=None, image_alt=None):
     # Always emit image_alt — the SEO audit requires it on every post.
     # If the hero generator didn't produce one (e.g. GEMINI_API_KEY not set),
     # fall back to a clean descriptive string derived from the post title.
-    resolved_image_alt = image_alt or f"{post_data['title']} — GrowthMax Inc"
+    resolved_image_alt = image_alt or f"{post_data['title']}, GrowthMax Inc"
 
     fm_lines = [
         f'title: "{post_data["title"]}"',
@@ -709,8 +741,17 @@ def main():
     else:
         calendar_row_idx, plan_row = find_next_calendar_row(sheets["calendar"])
         if plan_row is None:
-            print("No 'Not started' rows in Calendar — keyword program is fully published. Nothing to do.")
-            sys.exit(0)
+            # Exit NON-ZERO. This used to exit 0, which made an exhausted
+            # calendar indistinguishable from a healthy run and let publishing
+            # stop unnoticed for 12 days in August 2026. An empty queue is a
+            # thing that needs fixing, so it should look like one.
+            print(
+                "FATAL: no eligible Spoke rows in the Calendar tab. The keyword "
+                "program is exhausted, so no post can be generated. "
+                "Refill it with: python scripts/refill_calendar.py",
+                file=sys.stderr,
+            )
+            sys.exit(1)
 
     print(f"Selected: {plan_row['title']} (pillar {plan_row['pillar']}, kw '{plan_row['keyword']}')")
 

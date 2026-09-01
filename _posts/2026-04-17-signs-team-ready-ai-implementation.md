@@ -9,11 +9,11 @@ faq:
 - a: Active resistance from key team members or leadership who view AI as a threat
     to job security rather than a productivity tool.
   q: What's the biggest red flag that indicates we should wait on AI?
-- a: It's possible but much harder—undocumented processes make it difficult to identify
+- a: It's possible but much harder, undocumented processes make it difficult to identify
     where AI can best augment human work.
   q: Can we implement AI if our processes aren't fully documented?
 image: /blog-signs-team-ready-ai.jpg
-image_alt: Flat vector illustration of five readiness signals — documented processes,
+image_alt: Flat vector illustration of five readiness signals, documented processes,
   leadership buy-in, curious team culture, clear pain point, and capacity to invest
 keywords: AI implementation readiness, team ready for AI, AI adoption readiness assessment,
   when to implement AI
@@ -36,17 +36,17 @@ tldr: Team readiness matters more than technology readiness when it comes to suc
   AI implementation.
 ---
 
-**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness — a theme we explore more deeply in the [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) and our [AI adoption playbook](/resources/ai-adoption-playbook/).
+**AI implementation readiness** isn't about having the latest technology or the biggest budget. It's about having a team that's prepared to partner with AI tools effectively. The difference between organizations that succeed with AI and those that struggle often comes down to timing and team readiness, a theme we explore more deeply in the [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) and our [AI adoption playbook](/resources/ai-adoption-playbook/).
 
 ## How do you know your team is ready for AI?
 
-Look for documented processes (informal is fine), leadership framing AI as partnership, culture that asks "how can we do this better?", clear success metrics, and 10–15% capacity for learning during the pilot. Red flags: active resistance to tools, leadership driven by headcount reduction, no quality standards for current work.
+Look for documented processes (informal is fine), leadership framing AI as partnership, culture that asks "how can we do this better?", clear success metrics, and 10 to 15% capacity for learning during the pilot. Red flags: active resistance to tools, leadership driven by headcount reduction, no quality standards for current work.
 
-After working with dozens of organizations on their first AI implementations, we've identified clear patterns that predict success or failure. Here are the specific signs that indicate your team is ready to move forward—and the warning signals that suggest you should address some fundamentals first.
+After working with dozens of organizations on their first AI implementations, we've identified clear patterns that predict success or failure. Here are the specific signs that indicate your team is ready to move forward, and the warning signals that suggest you should address some fundamentals first.
 
 ## Your Processes Are Documented (Even If They're Not Perfect)
 
-The strongest predictor of AI success isn't perfect processes—it's **documented processes**. When your team can explain how work currently gets done, they can identify where AI might amplify their efforts.
+The strongest predictor of AI success isn't perfect processes, it's **documented processes**. When your team can explain how work currently gets done, they can identify where AI might amplify their efforts.
 
 You don't need enterprise-grade documentation. Simple workflows, basic checklists, or even informal "how we do things" guides are sufficient. The key is that knowledge isn't trapped in individual heads.
 
@@ -76,7 +76,7 @@ The most AI-ready teams are naturally curious about improvement. They're the one
 
 This curiosity indicates a **growth mindset** that's essential for AI adoption. Teams that regularly look for better ways to work are prepared to experiment, iterate, and learn alongside AI tools.
 
-Conversely, teams that resist any change to current processes will struggle with AI implementation. The technology itself isn't the barrier—it's the organizational culture around change and improvement.
+Conversely, teams that resist any change to current processes will struggle with AI implementation. The technology itself isn't the barrier, it's the organizational culture around change and improvement.
 
 ## You Have Clear Success Metrics for Current Work
 
@@ -92,7 +92,7 @@ Successful AI implementation requires dedicated attention, especially in the ear
 
 This doesn't mean hiring additional staff. It means being realistic about the learning curve and ensuring that key team members aren't already stretched to capacity.
 
-The most successful implementations we've seen dedicate 10-15% of someone's time to AI learning and iteration during the first 90 days — a cadence we map out in our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/). Organizations that try to squeeze AI adoption into already-full schedules struggle with effective adoption.
+The most successful implementations we've seen dedicate 10-15% of someone's time to AI learning and iteration during the first 90 days, a cadence we map out in our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/). Organizations that try to squeeze AI adoption into already-full schedules struggle with effective adoption.
 
 ## What are the signs a team is NOT ready for AI implementation?
 
@@ -122,7 +122,7 @@ Most organizations don't need to check every box before starting with AI. But ha
 
 The key insight is that **team readiness matters more than technology readiness**. Organizations with prepared teams can successfully adopt simpler AI tools, while unprepared teams struggle even with sophisticated technology.
 
-If you're seeing mostly positive signs, consider starting with a small pilot project focused on augmenting one specific workflow — our guide to [building your first AI agent](/blog/your-first-ai-agent/) walks through exactly how to scope that. If you're seeing warning signs, address the people and process fundamentals with a [people-first AI strategy](/blog/people-first-ai-strategy/) first.
+If you're seeing mostly positive signs, consider starting with a small pilot project focused on augmenting one specific workflow, our guide to [building your first AI agent](/blog/your-first-ai-agent/) walks through exactly how to scope that. If you're seeing warning signs, address the people and process fundamentals with a [people-first AI strategy](/blog/people-first-ai-strategy/) first.
 
 The organizations that succeed with AI are those that recognize it as a partnership between human expertise and technological capability. When your team is ready for that partnership, the technology implementation becomes much more straightforward.
 

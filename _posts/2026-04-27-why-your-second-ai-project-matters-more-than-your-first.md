@@ -46,7 +46,7 @@ This decision sits at the heart of your broader [enterprise AI strategy](/ai-age
 
 ## How do you choose your second AI project?
 
-Choose projects that build on what you learned while demonstrating 15–20% more ambition than your first. If your first agent handled routine inquiries, now augment complex decision-making where judgment matters more. Partner with departments that observed your first success firsthand but weren't directly involved—they bring energy without implementation fatigue.
+Choose projects that build on what you learned while demonstrating 15 to 20% more ambition than your first. If your first agent handled routine inquiries, now augment complex decision-making where judgment matters more. Partner with departments that observed your first success firsthand but weren't directly involved, they bring energy without implementation fatigue.
 
 Your **second AI project selection** shouldn't follow the same criteria as your first. Where your pilot prioritized low risk and quick wins, your follow-up needs to balance ambition with organizational learning.
 

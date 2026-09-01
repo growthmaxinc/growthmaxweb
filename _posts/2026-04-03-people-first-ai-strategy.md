@@ -31,12 +31,12 @@ tags:
 - adoption
 - leadership
 title: Why Your AI Strategy Needs a People Strategy First
-tldr: Successful AI strategies focus on people first, technology second — addressing
+tldr: Successful AI strategies focus on people first, technology second, addressing
   human concerns, building skills, and creating clear value propositions before deploying
   any tools.
 ---
 
-Your shiny new AI strategy document sits in a folder while your team continues doing things the old way. Sound familiar? The issue isn't your technology choices or implementation timeline — it's that **successful AI adoption starts with people, not processors**. Organizations that build their AI strategy around human needs and concerns see adoption rates 3x higher than those leading with technology.
+Your shiny new AI strategy document sits in a folder while your team continues doing things the old way. Sound familiar? The issue isn't your technology choices or implementation timeline, it's that **successful AI adoption starts with people, not processors**. Organizations that build their AI strategy around human needs and concerns see adoption rates 3x higher than those leading with technology.
 
 ## What is a people-first AI strategy?
 
@@ -48,9 +48,9 @@ This foundation is central to any [AI adoption playbook](/resources/ai-adoption-
 
 Technology doesn't transform organizations. People using technology transform organizations.
 
-When we analyze successful AI implementations, the pattern is clear: teams that spent significant time on the human elements — communication, training, workflow design — consistently outperform those that jumped straight to tool deployment. In fact, [organizational disorientation is the top reason AI implementations fail](/blog/why-ai-implementations-fail/).
+When we analyze successful AI implementations, the pattern is clear: teams that spent significant time on the human elements, communication, training, workflow design, consistently outperform those that jumped straight to tool deployment. In fact, [organizational disorientation is the top reason AI implementations fail](/blog/why-ai-implementations-fail/).
 
-The failure pattern is equally consistent. Organizations rush to implement AI tools, then wonder why adoption stalls at 20%. **The missing piece isn't better technology — it's better preparation of the people who'll use it**.
+The failure pattern is equally consistent. Organizations rush to implement AI tools, then wonder why adoption stalls at 20%. **The missing piece isn't better technology, it's better preparation of the people who'll use it**.
 
 Consider this: your team has been doing their jobs effectively without AI. From their perspective, you're asking them to change working methods that already produce results. Without a clear understanding of why this change benefits them specifically, resistance is inevitable.
 
@@ -80,7 +80,7 @@ Before choosing any AI tools, understand your team's current capabilities and co
 
 Map out who has experience with automation, who's comfortable with new technology, and who prefers traditional workflows. This assessment guides your training approach and implementation timeline.
 
-**Identify your early adopters** — they become internal champions who help others see AI's practical value. Also identify those who need more support, ensuring no one gets left behind.
+**Identify your early adopters**, they become internal champions who help others see AI's practical value. Also identify those who need more support, ensuring no one gets left behind.
 
 ### Design Clear Value Propositions
 
@@ -92,7 +92,7 @@ Create simple before-and-after scenarios that show current pain points and how A
 
 ### Establish Communication Rhythms
 
-AI strategy communication isn't a one-time announcement — it's an ongoing conversation.
+AI strategy communication isn't a one-time announcement, it's an ongoing conversation.
 
 Plan regular check-ins, feedback sessions, and progress updates. Address concerns as they emerge rather than waiting for formal review periods. **Transparent, consistent communication builds trust in the transformation process**.
 
@@ -106,7 +106,7 @@ Not everyone needs the same AI knowledge. Design training that matches how peopl
 
 Create different tracks for different roles and comfort levels. Power users get deeper technical training. Others focus on practical application in their specific functions. **Match training intensity to job requirements, not arbitrary standards**.
 
-Build progression naturally — basic concepts first, then specific applications, then advanced usage. Let people master each level before moving forward.
+Build progression naturally, basic concepts first, then specific applications, then advanced usage. Let people master each level before moving forward.
 
 ### Hands-On Application
 
@@ -138,13 +138,13 @@ Measure skills development through practical assessments, not theoretical tests.
 
 ## When People Strategy Drives Technology Success
 
-The organizations seeing transformational results from AI aren't necessarily using the most advanced tools — they're using any AI tools effectively because their people strategy created the foundation for success.
+The organizations seeing transformational results from AI aren't necessarily using the most advanced tools, they're using any AI tools effectively because their people strategy created the foundation for success.
 
-**Your technology choices matter less than your people's readiness to use them well**. A simple AI tool adopted enthusiastically across your team delivers more value than sophisticated technology that sits unused. And when you budget for this people-first approach properly — accounting for [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/) — you set realistic expectations that sustain long-term success.
+**Your technology choices matter less than your people's readiness to use them well**. A simple AI tool adopted enthusiastically across your team delivers more value than sophisticated technology that sits unused. And when you budget for this people-first approach properly, accounting for [the hidden costs beyond the technology budget](/blog/hidden-costs-ai-implementation-beyond-technology-budget/), you set realistic expectations that sustain long-term success.
 
 This people-first approach takes longer upfront but accelerates results once implementation begins. Teams that understand why they're adopting AI, how it benefits their specific work, and what success looks like consistently outperform those handed tools without context. If you're ready to put this into action, our [90-day AI adoption timeline](/blog/90-day-ai-adoption-timeline/) gives you a week-by-week framework.
 
-Start with your people. The technology will follow naturally — and actually get used.
+Start with your people. The technology will follow naturally, and actually get used.
 
 ---
 
@@ -153,4 +153,4 @@ Start with your people. The technology will follow naturally — and actually ge
 - [Why AI Implementations Fail](/blog/why-ai-implementations-fail/)
 - [Where Do I Fit? The Identity Crisis Behind AI Resistance](/blog/where-do-i-fit-crisis/)
 
-*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/) — covering what agents are, why implementations fail, and how to get started.*
+*This post is part of our complete guide to [AI Agents for Business](/ai-agents-for-business/), covering what agents are, why implementations fail, and how to get started.*
