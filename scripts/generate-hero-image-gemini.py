@@ -33,7 +33,7 @@ from google import genai
 from google.genai import types as genai_types
 from PIL import Image
 
-from model_config import TEXT_MODEL
+from model_config import TEXT_MODEL, IMAGE_TIER, IMAGE_MODELS_FREE, IMAGE_MODEL_PAID
 
 REPO = Path(__file__).resolve().parent.parent
 SKILL_PATH = REPO / "scripts" / "skills" / "growthmax-imagery" / "SKILL.md"
@@ -465,14 +465,14 @@ class HeroImageGenerator:
     # Stage 2 — Gemini renders
     # -----------------------------------------------------------------
     def imagen_generate(self, prompt):
-        tier = os.environ.get("IMAGE_MODEL_TIER", "free").lower()
+        tier = os.environ.get("IMAGE_MODEL_TIER", IMAGE_TIER).lower()
         if tier == "paid":
             return self._generate_via_imagen(prompt)
         return self._generate_via_nano_banana(prompt)
 
     def _generate_via_imagen(self, prompt):
         result = self.gemini.models.generate_images(
-            model="imagen-4.0-generate-001",
+            model=IMAGE_MODEL_PAID,
             prompt=prompt,
             config=genai_types.GenerateImagesConfig(
                 number_of_images=1,
@@ -484,7 +484,7 @@ class HeroImageGenerator:
         return result.generated_images[0].image.image_bytes
 
     def _generate_via_nano_banana(self, prompt):
-        for model_name in ("gemini-3.1-flash-image-preview", "gemini-2.5-flash-image"):
+        for model_name in IMAGE_MODELS_FREE:
             try:
                 response = self.gemini.models.generate_content(
                     model=model_name,
