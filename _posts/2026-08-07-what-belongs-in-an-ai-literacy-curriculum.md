@@ -6,7 +6,7 @@ category: "Getting Started"
 read_time: 7
 tags: [training, ai-strategy, organizational-change, people-culture, leadership, adoption, getting-started]
 keywords: "AI literacy curriculum, enterprise AI training, AI skills for employees, AI literacy program, workforce AI readiness"
-image: "/growthMAX.PNG"
+image: "/blog-what-belongs-in-an-ai-literacy-curriculum.jpg"
 image_alt: "What Belongs in an AI Literacy Curriculum, GrowthMax Inc"
 slug: what-belongs-in-an-ai-literacy-curriculum
 tldr: "A strong AI literacy curriculum is role-specific, built around a real agent to practice on, and designed to change behavior, not just awareness."

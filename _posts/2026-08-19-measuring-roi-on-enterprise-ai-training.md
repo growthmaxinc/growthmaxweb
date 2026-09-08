@@ -6,7 +6,7 @@ category: "Getting Started"
 read_time: 7
 tags: [ai-strategy, training, leadership, adoption, productivity, organizational-change, getting-started]
 keywords: "AI training ROI, enterprise AI training, measuring AI ROI, AI literacy metrics, AI upskilling ROI, enterprise AI literacy"
-image: "/growthMAX.PNG"
+image: "/blog-measuring-roi-on-enterprise-ai-training.jpg"
 image_alt: "Measuring ROI on Enterprise AI Training, GrowthMax Inc"
 slug: measuring-roi-on-enterprise-ai-training
 tldr: "AI training ROI isn't measured in course completions, it's measured in behavior change: how your people work differently after training ends."

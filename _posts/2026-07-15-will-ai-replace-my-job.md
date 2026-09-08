@@ -6,7 +6,7 @@ category: "Partnership Model"
 read_time: 7
 tags: [ai-strategy, people-culture, partnership, employee-experience, change-management, adoption, organizational-change]
 keywords: "will AI replace my job, AI augmentation, AI automation vs augmentation, human-in-the-loop AI, AI and jobs, AI partnership"
-image: "/growthMAX.PNG"
+image: "/blog-will-ai-replace-my-job.jpg"
 image_alt: "Will AI Replace Your Job? An Honest Answer, GrowthMax Inc"
 slug: will-ai-replace-my-job
 tldr: "AI will almost certainly change parts of your job, but the professionals who learn to work alongside AI will consistently outperform those who don't."

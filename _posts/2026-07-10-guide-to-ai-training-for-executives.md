@@ -6,7 +6,7 @@ category: "Getting Started"
 read_time: 7
 tags: [leadership, training, ai-strategy, adoption, organizational-change, people-culture, change-management]
 keywords: "AI training for executives, executive AI literacy, enterprise AI training, AI leadership training, AI adoption, AI fluency for leaders"
-image: "/growthMAX.PNG"
+image: "/blog-guide-to-ai-training-for-executives.jpg"
 image_alt: "A Guide to Executive AI Training: What Leaders Need to Know (and Do), GrowthMax Inc"
 slug: guide-to-ai-training-for-executives
 tldr: "Executives don't need to become AI engineers, they need enough fluency to ask the right questions, unblock their teams, and make confident decisions about where AI belongs in their organization."

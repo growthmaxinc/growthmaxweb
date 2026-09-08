@@ -6,7 +6,7 @@ category: "People & Culture"
 read_time: 7
 tags: [ai-strategy, implementation, organizational-change, adoption, change-management, people-culture, getting-started]
 keywords: "AI rollout plan, AI adoption, AI implementation, employee AI adoption, AI change management, 90-day AI plan, AI adoption metrics"
-image: "/growthMAX.PNG"
+image: "/blog-ai-rollout-plan-your-team-will-actually-follow.jpg"
 image_alt: "An AI Rollout Plan Your Team Will Actually Follow, GrowthMax Inc"
 slug: ai-rollout-plan-your-team-will-actually-follow
 tldr: "A successful AI rollout plan is built around people first, clear roles, role-specific tools, and weekly adoption metrics, not just technology deployment."

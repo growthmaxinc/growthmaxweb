@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, implementation, adoption, change-management, leadership, getting-started, organizational-change]
 keywords: "AI pilot to production, enterprise AI strategy, AI readiness, AI governance, scaling AI, AI center of excellence"
-image: "/growthMAX.PNG"
+image: "/blog-ai-pilot-to-production-what-goes-wrong.jpg"
 image_alt: "From AI Pilot to Production: What Goes Wrong, GrowthMax Inc"
 slug: ai-pilot-to-production-what-goes-wrong
 tldr: "The gap between a successful AI pilot and a production deployment isn't technical, it's organizational, and closing it requires governance, sponsorship, and a clear scaling plan before the pilot ends."

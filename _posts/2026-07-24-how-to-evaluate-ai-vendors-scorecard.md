@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, implementation, leadership, getting-started, agents, adoption, change-management]
 keywords: "AI vendor selection criteria, how to evaluate AI vendors, AI vendor scorecard, enterprise AI vendor assessment, choosing an AI partner, AI vendor due diligence"
-image: "/growthMAX.PNG"
+image: "/blog-how-to-evaluate-ai-vendors-scorecard.jpg"
 image_alt: "How to Evaluate AI Vendors (Scorecard Included), GrowthMax Inc"
 slug: how-to-evaluate-ai-vendors-scorecard
 tldr: "Choosing the right AI vendor comes down to one discipline: evaluating against your specific business outcomes, not a vendor's feature list."

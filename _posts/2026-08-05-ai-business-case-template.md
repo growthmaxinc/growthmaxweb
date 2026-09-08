@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, leadership, getting-started, adoption, change-management]
 keywords: "AI business case template, enterprise AI strategy, AI readiness, AI ROI, build vs buy AI agents"
-image: "/growthMAX.PNG"
+image: "/blog-ai-business-case-template.jpg"
 image_alt: "Building the AI Business Case: A Practical Template for Enterprise Teams, GrowthMax Inc"
 slug: ai-business-case-template
 tldr: "A strong AI business case isn't about the technology, it's about naming the human decision being augmented, the hours or errors saved, and a realistic adoption curve your team can actually follow."

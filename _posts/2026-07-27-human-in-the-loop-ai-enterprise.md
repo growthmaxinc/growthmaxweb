@@ -6,7 +6,7 @@ category: "Partnership Model"
 read_time: 7
 tags: [ai-strategy, partnership, implementation, organizational-change, leadership, adoption, change-management]
 keywords: "human in the loop AI, human-in-the-loop AI enterprise, AI augmentation, AI automation vs augmentation, AI decision-making, enterprise AI strategy"
-image: "/growthMAX.PNG"
+image: "/blog-human-in-the-loop-ai-enterprise.jpg"
 image_alt: "Human-in-the-Loop AI for Enterprise: How to Keep Judgment Where It Belongs, GrowthMax Inc"
 slug: human-in-the-loop-ai-enterprise
 tldr: "Human-in-the-loop AI keeps your people as the decision-makers, AI proposes, humans approve, and outcomes improve without anyone losing control of the work that matters most."

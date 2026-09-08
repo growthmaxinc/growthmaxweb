@@ -6,7 +6,7 @@ category: "Implementation"
 read_time: 7
 tags: [agents, implementation, productivity, getting-started, ai-strategy]
 keywords: "AI agents for operations teams, custom AI agent, AI agent use cases, operations automation, enterprise AI agent, AI agent implementation"
-image: "/growthMAX.PNG"
+image: "/blog-ai-agents-for-operations-teams.jpg"
 image_alt: "AI Agents for Operations Teams: What They Do and How to Start, GrowthMax Inc"
 slug: ai-agents-for-operations-teams
 tldr: "AI agents for operations teams work best when they handle high-frequency, repeatable tasks, freeing your people to focus on the judgment calls that actually require them."

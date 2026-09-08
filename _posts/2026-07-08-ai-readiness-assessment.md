@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, getting-started, leadership, organizational-change, adoption, change-management]
 keywords: "AI readiness assessment, enterprise AI strategy, AI center of excellence, AI business case, build vs buy AI agents"
-image: "/growthMAX.PNG"
+image: "/blog-ai-readiness-assessment.jpg"
 image_alt: "Is Your Organization AI-Ready? A Self-Assessment, GrowthMax Inc"
 slug: ai-readiness-assessment
 tldr: "A real AI readiness assessment checks four things, data accessibility, executive sponsorship, process documentation, and your team's tolerance for iteration, before you spend a dollar on technology."

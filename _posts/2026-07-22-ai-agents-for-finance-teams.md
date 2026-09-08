@@ -6,7 +6,7 @@ category: "Implementation"
 read_time: 7
 tags: [agents, implementation, getting-started, productivity, ai-strategy]
 keywords: "AI agents for finance teams, custom AI agent finance, finance automation AI, enterprise AI agents, AI agent use cases finance"
-image: "/growthMAX.PNG"
+image: "/blog-ai-agents-for-finance-teams.jpg"
 image_alt: "AI Agents for Finance Teams: What They Do, What They Cost, and Where to Start, GrowthMax Inc"
 slug: ai-agents-for-finance-teams
 tldr: "AI agents for finance teams don't replace financial judgment, they handle the repetitive, data-heavy work so your analysts and controllers can focus on decisions that actually require their expertise."

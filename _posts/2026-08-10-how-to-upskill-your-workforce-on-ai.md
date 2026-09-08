@@ -6,7 +6,7 @@ category: "Getting Started"
 read_time: 7
 tags: [training, ai-strategy, organizational-change, people-culture, adoption, leadership, change-management]
 keywords: "AI upskilling enterprise, AI training for employees, enterprise AI literacy, AI workforce development, AI training ROI"
-image: "/growthMAX.PNG"
+image: "/blog-how-to-upskill-your-workforce-on-ai.jpg"
 image_alt: "How to Upskill Your Workforce on AI, GrowthMax Inc"
 slug: how-to-upskill-your-workforce-on-ai
 tldr: "Effective AI upskilling for enterprise teams requires role-specific training paired with real practice, not generic courses and not a single company-wide launch."

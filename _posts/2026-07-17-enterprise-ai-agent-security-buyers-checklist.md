@@ -6,7 +6,7 @@ category: "Implementation"
 read_time: 7
 tags: [agents, implementation, ai-strategy, getting-started, leadership]
 keywords: "AI agent security, enterprise AI agents, AI agent checklist, custom AI agent security, AI agent compliance, secure AI deployment"
-image: "/growthMAX.PNG"
+image: "/blog-enterprise-ai-agent-security-buyers-checklist.jpg"
 image_alt: "Enterprise AI Agent Security: A Buyer's Checklist, GrowthMax Inc"
 slug: enterprise-ai-agent-security-buyers-checklist
 tldr: "Before you deploy any AI agent, run it through a structured security checklist, because the risks aren't theoretical, and retrofitting security after launch costs far more than building it in from day one."

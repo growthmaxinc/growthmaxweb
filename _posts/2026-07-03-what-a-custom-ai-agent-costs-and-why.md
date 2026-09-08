@@ -6,7 +6,7 @@ category: "Implementation"
 read_time: 7
 tags: [agents, implementation, getting-started, ai-strategy, productivity]
 keywords: "AI agent cost, custom AI agent cost, how much does an AI agent cost, AI agent development pricing, build custom AI agent, enterprise AI agent"
-image: "/growthMAX.PNG"
+image: "/blog-what-a-custom-ai-agent-costs-and-why.jpg"
 image_alt: "What a Custom AI Agent Costs (and Why), GrowthMax Inc"
 slug: what-a-custom-ai-agent-costs-and-why
 tldr: "A focused, team-scale custom AI agent typically costs between $40k and $250k, and understanding what drives that range is the most useful thing you can do before you start."

@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, leadership, organizational-change, change-management, adoption, implementation, partnership]
 keywords: "AI governance framework, enterprise AI governance, AI oversight, AI center of excellence, enterprise AI strategy, AI readiness, AI policy"
-image: "/growthMAX.PNG"
+image: "/blog-ai-governance-framework-enterprise.jpg"
 image_alt: "AI Governance for Enterprise: A Framework That Actually Works, GrowthMax Inc"
 slug: ai-governance-framework-enterprise
 tldr: "A strong AI governance framework isn't about slowing AI down, it's about giving your team the clarity and accountability to move faster with confidence."

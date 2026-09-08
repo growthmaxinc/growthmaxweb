@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, implementation, organizational-change, adoption, leadership, change-management, getting-started]
 keywords: "AI transformation roadmap, enterprise AI strategy, AI implementation plan, AI center of excellence, AI readiness assessment, build vs buy AI agents"
-image: "/growthMAX.PNG"
+image: "/blog-12-month-ai-transformation-roadmap.jpg"
 image_alt: "The 12-Month AI Transformation Roadmap, GrowthMax Inc"
 slug: 12-month-ai-transformation-roadmap
 tldr: "A successful AI transformation roadmap isn't about deploying as much AI as possible, it's about deploying the right AI, in the right order, with the right people behind it."

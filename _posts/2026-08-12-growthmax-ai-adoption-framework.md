@@ -6,7 +6,7 @@ category: "People & Culture"
 read_time: 7
 tags: [ai-strategy, adoption, organizational-change, change-management, people-culture, leadership, getting-started]
 keywords: "AI adoption framework, AI adoption strategy, AI change management, AI implementation, custom AI agents, AI pilot, AI rollout"
-image: "/growthMAX.PNG"
+image: "/blog-growthmax-ai-adoption-framework.jpg"
 image_alt: "The GrowthMax AI Adoption Framework, GrowthMax Inc"
 slug: growthmax-ai-adoption-framework
 tldr: "A successful AI adoption framework puts organizational clarity and people-first change management before any technology decision."

@@ -6,7 +6,7 @@ category: "AI Strategy"
 read_time: 7
 tags: [ai-strategy, implementation, organizational-change, leadership, adoption, agents, getting-started]
 keywords: "AI center of excellence, enterprise AI strategy, AI governance, AI adoption, build vs buy AI agents, AI readiness"
-image: "/growthMAX.PNG"
+image: "/blog-ai-center-of-excellence-playbook.jpg"
 image_alt: "The AI Center of Excellence Playbook, GrowthMax Inc"
 slug: ai-center-of-excellence-playbook
 tldr: "An AI center of excellence is the small, cross-functional team that turns scattered AI experiments into a coherent, scalable enterprise strategy, and without one, most organizations stay stuck in pilot purgatory."
