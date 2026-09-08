@@ -31,7 +31,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.WEBSITE }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          IMAGE_MODEL_TIER: paid
+          IMAGE_MODEL_TIER: free
           # The 19 posts still on the /growthMAX.PNG placeholder (2026-07-01
           # onward), left behind when hero rendering silently failed on a
           # deprecated model string. Regenerate SLUGS with:
