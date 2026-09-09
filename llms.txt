@@ -16,6 +16,7 @@ Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 - [Foundations](https://growthmaxinc.com/solutions/foundations.html): Getting started with AI on solid footing.
 
 ## Key Writing
+- [What Effective Enterprise AI Training Actually Looks Like](https://growthmaxinc.com/blog/what-effective-enterprise-ai-training-actually-looks-like/): Generic prompt engineering courses won't move the needle. Here's what does.
 - [What Makes an AI Agent Enterprise Ready](https://growthmaxinc.com/blog/what-makes-an-ai-agent-enterprise-ready/): Five qualities that separate a production-grade agent from a promising prototype
 - [Measuring ROI on Enterprise AI Training](https://growthmaxinc.com/blog/measuring-roi-on-enterprise-ai-training/): The metrics that actually tell you whether your AI investment is working
 - [An AI Rollout Plan Your Team Will Actually Follow](https://growthmaxinc.com/blog/ai-rollout-plan-your-team-will-actually-follow/): The difference between AI that sticks and AI that stalls is almost never the technology.
@@ -45,7 +46,6 @@ Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 - [Why AI Projects Fail Without Executive Buy-In (And How to Get It)](https://growthmaxinc.com/blog/executive-buy-in-ai-projects-leadership-alignment/): The leadership alignment strategies that turn AI skeptics into champions
 - [Why Your Second AI Project Matters More Than Your First](https://growthmaxinc.com/blog/why-your-second-ai-project-matters-more-than-your-first/): The critical decisions that determine whether AI adoption spreads or stalls in your organization
 - [How to Scale AI Adoption After Your First Success](https://growthmaxinc.com/blog/how-to-scale-ai-adoption-after-first-success/): From pilot project to organization-wide transformation without losing momentum
-- [When to Hire an AI Consultant vs. Building AI In-House](https://growthmaxinc.com/blog/when-to-hire-ai-consultant-vs-building-in-house/): The decision framework that saves you time, money, and implementation headaches
 
 ## More
 - [Blog (all posts)](https://growthmaxinc.com/resources/blog.html): Essays on AI adoption, change management, ROI, and people-first strategy.
