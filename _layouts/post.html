@@ -206,33 +206,131 @@
 			{% endif %}
 
 			<!-- CTA -->
+			{% comment %}
+				CTA routing by topic.
+
+				All 46 posts previously ended with the same "Let's Talk" block
+				pointing at /#contact, which made the reader do the routing and
+				bounced them out of the content back to the top of the homepage.
+				A reader finishing "What a Custom AI Agent Costs" is a scoping
+				buyer for Agent Development; a reader finishing "How to Train
+				Your Team on AI" is a Bootcamp buyer. They now get different
+				destinations.
+
+				Precedence runs specific to general. `agents` (11 posts) and
+				`training` (7) are narrow enough to route confidently. The broad
+				tags `getting-started` and `adoption` (28 each) fall through to
+				Foundations. `implementation` and `ai-strategy` are deliberately
+				NOT mapped: at 29 and 41 of 46 posts they carry no signal.
+				Anything unmatched keeps the original contact CTA.
+
+				See daily-improvement-2026-09-14.md, Finding 2.
+			{% endcomment %}
+			{% assign cta_url = "/#contact" %}
+			{% assign cta_label = "Let's Talk" %}
+			{% assign cta_lead = "Ready to build clarity in your organization?" %}
+			{% assign cta_sub = "Let's explore how AI partnership can amplify your team's expertise." %}
+			{% if page.tags contains "agents" %}
+				{% assign cta_url = "/solutions/agent-development.html" %}
+				{% assign cta_label = "See how we build agents" %}
+				{% assign cta_lead = "Thinking about an agent of your own?" %}
+				{% assign cta_sub = "We build custom AI agents around the way your team already works." %}
+			{% elsif page.tags contains "training" or page.tags contains "employee-experience" or page.tags contains "people-culture" %}
+				{% assign cta_url = "/solutions/bootcamp.html" %}
+				{% assign cta_label = "See how we train teams" %}
+				{% assign cta_lead = "Want your team to feel confident with this?" %}
+				{% assign cta_sub = "Our bootcamp is hands-on training built around the work your people already do." %}
+			{% elsif page.tags contains "getting-started" or page.tags contains "adoption" %}
+				{% assign cta_url = "/solutions/foundations.html" %}
+				{% assign cta_label = "Start with Foundations" %}
+				{% assign cta_lead = "Not sure where your first step is?" %}
+				{% assign cta_sub = "Foundations gets you to solid footing before you build or buy anything." %}
+			{% endif %}
 			<div class="mt-12 p-8 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-2xl text-center">
-				<p class="text-white text-lg font-light mb-2">Ready to build clarity in your organization?</p>
-				<p class="text-cyan-200 text-sm mb-6">Let's explore how AI partnership can amplify your team's expertise.</p>
-				<a href="/#contact" class="inline-block px-8 py-3 bg-white text-cyan-700 rounded-full font-medium hover:shadow-lg transition-all">
-					Let's Talk
+				<p class="text-white text-lg font-light mb-2">{{ cta_lead }}</p>
+				<p class="text-cyan-200 text-sm mb-6">{{ cta_sub }}</p>
+				<a href="{{ cta_url }}" class="inline-block px-8 py-3 bg-white text-cyan-700 rounded-full font-medium hover:shadow-lg transition-all">
+					{{ cta_label }}
 				</a>
+				{% comment %}
+					Secondary, lower-commitment offer. The contact form is a
+					"talk to a human" commitment and was the only conversion
+					event on the site, which left the majority of readers who
+					are researching rather than buying with nowhere to go.
+				{% endcomment %}
+				<p class="mt-5 text-cyan-100 text-sm font-light">
+					Not ready to talk? Read the
+					<a href="/resources/ai-adoption-playbook.html" class="text-white underline underline-offset-2 hover:text-cyan-200 transition-colors">AI Adoption Playbook</a>.
+				</p>
 			</div>
 
 			<!-- Related Posts -->
-			{% assign related = site.posts | where_exp: "post", "post.url != page.url" %}
+			{% comment %}
+				Related-post selection.
+
+				The previous implementation filtered on "shares at least one
+				tag" and then took the head of site.posts, which is
+				reverse-chronological. Because `ai-strategy` sits on 41 of 46
+				posts, that filter admitted nearly everything, so the head of
+				the list did all the work: every post linked to the two newest
+				posts. Measured on production 2026-09-14, 86 of the 92 available
+				link slots landed on two URLs and 42 of 46 posts received zero
+				inbound links. The sink also moved, so each new post drained the
+				previous one, permanently concentrating link equity on the page
+				with the least accumulated authority.
+
+				Two changes fix it:
+
+				1. RANK BY SHARED-TAG COUNT, not by a boolean. Candidates
+				   sharing 2+ tags are preferred over those sharing exactly 1,
+				   so the broad tags stop deciding the outcome on their own.
+				2. ROTATE THE WINDOW. The start index is derived from the post's
+				   own date and title length rather than always being 0, so the
+				   92 slots spread across the corpus instead of piling onto
+				   whatever shipped last. Deterministic, so builds stay
+				   reproducible and the same post always renders the same pair.
+
+				See daily-improvement-2026-09-14.md, Finding 1.
+			{% endcomment %}
+			{% assign strong = "" | split: "" %}
+			{% assign weak = "" | split: "" %}
 			{% if page.tags.size > 0 %}
-				{% assign related = "" | split: "" %}
-				{% for post in site.posts %}
-					{% if post.url != page.url %}
-						{% assign common_tags = post.tags | where_exp: "tag", "page.tags contains tag" %}
-						{% if common_tags.size > 0 %}
-							{% assign related = related | push: post %}
+				{% for p in site.posts %}
+					{% if p.url != page.url %}
+						{% assign common_tags = p.tags | where_exp: "tag", "page.tags contains tag" %}
+						{% if common_tags.size >= 2 %}
+							{% assign strong = strong | push: p %}
+						{% elsif common_tags.size == 1 %}
+							{% assign weak = weak | push: p %}
 						{% endif %}
 					{% endif %}
 				{% endfor %}
 			{% endif %}
-			{% assign related = related | slice: 0, 3 %}
+			{% assign pool = strong %}
+			{% if pool.size < 2 %}
+				{% assign pool = strong | concat: weak %}
+			{% endif %}
+			{% if pool.size < 2 %}
+				{% assign pool = site.posts | where_exp: "p", "p.url != page.url" %}
+			{% endif %}
+			{% assign related = "" | split: "" %}
+			{% if pool.size > 0 %}
+				{% assign seed = page.date | date: "%j" | plus: 0 %}
+				{% assign seed = seed | plus: page.title.size %}
+				{% assign first_i = seed | modulo: pool.size %}
+				{% assign first_pick = pool[first_i] %}
+				{% assign related = related | push: first_pick %}
+				{% if pool.size > 1 %}
+					{% assign second_i = first_i | plus: 1 | modulo: pool.size %}
+					{% assign second_pick = pool[second_i] %}
+					{% assign related = related | push: second_pick %}
+				{% endif %}
+			{% endif %}
 			{% if related.size > 0 %}
 			<div class="mt-16">
 				<h2 class="text-2xl font-light text-cyan-900 mb-6">Continue Reading</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-					{% for post in related limit:2 %}
+					{% for post in related %}
 					<a href="{{ post.url }}" class="group p-6 bg-white border border-cyan-200 rounded-2xl hover:shadow-lg transition-all">
 						{% if post.category %}
 						<p class="text-xs font-medium text-blue-600 uppercase tracking-wider mb-2">{{ post.category }}</p>
