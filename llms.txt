@@ -16,6 +16,7 @@ Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 - [Foundations](https://growthmaxinc.com/solutions/foundations.html): Getting started with AI on solid footing.
 
 ## Key Writing
+- [How to Build an AI Literacy Program That Sticks](https://growthmaxinc.com/blog/how-to-build-an-ai-literacy-program-that-sticks/): A practical guide to building AI literacy across your organization, role by role
 - [An AI Maturity Model That Skips the Hype](https://growthmaxinc.com/blog/ai-maturity-model/): A plain-language framework for knowing exactly where your organization stands and what to do next
 - [How Enterprise AI Agent Development Actually Works](https://growthmaxinc.com/blog/how-enterprise-ai-agent-development-actually-works/): A clear, honest look at what goes into building AI agents that do real work inside your organization.
 - [What Effective Enterprise AI Training Actually Looks Like](https://growthmaxinc.com/blog/what-effective-enterprise-ai-training-actually-looks-like/): Generic prompt engineering courses won't move the needle. Here's what does.
@@ -45,7 +46,6 @@ Contact: hi@growthmaxinc.com · https://www.linkedin.com/company/growthmaxinc/
 - [Augmentation vs. Automation: Why the Distinction Matters](https://growthmaxinc.com/blog/augmentation-vs-automation-why-the-distinction-matters/): The difference isn't just semantic, it determines whether AI works for you or instead of you.
 - [Building Trust in AI: How to Address Team Resistance Before It Starts](https://growthmaxinc.com/blog/building-trust-ai-address-team-resistance/): Turn skeptics into advocates with proactive communication and clear expectations
 - [How to Train Your Team on AI Without the Overwhelm](https://growthmaxinc.com/blog/how-to-train-team-ai-without-overwhelm/): A practical approach to AI education that builds confidence, not fear
-- [Why AI Projects Fail Without Executive Buy-In (And How to Get It)](https://growthmaxinc.com/blog/executive-buy-in-ai-projects-leadership-alignment/): The leadership alignment strategies that turn AI skeptics into champions
 
 ## More
 - [Blog (all posts)](https://growthmaxinc.com/resources/blog.html): Essays on AI adoption, change management, ROI, and people-first strategy.
